@@ -123,7 +123,7 @@
  >  ``` 
    
 ##### 各类说明：<br>
- [ARouterPath.java]( src\main\java\com\baseeasy\commonlibrary\arouter\ARouterPath.java) :<br> 各个Activity路由配置地址管理类
+ [ARouterPath.java]( src\/main\/java\/com\/baseeasy\/commonlibrary\/arouter\/ARouterPath.java) :<br> 各个Activity路由配置地址管理类
   
  `注： ARouter的初始化已经放在了BaseApplication当中, 引用commonlibrary的app需要在AndroidManifest中配置BaseApplication。` <br>
  `如果需要请自定义Application需要继承BaseApplication 避免ARouter 出错 `

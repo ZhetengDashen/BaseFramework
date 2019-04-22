@@ -16,6 +16,8 @@ public class ARouterPath {
     }
 
     public static class  AppMode{
+
+
         public static  final String MAIN_TEST="/app/MainTestActivity";
         public static  final String MAIN_ACTIVITY="/app/MainActivity";
     }
