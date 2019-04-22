@@ -128,9 +128,9 @@
  `注： ARouter的初始化已经放在了BaseApplication当中, 引用commonlibrary的app需要在AndroidManifest中配置BaseApplication。` <br>
  `如果需要请自定义Application需要继承BaseApplication 避免ARouter 出错 `
  
- [ARouterTools.java](src\main\java\com\baseeasy\commonlibrary\arouter\ARouterTools.java): <br> Activity 路由跳转工具类
+ [ARouterTools.java](src\/main\/java\/com\/baseeasy\/commonlibrary\/arouter\/ARouterTools.java): <br> Activity 路由跳转工具类
  
- [JsonServiceImpl.java](src\main\java\com\baseeasy\commonlibrary\arouter\JsonServiceImpl.java): <br> Activity 路由跳转传递对象时候序列化用到的。
+ [JsonServiceImpl.java](src\/main\/java\/com\/baseeasy\/commonlibrary\/arouter\/JsonServiceImpl.java): <br> Activity 路由跳转传递对象时候序列化用到的。
 
  
  
