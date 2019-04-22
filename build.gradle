@@ -2,8 +2,13 @@
 
 buildscript {
     repositories {
+        maven{
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
         google()
         jcenter()
+        maven { url 'https://maven.google.com' }
+        maven { url 'http://developer.huawei.com/repo'}
         
     }
     dependencies {
@@ -17,9 +22,17 @@ buildscript {
 allprojects {
     repositories {
         google()
+        maven{
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+
         jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.google.com' }
+        maven { url 'http://developer.huawei.com/repo'}
         
     }
+
 }
 
 task clean(type: Delete) {

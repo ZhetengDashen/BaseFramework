@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.service.SerializationService;
 import com.google.gson.Gson;
 
+
 import java.lang.reflect.Type;
 
 @Route(path = "/service/json")
