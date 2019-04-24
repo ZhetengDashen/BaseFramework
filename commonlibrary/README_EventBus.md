@@ -29,8 +29,24 @@
                 EventBusUtils.post(event);      
  ```
   2.接收事件：
- ```
- 根据当前情况重写BaseActivity  或者BaseFragment方法  
+ ```  
+  例：
+  
+    @Override
+    public void eventBusMessageOnMainThread(EventMessage event) {
+        super.eventBusMessageOnMainThread(event);
+        switch (event.getFlag()){
+            case  ARouterPath.AppMode.MAIN_TEST:
+                TestUser testUser=   (TestUser)event.getEvent();
+                Toast.makeText(this,testUser.getName() , Toast.LENGTH_SHORT).show();
+            break;
+        }
+
+    }
+    
+  ------------------------------
+  
+   根据当前情况重写BaseActivity  或者BaseFragment方法  
      判断Flag是有哪个页面传过来的。
     // 在主线程处理
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -55,21 +71,6 @@
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void eventBusMessageOnMainStickyThread(EventMessage event) {
   
-    }
-  
-  
-  例：
-  
-    @Override
-    public void eventBusMessageOnMainThread(EventMessage event) {
-        super.eventBusMessageOnMainThread(event);
-        switch (event.getFlag()){
-            case  ARouterPath.AppMode.MAIN_TEST:
-                TestUser testUser=   (TestUser)event.getEvent();
-                Toast.makeText(this,testUser.getName() , Toast.LENGTH_SHORT).show();
-            break;
-        }
-
     }
   
  ```
