@@ -47,7 +47,7 @@
   
   > [1.页面跳转](#1页面跳转) <br>
   > [2.页面跳转传值](#2页面跳转传值)<br>
-  <!--> [3.页面跳转回调传值](#3页面跳转回调传值)<br>  废弃 建议使用EventBus -->
+
   
 ##### 1页面跳转  <br>
  >###### ARouterTools为页面统一跳转管理类
@@ -97,33 +97,7 @@
  >  Log.e("KK",testUser.toString());
  >  }
  > ``` 
-<!--#### 3页面跳转回调传值 <br>-->
- <!--> ###### 取值  -->
- <!--> `*必须继承BaseActivity`-->
-  <!-->  ```    -->
-  <!-->  Activity :A-->
-  <!--> 例：code 必须大于0-->
-  <!-->  ARouterTools.startActivityResult(ARouterPath.AppMode.MAIN_TEST,MainActivity.this,1);-->
-  <!-->  -->
-  <!-->    ......... -->
-  <!-->  //剩下的与普通回调代码就一致了。-->
-  <!-->  @Override-->
-  <!-->      protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {-->
-  <!-->          super.onActivityResult(requestCode, resultCode, data);-->
-  <!-->          if(requestCode==RESULT_OK){-->
-  <!-->              if(data!=null){-->
-  <!-->                  String name=data.getStringExtra("namekey");-->
-  <!-->              }-->
-  <!-->         }-->
-  <!-->     }-->
-  <!--> ``` -->
- <!-->  ``` -->
- <!-->  Activity ：B-->
- <!-->   Intent intent=new Intent();-->
- <!-->   intent.putExtra("namekey","王大锤");-->
- <!-->   setResult(RESULT_OK,intent);-->
- <!-->   finish();-->
- <!-->  ``` -->
+
    
 ##### 各类说明：<br>
  [ARouterPath.java]( src\/main\/java\/com\/baseeasy\/commonlibrary\/arouter\/ARouterPath.java) :<br> 各个Activity路由配置地址管理类
