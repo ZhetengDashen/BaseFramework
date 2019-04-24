@@ -47,26 +47,29 @@
   
   > [1.页面跳转](#1页面跳转) <br>
   > [2.页面跳转传值](#2页面跳转传值)<br>
-  > [3.页面跳转回调传值](#3页面跳转回调传值)<br>
+  <!--> [3.页面跳转回调传值](#3页面跳转回调传值)<br>  废弃 建议使用EventBus -->
   
 ##### 1页面跳转  <br>
  >###### ARouterTools为页面统一跳转管理类
+ 
  >``` 
  >例：
  >  ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST);
  > ```
+ >`*必须继承BaseActivity`
  > ##### 添加注解: 要跳转到的Activity 需要配置 @Route  path 注解 <br>
  >  ARouterPath为Activity统一跳转路径管理类
  >  ```   
  > 例：
  > @Route(path = ARouterPath.AppMode.MAIN_ACTIVITY)
- > public class MainActivity extends AppCompatActivity{
+ > public class MainActivity extends BaseActivity{
  >    .....
  >  }
  > ```
 
 #### 2页面跳转传值 <br>
 > ###### 跳转并传值 
+>`*必须继承BaseActivity`
  >  ```   
  > 例：
  > 传String值
@@ -94,33 +97,33 @@
  >  Log.e("KK",testUser.toString());
  >  }
  > ``` 
-#### 3页面跳转回调传值 <br>
- > ###### 取值  
- > `*必须继承BaseActivity`
-  >  ```    
-  >  Activity :A
-  > 例：code 必须大于0
-  >  ARouterTools.startActivityResult(ARouterPath.AppMode.MAIN_TEST,MainActivity.this,1);
-  >  
-  >    ......... 
-  >  //剩下的与普通回调代码就一致了。
-  >  @Override
-  >      protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-  >          super.onActivityResult(requestCode, resultCode, data);
-  >          if(requestCode==RESULT_OK){
-  >              if(data!=null){
-  >                  String name=data.getStringExtra("namekey");
-  >              }
-  >         }
-  >     }
-  > ``` 
- >  ``` 
- >  Activity ：B
- >   Intent intent=new Intent();
- >   intent.putExtra("namekey","王大锤");
- >   setResult(RESULT_OK,intent);
- >   finish();
- >  ``` 
+<!--#### 3页面跳转回调传值 <br>-->
+ <!--> ###### 取值  -->
+ <!--> `*必须继承BaseActivity`-->
+  <!-->  ```    -->
+  <!-->  Activity :A-->
+  <!--> 例：code 必须大于0-->
+  <!-->  ARouterTools.startActivityResult(ARouterPath.AppMode.MAIN_TEST,MainActivity.this,1);-->
+  <!-->  -->
+  <!-->    ......... -->
+  <!-->  //剩下的与普通回调代码就一致了。-->
+  <!-->  @Override-->
+  <!-->      protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {-->
+  <!-->          super.onActivityResult(requestCode, resultCode, data);-->
+  <!-->          if(requestCode==RESULT_OK){-->
+  <!-->              if(data!=null){-->
+  <!-->                  String name=data.getStringExtra("namekey");-->
+  <!-->              }-->
+  <!-->         }-->
+  <!-->     }-->
+  <!--> ``` -->
+ <!-->  ``` -->
+ <!-->  Activity ：B-->
+ <!-->   Intent intent=new Intent();-->
+ <!-->   intent.putExtra("namekey","王大锤");-->
+ <!-->   setResult(RESULT_OK,intent);-->
+ <!-->   finish();-->
+ <!-->  ``` -->
    
 ##### 各类说明：<br>
  [ARouterPath.java]( src\/main\/java\/com\/baseeasy\/commonlibrary\/arouter\/ARouterPath.java) :<br> 各个Activity路由配置地址管理类

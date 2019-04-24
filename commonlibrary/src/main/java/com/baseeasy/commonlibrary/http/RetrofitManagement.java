@@ -1,7 +1,7 @@
 package com.baseeasy.commonlibrary.http;
 
 
-import com.baseeasy.commonlibrary.BaseConfig;
+import com.baseeasy.commonlibrary.config.BaseAppConfig;
 import com.baseeasy.commonlibrary.exception.ServerResultException;
 import com.baseeasy.commonlibrary.http.model.BaseResponseBody;
 
@@ -47,7 +47,7 @@ public enum RetrofitManagement {
 
     private List<Interceptor> interceptorList;
 
-    private boolean log = BaseConfig.isDebug();
+    private boolean log = BaseAppConfig.isDebug();
 
     private Retrofit createRetrofit(String url) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()

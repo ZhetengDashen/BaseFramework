@@ -1,4 +1,4 @@
-package com.baseeasy.commonlibrary;
+package com.baseeasy.commonlibrary.config;
 
 /**
  * 作者：WangZhiQiang
@@ -6,7 +6,7 @@ package com.baseeasy.commonlibrary;
  * 邮箱：sos181@163.com
  * 描述：配置文件
  */
-public class BaseConfig {
+public class BaseAppConfig {
 
 
     /**
@@ -16,7 +16,6 @@ public class BaseConfig {
      * 描述：是否开启Debug
      */
    public static boolean isDebug(){
-
        return  true;
    }
 }

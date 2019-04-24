@@ -5,7 +5,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.baseeasy.commonlibrary.BaseConfig;
+import com.baseeasy.commonlibrary.config.BaseAppConfig;
 
 import java.util.Stack;
 
@@ -23,7 +23,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         singleton = this;
-        if (BaseConfig.isDebug()) {
+        if (BaseAppConfig.isDebug()) {
             Log.e("KK","onCreate");
             ARouter.openLog();     // 打印日志
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)

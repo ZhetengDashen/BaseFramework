@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.test.MainTestActivity">
  <TextView
-     android:text="appMainTestActivity"
+     android:id="@+id/huidiao"
+     android:text="hello"
      android:layout_width="match_parent"
      android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

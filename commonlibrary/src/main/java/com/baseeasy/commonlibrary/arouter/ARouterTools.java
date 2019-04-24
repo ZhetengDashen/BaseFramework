@@ -16,78 +16,78 @@ public class ARouterTools {
 
 
     /**
-     * @param path 路由跳转路径
+     * @param aRouterPath 路由跳转路径
      */
-    public static void startActivity(String path){
-        ARouter.getInstance().build(path).navigation();
+    public static void startActivity(String aRouterPath){
+        ARouter.getInstance().build(aRouterPath).navigation();
     }
 
 
     /**
-     * @param path
+     * @param aRouterPath
      * @param activity
      * @param requestCode 必须大于0
      */
-    public static void startActivityResult(String  path, Activity activity, int requestCode){
-        ARouter.getInstance().build(path).navigation(activity,requestCode);
+    public static void startActivityResult(String  aRouterPath, Activity activity, int requestCode){
+        ARouter.getInstance().build(aRouterPath).navigation(activity,requestCode);
     }
 
 
 
     /**
-     * @param path
+     * @param aRouterPath
      * @param key
      * @param bundle
      */
-     public static void startActivity(String  path, String key, Bundle bundle){
-             ARouter.getInstance().build(path)
+     public static void startActivity(String  aRouterPath, String key, Bundle bundle){
+             ARouter.getInstance().build(aRouterPath)
             .withBundle(key,bundle)
             .navigation();
      }
 
 
     /**
-     * @param path
+     * @param aRouterPath
      * @param key
      * @param bundle
      * @param activity
      * @param requestCode
      */
-    public static void startActivityResult(String  path, String key, Bundle bundle, Activity activity, int requestCode){
-        ARouter.getInstance().build(path).withBundle(key,bundle).navigation(activity,requestCode);
+    public static void startActivityResult(String  aRouterPath, String key, Bundle bundle, Activity activity, int requestCode){
+        ARouter.getInstance().build(aRouterPath).withBundle(key,bundle).navigation(activity,requestCode);
     }
 
     /**
-     * @param path
+     * @param aRouterPath
      * @param key
      * @param value
      */
-    public static void startActivity(String  path, String key,String value){
-        ARouter.getInstance().build(path)
+    public static void startActivity(String  aRouterPath, String key,String value){
+        ARouter.getInstance().build(aRouterPath)
                 .withString(key,value)
                 .navigation();
     }
 
 
     /**
-     * @param path
+     * @param aRouterPath
      * @param key
      * @param value
      * @param activity
      * @param requestCode
      */
-    public static void startActivityResult(String  path,String key,String value, Activity activity, int requestCode){
-        ARouter.getInstance().build(path).withString(key,value).navigation(activity,requestCode);
+    public static void startActivityResult(String  aRouterPath,String key,String value, Activity activity, int requestCode){
+        ARouter.getInstance().build(aRouterPath).withString(key,value).navigation(activity,requestCode);
     }
 
 
     /**
-     * @param path
+     * @param aRouterPath
      * @param key
      * @param object
      */
-    public static void startActivity(String  path, String key,Object object){
-        ARouter.getInstance().build(path)
+    public static void startActivity(String  aRouterPath, String key,Object object){
+        ARouter.getInstance().build(aRouterPath)
                 .withObject(key,object)
                 .navigation();
 
@@ -95,13 +95,13 @@ public class ARouterTools {
 
 
     /**
-     * @param path
+     * @param aRouterPath
      * @param key
      * @param object
      * @param activity
      * @param requestCode
      */
-    public static void startActivityResult(String  path,String key,Object object, Activity activity, int requestCode){
-        ARouter.getInstance().build(path).withObject(key,object).navigation(activity,requestCode);
+    public static void startActivityResult(String  aRouterPath,String key,Object object, Activity activity, int requestCode){
+        ARouter.getInstance().build(aRouterPath).withObject(key,object).navigation(activity,requestCode);
     }
 }
