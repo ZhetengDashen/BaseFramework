@@ -3,6 +3,7 @@ package com.baseeasy.mytest;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -20,15 +21,16 @@ public class TestActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_main);
         initView();
+        Toast.makeText(this, ""+ARouterPath.TestMode.TEST_ACTIVITY, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean isOpenEventBus() {
+        return false;
     }
 
     private void initView() {
-        tv = (TextView) findViewById(R.id.tv);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ARouter.getInstance().build(ARouterPath.AppMode.MAIN_ACTIVITY).navigation();
-            }
-        });
+
+
     }
 }

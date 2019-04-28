@@ -53,8 +53,10 @@ public class MainActivity extends BaseActivity {
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//            ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST,"wo","卡机是");
-            ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST,"user",new TestUser("王大锤" ,"0","女"));
+//       ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST,"wo","卡机是");
+//           ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST,"user",new TestUser("王大锤" ,"0","女"));
+//               ARouterTools.startActivity(ARouterPath.TestMode.TEST_ACTIVITY,"user",new TestUser("王大锤" ,"0","女"));
+                ARouterTools.startActivity(ARouterPath.TestMode2.MAIN_TEST);
 
             }
         });

@@ -10,15 +10,19 @@ package com.baseeasy.commonlibrary.arouter;
  */
 public class ARouterPath {
 
+
+    public static class  AppMode{
+        public static  final String MAIN_TEST="/app/MainTestActivity";
+        public static  final String MAIN_ACTIVITY="/app/MainActivity";
+    }
+
     public static  class  TestMode{
-       public static final String TEST_ACTIVITY="/test/testActivity";
+        public static final String TEST_ACTIVITY="/mytestmode/testActivity";
 
     }
 
-    public static class  AppMode{
+    public static class  TestMode2{
+        public static  final String MAIN_TEST="/mytestmode2/TestMode2Activity";
 
-
-        public static  final String MAIN_TEST="/app/MainTestActivity";
-        public static  final String MAIN_ACTIVITY="/app/MainActivity";
     }
 }
