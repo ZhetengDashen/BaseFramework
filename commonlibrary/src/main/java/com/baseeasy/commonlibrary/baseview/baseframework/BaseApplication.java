@@ -6,6 +6,10 @@ import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.baseeasy.commonlibrary.config.BaseAppConfig;
+import com.baseeasy.commonlibrary.imageloader.GlideImageLoader;
+import com.baseeasy.commonlibrary.imageloader.ImageLoader;
+import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
+import com.baseeasy.commonlibrary.imageloader.PicassoImageLoader;
 
 import java.util.Stack;
 
@@ -15,7 +19,7 @@ import java.util.Stack;
  * 邮箱：sos181@163.com
  * 描述：
  */
-public class BaseApplication extends Application {
+public  class BaseApplication extends Application {
     private static Stack<Activity> activityStack;
     private static BaseApplication singleton;
 
@@ -29,10 +33,18 @@ public class BaseApplication extends Application {
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this); // 尽可能早，推荐在Application中初始化
-//
+
+        ImageLoaderFactory.init(initImageLoader());
+
 
     }
 
+   public  ImageLoader initImageLoader(){
+       //根据当前情况初始化合适的图像框架  也可以在子类中重写该方法
+      ImageLoader imageLoader=new PicassoImageLoader(getApplicationContext());
+//       ImageLoader imageLoader2=new GlideImageLoader(getApplicationContext());
+         return imageLoader;
+   };
     public static BaseApplication getInstance() {
         return singleton;
     }

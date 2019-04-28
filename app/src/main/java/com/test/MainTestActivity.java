@@ -47,6 +47,7 @@ public class MainTestActivity extends BaseActivity {
         huidiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 EventMessage<TestUser> event = new EventMessage.Builder()
                         .setCode(EventConst.EVENT_CODE_OK)
                         .setFlag(ARouterPath.AppMode.MAIN_TEST)

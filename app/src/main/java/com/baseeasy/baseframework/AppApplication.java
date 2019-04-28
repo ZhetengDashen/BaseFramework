@@ -1,6 +1,9 @@
 package com.baseeasy.baseframework;
 
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
+import com.baseeasy.commonlibrary.imageloader.GlideImageLoader;
+import com.baseeasy.commonlibrary.imageloader.ImageLoader;
+import com.baseeasy.commonlibrary.imageloader.PicassoImageLoader;
 
 /**
  * 作者：WangZhiQiang
@@ -9,4 +12,15 @@ import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
  * 描述：
  */
 public class AppApplication extends BaseApplication {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+
+    }
+
+    @Override
+    public ImageLoader initImageLoader() {
+        return new PicassoImageLoader(getApplicationContext());
+    }
 }
