@@ -35,7 +35,8 @@
        ImageLoaderFactory.
        getInstance().
        displayImage(imageView,url);
-       
+  ``` 
+  ```    
    //设置DisplayOption
       DisplayOption displayOption=new DisplayOption.Builder()
                 .setLoadErrorResId(R.drawable.ic_launcher_background)//设置加载错误图片
