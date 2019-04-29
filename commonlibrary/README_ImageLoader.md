@@ -43,8 +43,7 @@
                 .setPlaceHolderResId(R.drawable.ic_launcher_foreground)//设置占位图
                 .setHeight(500)//设置宽高
                 .setWidth(500)
-                .create();
-                
+                .create();                
        ImageLoaderFactory.
        getInstance().
        displayImage(imageView,url,displayOption);
