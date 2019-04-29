@@ -14,12 +14,12 @@
   ```
 
 ## 功能说明  
-  > [1.ImageLoader初始化](#M1)<br>
-  > [2.ImageLoader使用](#ImageLoader的使用)<br>
+  > [1.ImageLoader初始化](#####ImageLoader初始化)<br>
+  > [2.ImageLoader使用](#####ImageLoader的使用)<br>
   `必须继承BaseApplication` 
 
 
-#####  1.ImageLoader初始化  <br>
+##### ImageLoader初始化 
  > ImageLoader的初始化已经在BaseApplication中初始化，默认使用 Picasso。如选择其他类型加载框架请在Application中重写父类initImageLoader() 方法，返回对应的图形框架即可。
  ```
     例：
