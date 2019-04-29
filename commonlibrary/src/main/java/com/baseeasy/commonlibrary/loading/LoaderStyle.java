@@ -15,6 +15,46 @@ public enum LoaderStyle{
     BallPulseRiseIndicator,
     BallRotateIndicator,
     CubeTransitionIndicator,
-    BallZigZagIndicator
+    BallZigZagIndicator,
+    BallZigZagDeflectIndicator,
+    BallTrianglePathIndicator,
+    BallScaleIndicator,
+    LineScaleIndicator,
+    LineScalePartyIndicator,
+    BallScaleMultipleIndicator,
+    BallPulseSyncIndicator,
+    BallBeatIndicator,
+    LineScalePulseOutIndicator,
+    LineScalePulseOutRapidIndicator,
+    BallScaleRippleIndicator,
+    BallScaleRippleMultipleIndicator,
+    BallSpinFadeLoaderIndicator,
+    LineSpinFadeLoaderIndicator,
+    TriangleSkewSpinIndicator,
+    PacmanIndicator,
+    BallGridBeatIndicator,
+    SemiCircleSpinIndicator
+
+//    private static final String[] INDICATORS=new String[]{
+
+
+
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            "",
+//            ""
+//    }
 
 }

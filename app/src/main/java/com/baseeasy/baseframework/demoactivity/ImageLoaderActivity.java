@@ -1,0 +1,42 @@
+package com.baseeasy.baseframework.demoactivity;
+
+import android.os.Bundle;
+import android.widget.ImageView;
+
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.baseeasy.baseframework.R;
+import com.baseeasy.commonlibrary.arouter.ARouterPath;
+import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
+import com.baseeasy.commonlibrary.imageloader.DisplayOption;
+import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
+@Route(path = ARouterPath.AppMode.DEMO_IMAGERLOADER_ACTIVITY)
+public class ImageLoaderActivity extends BaseActivity {
+
+    private ImageView image;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_image_loader);
+        initView();
+    }
+
+    @Override
+    public boolean isOpenEventBus() {
+        return false;
+    }
+
+    private void initView() {
+        image = (ImageView) findViewById(R.id.image);
+
+        DisplayOption displayOption=new DisplayOption.Builder()
+                .setLoadErrorResId(R.drawable.ic_launcher_background)//设置加载错误图片
+                .setPlaceHolderResId(R.drawable.ic_launcher_foreground)//设置占位图
+                .setHeight(500)//设置宽高
+                .setWidth(500)
+                .create();
+
+        ImageLoaderFactory.getInstance().displayImage(image,"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4084320817,2521788326&fm=111&gp=0.jpg",displayOption);
+
+    }
+}

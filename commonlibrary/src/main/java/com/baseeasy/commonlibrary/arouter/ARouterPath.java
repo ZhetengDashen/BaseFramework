@@ -14,6 +14,10 @@ public class ARouterPath {
     public static class  AppMode{
         public static  final String MAIN_TEST="/app/MainTestActivity";
         public static  final String MAIN_ACTIVITY="/app/MainActivity";
+        public static  final String DEMO_AROUTER_ACTIVITY="/demoactivity/ARouterActivity";
+        public static  final String DEMO_IMAGERLOADER_ACTIVITY="/demoactivity/ImageLoaderActivity";
+        public  static final String DEMO_EVENTBUS_ACTIVITY="/demoactivity/EventBusMessageActivity";
+        public  static  final  String DEMO_LOADINGVIEW_ACTIVITY="/demoactivity/LoadingViewActivity";
     }
 
     public static  class  TestMode{

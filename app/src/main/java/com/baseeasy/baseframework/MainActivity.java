@@ -2,8 +2,7 @@ package com.baseeasy.baseframework;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -11,16 +10,16 @@ import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
-import com.baseeasy.commonlibrary.imageloader.DisplayOption;
-import com.baseeasy.commonlibrary.imageloader.ImageLoader;
-import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
 import com.test.TestUser;
 
 @Route(path = ARouterPath.AppMode.MAIN_ACTIVITY)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-    private TextView tv;
-    private ImageView image;
+
+    private Button bt_arouter;
+    private Button bt_eventbus;
+    private Button bt_imageloader;
+    private Button bt_loadingview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class MainActivity extends BaseActivity {
     public void eventBusMessageOnMainThread(EventMessage event) {
         super.eventBusMessageOnMainThread(event);
         switch (event.getFlag()) {
-            case ARouterPath.AppMode.MAIN_TEST:
+            case ARouterPath.AppMode.DEMO_EVENTBUS_ACTIVITY:
                 TestUser testUser = (TestUser) event.getEvent();
                 Toast.makeText(this, testUser.getName(), Toast.LENGTH_SHORT).show();
                 break;
@@ -50,26 +49,35 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
-        tv = (TextView) findViewById(R.id.tv);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//       ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST,"wo","卡机是");
-//           ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST,"user",new TestUser("王大锤" ,"0","女"));
-//               ARouterTools.startActivity(ARouterPath.TestMode.TEST_ACTIVITY,"user",new TestUser("王大锤" ,"0","女"));
-                ARouterTools.startActivity(ARouterPath.TestMode2.MAIN_TEST);
+//       ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST,"wo","卡机是");//
+//     ARouterTools.startActivity(ARouterPath.TestMode.TEST_ACTIVITY,"user",new TestUser("王大锤" ,"0","女"));
 
-            }
-        });
-        image = (ImageView) findViewById(R.id.image);
 
-        DisplayOption displayOption=new DisplayOption.Builder()
-                .setLoadErrorResId(R.drawable.ic_launcher_background)//设置加载错误图片
-                .setPlaceHolderResId(R.drawable.ic_launcher_foreground)//设置占位图
-                .setHeight(500)//设置宽高
-                .setWidth(500)
-                .create();
+        bt_arouter = (Button) findViewById(R.id.bt_arouter);
+        bt_arouter.setOnClickListener(this);
+        bt_eventbus = (Button) findViewById(R.id.bt_eventbus);
+        bt_eventbus.setOnClickListener(this);
+        bt_imageloader = (Button) findViewById(R.id.bt_imageloader);
+        bt_imageloader.setOnClickListener(this);
+        bt_loadingview = (Button) findViewById(R.id.bt_loadingview);
+        bt_loadingview.setOnClickListener(this);
+    }
 
-        ImageLoaderFactory.getInstance().displayImage(image,"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4084320817,2521788326&fm=111&gp=0.jpg",displayOption);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.bt_arouter:
+                ARouterTools.startActivity(ARouterPath.AppMode.DEMO_AROUTER_ACTIVITY, "user", new TestUser("王大锤", "0", "女"));
+                break;
+            case R.id.bt_eventbus:
+                ARouterTools.startActivity(ARouterPath.AppMode.DEMO_EVENTBUS_ACTIVITY);
+                break;
+            case R.id.bt_imageloader:
+                ARouterTools.startActivity(ARouterPath.AppMode.DEMO_IMAGERLOADER_ACTIVITY);
+                break;
+            case R.id.bt_loadingview:
+                ARouterTools.startActivity(ARouterPath.AppMode.DEMO_LOADINGVIEW_ACTIVITY);
+                break;
+        }
     }
 }

@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/bt_arouter"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-      />
-   <ImageView
-       android:background="@color/colorPrimaryDark"
-       android:scaleType="center"
-       android:id="@+id/image"
-       android:layout_width="200dp"
-       android:layout_height="200dp" />
-</LinearLayout>
+        android:text="ARouter"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <Button
+        android:id="@+id/bt_eventbus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="EventBus"
+        app:layout_constraintStart_toEndOf="@+id/bt_arouter"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/bt_imageloader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="ImageLoader"
+        app:layout_constraintStart_toEndOf="@+id/bt_eventbus"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/bt_loadingview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="loadingview"
+        app:layout_constraintStart_toEndOf="@+id/bt_imageloader"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp" />
+</android.support.constraint.ConstraintLayout>

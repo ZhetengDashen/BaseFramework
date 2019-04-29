@@ -26,7 +26,7 @@ public class MyLoader{
 
     private static final ArrayList<AppCompatDialog> LOADERS=new ArrayList<>();
 
-    private static final String DEFAULT_LOADER=LoaderStyle.BallClipRotateIndicator.name();
+    private static final String DEFAULT_LOADER=LoaderStyle.BallPulseSyncIndicator.name();
 
     public static void showLoading(Context context,Enum<LoaderStyle> styleEnum){
         showLoading(context,styleEnum.name());
