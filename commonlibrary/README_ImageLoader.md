@@ -14,8 +14,8 @@
   ```
 
 ## 功能说明  
-  > [1.ImageLoader初始化](#####ImageLoader初始化)<br>
-  > [2.ImageLoader使用](#####ImageLoader的使用)<br>
+  > [1.ImageLoader初始化](#imageloader初始化)<br>
+  > [2.ImageLoader使用](#imageloader的使用)<br>
   `必须继承BaseApplication` 
 
 
