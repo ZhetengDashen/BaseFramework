@@ -1,7 +1,12 @@
 package com.baseeasy.commonlibrary.imageloader;
 
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
-
+/**
+ * 作者：WangZhiQiang
+ * 时间：2019/4/28
+ * 邮箱：sos181@163.com
+ * 描述：
+ */
 public  class DisplayOption {
         public static final int NONE = -1;
         /**

@@ -6,7 +6,12 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.RequestManager;
-
+/**
+ * 作者：WangZhiQiang
+ * 时间：2019/4/28
+ * 邮箱：sos181@163.com
+ * 描述：
+ */
 public class GlideImageLoader implements ImageLoader {
     private RequestManager mRequestManager;
 
@@ -40,7 +45,6 @@ public class GlideImageLoader implements ImageLoader {
                     requestBuilder  .override(option.getWidth(), option.getHeight());
                 }
                 requestBuilder.into(iv);
-
             } else if (option.getLoadErrorResId() != DisplayOption.NONE) {
                 requestBuilder .error(option.getPlaceHolderResId());
                 if (option.getWidth() != DisplayOption.NONE && option.getHeight() != DisplayOption.NONE) {

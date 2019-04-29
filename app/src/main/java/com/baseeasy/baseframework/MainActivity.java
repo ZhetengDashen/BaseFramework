@@ -63,9 +63,13 @@ public class MainActivity extends BaseActivity {
         });
         image = (ImageView) findViewById(R.id.image);
 
-        DisplayOption displayOption=new DisplayOption.Builder().setLoadErrorResId(R.drawable.ic_launcher_background).setPlaceHolderResId(R.drawable.ic_launcher_foreground).create();
-        displayOption.setHeight(320);
-        displayOption.setWidth(240);
+        DisplayOption displayOption=new DisplayOption.Builder()
+                .setLoadErrorResId(R.drawable.ic_launcher_background)//设置加载错误图片
+                .setPlaceHolderResId(R.drawable.ic_launcher_foreground)//设置占位图
+                .setHeight(500)//设置宽高
+                .setWidth(500)
+                .create();
+
         ImageLoaderFactory.getInstance().displayImage(image,"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4084320817,2521788326&fm=111&gp=0.jpg",displayOption);
     }
 }

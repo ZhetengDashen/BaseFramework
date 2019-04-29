@@ -5,7 +5,12 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
-
+/**
+ * 作者：WangZhiQiang
+ * 时间：2019/4/28
+ * 邮箱：sos181@163.com
+ * 描述：
+ */
 public class PicassoImageLoader implements ImageLoader {
     private Picasso mPicasso;
 
