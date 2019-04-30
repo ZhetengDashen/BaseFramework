@@ -22,4 +22,4 @@
  ```  
      MyLoader.showLoading(LoadingViewActivity.this,LoaderStyle.BallPulseSyncIndicator);
  ``` 
->动画示例详情展示请运行之后查看LoadingViewActivity， 根据对应的动画名称进行切换。
+>查看动画示例详情, 请运行之后查看LoadingViewActivity， 根据对应的动画名称进行切换。
