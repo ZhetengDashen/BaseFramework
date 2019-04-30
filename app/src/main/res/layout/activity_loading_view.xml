@@ -6,25 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     tools:context=".demoactivity.LoadingViewActivity">
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/avl1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:indicatorName="BallPulseIndicator"
-        tools:ignore="MissingConstraints" />
-
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/avi2"
-        style="@style/AVLoadingIndicatorView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:visibility="visible"
-        app:indicatorColor="@color/colorAV1"
-        app:indicatorName="BallSpinFadeLoaderIndicator"
-        app:layout_constraintStart_toEndOf="@+id/avl1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp" />
+ <android.support.v7.widget.RecyclerView
+     android:id="@+id/recycler"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>
