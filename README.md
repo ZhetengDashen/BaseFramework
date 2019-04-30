@@ -49,13 +49,14 @@
      
 >4.名称：AVLoadingIndicatorView <br>
 >出处：https://github.com/81813780/AVLoadingIndicatorView <br>
->介绍：加载动画 <br>   
+>介绍：加载动画 <br>
+>使用说明：[AVLoadingIndicatorView使用说明](../commonlibrary/README_ImageLoader.md)<br>   
      
      
 >5.名称：EventBus <br>
 >出处：https://github.com/greenrobot/EventBus <br>
 >介绍：事件发布/订阅 <br>
->使用说明：[EventBus使用说明与注意事项](../commonlibrary/README_EventBus.md)
+>使用说明：[EventBus使用说明与注意事项](../commonlibrary/README_LoadingView.md)
 
 >6.名称：ImageLoader <br>
 >出处：https://github.com/greenrobot/EventBus <br>
