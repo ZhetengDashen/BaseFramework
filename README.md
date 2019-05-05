@@ -10,6 +10,10 @@
 ## 编码记录
 
   >  修改人： 王志强 <br>
+  >  修改时间：2019年5月5日10:05 <br>
+  >  修改内容：增加 BaseRecyclerViewAdapter 示例与说明 <br>
+
+  >  修改人： 王志强 <br>
   >  修改时间：2019年4月29日14:29 <br>
   >  修改内容：增加 统一封装ImageLoader（Glide、Picasso） <br>
   
@@ -63,4 +67,9 @@
 >介绍：图形加载框架同一封装 <br>
 >使用说明：[ImageLoader使用说明与注意事项](../commonlibrary/README_ImageLoader.md)
    
+>7.名称：BaseRecyclerViewAdapterHelper <br>
+>出处：https://github.com/CymChad/BaseRecyclerViewAdapterHelper <br>
+>介绍：RecyclerViewAdapter封装 <br>
+>使用说明：[RecyclerViewAdapter使用说明与注意事项](../commonlibrary/README_ImageLoader.md)
+ 
           
