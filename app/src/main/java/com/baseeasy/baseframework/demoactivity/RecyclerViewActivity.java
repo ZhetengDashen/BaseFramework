@@ -1,5 +1,6 @@
 package com.baseeasy.baseframework.demoactivity;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import com.baseeasy.baseframework.demoactivity.adapter.RecyclerDemoAdapter;
 import com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.animation.BaseAnimation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,9 @@ public class RecyclerViewActivity extends BaseActivity {
             "May",
             "Your"
     };
+    int  mCurrentCounter=0;
+    int  TOTAL_COUNTER=30;
+    boolean isErr=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +61,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
     private void initDate() {
         for (int i = 0; i <10 ; i++) {
-            rvDemoEntities.add(new RVDemoEntity(images[(int)(Math.random()*6)],""+(Math.random()*2),title[(int)(Math.random()*6)],msg[(int)(Math.random()*6)],i));
-
+            rvDemoEntities.add(new RVDemoEntity(images[(int)(Math.random()*6)],""+(int)(Math.random()*2),title[(int)(Math.random()*6)],msg[(int)(Math.random()*6)],i));
         }
     }
 
@@ -68,7 +72,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
     private void initView() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
-        recyclerDemoAdapter=new RecyclerDemoAdapter(R.layout.item_rv_type1,rvDemoEntities);
+        recyclerDemoAdapter=new RecyclerDemoAdapter(rvDemoEntities);
         GridLayoutManager layoutManager = new GridLayoutManager(this ,1);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerDemoAdapter);
@@ -89,5 +93,46 @@ public class RecyclerViewActivity extends BaseActivity {
                }
             }
         });
+
+        //默认提供5种方法（渐显、缩放、从下到上，从左到右、从右到左）
+        //ALPHAIN、SCALEIN、  SLIDEIN_BOTTOM、SLIDEIN_LEFT、SLIDEIN_RIGHT
+        recyclerDemoAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);//动画
+
+       // recyclerDemoAdapter.addHeaderView();//添加头部View
+      // recyclerDemoAdapter.addFooterView();//添加底部View
+
+        // 滑动最后一个Item的时候回调onLoadMoreRequested方法
+        recyclerDemoAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                recyclerView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mCurrentCounter >= TOTAL_COUNTER) {
+                            //数据全部加载完毕
+                            recyclerDemoAdapter.loadMoreEnd();
+                        } else {
+                            if (isErr) {
+                                //成功获取更多数据
+                                recyclerDemoAdapter.addData(rvDemoEntities);
+                                mCurrentCounter = recyclerDemoAdapter.getData().size();
+                                recyclerDemoAdapter.loadMoreComplete();
+                            } else {
+                                //获取更多数据失败
+                                isErr = true;
+                                Toast.makeText(RecyclerViewActivity.this, "加载更多数据失败", Toast.LENGTH_SHORT).show();
+                                recyclerDemoAdapter.loadMoreFail();
+
+                            }
+                        }
+                    }
+
+                }, 500);
+            }
+        },recyclerView);
+        //默认第一次加载会进入回调，如果不需要可以配置：
+        recyclerDemoAdapter.disableLoadMoreIfNotFullPage();
+
+
     }
 }
