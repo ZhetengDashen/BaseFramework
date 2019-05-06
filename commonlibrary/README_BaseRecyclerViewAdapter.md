@@ -80,8 +80,6 @@ Item子控件的点击事件
                 return false;
             }
         });
-
-
  ```
 >Item子控件的长按事件  步骤同上使用方法不同。<br/>
 >adapter中绑定方法将addOnClickListener改成addOnLongClickListener.<br/>
