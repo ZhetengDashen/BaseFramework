@@ -70,6 +70,6 @@
 >7.名称：BaseRecyclerViewAdapterHelper <br>
 >出处：https://github.com/CymChad/BaseRecyclerViewAdapterHelper <br>
 >介绍：RecyclerViewAdapter封装 <br>
->使用说明：[RecyclerViewAdapter使用说明与注意事项](../commonlibrary/README_ImageLoader.md)
+>使用说明：[RecyclerViewAdapter使用说明与注意事项](../commonlibrary/README_BaseRecyclerViewAdapter.md)
  
           
