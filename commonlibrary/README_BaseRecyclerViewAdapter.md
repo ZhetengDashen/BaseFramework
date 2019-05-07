@@ -15,7 +15,7 @@
 > 功能目录:<br/>
 > 添加Item事件、添加列表加载动画、添加头部、尾部、自动加载（上拉、下拉）、分组布局 <br/>  多布局、设置空布局（无数据的时候显示的View）、添加拖拽、滑动删除、树形列表、自定义ViewHolder
 #### 基本使用   
-  ```
+```
 public class RecyclerDemoAdapter extends BaseQuickAdapter<RVDemoEntity, BaseViewHolder> {
     public HomeAdapter(int layoutResId, List data) {
         super(layoutResId, data);
@@ -30,8 +30,9 @@ public class RecyclerDemoAdapter extends BaseQuickAdapter<RVDemoEntity, BaseView
        helper.addOnClickListener(R.id.rv_item_bt);//添加子View的点击事件
     }     
 }
-  ```   
-   ```
+```   
+
+```
  Item的点击事件
 adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -41,8 +42,9 @@ adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             }
         });
  
- ```
-  
+```
+ <br/> 
+ 
  ```
 Item的长按事件
 adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
@@ -55,7 +57,9 @@ adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener(
         });
  
  ```
-  ```
+  <br/> 
+  
+```
 注意：嵌套recycleView的情况下需要使用你使用 adapter. setOnItemClickListener 来设置点击事件,如果使用recycleView.addOnItemTouchListener会累计添加的。
 Item子控件的点击事件
 首先在adapter的convert方法里面通过viewHolder.addOnClickListener绑定一下的控件id
