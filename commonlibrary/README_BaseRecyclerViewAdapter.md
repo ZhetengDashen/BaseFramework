@@ -32,8 +32,8 @@ public class RecyclerDemoAdapter extends BaseQuickAdapter<RVDemoEntity, BaseView
 }
 ```   
 
-```
- Item的点击事件
+``` 
+Item的点击事件
 adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -43,9 +43,8 @@ adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
         });
  
 ```
- <br/> 
- 
- ```
+
+```
 Item的长按事件
 adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
             @Override
@@ -57,7 +56,7 @@ adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener(
         });
  
  ```
-  <br/> 
+
   
 ```
 注意：嵌套recycleView的情况下需要使用你使用 adapter. setOnItemClickListener 来设置点击事件,如果使用recycleView.addOnItemTouchListener会累计添加的。
@@ -93,6 +92,6 @@ Item子控件的点击事件
 >getViewByPosition(RecyclerView recyclerView, int position, @IdRes int viewId) <br/>
 >注意：如果有header的话需要处理一下position加上 headerlayoutcount。<br/>
   
- >加载更多以及 多TypeItem 请参考APP中 RecyclerViewActivity。<br/>
-更多详细用法请参考：https://www.jianshu.com/p/b343fcff51b0
+>加载更多以及 多TypeItem 请参考APP中 RecyclerViewActivity。<br/>
+>更多详细用法请参考：https://www.jianshu.com/p/b343fcff51b0
 
