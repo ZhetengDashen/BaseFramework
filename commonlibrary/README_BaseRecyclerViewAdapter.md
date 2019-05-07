@@ -32,8 +32,9 @@ public class RecyclerDemoAdapter extends BaseQuickAdapter<RVDemoEntity, BaseView
 }
 ```   
 
+
+#### Item的点击事件
 ``` 
-Item的点击事件
 adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -43,9 +44,8 @@ adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
         });
  
 ```
-
+#### Item的长按事件
 ```
-Item的长按事件
 adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
@@ -53,9 +53,8 @@ adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener(
                 Toast.makeText(ItemClickActivity.this, "onItemLongClick" + position, Toast.LENGTH_SHORT).show();
                 return false;
             }
-        });
- 
- ```
+        }); 
+```
 
   
 ```
