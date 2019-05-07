@@ -57,10 +57,10 @@ adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener(
         }); 
 ```
 
-  
+>注意：嵌套recycleView的情况下需要使用你使用 adapter. setOnItemClickListener 来设置点击事件,如果使用recycleView.addOnItemTouchListener会累计添加的。 
+
+#### Item子控件的点击事件
 ```
-注意：嵌套recycleView的情况下需要使用你使用 adapter. setOnItemClickListener 来设置点击事件,如果使用recycleView.addOnItemTouchListener会累计添加的。
-Item子控件的点击事件
 首先在adapter的convert方法里面通过viewHolder.addOnClickListener绑定一下的控件id
  @Override
     protected void convert(BaseViewHolder viewHolder, Status item) {
