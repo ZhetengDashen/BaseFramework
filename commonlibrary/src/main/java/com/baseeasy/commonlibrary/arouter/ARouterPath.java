@@ -18,7 +18,8 @@ public class ARouterPath {
         public static  final String DEMO_IMAGERLOADER_ACTIVITY="/demoactivity/ImageLoaderActivity";
         public static final String DEMO_EVENTBUS_ACTIVITY="/demoactivity/EventBusMessageActivity";
         public static  final  String DEMO_LOADINGVIEW_ACTIVITY="/demoactivity/LoadingViewActivity";
-        public  static final String  DEMO_RECYCLER_ACTIVITY="/denoactivity/RecyclerViewActivity";
+        public  static final String  DEMO_RECYCLER_ACTIVITY="/demoactivity/RecyclerViewActivity";
+        public static final  String  DEMO_LOGUTILS_ACTIVITY="/demoactivity/LogUtilsActivity";
     }
 
     public static  class  TestMode{

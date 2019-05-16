@@ -2,14 +2,19 @@ package com.baseeasy.commonlibrary.baseview.baseframework;
 
 import android.app.Activity;
 import android.app.Application;
+import android.os.Environment;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.baseeasy.commonlibrary.config.BaseAppConfig;
+import com.apkfuns.log2file.LogFileEngineFactory;
+import com.apkfuns.logutils.LogUtils;
+
 import com.baseeasy.commonlibrary.imageloader.GlideImageLoader;
 import com.baseeasy.commonlibrary.imageloader.ImageLoader;
 import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
 import com.baseeasy.commonlibrary.imageloader.PicassoImageLoader;
+import com.baseeasy.commonlibrary.mlog.MyLogFileEngine;
+import com.baseeasy.commonlibrary.mytool.AppUtils;
 
 import java.util.Stack;
 
@@ -27,24 +32,41 @@ public  class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         singleton = this;
-        if (BaseAppConfig.isDebug()) {
-            Log.e("KK","onCreate");
+        if (AppUtils.isApkInDebug(getApplicationContext())) {
             ARouter.openLog();     // 打印日志
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this); // 尽可能早，推荐在Application中初始化
-
         ImageLoaderFactory.init(initImageLoader());
-
+        initLog();
 
     }
-
+   //初始化图形加载框架
    public  ImageLoader initImageLoader(){
        //根据当前情况初始化合适的图像框架  也可以在子类中重写该方法
       ImageLoader imageLoader=new PicassoImageLoader(getApplicationContext());
 //       ImageLoader imageLoader2=new GlideImageLoader(getApplicationContext());
          return imageLoader;
    };
+
+    //初始化日志框架
+    public void initLog(){
+        //studio日志配置
+        LogUtils.getLogConfig()
+                .configAllowLog(AppUtils.isApkInDebug(getApplicationContext()))//是否允许日志输出
+                .configTagPrefix(AppUtils.getAppName(this))//日志log的前缀 TAG
+                .configShowBorders(true)//是否显示边界
+                .configFormatTag("时间:%d{HH:mm:ss:SSS} 线程:%t  类: %c{-5}");
+
+
+         //sdk日志配置
+        LogUtils.getLog2FileConfig().configLog2FileEnable(true)
+                // targetSdkVersion >= 23 需要确保有写sdcard权限
+                .configLog2FilePath(Environment.getExternalStorageDirectory()+"/"+ AppUtils.getAppName(this)+"/log")
+                .configLog2FileNameFormat("%d{yyyyMMdd}.txt")
+                .configLogFileEngine(new MyLogFileEngine(getApplicationContext()));
+    }
+
     public static BaseApplication getInstance() {
         return singleton;
     }

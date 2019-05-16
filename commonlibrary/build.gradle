@@ -62,5 +62,6 @@ dependencies {
         exclude group: 'com.android.support'
     }
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
-
+    api 'com.apkfuns.logutils:library:1.7.5'
+    api 'com.apkfuns.log2file:log2file:1.3.0'
 }

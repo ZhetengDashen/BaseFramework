@@ -21,6 +21,7 @@ public class AppApplication extends BaseApplication {
 
     @Override
     public ImageLoader initImageLoader() {
-        return new PicassoImageLoader(getApplicationContext());
+//        return new PicassoImageLoader(getApplicationContext());
+        return new GlideImageLoader(getApplicationContext());
     }
 }

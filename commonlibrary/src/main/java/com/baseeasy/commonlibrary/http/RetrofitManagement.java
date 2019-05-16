@@ -1,7 +1,7 @@
 package com.baseeasy.commonlibrary.http;
 
 
-import com.baseeasy.commonlibrary.config.BaseAppConfig;
+
 import com.baseeasy.commonlibrary.exception.ServerResultException;
 import com.baseeasy.commonlibrary.http.model.BaseResponseBody;
 
@@ -47,7 +47,7 @@ public enum RetrofitManagement {
 
     private List<Interceptor> interceptorList;
 
-    private boolean log = BaseAppConfig.isDebug();
+
 
     private Retrofit createRetrofit(String url) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
@@ -62,12 +62,12 @@ public enum RetrofitManagement {
                 builder.addInterceptor(interceptor);
             }
         }
-        if (log) {
+
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(httpLoggingInterceptor);
 
-        }
+
         OkHttpClient client = builder.build();
         return new Retrofit.Builder()
                 .client(client)
@@ -124,9 +124,6 @@ public enum RetrofitManagement {
         return value;
     }
 
-    public void setLog(boolean log) {
-        this.log = log;
-    }
 
     public void addInterceptor(List<Interceptor> interceptorList) {
         if (this.interceptorList == null) {

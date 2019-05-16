@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.baseeasy.baseframework.R;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
+import com.test.TestUser;
 
 import java.nio.file.Path;
 
@@ -17,11 +20,13 @@ import java.nio.file.Path;
 public class ARouterActivity extends BaseActivity implements View.OnClickListener {
 
     private Button tv;
-
+    @Autowired
+    public TestUser user; //变量名称要与传值的key一致
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arouter);
+        Toast.makeText(this, ""+user.toString(), Toast.LENGTH_SHORT).show();
         initView();
     }
 

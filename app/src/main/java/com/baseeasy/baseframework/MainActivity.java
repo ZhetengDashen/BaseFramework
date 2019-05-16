@@ -21,6 +21,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button bt_imageloader;
     private Button bt_loadingview;
     private Button bt_recycler;
+    private Button bt_log;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         bt_loadingview.setOnClickListener(this);
         bt_recycler = (Button) findViewById(R.id.bt_recycler);
         bt_recycler.setOnClickListener(this);
+        bt_log = (Button) findViewById(R.id.bt_log);
+        bt_log.setOnClickListener(this);
     }
 
     @Override
@@ -82,8 +85,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ARouterTools.startActivity(ARouterPath.AppMode.DEMO_LOADINGVIEW_ACTIVITY);
                 break;
             case R.id.bt_recycler:
-              ARouterTools.startActivity(ARouterPath.AppMode.DEMO_RECYCLER_ACTIVITY);
+                ARouterTools.startActivity(ARouterPath.AppMode.DEMO_RECYCLER_ACTIVITY);
                 break;
+            case R.id.bt_log:
+                ARouterTools.startActivity(ARouterPath.AppMode.DEMO_LOGUTILS_ACTIVITY);
+                break;
+
         }
     }
 }

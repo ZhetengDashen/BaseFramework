@@ -30,8 +30,8 @@ public class ImageLoaderActivity extends BaseActivity {
         image = (ImageView) findViewById(R.id.image);
 
         DisplayOption displayOption=new DisplayOption.Builder()
-                .setLoadErrorResId(R.drawable.ic_launcher_background)//设置加载错误图片
-                .setPlaceHolderResId(R.drawable.ic_launcher_foreground)//设置占位图
+                .setLoadErrorResId(R.mipmap.ic_launcher_round)//设置加载错误图片
+                .setPlaceHolderResId(R.mipmap.ic_launcher)//设置占位图
                 .setHeight(500)//设置宽高
                 .setWidth(500)
                 .create();
