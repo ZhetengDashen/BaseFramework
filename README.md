@@ -10,6 +10,10 @@
 ## 编码记录
 
   >  修改人： 王志强 <br>
+  >  修改时间：2019年5月17日13:56 <br>
+  >  修改内容：增加 LogUtils 示例与说明 <br>
+
+  >  修改人： 王志强 <br>
   >  修改时间：2019年5月5日10:05 <br>
   >  修改内容：增加 BaseRecyclerViewAdapter 示例与说明 <br>
 
@@ -71,5 +75,10 @@
 >出处：https://github.com/CymChad/BaseRecyclerViewAdapterHelper <br>
 >介绍：RecyclerViewAdapter封装 <br>
 >使用说明：[RecyclerViewAdapter使用说明与注意事项](../commonlibrary/README_BaseRecyclerViewAdapter.md)
- 
+
+>8.名称：LogUtils <br>
+>出处：https://github.com/pengwei1024/LogUtils <br>
+>介绍：日志打印+本地记录  <br>
+>使用说明：[LogUtils使用说明与注意事项](../commonlibrary/README_README_LogUitls.md)
+  
           
