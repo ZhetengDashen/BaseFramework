@@ -22,6 +22,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button bt_loadingview;
     private Button bt_recycler;
     private Button bt_log;
+    private Button bt_rxpermissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         bt_recycler.setOnClickListener(this);
         bt_log = (Button) findViewById(R.id.bt_log);
         bt_log.setOnClickListener(this);
+        bt_rxpermissions = (Button) findViewById(R.id.bt_rxpermissions);
+        bt_rxpermissions.setOnClickListener(this);
     }
 
     @Override
@@ -91,6 +94,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ARouterTools.startActivity(ARouterPath.AppMode.DEMO_LOGUTILS_ACTIVITY);
                 break;
 
+            case R.id.bt_rxpermissions:
+                ARouterTools.startActivity(ARouterPath.AppMode.DEMO_RXPERMISSIONS_ACTIVITY);
+                break;
         }
     }
 }

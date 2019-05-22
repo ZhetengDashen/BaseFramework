@@ -66,4 +66,16 @@
         app:layout_constraintStart_toEndOf="@+id/bt_recycler"
         app:layout_constraintTop_toBottomOf="@+id/bt_eventbus"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/bt_rxpermissions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="rxpermissions"
+        app:layout_constraintStart_toEndOf="@+id/bt_log"
+        app:layout_constraintTop_toBottomOf="@+id/bt_imageloader"
+        tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>

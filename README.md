@@ -67,7 +67,6 @@
 >使用说明：[EventBus使用说明与注意事项](../commonlibrary/README_EventBus.md)
 
 >6.名称：ImageLoader <br>
->出处：https://github.com/greenrobot/EventBus <br>
 >介绍：图形加载框架同一封装 <br>
 >使用说明：[ImageLoader使用说明与注意事项](../commonlibrary/README_ImageLoader.md)
    
@@ -79,6 +78,6 @@
 >8.名称：LogUtils <br>
 >出处：https://github.com/pengwei1024/LogUtils <br>
 >介绍：日志打印+本地记录  <br>
->使用说明：[LogUtils使用说明与注意事项](../commonlibrary/README_LogUitls.md)
+>使用说明：[LogUtils使用说明与注意事项](../commonlibrary/README_LogUtils.md)
   
           
