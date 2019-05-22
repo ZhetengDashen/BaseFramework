@@ -79,5 +79,10 @@
 >出处：https://github.com/pengwei1024/LogUtils <br>
 >介绍：日志打印+本地记录  <br>
 >使用说明：[LogUtils使用说明与注意事项](../commonlibrary/README_LogUtils.md)
+
+>9.名称：RxPermissions <br>
+>出处：https://github.com/tbruyelle/RxPermissions <br>
+>介绍：权限控制  <br>
+>使用说明：[RxPermissions使用说明与注意事项](../commonlibrary/README_RxPermissions.md)
   
           
