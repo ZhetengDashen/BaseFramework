@@ -88,4 +88,19 @@
 >介绍：权限控制  <br>
 >使用说明：[RxPermissions使用说明与注意事项](../commonlibrary/README_RxPermissions.md)
   
-          
+>10.名称：PickerView <br>
+>出处：https://github.com/Bigkoo/Android-PickerView    <br>
+>介绍：时间选择、条件选择、城市选择  <br>
+>使用说明：[PickerView 使用说明与注意事项](../commonlibrary/README_PickerView.md)
+
+>10.名称：PictureSelector <br>
+>出处：https://github.com/LuckSiege/PictureSelector   <br>
+>介绍：图片选择、拍照、视频、压缩、头像截图  <br>
+>使用说明：[PictureSelector 使用说明与注意事项](../commonlibrary/README_PickerView.md)
+
+>10.名称：LuBan <br>
+>出处：https://github.com/Curzibn/Luban   <br>
+>介绍：图片压缩  <br>
+>使用说明：[Luban 使用说明与注意事项](../commonlibrary/README_LuBan.md)
+    
+       

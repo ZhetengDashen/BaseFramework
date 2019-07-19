@@ -7,10 +7,15 @@ import android.util.Log;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
+import com.baseeasy.commonlibrary.luban.LuBanUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.io.File;
+
+import top.zibin.luban.OnCompressListener;
 
 /**
  * 作者：WangZhiQiang
@@ -28,6 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         if ((!EventBusUtils.isRegister(this))&&isOpenEventBus()==true) {
             EventBusUtils.register(this);
         }
+
+
     }
 
     /**
