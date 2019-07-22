@@ -1,11 +1,9 @@
 package com.baseeasy.baseframework.demoactivity;
 
-import android.animation.Animator;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -14,7 +12,6 @@ import com.baseeasy.baseframework.demoactivity.adapter.RecyclerDemoAdapter;
 import com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.animation.BaseAnimation;
 
 import java.util.ArrayList;
 import java.util.List;

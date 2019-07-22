@@ -1,9 +1,7 @@
 package com.baseeasy.baseframework.demoactivity;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.baseeasy.baseframework.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;

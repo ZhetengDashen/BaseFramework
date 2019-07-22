@@ -1,7 +1,7 @@
 package com.baseeasy.baseframework.demoactivity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,8 +13,6 @@ import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.test.TestUser;
-
-import java.nio.file.Path;
 
 @Route(path = ARouterPath.AppMode.DEMO_AROUTER_ACTIVITY)
 public class ARouterActivity extends BaseActivity implements View.OnClickListener {

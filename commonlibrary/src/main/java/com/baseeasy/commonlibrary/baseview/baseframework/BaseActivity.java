@@ -1,21 +1,15 @@
 package com.baseeasy.commonlibrary.baseview.baseframework;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
-import com.baseeasy.commonlibrary.luban.LuBanUtils;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.io.File;
-
-import top.zibin.luban.OnCompressListener;
 
 /**
  * 作者：WangZhiQiang

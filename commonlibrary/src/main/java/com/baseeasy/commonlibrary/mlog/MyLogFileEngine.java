@@ -1,13 +1,12 @@
 package com.baseeasy.commonlibrary.mlog;
 
 import android.content.Context;
-import android.os.Environment;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.apkfuns.logutils.LogLevel;
 import com.apkfuns.logutils.file.LogFileEngine;
 import com.apkfuns.logutils.file.LogFileParam;
-import com.baseeasy.commonlibrary.mytool.AppUtils;
 
 
 import java.io.File;

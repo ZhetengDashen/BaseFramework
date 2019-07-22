@@ -1,7 +1,7 @@
 package com.baseeasy.baseframework.demoactivity.adapter;
 
-import android.support.annotation.Nullable;
-import android.util.Log;
+import androidx.annotation.Nullable;
+
 import android.widget.ImageView;
 
 import com.baseeasy.baseframework.R;
@@ -9,7 +9,6 @@ import com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity;
 import com.baseeasy.commonlibrary.imageloader.DisplayOption;
 import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.List;
