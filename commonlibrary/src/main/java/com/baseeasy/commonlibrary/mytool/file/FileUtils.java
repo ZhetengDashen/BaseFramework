@@ -344,7 +344,7 @@ public class FileUtils {
      * 获取指定文件大小
      *
      * @return
-     * @throws Exception
+     * @throws
      */
     private static long getFileSize(File file) throws Exception {
         long size = 0;
@@ -365,7 +365,7 @@ public class FileUtils {
      *
      * @param f
      * @return
-     * @throws Exception
+     * @throws
      */
     public static long getFileSizes(File f) throws Exception {
         long size = 0;
