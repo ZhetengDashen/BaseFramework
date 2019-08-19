@@ -1,1 +1,1 @@
-include ':app', ':mytestmode', ':commonlibrary', ':mytestmode2'
+include ':app',  ':commonlibrary'

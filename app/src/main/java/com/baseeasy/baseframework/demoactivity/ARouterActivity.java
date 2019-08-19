@@ -43,7 +43,7 @@ public class ARouterActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv:
-                ARouterTools.startActivity(ARouterPath.TestMode2.MAIN_TEST);
+//                ARouterTools.startActivity(ARouterPath.TestMode2.MAIN_TEST);
                 break;
         }
     }

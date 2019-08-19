@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.baseeasy.baseframework"
-        minSdkVersion 15
-        targetSdkVersion 28
+        minSdkVersion 16
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -39,14 +39,12 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation project(':commonlibrary')
-    implementation project(':mytestmode')
-    implementation project(':mytestmode2')
+
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     api 'androidx.cardview:cardview:1.0.0'
 }
 repositories {
     mavenCentral()
     jcenter()
-
     google()
 }

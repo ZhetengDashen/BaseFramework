@@ -7,6 +7,22 @@
 
 * [各类库使用说明](#各类库使用说明)<br>
 
+#  使用
+######  Step 1. Add the JitPack repository to your build file
+  ```  
+  allprojects {
+	repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+###### Step 2. Add the dependency
+  ``` 
+  dependencies {
+       implementation 'com.github.ZhetengDashen:BaseFramework:1.1'
+	}  
+ ``` 
 ## 编码记录
   >  修改人： 王志强 <br>
   >  修改时间：2019年8月19日15:36:26 <br>
