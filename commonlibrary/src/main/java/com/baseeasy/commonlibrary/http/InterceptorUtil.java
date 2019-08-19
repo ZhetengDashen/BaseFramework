@@ -2,21 +2,16 @@ package com.baseeasy.commonlibrary.http;
 
 import android.util.Log;
 
+import com.apkfuns.logutils.LogUtils;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.List;
 
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
-
-import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
-import okio.Buffer;
-import okio.BufferedSource;
-import retrofit2.Call;
 
 public class InterceptorUtil {
     public static String TAG = "----";
@@ -39,12 +34,16 @@ public class InterceptorUtil {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request originalRequest = chain.request();
-                Request request;
+
+                LogUtils.e(originalRequest.body());
                 HttpUrl modifiedUrl = originalRequest.url().newBuilder()
-//                        .addQueryParameter("params1", "")
+
+                      .addQueryParameter("json", "1111")
 //                        .addQueryParameter("params2", "")
                         .build();
-                request = originalRequest.newBuilder().url(modifiedUrl).build();
+
+                Request request = originalRequest.newBuilder().url(modifiedUrl).build();
+
                 return chain.proceed(request);
             }
         };

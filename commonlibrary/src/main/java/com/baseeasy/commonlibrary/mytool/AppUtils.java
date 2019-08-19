@@ -1,5 +1,6 @@
 package com.baseeasy.commonlibrary.mytool;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -7,6 +8,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.telephony.TelephonyManager;
 
 public class AppUtils {
 
@@ -114,5 +117,28 @@ public class AppUtils {
         Bitmap bm = bd.getBitmap();
         return bm;
     }
- 
-}
+    //获取设备号
+
+    public static String getDeviceId(Context context) {
+        String code="";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+
+                return "";
+            }
+        }
+        TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if(manager.getDeviceId() == null || manager.getDeviceId().equals("")) {
+            if (Build.VERSION.SDK_INT >= 23) {
+                code = manager.getDeviceId(0);
+            }
+        }else{
+            code = manager.getDeviceId();
+
+        }
+
+        return code;
+
+
+    }}
+

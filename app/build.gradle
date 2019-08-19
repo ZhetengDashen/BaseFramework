@@ -44,3 +44,9 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     api 'androidx.cardview:cardview:1.0.0'
 }
+repositories {
+    mavenCentral()
+    jcenter()
+
+    google()
+}

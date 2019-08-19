@@ -150,7 +150,7 @@ PictureSelector.create(MainActivity.this).themeStyle(themeId).openExternalPrevie
 ******预览视频****** 
 ```
 PictureSelector.create(MainActivity.this).externalPictureVideo(video_path);
-
+ 
 ```
 ## 结果回调
 ```
