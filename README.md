@@ -20,7 +20,7 @@
 ###### Step 2. Add the dependency
   ``` 
   dependencies {
-       implementation 'com.github.ZhetengDashen:BaseFramework:1.1'
+       implementation 'com.github.ZhetengDashen:BaseFramework:1.2'
 	}  
  ``` 
 ## 编码记录
