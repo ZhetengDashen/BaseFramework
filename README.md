@@ -108,7 +108,7 @@
 
 >10.名称：LuBan <br>
 >出处：https://github.com/Curzibn/Luban   <br>
->介绍：图片压缩.  <br>
+>介绍：图片压缩..  <br>
 >使用说明：[Luban 使用说明与注意事项](../commonlibrary/README_LuBan.md)
     
        
