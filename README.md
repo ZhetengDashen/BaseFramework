@@ -23,6 +23,22 @@
        implementation 'com.github.ZhetengDashen:BaseFramework:1.2'
 	}  
  ``` 
+###### 添加greendao插件
+   ``` 
+   // 在 Project的build.gradle 文件中添加:
+        buildscript {
+            repositories {
+                jcenter()
+                mavenCentral() // add repository
+            }
+            dependencies {
+                classpath 'com.android.tools.build:gradle:3.1.2'
+                classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
+            }
+        }
+
+   ``` 
+
 ## 编码记录
   >  修改人： 王志强 <br>
   >  修改时间：2019年8月19日15:36:26 <br>
@@ -130,5 +146,8 @@
 >出处：https://github.com/Curzibn/Luban   <br>
 >介绍：图片压缩..  <br>
 >使用说明：[Luban 使用说明与注意事项](../commonlibrary/README_LuBan.md)
+
+
+
     
        
