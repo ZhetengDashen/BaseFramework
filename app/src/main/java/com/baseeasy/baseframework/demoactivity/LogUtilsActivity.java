@@ -12,6 +12,7 @@ import com.apkfuns.log2file.LogFileEngineFactory;
 import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.R;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
+import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.mlog.MyLogFileEngine;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
@@ -26,6 +27,11 @@ public class LogUtilsActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_utils);
         initView();
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

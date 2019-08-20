@@ -10,6 +10,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.baseeasy.baseframework.R;
 import com.baseeasy.baseframework.demoactivity.adapter.RecyclerDemoAdapter;
 import com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity;
+import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -54,6 +55,11 @@ public class RecyclerViewActivity extends BaseActivity {
         initDate();
         initView();
 
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     private void initDate() {

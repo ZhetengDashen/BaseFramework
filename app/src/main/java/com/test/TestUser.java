@@ -6,6 +6,7 @@ package com.test;
  * 邮箱：sos181@163.com
  * 描述：
  */
+
 public class TestUser {
     String  name;
     String  id;

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.R;
+import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -28,6 +29,11 @@ public class RxPermissionsActivity extends BaseActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_permissions);
         initView();
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

@@ -19,7 +19,12 @@
 ```
 ###### Step 2. Add the dependency
   ``` 
-  dependencies {
+   apply plugin: 'com.android.application'
+   apply plugin: 'org.greenrobot.greendao' // apply plugin
+   
+    ..........
+    
+   dependencies {
        implementation 'com.github.ZhetengDashen:BaseFramework:1.2'
 	}  
  ``` 
@@ -38,7 +43,7 @@
         }
 
    ``` 
-
+    
 ## 编码记录
   >  修改人： 王志强 <br>
   >  修改时间：2019年8月19日15:36:26 <br>

@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.baseeasy.baseframework.R;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
+import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.test.TestUser;
 
@@ -26,6 +27,11 @@ public class ARouterActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_arouter);
         Toast.makeText(this, ""+user.toString(), Toast.LENGTH_SHORT).show();
         initView();
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

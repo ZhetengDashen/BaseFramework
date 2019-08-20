@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.baseeasy.baseframework.R;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
+import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.imageloader.DisplayOption;
 import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
@@ -19,6 +20,11 @@ public class ImageLoaderActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_loader);
         initView();
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

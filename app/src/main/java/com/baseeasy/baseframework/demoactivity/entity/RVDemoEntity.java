@@ -2,12 +2,16 @@ package com.baseeasy.baseframework.demoactivity.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
+import org.greenrobot.greendao.annotation.Entity;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2019/5/5
  * 邮箱：sos181@163.com
  * 描述：
  */
+
+
 public class RVDemoEntity implements MultiItemEntity {
     String  image;
     String  type;

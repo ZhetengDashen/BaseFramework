@@ -7,6 +7,7 @@ import android.widget.Button;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.baseeasy.baseframework.R;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
+import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventConst;
@@ -26,6 +27,11 @@ public class EventBusMessageActivity extends BaseActivity implements View.OnClic
         setContentView(R.layout.activity_event_bus_message);
         initView();
 
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

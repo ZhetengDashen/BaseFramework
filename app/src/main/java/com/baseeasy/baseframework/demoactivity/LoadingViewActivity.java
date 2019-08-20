@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.baseeasy.baseframework.R;
+import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.loading.LoaderStyle;
 import com.baseeasy.commonlibrary.loading.MyLoader;
@@ -60,6 +61,11 @@ public class LoadingViewActivity extends BaseActivity {
         //停止LoadingView
         // MyLoader.stopLoading();
 
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

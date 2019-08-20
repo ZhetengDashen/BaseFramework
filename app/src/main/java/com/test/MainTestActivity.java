@@ -12,6 +12,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.baseeasy.baseframework.R;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
+import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventConst;
@@ -34,6 +35,11 @@ public class MainTestActivity extends BaseActivity {
         Toast.makeText(this, "" + testUser.toString(), Toast.LENGTH_SHORT).show();
         Log.e("KK", testUser.toString());
 
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override
