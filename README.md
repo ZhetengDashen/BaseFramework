@@ -25,7 +25,7 @@
     ..........
     
    dependencies {
-       implementation 'com.github.ZhetengDashen:BaseFramework:1.2'
+       implementation 'com.github.ZhetengDashen:BaseFramework:1.5'
 	}  
  ``` 
 ###### 添加greendao插件
@@ -45,6 +45,12 @@
    ``` 
     
 ## 编码记录
+
+
+  >  修改人： 王志强 <br>
+  >  修改时间：2019年8月23日16:09:22 <br>
+  >  修改内容：公共参数修改，BaseObserver构造方法修改 <br> 
+
   >  修改人： 王志强 <br>
   >  修改时间：2019年8月23日09:56:57 <br>
   >  修改内容：更新构建版本、更新BaseRecyclerViewAdapter版本 <br>  
