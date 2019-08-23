@@ -1,5 +1,9 @@
 package com.baseeasy.commonlibrary.mytool;
 
+import android.util.Log;
+
+import com.baseeasy.commonlibrary.http.CommonParameter;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2018/7/19
@@ -35,4 +39,7 @@ public class TokenUtils {
         String content = userId + timestamp;
         return MD5Utils.encodeMD5(MD5Utils.encodeMD5(content) + secret);
     }
+
+
+
 }

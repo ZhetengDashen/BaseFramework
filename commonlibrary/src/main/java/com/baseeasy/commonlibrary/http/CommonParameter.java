@@ -23,7 +23,9 @@ public class CommonParameter {
     }
 
     public String getTimestamp() {
-        timestamp= System.currentTimeMillis()+"";
+        this.timestamp= System.currentTimeMillis()+"";
+
+
         return timestamp;
     }
 
@@ -45,7 +47,17 @@ public class CommonParameter {
 
     public void setUserid(String userid) {
         this.userid = userid;
+        this.token= TokenUtils.getToken(userid,getTimestamp());
+    }
 
-        token= TokenUtils.getToken(getUserid(),timestamp);
+
+    @Override
+    public String toString() {
+        return "CommonParameter{" +
+                "appversion='" + appversion + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", token='" + token + '\'' +
+                ", userid='" + userid + '\'' +
+                '}';
     }
 }
