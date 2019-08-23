@@ -40,6 +40,14 @@ public class TokenUtils {
         return MD5Utils.encodeMD5(MD5Utils.encodeMD5(content) + secret);
     }
 
-
+//    public static void main(String[] args) {
+////        1566553111067  10006017
+//        CommonParameter commonParameter=new CommonParameter();
+//        commonParameter.setUserid("10006017");
+//
+//        System.out.println(commonParameter);
+//        System.out.println(getToken("10006017",commonParameter.getTimestamp()));
+//
+//    }
 
 }

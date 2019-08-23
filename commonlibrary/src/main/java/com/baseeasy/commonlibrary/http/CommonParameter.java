@@ -23,7 +23,7 @@ public class CommonParameter {
     }
 
     public String getTimestamp() {
-        this.timestamp= System.currentTimeMillis()+"";
+
 
 
         return timestamp;
@@ -47,6 +47,7 @@ public class CommonParameter {
 
     public void setUserid(String userid) {
         this.userid = userid;
+        this.timestamp= System.currentTimeMillis()+"";
         this.token= TokenUtils.getToken(userid,getTimestamp());
     }
 
