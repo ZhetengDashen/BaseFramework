@@ -44,7 +44,7 @@ public Response intercept(Chain chain) throws IOException {
 
      CommonParameter userParameter=new CommonParameter();
        if(!userid.equals("")){
-           userParameter.setUserId(userid);
+           userParameter.setUserid(userid);
        }
 
        jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter));

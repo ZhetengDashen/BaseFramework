@@ -1,10 +1,13 @@
 package com.baseeasy.commonlibrary.http;
 
+
 import android.accounts.NetworkErrorException;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 
 import com.apkfuns.logutils.LogUtils;
+import com.baseeasy.commonlibrary.basemvp.IBaseView;
+import com.baseeasy.commonlibrary.http.BaseResult;
 
 import java.net.ConnectException;
 import java.net.UnknownHostException;
@@ -18,12 +21,17 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
 
+    private IBaseView iBaseView;
+
     @Override
     public void onSubscribe(Disposable d) {
         onRequestStart();
 
     }
 
+    public BaseObserver(IBaseView iBaseView) {
+        this.iBaseView=iBaseView;
+    }
 
     @Override
     public void onNext(BaseResult<T> tBaseEntity) {
@@ -33,14 +41,14 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
                 LogUtils.e(tBaseEntity);
                 onSuccess(tBaseEntity);
             } catch (Exception e) {
-              onError(e);
+                onError(e);
                 e.printStackTrace();
             }
         } else {
             try {
                 onCodeError(tBaseEntity.getCode(),tBaseEntity.getMessage());
             } catch (Exception e) {
-                  onError(e);
+                onError(e);
                 e.printStackTrace();
             }
         }
@@ -49,8 +57,8 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
 
     @Override
     public void onError(Throwable e) {
-//
-       Log.e("MyBaseObserver", "onError------------------------------------------: ");
+        e.printStackTrace();
+        Log.e("MyBaseObserver", "onError------------------------------------------: ");
 
         try {
             if (e instanceof ConnectException
@@ -67,7 +75,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-
+        onRequestEnd();
     }
 
     @Override
@@ -91,6 +99,9 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
      */
     protected   void onCodeError(String errorCode, String errorMsg) throws Exception {
         LogUtils.e(errorMsg);
+        if(iBaseView!=null){
+            iBaseView.showCodeError(errorCode, errorMsg);
+        }
 
     };
 
@@ -103,15 +114,22 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
      */
     protected  void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
         e.printStackTrace();
-
+        if(isNetWorkError){
+            if(iBaseView!=null){
+                iBaseView.showNetError();
+            }
+        }
     };
 
     protected void onRequestStart() {
-
+        if(iBaseView!=null){
+            iBaseView.showLoading();}
     }
 
     protected void onRequestEnd() {
-
+        if(iBaseView!=null){
+            iBaseView.hideLoading();
+        }
     }
 
 

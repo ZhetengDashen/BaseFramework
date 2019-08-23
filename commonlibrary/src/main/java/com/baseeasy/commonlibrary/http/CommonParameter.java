@@ -9,17 +9,17 @@ import com.baseeasy.commonlibrary.mytool.TokenUtils;
  * 描述：公共参数
  */
 public class CommonParameter {
-    String appVersion="1";		//app版本号
+    String appversion="1";		//app版本号
     String timestamp="";		//时间戳
     String token="";	       //token
-    String userId="";		//userid
+    String userid="";		//userid
 
-    public String getAppVersion() {
-        return appVersion;
+    public String getAppversion() {
+        return appversion;
     }
 
-    public void setAppVersion(String appVersion) {
-        this.appVersion = appVersion;
+    public void setAppversion(String appversion) {
+        this.appversion = appversion;
     }
 
     public String getTimestamp() {
@@ -39,12 +39,13 @@ public class CommonParameter {
         this.token = token;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-        token= TokenUtils.getToken(getUserId(),timestamp);
+    public void setUserid(String userid) {
+        this.userid = userid;
+
+        token= TokenUtils.getToken(getUserid(),timestamp);
     }
 }
