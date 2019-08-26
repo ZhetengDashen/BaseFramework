@@ -2,10 +2,11 @@ package com.baseeasy.commonlibrary.dao.daoutils;
 
 import android.content.Context;
 
+
 import com.baseeasy.commonlibrary.dao.entity.HouseholdImage;
-import com.baseeasy.commonlibrary.dao.greendao.DaoMaster;
-import com.baseeasy.commonlibrary.dao.greendao.DaoSession;
-import com.baseeasy.commonlibrary.dao.greendao.HouseholdImageDao;
+import com.baseeasy.commonlibrary.dao.greendaoimage.DaoMaster;
+import com.baseeasy.commonlibrary.dao.greendaoimage.DaoSession;
+import com.baseeasy.commonlibrary.dao.greendaoimage.HouseholdImageDao;
 import com.baseeasy.commonlibrary.dao.helper.MySQLiteOpenHelper;
 
 import org.greenrobot.greendao.database.Database;
