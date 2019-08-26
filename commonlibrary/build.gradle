@@ -29,7 +29,7 @@ android {
     }
     greendao {
         schemaVersion 1
-        daoPackage 'com.baseeasy.commonlibrary.dao.greendao'
+        daoPackage 'com.baseeasy.commonlibrary.dao.greendaoimage'
         targetGenDir 'src/main/java'
     }
 }

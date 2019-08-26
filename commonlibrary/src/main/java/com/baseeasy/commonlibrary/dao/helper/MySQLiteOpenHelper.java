@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.baseeasy.commonlibrary.dao.greendao.DaoMaster;
+
 import com.baseeasy.commonlibrary.dao.greendao.HouseholdImageDao;
 import com.github.yuweiguocn.library.greendao.MigrationHelper;
 
