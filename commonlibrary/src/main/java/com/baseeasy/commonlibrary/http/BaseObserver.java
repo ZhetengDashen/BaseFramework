@@ -5,6 +5,7 @@ import android.accounts.NetworkErrorException;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 
+import com.alibaba.fastjson.JSON;
 import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.basemvp.IBaseView;
 import com.baseeasy.commonlibrary.http.BaseResult;
@@ -38,7 +39,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
 
         if (tBaseEntity.isSuccess()) {
             try {
-                LogUtils.e(tBaseEntity);
+                LogUtils.d(JSON.toJSONString(tBaseEntity));
                 onSuccess(tBaseEntity);
             } catch (Exception e) {
                 onError(e);
