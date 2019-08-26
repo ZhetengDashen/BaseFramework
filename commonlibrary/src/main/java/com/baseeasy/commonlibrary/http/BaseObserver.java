@@ -39,7 +39,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
 
         if (tBaseEntity.isSuccess()) {
             try {
-                LogUtils.d(JSON.toJSONString(tBaseEntity));
+//                LogUtils.d(JSON.toJSONString(tBaseEntity));
                 onSuccess(tBaseEntity);
             } catch (Exception e) {
                 onError(e);
