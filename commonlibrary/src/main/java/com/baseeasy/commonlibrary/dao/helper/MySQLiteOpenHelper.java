@@ -3,9 +3,10 @@ package com.baseeasy.commonlibrary.dao.helper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.baseeasy.commonlibrary.dao.greendao.DaoMaster;
 
 
+
+import com.baseeasy.commonlibrary.dao.greendaoimage.DaoMaster;
 import com.baseeasy.commonlibrary.dao.greendaoimage.HouseholdImageDao;
 import com.github.yuweiguocn.library.greendao.MigrationHelper;
 
