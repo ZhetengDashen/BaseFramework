@@ -26,12 +26,12 @@
     android {
            greendao {
                 schemaVersion 1
-                daoPackage 'com.baseeasy.commonlibrary.dao.greendao'//不要改
+                daoPackage 'XXXXX'//greendao //路径
                 targetGenDir 'src/main/java'//保存到java代码路径
             }
     }
    dependencies {
-       implementation 'com.github.ZhetengDashen:BaseFramework:1.8.2'
+       implementation 'com.github.ZhetengDashen:BaseFramework:1.9.4'
 	}  
  ``` 
 ###### 添加greendao插件
