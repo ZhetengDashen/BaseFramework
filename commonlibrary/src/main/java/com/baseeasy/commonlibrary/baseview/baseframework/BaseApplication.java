@@ -1,9 +1,16 @@
 package com.baseeasy.commonlibrary.baseview.baseframework;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
+
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.apkfuns.log2file.LogFileEngineFactory;
@@ -15,8 +22,12 @@ import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
 import com.baseeasy.commonlibrary.imageloader.PicassoImageLoader;
 import com.baseeasy.commonlibrary.mlog.MyLogFileEngine;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.Stack;
+
+import io.reactivex.functions.Consumer;
 
 /**
  * 作者：WangZhiQiang
@@ -27,6 +38,10 @@ import java.util.Stack;
 public  class BaseApplication extends Application {
     private static Stack<Activity> activityStack;
     private static BaseApplication singleton;
+
+    public static String[]permissionsREAD={
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE };
 
     @Override
     public void onCreate() {
@@ -59,13 +74,43 @@ public  class BaseApplication extends Application {
                 .configFormatTag("时间:%d{HH:mm:ss:SSS} 线程:%t  类: %c{-5}");
 
 
-         //sdk日志配置
-        LogUtils.getLog2FileConfig().configLog2FileEnable(true)
+        if (Build.VERSION.SDK_INT >= 23) {
+          if( lacksPermissions(getApplicationContext(),permissionsREAD)){
+              intlogSdcard(true);
+          }
+
+        }else {
+            intlogSdcard(true);
+        }
+
+
+    }
+    public  void intlogSdcard(boolean isFileEnable){
+        //sdk日志配置
+        LogUtils.getLog2FileConfig().configLog2FileEnable(isFileEnable)
                 // targetSdkVersion >= 23 需要确保有写sdcard权限
                 .configLog2FilePath(Environment.getExternalStorageDirectory()+"/"+ AppUtils.getAppName(this)+"/log")
                 .configLog2FileNameFormat("%d{yyyyMMdd}.txt")
                 .configLogFileEngine(new MyLogFileEngine(getApplicationContext()));
     }
+
+    private static boolean lacksPermission(Context mContexts, String permission) {
+        return ContextCompat.checkSelfPermission(mContexts, permission) ==
+                PackageManager.PERMISSION_DENIED;
+    }
+
+    public boolean lacksPermissions(Context mContexts,String [] mPermissions) {
+        for (String permission : permissionsREAD) {
+            if (lacksPermission(mContexts, permission)) {
+                Log.e("TAG","-------没有开启权限");
+                return false;
+            }
+        }
+        Log.e("TAG","-------权限已开启");
+        return true;
+
+    }
+
 
     public static BaseApplication getInstance() {
         return singleton;
