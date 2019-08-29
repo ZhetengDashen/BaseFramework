@@ -119,7 +119,7 @@ public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
 > 1.名称：ARouter <br>
 > 出处：https://github.com/alibaba/ARouter <br>
 > 介绍：android 路由跳转页面 <br>
-> 使用说明：[ARouter使用说明与注意事项](../commonlibrary/README_ARouter.md)<br>
+> 使用说明：[ARouter使用说明与注意事项](commonlibrary/README_ARouter.md)<br>
    
      
 > 2.名称：fastjson <br>
@@ -135,7 +135,7 @@ public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
 >4.名称：AVLoadingIndicatorView <br>
 >出处：https://github.com/81813780/AVLoadingIndicatorView <br>
 >介绍：加载动画 <br>
->使用说明：[AVLoadingIndicatorView使用说明](../commonlibrary/README_LoadingView.md)<br>   
+>使用说明：[AVLoadingIndicatorView使用说明](./commonlibrary/README_LoadingView.md)<br>   
      
      
 >5.名称：EventBus <br>
