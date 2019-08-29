@@ -31,7 +31,7 @@
             }
     }
    dependencies {
-       implementation 'com.github.ZhetengDashen:BaseFramework:1.9.5'
+       implementation 'com.github.ZhetengDashen:BaseFramework:1.9.6'
 	}  
  ``` 
 ###### 添加greendao插件
@@ -60,7 +60,9 @@ public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
  
    ``` 
 ## 编码记录
-
+  >  修改人： 王志强 <br>
+  >  修改时间：2019年8月29日18:07:42 <br>
+  >  修改内容：修复本地日志权限BUG <br> 
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年8月23日16:09:22 <br>
