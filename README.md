@@ -8,7 +8,8 @@
 * [各类库使用说明](#各类库使用说明)<br>
 
 #  使用
-######  Step 1. Add the JitPack repository to your build file
+######  Step 1. JitPack库添加到你的构建文件
+
   ```  
   allprojects {
 	repositories {
@@ -17,23 +18,32 @@
 		}
 	}
 ```
-###### Step 2. Add the dependency
+###### Step 2. 添加相关依赖
   ``` 
    apply plugin: 'com.android.application'
    apply plugin: 'org.greenrobot.greendao' // apply plugin
    
     ..........
-    android {
+    android {    
+            defaultConfig {
+                 ..........
+                ndk {
+                    abiFilters "armeabi"    //添加ndk支持
+                }        
+                 ..........
+            }    
            greendao {
                 schemaVersion 1
                 daoPackage 'XXXXX'//greendao //路径
                 targetGenDir 'src/main/java'//保存到java代码路径
             }
-    }
-   dependencies {
-       implementation 'com.github.ZhetengDashen:BaseFramework:1.9.6'
-	}  
+             }
+           dependencies {
+               implementation 'com.github.ZhetengDashen:BaseFramework:1.9.6'
+            }  
  ``` 
+######  
+ 
 ###### 添加greendao插件
    ``` 
    // 在 Project的build.gradle 文件中添加:
