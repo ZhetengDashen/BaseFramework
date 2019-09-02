@@ -33,7 +33,8 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         if ((!EventBusUtils.isRegister(this))&&isOpenEventBus()==true) {
             EventBusUtils.register(this);
         }
-
+        init_view();
+        init_data();
         presenter=createPresenter();
         if(presenter!=null){
             presenter.attachView((V) this);
@@ -41,8 +42,8 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
 
 
     }
-
-
+    public void init_view(){};
+    public void init_data(){};
     protected   abstract  T createPresenter();
 
 
