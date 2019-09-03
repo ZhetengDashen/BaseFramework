@@ -51,10 +51,27 @@ public class RecyclerViewActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view);
-        initDate();
-        initView();
 
+
+
+    }
+
+    @Override
+    protected int setContentViewId() {
+        return R.layout.activity_recycler_view;
+    }
+
+    @Override
+    public void init_view() {
+        super.init_view();
+
+        initView();
+    }
+
+    @Override
+    public void init_data() {
+        super.init_data();
+        initDate();
     }
 
     @Override

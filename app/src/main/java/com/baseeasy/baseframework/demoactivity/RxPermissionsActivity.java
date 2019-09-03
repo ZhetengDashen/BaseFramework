@@ -27,7 +27,18 @@ public class RxPermissionsActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rx_permissions);
+
+
+    }
+
+    @Override
+    protected int setContentViewId() {
+        return R.layout.activity_rx_permissions;
+    }
+
+    @Override
+    public void init_view() {
+        super.init_view();
         initView();
     }
 

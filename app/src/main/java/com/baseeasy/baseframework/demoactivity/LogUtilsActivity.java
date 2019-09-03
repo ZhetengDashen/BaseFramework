@@ -22,10 +22,16 @@ public class LogUtilsActivity extends BaseActivity implements View.OnClickListen
 
     private Button bt1;
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_utils);
+    protected int setContentViewId() {
+        return R.layout.activity_log_utils;
+    }
+
+    @Override
+    public void init_view() {
+        super.init_view();
         initView();
     }
 

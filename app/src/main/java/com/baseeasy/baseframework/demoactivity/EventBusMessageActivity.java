@@ -21,12 +21,17 @@ public class EventBusMessageActivity extends BaseActivity implements View.OnClic
 
     private Button bt;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_bus_message);
-        initView();
 
+
+    @Override
+    protected int setContentViewId() {
+        return R.layout.activity_event_bus_message;
+    }
+
+    @Override
+    public void init_view() {
+        super.init_view();
+        initView();
     }
 
     @Override

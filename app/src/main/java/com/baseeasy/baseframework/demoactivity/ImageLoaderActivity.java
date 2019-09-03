@@ -15,10 +15,16 @@ public class ImageLoaderActivity extends BaseActivity {
 
     private ImageView image;
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_loader);
+    protected int setContentViewId() {
+        return R.layout.activity_image_loader;
+    }
+
+    @Override
+    public void init_view() {
+        super.init_view();
         initView();
     }
 

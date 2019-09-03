@@ -21,12 +21,24 @@ public class ARouterActivity extends BaseActivity implements View.OnClickListene
     private Button tv;
     @Autowired
     public TestUser user; //变量名称要与传值的key一致
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arouter);
+    protected int setContentViewId() {
+        return R.layout.activity_arouter;
+    }
+
+    @Override
+    public void init_data() {
+        super.init_data();
         Toast.makeText(this, ""+user.toString(), Toast.LENGTH_SHORT).show();
-        initView();
+    }
+
+    @Override
+    public void init_view() {
+        super.init_view();
+        tv = (Button) findViewById(R.id.tv);
+        tv.setOnClickListener(this);
     }
 
     @Override
@@ -39,11 +51,7 @@ public class ARouterActivity extends BaseActivity implements View.OnClickListene
         return false;
     }
 
-    private void initView() {
-        tv = (Button) findViewById(R.id.tv);
 
-        tv.setOnClickListener(this);
-    }
 
     @Override
     public void onClick(View v) {

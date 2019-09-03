@@ -50,17 +50,22 @@ public class LoadingViewActivity extends BaseActivity {
     };
     private RecyclerView recycler;
      private LoadingAdapter loadingAdapter;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loading_view);
+    protected int setContentViewId() {
+        return R.layout.activity_loading_view;
+    }
+
+    @Override
+    public void init_view() {
+        super.init_view();
         initView();
 
         //启动LoadingView
         MyLoader.showLoading(LoadingViewActivity.this, LoaderStyle.BallPulseSyncIndicator);
         //停止LoadingView
         // MyLoader.stopLoading();
-
     }
 
     @Override

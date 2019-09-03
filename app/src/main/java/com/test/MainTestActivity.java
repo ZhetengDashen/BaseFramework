@@ -27,14 +27,23 @@ public class MainTestActivity extends BaseActivity {
     public TestUser testUser;
     private TextView huidiao;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
-        initView();
-        Toast.makeText(this, "" + testUser.toString(), Toast.LENGTH_SHORT).show();
-        Log.e("KK", testUser.toString());
 
+
+    @Override
+    protected int setContentViewId() {
+        return R.layout.activity_test;
+    }
+
+    @Override
+    public void init_view() {
+        super.init_view();
+        initView();
+    }
+
+    @Override
+    public void init_data() {
+        super.init_data();
+        Toast.makeText(this, "" + testUser.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
