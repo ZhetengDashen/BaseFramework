@@ -84,6 +84,7 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
         if(mPresenter!=null) {
             mPresenter.attachView((V) this);
         }
+        createPresenterComplete();
         return view;
     }
 
@@ -91,6 +92,7 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
     public void init_view(View view){};
     public void init_data(){};
     protected abstract T createPresenter();
+    public void createPresenterComplete(){}
     @Override
     public void onDestroy() {
         if (EventBusUtils.isRegister(this) && isOpenEventBus() == true) {

@@ -40,13 +40,14 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         if(presenter!=null){
             presenter.attachView((V) this);
         }
-
+        createPresenterComplete();
 
     }
     protected  abstract int   setContentViewId();
     public void init_view(){};
     public void init_data(){};
     protected   abstract  T createPresenter();
+    public void createPresenterComplete(){}
 
 
     @Override
