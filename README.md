@@ -39,7 +39,7 @@
             }
              }
            dependencies {
-               implementation 'com.github.ZhetengDashen:BaseFramework:1.9.8'
+               implementation 'com.github.ZhetengDashen:BaseFramework:1.9.9'
             }  
  ``` 
 ######  
