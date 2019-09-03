@@ -78,7 +78,7 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(setContentViewID(), container, false);
-        init_view();
+        init_view(view);
         init_data();
         mPresenter = createPresenter();
         if(mPresenter!=null) {
@@ -88,7 +88,7 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
     }
 
     protected  abstract int   setContentViewID();
-    public void init_view(){};
+    public void init_view(View view){};
     public void init_data(){};
     protected abstract T createPresenter();
     @Override
