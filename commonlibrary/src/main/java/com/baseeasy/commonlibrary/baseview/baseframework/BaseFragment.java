@@ -2,9 +2,14 @@ package com.baseeasy.commonlibrary.baseview.baseframework;
 
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.baseeasy.commonlibrary.basemvp.IBaseView;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
@@ -65,14 +70,24 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
         if ((!EventBusUtils.isRegister(this)) && isOpenEventBus() == true) {
             EventBusUtils.register(this);
         }
+
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(setContentViewID(), container, false);
         init_view();
         init_data();
         mPresenter = createPresenter();
         if(mPresenter!=null) {
             mPresenter.attachView((V) this);
         }
+        return view;
     }
 
+    protected  abstract int   setContentViewID();
     public void init_view(){};
     public void init_data(){};
     protected abstract T createPresenter();
