@@ -29,7 +29,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * 描述：
  */
 public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V>> extends RxFragment implements IBaseView {
-    protected T mPresenter;
+    protected T presenter;
     private String TAG = "";
 
     public BaseFragment() {
@@ -80,9 +80,9 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
         View view = inflater.inflate(setContentViewID(), container, false);
         init_view(view);
         init_data();
-        mPresenter = createPresenter();
-        if(mPresenter!=null) {
-            mPresenter.attachView((V) this);
+        presenter = createPresenter();
+        if(presenter!=null) {
+            presenter.attachView((V) this);
             createPresenterComplete(true);
         }else {
             createPresenterComplete(false);
@@ -91,10 +91,27 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
         return view;
     }
 
+    /*
+    * 设置View
+    * */
     protected  abstract int   setContentViewID();
+    /*
+    * 初始化View
+    * */
     public void init_view(View view){};
+    /*
+    * 初始化Data
+    * */
     public void init_data(){};
+
+    /**
+     * 创建Presenter
+     * */
     protected abstract T createPresenter();
+
+    /**
+     * @param  isCreate 创建Presenter 是否成功
+     * */
     public void createPresenterComplete(Boolean isCreate){}
     @Override
     public void onDestroy() {
@@ -102,8 +119,8 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
             EventBusUtils.unregister(this);
         }
         super.onDestroy();
-        if(mPresenter!=null){
-            mPresenter.detachView();
+        if(presenter!=null){
+            presenter.detachView();
         }
     }
 
