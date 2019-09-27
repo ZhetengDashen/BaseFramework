@@ -99,27 +99,26 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
     // 在主线程处理
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void eventBusMessageOnMainThread(EventMessage event) {
-        Log.e(TAG,"MainThread: " + Thread.currentThread().getName());
 
     }
 
     // 在后台处理事件
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void eventBusMessageOnBackgroundThread(EventMessage event) {
-        Log.e(TAG,"BackgroundThread: " + Thread.currentThread().getName());
+
     }
 
     // 在发送事件的同一线程中处理事件
     @Subscribe(threadMode = ThreadMode.POSTING)
     public void eventBusMessageOnPostThread(EventMessage event) {
-        Log.e(TAG,"PostThread: " + Thread.currentThread().getName());
+
 
     }
 
     // 在主线程处理粘性事件
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void eventBusMessageOnMainStickyThread(EventMessage event) {
-        Log.e(TAG,"MainStickyThread: " + Thread.currentThread().getName());
+
 
     }
 

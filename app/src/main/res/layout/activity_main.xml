@@ -78,4 +78,27 @@
         app:layout_constraintStart_toEndOf="@+id/bt_log"
         app:layout_constraintTop_toBottomOf="@+id/bt_imageloader"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/bt_select_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="选择图片"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_rxpermissions"
+        app:layout_constraintStart_toEndOf="@+id/bt_rxpermissions"
+        app:layout_constraintTop_toTopOf="@+id/bt_rxpermissions"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_recycler"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

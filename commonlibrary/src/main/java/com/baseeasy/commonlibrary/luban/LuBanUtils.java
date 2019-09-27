@@ -31,7 +31,7 @@ public class LuBanUtils {
         final String fileName = path.substring(path.lastIndexOf('/') + 1, path.length());
         Luban.with(context)
                 .load(path)                                   // 传人要压缩的图片
-                .ignoreBy(100)                                // 忽略不压缩图片的大小
+                .ignoreBy(300)                                // 忽略不压缩图片的大小
                 .setTargetDir(directory)                      //目录
                 .setRenameListener(new OnRenameListener() {
                     @Override
@@ -67,7 +67,7 @@ public class LuBanUtils {
         final String fileName = path.get(n).substring(path.lastIndexOf('/') + 1, path.get(n).length());
         Luban.with(context)
                 .load(path)                                   // 传人要压缩的图片
-                .ignoreBy(100)                                // 忽略不压缩图片的大小
+                .ignoreBy(300)                                // 忽略不压缩图片的大小
                 .setTargetDir(directory)                      //目录
                 .setRenameListener(new OnRenameListener() {
                     @Override

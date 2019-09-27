@@ -7,7 +7,7 @@
 #### 配置与注意事项：
 ##### gradle 配置：
   ```
-  implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+  implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.4'
   ```
 
 ## 使用说明  

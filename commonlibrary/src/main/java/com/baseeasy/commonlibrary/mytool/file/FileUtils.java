@@ -4,6 +4,8 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.baseeasy.commonlibrary.mytool.AppUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,6 +23,7 @@ import java.util.List;
  * 创建时间： 2014年6月8日14:29:35
  */
 public class FileUtils {
+
     public static final String SDPATH = Environment.getExternalStorageDirectory() + "/";
     public static final String [] FILE_TYPE_ALL={""};//所有类型
     public static final String [] FILE_TYPE_IMAGE={"jgp","jpg","png","gif","jpeg","bmp"};//图片类型
@@ -48,9 +51,12 @@ public class FileUtils {
      * @param dirName
      * @return
      */
-    public static File creatSDDir(String dirName) {
+    public static File createSDDir(String dirName) {
         File dir = new File(SDPATH + "/" + dirName);
-        dir.mkdir();
+        if(!isDirectoryExist(dirName)){
+             dir.mkdirs();
+        }
+
         return dir;
     }
 
@@ -65,6 +71,33 @@ public class FileUtils {
         return file.exists();
     }
 
+    /**
+     * 判断SD卡上的目录是否存在
+     *
+     * @param dirName
+     * @return
+     */
+    public static  boolean isDirectoryExist(String dirName){
+        File file =new File(SDPATH + "/" + dirName);
+        return  file .exists()  && file .isDirectory();
+    }
+
+    /**
+     * 设置某个路径不被相册扫描
+     *
+     * @param dirName
+     * @return
+     * */
+    public static  void createNoMedia(String dirName){
+     if(!isFileExist(dirName+"/"+".nomedia")){
+         try {
+             creatSDFile(dirName+"/"+".nomedia");
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+     }
+
+    }
 
     /**
      * 将一个InputStream里面的数据写入到SD卡中
@@ -79,7 +112,7 @@ public class FileUtils {
         File file = null;
         OutputStream output = null;
         try {
-            creatSDDir(path);
+            createSDDir(path);
             file = creatSDFile(path + fileName);
             output = new FileOutputStream(file);
             byte[] buffer = new byte[4 * 1024];

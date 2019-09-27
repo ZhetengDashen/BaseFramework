@@ -32,4 +32,10 @@ public class ARouterPath {
         public static  final String MAIN_TEST="/mytestmode2/TestMode2Activity";
 
     }
+    public  static  class CommonLibrary{
+        public static  final String COMMON_SELECTIMAGE_ACTIVITY="/selectimageandvideo/selectimage/SelectImageActivity";
+        public static  final String COMMON_SELECTVIDEO_ACTIVITY="/selectimageandvideo/selectvideo/SelectVideoActivity";
+
+    }
+
 }

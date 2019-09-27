@@ -1,5 +1,6 @@
 package com.baseeasy.commonlibrary.imageloader;
 
+import com.baseeasy.commonlibrary.R;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 /**
  * 作者：WangZhiQiang
@@ -12,11 +13,11 @@ public  class DisplayOption {
         /**
          * 加载失败的资源id
          */
-        private int loadErrorResId = NONE;
+        private int loadErrorResId = R.drawable.picture_warning;
         /**
          * 占位资源id
          */
-        private int placeHolderResId = NONE;
+        private int placeHolderResId = R.drawable.ic_placeholder;
 
         /**
          * 宽
