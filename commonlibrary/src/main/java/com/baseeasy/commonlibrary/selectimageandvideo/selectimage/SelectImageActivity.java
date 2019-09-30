@@ -26,6 +26,8 @@ import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.luban.LuBanUtils;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
+import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -34,6 +36,12 @@ import com.luck.picture.lib.entity.LocalMedia;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.IntentExtraName.EVENT_BUS_FLAG;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.SELECT_IMAGE_REQUEST;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKING_PHOTO_REQUEST;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2019/9/26
@@ -49,11 +57,13 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
     private TextView tv_save;
     private String eventBugFlag="";
+    private String localMediaList_json="";//展示的图片
+    private int action_type=0;//0选择图片   1拍照
     private  List<LocalMedia> currentSelectList=new ArrayList<>();
 
     private RecyclerView recyclerView;
     private SelectImageAdapter selectImageAdapter;
-    private String localMediaList_json="";
+
     private TextView tv_add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +72,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         initView();
         initData();
 
-        FileUtils.createSDDir(AppUtils.getAppName(this)+"/compression");
-        FileUtils.createNoMedia(AppUtils.getAppName(this));
+
     }
 
 
@@ -82,18 +91,20 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     }
     private void initData() {
         try {
-            eventBugFlag=getIntent().getStringExtra("eventBusFlag");
+            eventBugFlag=getIntent().getStringExtra(EVENT_BUS_FLAG);
         }catch (Exception e){
             e.printStackTrace();
         }
         try {
-            localMediaList_json= getIntent().getStringExtra("data");
+            localMediaList_json= getIntent().getStringExtra(PictureShared.IntentExtraName.EXIST_IMAGES);
             if(null!=localMediaList_json&&!localMediaList_json.equals("")&&!localMediaList_json.equals("null")){
                 currentSelectList= JSONArray.parseArray(localMediaList_json, LocalMedia.class);
             }
         }catch (Exception e){
            e.printStackTrace();
         }
+         action_type=getIntent().getIntExtra(PictureShared.IntentExtraName.ACTION_TYPE, SELECT_IMAGE_REQUEST);
+
 
         selectImageAdapter=new SelectImageAdapter(currentSelectList);
         recyclerView.setLayoutManager(new GridLayoutManager(this,4));
@@ -114,21 +125,34 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tv_add) {
-            PictureSelector.create(SelectImageActivity.this)
-                     .openGallery(PictureMimeType.ofImage())
-                     .compress(true)
-                     .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
-                     .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(this)+"/compression")//压缩图片保存地址
-                     .setOutputCameraPath("/"+AppUtils.getAppName(this)+"/camera_image")
-                     .maxSelectNum(100)// 最大图片选择数量 int
-                     .forResult(PictureConfig.CHOOSE_REQUEST);
+            switch (action_type){
+                case 0:
+                    PictureSelector.create(SelectImageActivity.this)
+                            .openGallery(PictureMimeType.ofImage())
+                            .compress(true)
+                            .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
+                            .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                            .setOutputCameraPath("/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.CAMERA)
+                            .maxSelectNum(100)// 最大图片选择数量 int
+                            .forResult(SELECT_IMAGE_REQUEST);
+                    break;
+                case 1:
+                    PictureSelector.create(SelectImageActivity.this)
+                            .openCamera(PictureMimeType.ofImage())
+                            .compress(true)
+                            .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                            .setOutputCameraPath("/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.CAMERA)
+                            .forResult(TAKING_PHOTO_REQUEST);
+                    break;
+            }
+
 
         }else if(v.getId()==R.id.tv_save){
             if(null!=eventBugFlag&&!eventBugFlag.equals("")){
-                EventBusUtils.post(new EventMessage(EventConst.EVENT_CODE_OK,eventBugFlag,localMediaToSelectImage(currentSelectList)));
+                EventBusUtils.post(new EventMessage(EventConst.EVENT_CODE_OK,eventBugFlag, ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)));
             }
             Intent intent=new Intent();
-            intent.putExtra("localMediaList",JSONObject.toJSONString(localMediaToSelectImage(currentSelectList)));
+            intent.putExtra(PictureShared.IntentExtraName.SELECTIMAGE_DATA,JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)));
             setResult(RESULT_OK, intent);
             finish();
         }else  if(v.getId()==R.id.iv_title_back){
@@ -141,7 +165,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case PictureConfig.CHOOSE_REQUEST:
+                case SELECT_IMAGE_REQUEST:
                 // 图片、视频、音频选择结果回调
                   currentSelectList.clear();
                   currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
@@ -161,7 +185,10 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true  注意：音视频除外
                     // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
 
-
+                    break;
+                case TAKING_PHOTO_REQUEST:
+                    currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
+                    selectImageAdapter.notifyDataSetChanged();
                     break;
             }
         }
@@ -177,28 +204,5 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
       return localSDCardMediaList;
     }
 
-    public  List<SelectImageBean> localMediaToSelectImage(List<LocalMedia> localMediaList){
-        List<SelectImageBean> selectImageBeans=new ArrayList<>();
-        for (int i = 0; i <localMediaList.size() ; i++) {
-            SelectImageBean selectImageBean=new SelectImageBean();
-            selectImageBean.setPath(localMediaList.get(i).getPath());
-            if(localMediaList.get(i).isCompressed()){
-                selectImageBean.setCompressPath(localMediaList.get(i).getCompressPath());
-            }
-            selectImageBeans.add(selectImageBean);
-        }
-        return selectImageBeans;
-    }
 
-    public  List<LocalMedia> selectImageToLocalMedia(List<SelectImageBean> selectImageBeans){
-        List<LocalMedia> localMediaList=new ArrayList<>();
-        for (int i = 0; i <selectImageBeans.size() ; i++) {
-            LocalMedia localMedia=new LocalMedia();
-            localMedia.setPath(selectImageBeans.get(i).getPath());
-            localMedia.setCompressPath(selectImageBeans.get(i).getCompressPath());
-            localMediaList.add(localMedia);
-        }
-        return localMediaList;
-
-    }
 }

@@ -3,6 +3,7 @@ package com.baseeasy.commonlibrary.selectimageandvideo.selectimage;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,21 @@ import androidx.fragment.app.Fragment;
 
 import com.alibaba.fastjson.JSONArray;
 
+import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
+import com.baseeasy.commonlibrary.eventbus.EventConst;
+import com.baseeasy.commonlibrary.eventbus.EventMessage;
+import com.baseeasy.commonlibrary.mytool.AppUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
+import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_REQUESTCODE;
+
 
 
 /**
@@ -26,53 +38,103 @@ import java.util.List;
  * 描述：
  */
 public class SelectImageFragment extends Fragment {
-    private static final int REQUESTCODE = 1001;
-    private SelectImageCallBack selectImageCallBack;
 
+    private SelectImageCallBack selectImageCallBack;
+    private TakingPhotoCallBack takingPhotoCallBack;
+    private TakingPhotoSeparateCallBack takingPhotoSeparateCallBack;
+    private String  takingPhotoSeparateEventBusFlag="";
 
     public SelectImageFragment() {
         // Required empty public constructor
+
     }
 
 
 
     public void startSelectImage() {
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
-        this.startActivityForResult(intent, REQUESTCODE);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_IMAGE);
+        this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
     }
     public void startSelectImage(String select) {
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
-        intent.putExtra("data",select);
-        this.startActivityForResult(intent, REQUESTCODE);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_IMAGE);
+        intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES,select);
+        this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
     }
 
-    public void setSelectLocationCallBack(SelectImageCallBack selectImageCallBack) {
+    public void startTakingPhoto() {
+        Intent intent = new Intent(getActivity(), SelectImageActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_TAKING_PHOTO);
+        this.startActivityForResult(intent, TAKINGPHOTO_REQUESTCODE);
+    }
+    public void startTakingPhoto(String select) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_TAKING_PHOTO);
+        intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES,select);
+        this.startActivityForResult(intent, TAKINGPHOTO_REQUESTCODE);
+    }
+
+
+
+
+
+    public void setSelectImageCallBack(SelectImageCallBack selectImageCallBack) {
         this.selectImageCallBack = selectImageCallBack;
     }
+
+    public void setTakingPhotoCallBack(TakingPhotoCallBack takingPhotoCallBack) {
+        this.takingPhotoCallBack = takingPhotoCallBack;
+    }
+    public void setTakingPhotoSeparateCallBack(TakingPhotoSeparateCallBack takingPhotoSeparateCallBack) {
+        this.takingPhotoSeparateCallBack = takingPhotoSeparateCallBack;
+    }
+    public void startTakingPhotoSeparate() {
+        PictureSelector.create(this)
+                .openCamera(PictureMimeType.ofImage())
+                .compress(true)
+                .compressSavePath(Environment.getExternalStorageDirectory()+"/"+ AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                .setOutputCameraPath("/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.CAMERA)
+                .forResult(PictureShared.TAKINGPHOTO_SEPARATE_REQUESTCODE);
+    }
+
+    public  void setTakingPhotoSeparateEventBusFlag(String takingPhotoSeparateEventBusFlag){
+        this.takingPhotoSeparateEventBusFlag=takingPhotoSeparateEventBusFlag;
+   }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("KK","kk1");
-        if (requestCode == REQUESTCODE && resultCode == Activity.RESULT_OK && data != null) {
-            Log.e("KK","kk2");
-            String localMediaList_json="";
-            List<SelectImageBean> selectImageBeans=new ArrayList<>();
-            try{
-                  localMediaList_json= data.getStringExtra("localMediaList");
-                  if(null==localMediaList_json){
-                      selectImageCallBack.onImageSelected(selectImageBeans);
-                      return;
-                  }
-            }catch (Exception e){
-                e.printStackTrace();
-                return;
-            }
+        if ( resultCode == Activity.RESULT_OK && data != null) {
 
-            if (selectImageCallBack != null&&(!localMediaList_json.equals(""))) {
-                selectImageBeans= JSONArray.parseArray(localMediaList_json, SelectImageBean.class);
+            if(requestCode == PictureShared.SELECTIMAGE_REQUESTCODE ||requestCode == TAKINGPHOTO_REQUESTCODE){
+                String selectImageList_json="";
+                List<SelectImageBean> selectImageBeans=new ArrayList<>();
+                selectImageList_json= data.getStringExtra(PictureShared.IntentExtraName.SELECTIMAGE_DATA);
+                if(null!=selectImageList_json&&(!selectImageList_json.equals(""))&&!selectImageList_json.equals("null")){
+                    selectImageBeans= JSONArray.parseArray(selectImageList_json, SelectImageBean.class);
+                }else {
+                    return;
+                }
+                if(requestCode == PictureShared.SELECTIMAGE_REQUESTCODE&&null!=selectImageCallBack ){
+                    selectImageCallBack.onImageSelected(selectImageBeans);
+                }else if(requestCode == TAKINGPHOTO_REQUESTCODE&&null!=takingPhotoCallBack){
+                    takingPhotoCallBack.onTakingPhoto(selectImageBeans);
+                }
+            }else {
+                if(requestCode==PictureShared.TAKINGPHOTO_SEPARATE_REQUESTCODE&&!takingPhotoSeparateEventBusFlag.equals("")){
+
+                 EventBusUtils.post(new EventMessage(EventConst.EVENT_CODE_OK,takingPhotoSeparateEventBusFlag,  ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))));
+
+
+                }else if(requestCode==PictureShared.TAKINGPHOTO_SEPARATE_REQUESTCODE&&null!=takingPhotoSeparateCallBack){
+
+                    List<LocalMedia> localMediaList=   PictureSelector.obtainMultipleResult(data);
+                    takingPhotoSeparateCallBack.onTakingPhoto(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList).get(0));
+
+                }
+
             }
-            selectImageCallBack.onImageSelected(selectImageBeans);
         }
     }
 

@@ -15,6 +15,11 @@ import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
 import com.test.TestUser;
 
 import java.util.ArrayList;
@@ -135,7 +140,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                },selectImageBeans);
 
-                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
+//      SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
+//                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
+//                    @Override
+//                    public void onTakingPhoto(List<SelectImageBean> localMediaList) {
+//                        selectImageBeans=localMediaList;
+//                        for (int i = 0; i <selectImageBeans.size() ; i++) {
+//                            textView.setText(textView.getText().toString()+selectImageBeans.get(i).getPath());
+//                        }
+//                    }
+//                },selectImageBeans);
+//                SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans);
+                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
+                    @Override
+                    public void onTakingPhoto(SelectImageBean imageBean) {
+                        textView.setText(imageBean.getPath());
+                    }
+                });
                 break;
         }
     }

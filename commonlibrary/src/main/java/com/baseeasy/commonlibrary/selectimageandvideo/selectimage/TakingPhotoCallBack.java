@@ -1,7 +1,5 @@
 package com.baseeasy.commonlibrary.selectimageandvideo.selectimage;
 
-import com.luck.picture.lib.entity.LocalMedia;
-
 import java.util.List;
 
 /**
@@ -10,6 +8,6 @@ import java.util.List;
  * 邮箱：sos181@163.com
  * 描述：
  */
-public interface SelectImageCallBack {
- void onImageSelected (List<SelectImageBean> imageBeans);
+public interface TakingPhotoCallBack {
+ void onTakingPhoto(List<SelectImageBean> imageBeans);
 }
