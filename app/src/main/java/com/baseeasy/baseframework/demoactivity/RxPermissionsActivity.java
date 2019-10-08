@@ -47,10 +47,6 @@ public class RxPermissionsActivity extends BaseActivity implements View.OnClickL
         return null;
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return false;
-    }
 
     private void initView() {
         bt = (Button) findViewById(R.id.bt);

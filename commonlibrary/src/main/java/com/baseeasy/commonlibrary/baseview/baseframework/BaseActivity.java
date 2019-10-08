@@ -30,9 +30,7 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
         TAG="BaseLog:"+this.getLocalClassName();
-        if ((!EventBusUtils.isRegister(this))&&isOpenEventBus()==true) {
-            EventBusUtils.register(this);
-        }
+
         setContentView(setContentViewId());
         init_view();
         init_data();
@@ -79,16 +77,11 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         ToastUtil.showinfo(this,message);
     }
 
-    /**
-     * 是否使用EventBus
-     */
-    public abstract  boolean isOpenEventBus();
+
 
     @Override
     protected void onDestroy() {
-        if (EventBusUtils.isRegister(this)&&isOpenEventBus()==true) {
-            EventBusUtils.unregister(this);
-        }
+
         super.onDestroy();
         if(presenter!=null){
             presenter.detachView();
@@ -96,31 +89,6 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
 
     }
 
-    // 在主线程处理
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void eventBusMessageOnMainThread(EventMessage event) {
-
-    }
-
-    // 在后台处理事件
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    public void eventBusMessageOnBackgroundThread(EventMessage event) {
-
-    }
-
-    // 在发送事件的同一线程中处理事件
-    @Subscribe(threadMode = ThreadMode.POSTING)
-    public void eventBusMessageOnPostThread(EventMessage event) {
-
-
-    }
-
-    // 在主线程处理粘性事件
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void eventBusMessageOnMainStickyThread(EventMessage event) {
-
-
-    }
 
 
 }

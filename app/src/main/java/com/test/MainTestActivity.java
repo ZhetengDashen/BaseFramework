@@ -51,10 +51,7 @@ public class MainTestActivity extends BaseActivity {
         return null;
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return true;
-    }
+
 
 
     private void initView() {

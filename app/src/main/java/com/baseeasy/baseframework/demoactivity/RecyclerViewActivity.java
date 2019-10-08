@@ -85,10 +85,6 @@ public class RecyclerViewActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return false;
-    }
 
     private void initView() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler);

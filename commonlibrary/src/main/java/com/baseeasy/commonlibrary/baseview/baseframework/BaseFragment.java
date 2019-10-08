@@ -58,18 +58,13 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
         ToastUtil.showerror(getContext(),errorMsg);
     }
 
-    /**
-     * 是否使用EventBus
-     */
-    public abstract boolean isOpenEventBus();
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TAG="BaseLog:"+getActivity().getLocalClassName();
-        if ((!EventBusUtils.isRegister(this)) && isOpenEventBus() == true) {
-            EventBusUtils.register(this);
-        }
+
 
 
     }
@@ -115,9 +110,7 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
     public void createPresenterComplete(Boolean isCreate){}
     @Override
     public void onDestroy() {
-        if (EventBusUtils.isRegister(this) && isOpenEventBus() == true) {
-            EventBusUtils.unregister(this);
-        }
+
         super.onDestroy();
         if(presenter!=null){
             presenter.detachView();
@@ -125,32 +118,7 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
     }
 
 
-    // 在主线程处理
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void eventBusMessageOnMainThread(EventMessage event) {
-        Log.e(TAG, "MainThread: " + Thread.currentThread().getName());
 
-    }
-
-    // 在后台处理事件
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    public void eventBusMessageOnBackgroundThread(EventMessage event) {
-        Log.e(TAG, "BackgroundThread: " + Thread.currentThread().getName());
-    }
-
-    // 在发送事件的同一线程中处理事件
-    @Subscribe(threadMode = ThreadMode.POSTING)
-    public void eventBusMessageOnPostThread(EventMessage event) {
-        Log.e(TAG, "PostThread: " + Thread.currentThread().getName());
-
-    }
-
-    // 在主线程处理粘性事件
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void eventBusMessageOnMainStickyThread(EventMessage event) {
-        Log.e(TAG, "MainStickyThread: " + Thread.currentThread().getName());
-
-    }
 
 
 }

@@ -40,10 +40,7 @@ public class LogUtilsActivity extends BaseActivity implements View.OnClickListen
         return null;
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return false;
-    }
+
 
     private void initView() {
         bt1 = (Button) findViewById(R.id.bt1);

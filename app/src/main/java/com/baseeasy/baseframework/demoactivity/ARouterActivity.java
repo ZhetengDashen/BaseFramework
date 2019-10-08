@@ -46,10 +46,6 @@ public class ARouterActivity extends BaseActivity implements View.OnClickListene
         return null;
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return false;
-    }
 
 
 

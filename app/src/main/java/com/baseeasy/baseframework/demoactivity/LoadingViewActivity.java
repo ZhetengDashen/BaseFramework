@@ -73,10 +73,7 @@ public class LoadingViewActivity extends BaseActivity {
         return null;
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return false;
-    }
+
 
 
     private void initView() {

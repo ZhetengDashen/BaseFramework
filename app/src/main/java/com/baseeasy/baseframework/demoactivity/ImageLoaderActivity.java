@@ -33,10 +33,7 @@ public class ImageLoaderActivity extends BaseActivity {
         return null;
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return false;
-    }
+
 
     private void initView() {
         image = (ImageView) findViewById(R.id.image);

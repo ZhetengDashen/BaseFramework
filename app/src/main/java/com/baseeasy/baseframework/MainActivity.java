@@ -22,6 +22,9 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.test.TestUser;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,15 +74,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         return null;
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return true;
-    }
 
 
-    @Override
+
+    // 在主线程处理
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void eventBusMessageOnMainThread(EventMessage event) {
-        super.eventBusMessageOnMainThread(event);
         switch (event.getFlag()) {
             case ARouterPath.AppMode.DEMO_EVENTBUS_ACTIVITY:
                 TestUser testUser = (TestUser) event.getEvent();
@@ -151,12 +151,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                },selectImageBeans);
 //                SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans);
-                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
-                    @Override
-                    public void onTakingPhoto(SelectImageBean imageBean) {
-                        textView.setText(imageBean.getPath());
-                    }
-                });
+//                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
+//                    @Override
+//                    public void onTakingPhoto(SelectImageBean imageBean) {
+//                        textView.setText(imageBean.getPath());
+//                    }
+//                });
+//
+//                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
+                SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"");
                 break;
         }
     }

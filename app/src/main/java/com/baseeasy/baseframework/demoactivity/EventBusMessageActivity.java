@@ -39,10 +39,7 @@ public class EventBusMessageActivity extends BaseActivity implements View.OnClic
         return null;
     }
 
-    @Override
-    public boolean isOpenEventBus() {
-        return false;
-    }
+
 
     private void initView() {
         bt = (Button) findViewById(R.id.bt);

@@ -13,11 +13,11 @@ public  class DisplayOption {
         /**
          * 加载失败的资源id
          */
-        private int loadErrorResId = R.drawable.picture_warning;
+        private int loadErrorResId = R.mipmap.image_error;
         /**
          * 占位资源id
          */
-        private int placeHolderResId = R.drawable.ic_placeholder;
+        private int placeHolderResId = R.mipmap.image_bg;
 
         /**
          * 宽

@@ -7,8 +7,8 @@ package com.baseeasy.commonlibrary.selectimageandvideo.selectimage;
  * 描述：
  */
 public class SelectImageBean {
-    private String path="";
-    private String compressPath="";
+    private String path="";//原图路径
+    private String compressPath="";//压缩图路径
 
 
     public String getPath() {
