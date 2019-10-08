@@ -71,9 +71,16 @@ public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
    ``` 
 ## 编码记录
 
+
+ 
   >  修改人： 王志强 <br>
   >  修改时间：2019年9月3日12:04:36 <br>
-  >  修改内容：修改BaseActivity、BaseFragment、BasePresenter 初始化View顺序逻辑 <br> 
+  >  修改内容：修改加载图片占位图、加载失败背景、去除BaseFragment、BaseActivity 中的  EventBus。 在添加BasePresenter中 EventBus。 <br> 
+
+
+  >  修改人： 王志强 <br>
+  >  修改时间：2019年9月30日18:02:30 <br>
+  >  修改内容：增加图片选择(多选、单选、自动压缩)、拍照功能。 <br> 
 
 
   >  修改人： 王志强 <br>
