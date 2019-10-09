@@ -71,7 +71,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected BasePresenter createPresenter() {
-        return null;
+        return new BasePresenter(this,this) {
+            @Override
+            public boolean isOpenEventBus() {
+                return true;
+            }
+        };
     }
 
 
@@ -159,7 +164,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                });
 //
 //                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
-                SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"");
+                SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");
                 break;
         }
     }

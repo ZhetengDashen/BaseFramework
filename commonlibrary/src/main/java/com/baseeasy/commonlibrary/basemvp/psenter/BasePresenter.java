@@ -45,24 +45,12 @@ public abstract class BasePresenter<T> {
     //    绑定View
     public void attachView(T view){
         this.mViewRef=new WeakReference<T>(view);
-        if(null==view_context){
-            return;
-        }
-        if ((!EventBusUtils.isRegister(view_context))&&isOpenEventBus()==true) {
-            EventBusUtils.register(view_context);
-        }
+
     }
     //    解绑
     public void detachView(){
         if(this.mViewRef.isEnqueued()){
             this.mViewRef.clear();
-            if(null==view_context){
-                return;
-            }
-
-            if (EventBusUtils.isRegister(view_context)&&isOpenEventBus()==true) {
-                EventBusUtils.unregister(view_context);
-            }
         }
     }
     /**
