@@ -37,9 +37,7 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         presenter=createPresenter();
         if(presenter!=null){
             presenter.attachView((V) this);
-            if ((!EventBusUtils.isRegister(this))&& presenter.isOpenEventBus()==true) {
-                EventBusUtils.register(this);
-            }
+
             createPresenterComplete(true);
         }else {
             createPresenterComplete(false);
@@ -88,9 +86,7 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         super.onDestroy();
         if(presenter!=null){
             presenter.detachView();
-            if (EventBusUtils.isRegister(this)&&presenter.isOpenEventBus()==true) {
-                EventBusUtils.unregister(this);
-            }
+
         }
 
     }
