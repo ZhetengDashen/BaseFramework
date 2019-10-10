@@ -79,7 +79,9 @@ public class FileUtils {
      */
     public static  boolean isDirectoryExist(String dirName){
         File file =new File(SDPATH + "/" + dirName);
-        return  file .exists()  && file .isDirectory();
+         boolean a= file .exists();
+         boolean b= file .isDirectory();
+         return  a  && b;
     }
 
     /**

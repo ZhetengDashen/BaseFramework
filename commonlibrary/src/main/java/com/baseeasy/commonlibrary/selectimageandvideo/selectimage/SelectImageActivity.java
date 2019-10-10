@@ -71,7 +71,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_select_image);
         initView();
         initData();
-
+        FileUtils.createSDDir(AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION);
+        FileUtils.createNoMedia(AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION);
 
     }
 

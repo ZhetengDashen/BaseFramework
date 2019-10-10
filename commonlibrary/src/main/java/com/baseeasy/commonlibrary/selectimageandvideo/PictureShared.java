@@ -26,7 +26,7 @@ public class PictureShared {
       //文件夹相关配置
     public static class FolderNameConfig {
         public final static String COMPRESSION = "compression";//压缩文件目录
-          public final static String CAMERA = "camera_image";//压缩文件目录
+          public final static String CAMERA = "camera_image";//拍照路径
 
     }
 

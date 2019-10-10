@@ -99,6 +99,7 @@ public class SelectImageUtils {
      * @param  eventBusFlag eventBus 回调标记
      * */
     public void startSelectImage(FragmentActivity activity,String eventBusFlag){
+
         Intent intent = new Intent(activity, SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.EVENT_BUS_FLAG,eventBusFlag);
         activity.startActivity(intent);
@@ -175,6 +176,7 @@ public class SelectImageUtils {
      *
      **/
     public void startTakingPhotoSeparate(FragmentActivity activity, TakingPhotoSeparateCallBack takingPhotoSeparateCallBack){
+
         getTakingPhotoSeparateFragment(activity, takingPhotoSeparateCallBack).startTakingPhotoSeparate();
     }
     /**
@@ -183,6 +185,7 @@ public class SelectImageUtils {
      * @param eventBusFlag 回调
      **/
     public void startTakingPhotoSeparate(FragmentActivity activity,String eventBusFlag){
+
         getTakingPhotoSeparateFragment(activity, eventBusFlag).startTakingPhotoSeparate();
 
     }

@@ -11,6 +11,7 @@ import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
+import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
@@ -67,16 +68,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         select_image=findViewById(R.id.bt_select_image);
         select_image.setOnClickListener(this);
         textView=findViewById(R.id.textView);
+        EventBusUtils.register(this);
     }
 
     @Override
     protected BasePresenter createPresenter() {
-        return new BasePresenter(this,this) {
-            @Override
-            public boolean isOpenEventBus() {
-                return true;
-            }
-        };
+        return null;
     }
 
 
@@ -146,15 +143,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                },selectImageBeans);
 
 //      SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
-//                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
-//                    @Override
-//                    public void onTakingPhoto(List<SelectImageBean> localMediaList) {
-//                        selectImageBeans=localMediaList;
-//                        for (int i = 0; i <selectImageBeans.size() ; i++) {
-//                            textView.setText(textView.getText().toString()+selectImageBeans.get(i).getPath());
-//                        }
-//                    }
-//                },selectImageBeans);
+                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
+                    @Override
+                    public void onTakingPhoto(List<SelectImageBean> localMediaList) {
+                        selectImageBeans=localMediaList;
+                        for (int i = 0; i <selectImageBeans.size() ; i++) {
+                            textView.setText(textView.getText().toString()+selectImageBeans.get(i).getPath());
+                        }
+                    }
+                },selectImageBeans);
 //                SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans);
 //                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
 //                    @Override
@@ -164,7 +161,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                });
 //
 //                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
-                SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");
+//                SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");
                 break;
         }
     }
