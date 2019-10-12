@@ -12,6 +12,13 @@ public class SelectImageBean {
 
 
     public String getPath() {
+        if(path.equals("")){
+            if(compressPath.equals("")){
+                return "";
+            }else {
+                return compressPath;
+            }
+        }
         return path;
     }
 
@@ -20,6 +27,13 @@ public class SelectImageBean {
     }
 
     public String getCompressPath() {
+        if(compressPath.equals("")){
+            if(path.equals("")){
+                return "";
+            }else {
+                return path;
+            }
+        }
         return compressPath;
     }
 
