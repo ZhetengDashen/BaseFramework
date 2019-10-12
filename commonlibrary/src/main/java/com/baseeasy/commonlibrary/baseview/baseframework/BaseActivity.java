@@ -33,7 +33,7 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
 
         setContentView(setContentViewId());
         init_view();
-        init_data();
+
         presenter=createPresenter();
         if(presenter!=null){
             presenter.attachView((V) this);
@@ -42,7 +42,7 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         }else {
             createPresenterComplete(false);
         }
-
+        init_data();
 
     }
     protected  abstract int   setContentViewId();

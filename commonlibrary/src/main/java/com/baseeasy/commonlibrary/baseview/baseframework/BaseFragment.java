@@ -74,17 +74,14 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(setContentViewID(), container, false);
         init_view(view);
-        init_data();
         presenter = createPresenter();
         if(presenter!=null) {
             presenter.attachView((V) this);
-
-
             createPresenterComplete(true);
         }else {
             createPresenterComplete(false);
         }
-
+        init_data();
         return view;
     }
 
