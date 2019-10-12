@@ -72,6 +72,10 @@ public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
 ## 编码记录
 
   >  修改人： 王志强 <br>
+  >  修改时间：2019年10月12日14:22:22 <br>
+  >  修改内容：修改BaseActivity、BaseFragment中initData与createPresenter 顺序 <br> 
+
+  >  修改人： 王志强 <br>
   >  修改时间：2019年10月9日09:49:23 <br>
   >  修改内容：修改EventBus初始化逻辑，解决Fragment无法接收到事件的BUG <br> 
 
