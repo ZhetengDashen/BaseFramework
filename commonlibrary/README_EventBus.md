@@ -13,8 +13,8 @@
   ```
 ## 功能说明以及使用注意事项  
 ##### 1.使用注意事项  <br>
- 1.eventBus的注册与注销都已经封装到BaseActivity和BaseFragment中，所以如果使用EventBus必须继承BaseActivity、BaseFragment<br>
- 2.BaseActivity、BaseFragment当中 isOpenEventBus的抽象方法，如果不需要Event功能直接返回false即可<br>  
+ 1.eventBus的注册与注销都已经封装到BasePresenter中，所以如果使用EventBus必须继承P层必须继承BasePresenter<br>
+ 2.BasePresenter当中 isOpenEventBus的抽象方法，如果不需要Event功能直接返回false即可<br>  
 ##### 2.使用说明 <br>  
    1.发送事件：
  ```
@@ -46,7 +46,7 @@
     
   ------------------------------
   
-   根据当前情况重写BaseActivity  或者BaseFragment方法  
+   根据当前情况重写BasePresenter 中的方法  
      判断Flag是有哪个页面传过来的。
     // 在主线程处理
     @Subscribe(threadMode = ThreadMode.MAIN)

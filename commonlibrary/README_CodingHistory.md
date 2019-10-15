@@ -36,7 +36,7 @@
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年8月19日15:36:26 <br>
-  >  修改内容：增加MVP基础框架、增加Retrofit+RxJava <br>  
+  >  修改内容：开发MVP基础框架、增加Retrofit+RxJava <br>  
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年7月22日11:37 <br>
@@ -44,7 +44,7 @@
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年7月19日17:15 <br>
-  >  修改内容：增加 PickerView、PictureSelector、LuBan 第三方库及使用说明及 <br>
+  >  修改内容：增加 PickerView、PictureSelector、LuBan 及使用说明及 <br>
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年5月23日14:14 <br>
@@ -52,7 +52,7 @@
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年5月17日13:56 <br>
-  >  修改内容：增加 LogUtils 示例与说明 <br>
+  >  修改内容：增加 LogUtils 示例与说明（本地日志、控制台日志） <br>
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年5月5日10:05 <br>
@@ -68,15 +68,15 @@
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年3月12日13:20 <br>
-  >  修改内容：增加第三方类库 EventBus <br>
+  >  修改内容：统一封装EventBus，添加EventBusUtils <br>
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年3月18日16:36:19 <br>
-  >  修改内容：增加第三方类库 OkHttp、AVLoadingIndicatorView <br>
+  >  修改内容：添加AVLoadingIndicatorView <br>
 
   >  修改人： 王志强 <br>
   >  修改时间：2019年3月13日17:23 <br>
-  >  修改内容：增加第三方类库 ARouter <br>
+  >  修改内容：增加ARouter功能 封装ARouterTools  <br>
 
  
  

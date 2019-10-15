@@ -5,9 +5,9 @@
 # 目录
 * [编码记录](commonlibrary/README_CodingHistory.md)<br>
 
-* [各类库使用说明](#各类库使用说明)<br>
+* [详细功能使用说明](commonlibrary/README_FunctionDetails)<br>
 
-#  使用
+#  配置
 ######  Step 1. JitPack库添加到你的构建文件
 
   ```  
@@ -69,12 +69,6 @@ public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
 }
  
    ``` 
-## 编码记录
-
-
-
-## 各类库使用说明
->  
 
 
     
