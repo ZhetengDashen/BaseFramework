@@ -32,9 +32,9 @@
 >介绍：时间选择、条件选择、城市选择  <br>
 >使用说明：[PickerView 使用说明与注意事项](README_PickerView.md)
 
->9.名称：PictureSelector <br>
->介绍：图片选择、拍照、视频、压缩、头像截图  <br>
->使用说明：[PictureSelector 使用说明与注意事项](README_PictureSelector.md)
+>9.名称：SelectImageUtils <br>
+>介绍：图片选择、拍照、多选单选、数量编辑、并自动压缩  <br>
+>使用说明：[PictureSelector 使用说明与注意事项](README_SelectImageUtils.md)
 
 >10.名称：LuBan <br>
 >介绍：图片压缩 <br>
