@@ -36,7 +36,7 @@
             }
              }
            dependencies {
-               implementation 'com.github.ZhetengDashen:BaseFramework:1.9.9'
+               implementation 'com.github.ZhetengDashen:BaseFramework:2.0'
             }  
  ``` 
 ######  
@@ -66,6 +66,28 @@ public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
 }
  
    ``` 
+## Library
++ <strong> [ARouter](https://github.com/alibaba/ARouter)<br>
++ <strong> [FastJson](https://github.com/alibaba/fastjson)<br>
++ <strong> [Gson](https://github.com/google/gson)<br>
++ <strong> [OkHttp](https://github.com/square/okhttp)<br>
++ <strong> [AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)<br>
++ <strong> [EventBus](https://github.com/greenrobot/EventBus)<br>
++ <strong> [glide](https://github.com/bumptech/glide)<br>
++ <strong> [picasso](https://github.com/square/picasso)<br>
++ <strong> [BaseRecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)<br> 
++ <strong> [LogUtils](https://github.com/pengwei1024/LogUtils)<br>
++ <strong> [RxPermissions](https://github.com/tbruyelle/RxPermissions)<br>
++ <strong> [Android-PickerView](https://github.com/Bigkoo/Android-PickerView)<br>
++ <strong> [PictureSelector](https://github.com/LuckSiege/PictureSelector)<br>
++ <strong> [Luban](https://github.com/Curzibn/Luban)<br>
++ <strong> [greendao](https://github.com/greenrobot/greenDAO)<br>
++ <strong> [GreenDaoUpgradeHelper](https://github.com/yuweiguocn/GreenDaoUpgradeHelper)<br>
++ <strong> [RxJava2](https://github.com/ReactiveX/RxJava)<br>
++ <strong> [RxAndroid](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples)<br>
++ <strong> [RxLifecycle](https://github.com/trello/RxLifecycle)<br>
++ <strong> [Retrofit2](https://square.github.io/retrofit/)<br>   
+   
 # 注
 > `项目修改请补充文件说明。`<br/>
 > `第三方类库请注明出处地址或参考文档地址。`
