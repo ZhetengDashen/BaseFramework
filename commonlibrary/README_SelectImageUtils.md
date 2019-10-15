@@ -128,3 +128,8 @@
      String path="";//原图路径  
      String compressPath="";//压缩图路径
  ```
+ 
+ 
+ 其他功能请参考： PictureSelector <br>（有时间封装其他功能）
+>介绍：图片选择、拍照、视频、压缩、头像截图  <br>
+>使用说明：[PictureSelector 使用说明与注意事项](README_PictureSelector.md)
