@@ -5,7 +5,7 @@
 # 目录
 * [编码记录](commonlibrary/README_CodingHistory.md)<br>
 
-* [详细功能使用说明](commonlibrary/README_FunctionDetails)<br>
+* [详细功能使用说明](commonlibrary/README_FunctionDetails.md)<br>
 
 #  配置
 ######  Step 1. JitPack库添加到你的构建文件
