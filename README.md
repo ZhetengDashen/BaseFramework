@@ -1,6 +1,3 @@
-# 公共类库 
-> `注：` <br/>`项目修改请补充此文件说明，并注明作者与日期。`<br/>
-> `第三方类库请注明出处地址或参考文档地址。`
 
 # 目录
 * [编码记录](commonlibrary/README_CodingHistory.md)<br>
@@ -69,6 +66,9 @@ public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
 }
  
    ``` 
+# 注
+> `项目修改请补充文件说明。`<br/>
+> `第三方类库请注明出处地址或参考文档地址。`
 
 
     

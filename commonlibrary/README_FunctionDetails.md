@@ -34,7 +34,7 @@
 
 >9.名称：PictureSelector <br>
 >介绍：图片选择、拍照、视频、压缩、头像截图  <br>
->使用说明：[PictureSelector 使用说明与注意事项](README_PickerView.md)
+>使用说明：[PictureSelector 使用说明与注意事项](README_PictureSelector.md)
 
 >10.名称：LuBan <br>
 >介绍：图片压缩 <br>
