@@ -15,6 +15,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
 
     buildTypes {
         release {

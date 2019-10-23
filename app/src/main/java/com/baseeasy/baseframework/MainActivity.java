@@ -1,5 +1,6 @@
 package com.baseeasy.baseframework;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
@@ -41,6 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button bt_log;
     private Button bt_rxpermissions;
     private Button select_image;
+    private Button fingbt;
     private  List<SelectImageBean> selectImageBeans;
     private TextView textView;
     @Override
@@ -68,6 +71,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         select_image=findViewById(R.id.bt_select_image);
         select_image.setOnClickListener(this);
         textView=findViewById(R.id.textView);
+        fingbt=findViewById(R.id.button_ff);
+        fingbt.setOnClickListener(this);
         EventBusUtils.register(this);
     }
 
@@ -163,6 +168,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
 //                SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");
                 break;
+            case R.id.button_ff:
+                startActivity(new Intent(this, FingerprintActivity.class));
+                break;
+
         }
     }
 

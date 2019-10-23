@@ -2,4 +2,6 @@
 <resources>
     <color name="colorPrimary">#2c97df</color>
     <color name="colorPrimaryDark">#2c97df</color>
+    <color name="dialogTopBg">#F5F5F5</color>
+    <color name="dialogTopTx">#878787</color>
 </resources>

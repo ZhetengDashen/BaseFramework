@@ -5,5 +5,46 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="avBallPulseIndicator">BallPulseIndicator</string>
 
-    ;
+    <string name="action_settings">Settings</string>
+    <string name="open_str">打开</string>
+    <string name="close_str">关闭</string>
+    <string name="getimage_str">获取图像 </string>
+    <string name="getchar_str">获取特征</string>
+    <string name="fpmatch_str">比对指纹</string>
+    <string name="eroll_str">注册指纹 </string>
+    <string name="search_str">搜索指纹</string>
+    <string name="upchar_str">上传特征</string>
+    <string name="equit_str">清空指纹</string>
+    <string name="down_str">下载特征</string>
+    <string name="opensuccess_str">-->打开设备成功</string>
+    <string name="openfail_str">-->打开设备失败</string>
+    <string name="usbfail_str">Usb未准备完成</string>
+    <string name="readfptimeout_str">读指纹等待超时</string>
+    <string name="stopsearch_str">搜索主动停止</string>
+    <string name="Communicationerr_str">通讯异常</string>
+    <string name="readingfp_str">正在读取指纹中   剩余时间:</string>
+    <string name="stopgetimage_str">获取图像主动停止</string>
+    <string name="getimageing_str">图像获取中</string>
+    <string name="getimagesuccess_str">获取图像成功</string>
+    <string name="getcharsuccess_str">获取特征成功</string>
+    <string name="upimagesuccess_str">上传图像成功</string>
+    <string name="downsuccess_str">特征下载成功</string>
+    <string name="downcharsuccess_str">下载特征成功</string>
+    <string name="upcharsuccess_str">上传特征成功</string>
+    <string name="stopgetchar_str">获取特征主动停止</string>
+    <string name="getfailchar_str">特征太差，请重新录入</string>
+    <string name="putyourfinger_str">请按指纹需要比对的指纹</string>
+    <string name="matchsuccess_str">比对成功   得分:</string>
+    <string name="matchfail_str">比对失败   得分:</string>
+    <string name="pickupfinger_str">请拿起手指</string>
+    <string name="searchsuccess_str">搜索指纹成功</string>
+    <string name="searchfail_str">搜索指纹失败</string>
+    <string name="getfpsuccess_str">获取指纹成功</string>
+    <string name="erollsuccess_str">注册指纹成功   存储ID:</string>
+    <string name="erollfail_str">注册指纹失败</string>
+    <string name="stoperoll_str">注册主动停止</string>
+    <string name="RegModulefail_str">合成模板失败</string>
+    <string name="stopmatch_str">比对主动停止</string>
+    <string name="equitsuccess_str">清空指纹成功</string>
+
 </resources>

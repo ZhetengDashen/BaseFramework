@@ -49,11 +49,11 @@
         android:id="@+id/bt_recycler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="recycler"
         app:layout_constraintTop_toBottomOf="@+id/bt_arouter"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="7dp" />
+        tools:layout_editor_absoluteX="6dp" />
 
     <Button
         android:id="@+id/bt_log"
@@ -101,4 +101,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_recycler"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button_ff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="指纹"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_select_image"
+        app:layout_constraintEnd_toEndOf="@+id/bt_recycler"
+        app:layout_constraintStart_toStartOf="@+id/bt_recycler"
+        app:layout_constraintTop_toBottomOf="@+id/bt_recycler"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

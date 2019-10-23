@@ -1,0 +1,106 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/customdialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="提示"
+            android:background="@color/dialogTopBg"
+            android:textColor="@color/dialogTopTx"
+            android:textSize="18dp" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/customdialog_title"
+            android:background="@drawable/bg_dotted_line"
+            android:layerType="software"/>
+
+        <TextView
+            android:id="@+id/customdialog_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="确定要删除么？"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_dialog_two"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/customdialog_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/customdialog_left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:background="@drawable/shape_dialog_leftbtn"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp"/>
+            <TextView
+                android:id="@+id/customdialog_middle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="跳过"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_dialog_rightbtn"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/customdialog_right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="确定"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_dialog_rightbtn"
+                android:textColor="@android:color/white"
+                android:textSize="15dp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/customdialog_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="确定"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/customdialog_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            android:background="@drawable/shape_dialog_rightbtn"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

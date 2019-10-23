@@ -16,6 +16,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.apkfuns.log2file.LogFileEngineFactory;
 import com.apkfuns.logutils.LogUtils;
 
+import com.baseeasy.commonlibrary.config.BaseConfig;
 import com.baseeasy.commonlibrary.imageloader.GlideImageLoader;
 import com.baseeasy.commonlibrary.imageloader.ImageLoader;
 import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
@@ -89,7 +90,7 @@ public  class BaseApplication extends Application {
         //sdk日志配置
         LogUtils.getLog2FileConfig().configLog2FileEnable(isFileEnable)
                 // targetSdkVersion >= 23 需要确保有写sdcard权限
-                .configLog2FilePath(Environment.getExternalStorageDirectory()+"/"+ AppUtils.getAppName(this)+"/log")
+                .configLog2FilePath(Environment.getExternalStorageDirectory()+"/"+ AppUtils.getAppName(this)+"/"+ BaseConfig.FOLDER_NAME.LOG)
                 .configLog2FileNameFormat("%d{yyyyMMdd}.txt")
                 .configLogFileEngine(new MyLogFileEngine(getApplicationContext()));
     }

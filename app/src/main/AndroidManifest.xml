@@ -23,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".demoactivity.RxPermissionsActivity"></activity>
+        <activity android:name=".demoactivity.FingerprintActivity"></activity>
+        <activity android:name=".demoactivity.RxPermissionsActivity" />
         <activity android:name=".demoactivity.LogUtilsActivity" />
         <activity android:name=".demoactivity.RecyclerViewActivity" />
         <activity android:name=".demoactivity.LoadingViewActivity" />
