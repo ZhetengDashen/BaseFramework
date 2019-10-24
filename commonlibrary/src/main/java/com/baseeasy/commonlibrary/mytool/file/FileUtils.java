@@ -25,6 +25,7 @@ import java.util.List;
 public class FileUtils {
 
     public static final String SDPATH = Environment.getExternalStorageDirectory() + "/";
+
     public static final String [] FILE_TYPE_ALL={""};//所有类型
     public static final String [] FILE_TYPE_IMAGE={"jgp","jpg","png","gif","jpeg","bmp"};//图片类型
     public static final String [] FILE_TYPE_VIDEO={"mp4","3gp","wmv","asf","asx","rm","rmvb","avi","dat","mkv","flv","vob"};//视频类型

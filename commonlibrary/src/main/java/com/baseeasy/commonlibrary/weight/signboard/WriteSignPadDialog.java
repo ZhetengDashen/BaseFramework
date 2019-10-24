@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 
 import com.baseeasy.commonlibrary.R;
 import com.baseeasy.commonlibrary.config.BaseConfig;
+import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 
 import java.io.File;
@@ -79,7 +80,7 @@ public class WriteSignPadDialog extends Dialog {
             public void onClick(View v) {
                 if (null != dialogListener) {
                     try {
-                        File sdRoot = new File(FileUtils.SDPATH + BaseConfig.FOLDER_NAME.SIGN+"/");
+                        File sdRoot = new File(FileUtils.SDPATH + AppUtils.getAppName(context)+"/"+ BaseConfig.FOLDER_NAME.SIGN+"/");
                         if (!sdRoot.exists()) {
                             sdRoot.mkdirs();
                         }

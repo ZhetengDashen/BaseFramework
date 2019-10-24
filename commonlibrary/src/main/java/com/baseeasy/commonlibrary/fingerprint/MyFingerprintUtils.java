@@ -16,6 +16,9 @@ import android.os.Message;
 import android.util.Log;
 
 import com.baseeasy.commonlibrary.R;
+import com.baseeasy.commonlibrary.config.BaseConfig;
+import com.baseeasy.commonlibrary.mytool.AppUtils;
+import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 import com.za.finger.ZA_finger;
 import com.za.finger.ZAandroid;
 
@@ -485,7 +488,7 @@ public class MyFingerprintUtils {
                 timecount = (sd - st);
 
 
-                String str = "/mnt/sdcard/"+ UUID.randomUUID().toString().replace("-", "")+".bmp";
+                String str = FileUtils.SDPATH + AppUtils.getAppName(activity)+"/"+ BaseConfig.FOLDER_NAME.FINGERPRINT+"/" + UUID.randomUUID().toString().replace("-", "")+".bmp";
                 a6.ZAZImgData2BMP(Image, str);
                 temp = "获取图像成功";
 //                mtvMessage.setText(temp);
