@@ -2,6 +2,7 @@ package com.baseeasy.commonlibrary.http;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
+import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceKeys;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 
@@ -43,8 +44,10 @@ public Response intercept(Chain chain) throws IOException {
      String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
 
      CommonParameter userParameter=new CommonParameter();
+     userParameter.setAppversion(SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(),SharePreferenceKeys.APP_VERSION));
        if(!userid.equals("")){
            userParameter.setUserid(userid);
+
        }
 
        jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter));

@@ -20,10 +20,10 @@ public class PictureShared {
     public static final int TAKINGPHOTO_SEPARATE_REQUESTCODE=1003;
     //IntentExtra Name
     public static class IntentExtraName {
-        public final static String EVENT_BUS_FLAG = "eventBusFlag";
-        public final static String EXIST_IMAGES = "data";
-        public final static String ACTION_TYPE = "action_type";
-        public final static String SELECTIMAGE_DATA="selectImageBeansData";
+        public final static String EVENT_BUS_FLAG = "picture_eventBusFlag";
+        public final static String EXIST_IMAGES = "picture_data";
+        public final static String ACTION_TYPE = "picture_action_type";
+        public final static String SELECTIMAGE_DATA="picture_selectImageBeansData";
     }
       //文件夹相关配置
     public static class FolderNameConfig {

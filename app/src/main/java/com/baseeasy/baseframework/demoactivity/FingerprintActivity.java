@@ -57,12 +57,13 @@ public class FingerprintActivity extends AppCompatActivity implements View.OnCli
             case R.id.mbt:
                 MyFingerprintUtils.getInstance(this).fingerprintOpen(new MyFingerprintUtils.OnFingerprintCallBack() {
                     @Override
-                    public void callBack(int code, String mag, String data) {
-                        Toast.makeText(FingerprintActivity.this, code + "" + mag, Toast.LENGTH_SHORT).show();
+                    public void callBack(int code, String msg, String data, String signatureTag) {
+
                         if (code == 1) {
                             //打开成功
-                            content.setText(mag);
+                            content.setText(msg);
                         }
+
                     }
                 });
                 break;
@@ -70,8 +71,7 @@ public class FingerprintActivity extends AppCompatActivity implements View.OnCli
             case R.id.mbt3:
                 MyFingerprintUtils.getInstance(FingerprintActivity.this).fingerprintImage(new MyFingerprintUtils.OnFingerprintCallBack() {
                     @Override
-                    public void callBack(int code, String msg, String data) {
-
+                    public void callBack(int code, String msg, String data, String signatureTag) {
                         switch (code) {
                             case -1:
                                 //录入失败
@@ -88,7 +88,6 @@ public class FingerprintActivity extends AppCompatActivity implements View.OnCli
                                 break;
 
                         }
-
                     }
                 });
 

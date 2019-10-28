@@ -15,6 +15,8 @@ import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
+import com.baseeasy.commonlibrary.mytool.SharePreferenceKeys;
+import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
@@ -23,6 +25,7 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSep
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
+import com.magiclon.individuationtoast.ToastUtil;
 import com.test.TestUser;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -74,6 +77,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         fingbt=findViewById(R.id.button_ff);
         fingbt.setOnClickListener(this);
         EventBusUtils.register(this);
+        ToastUtil.showsuccess(this, SharePreferenceUtils.getString(this, SharePreferenceKeys.APP_VERSION));
     }
 
     @Override

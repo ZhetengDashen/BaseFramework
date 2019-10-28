@@ -23,6 +23,8 @@ import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
 import com.baseeasy.commonlibrary.imageloader.PicassoImageLoader;
 import com.baseeasy.commonlibrary.mlog.MyLogFileEngine;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
+import com.baseeasy.commonlibrary.mytool.SharePreferenceKeys;
+import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -56,7 +58,7 @@ public  class BaseApplication extends Application {
         ARouter.init(this); // 尽可能早，推荐在Application中初始化
         ImageLoaderFactory.init(initImageLoader());
         initLog();
-
+        SharePreferenceUtils.setValue(this, SharePreferenceKeys.APP_VERSION,""+AppUtils.getVersionCode(this));
     }
    //初始化图形加载框架
    public  ImageLoader initImageLoader(){

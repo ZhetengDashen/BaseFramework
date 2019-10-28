@@ -9,5 +9,5 @@ package com.baseeasy.commonlibrary.mytool;
 public class SharePreferenceKeys {
    public static String USER_ID="user_id";
    public static String DEVICE_ID="DeviceId";//设备识别号
-
+   public static String APP_VERSION="appversion";
 }
