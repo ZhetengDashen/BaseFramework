@@ -4,14 +4,15 @@
 ## 使用说明  
 #### 1.打开指纹录入设备
   ``` 
-   MyFingerprintUtils.getInstance(this).fingerprintOpen(new MyFingerprintUtils.OnFingerprintCallBack() {
+    MyFingerprintUtils.getInstance(this).fingerprintOpen(new MyFingerprintUtils.OnFingerprintCallBack() {
                     @Override
-                    public void callBack(int code, String mag, String data) {
-                        Toast.makeText(FingerprintActivity.this, code + "" + mag, Toast.LENGTH_SHORT).show();
+                    public void callBack(int code, String msg, String data, String signatureTag) {
+
                         if (code == 1) {
                             //打开成功
-                            content.setText(mag);
+                            content.setText(msg);
                         }
+
                     }
                 });
   ``` 
@@ -19,8 +20,8 @@
   ``` 
  MyFingerprintUtils.getInstance(FingerprintActivity.this).fingerprintImage(new MyFingerprintUtils.OnFingerprintCallBack() {
                     @Override
-                    public void callBack(int code, String msg, String data) {
-                       switch (code) {
+                    public void callBack(int code, String msg, String data, String signatureTag) {
+                        switch (code) {
                             case -1:
                                 //录入失败
                                 content.setText(msg);
@@ -34,9 +35,10 @@
                                 content.setText(data);
                                 Glide.with(FingerprintActivity.this).load(data).into(image);
                                 break;
+
                         }
                     }
-                });  
+                });
  ``` 
 ### 注意事项
 >获取指纹图片前必须调用 fingerprintOpen 方法打开设备
