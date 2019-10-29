@@ -82,5 +82,6 @@ dependencies {
     api 'com.github.magiclonw:floridftoast:v1.0.3'
     api 'org.greenrobot:greendao:3.2.2'
     api 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v2.0.2'//greendao数据库升级
+    api 'androidx.cardview:cardview:1.0.0'
 
 }
