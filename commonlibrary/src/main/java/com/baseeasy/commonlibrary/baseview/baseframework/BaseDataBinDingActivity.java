@@ -1,44 +1,38 @@
 package com.baseeasy.commonlibrary.baseview.baseframework;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.baseeasy.commonlibrary.basemvp.IBaseView;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
-import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
-import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.loading.MyLoader;
 import com.magiclon.individuationtoast.ToastUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
 /**
  * 作者：WangZhiQiang
- * 时间：2019/3/14
+ * 时间：2019/11/6
  * 邮箱：sos181@163.com
  * 描述：
  */
-public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter<V>> extends RxAppCompatActivity implements IBaseView {
+public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends BasePresenter<V>, K extends ViewDataBinding> extends RxAppCompatActivity implements IBaseView {
 
     public String  TAG="";
     public T presenter;
+    public K dataBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
         TAG="BaseLog:"+this.getLocalClassName();
+        dataBinding=  DataBindingUtil.setContentView(this,setContentViewId());
 
-        setContentView(setContentViewId());
         init_view();
         presenter=createPresenter();
         if(presenter!=null){
@@ -59,6 +53,7 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
     public void init_view(){};
     public void init_data(){};
     protected   abstract  T createPresenter();
+
     public void createPresenterComplete(Boolean isCreate){}
 
 
@@ -103,3 +98,4 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
 
 
 }
+

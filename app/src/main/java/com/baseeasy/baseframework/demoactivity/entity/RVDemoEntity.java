@@ -1,5 +1,10 @@
 package com.baseeasy.baseframework.demoactivity.entity;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
+
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -12,12 +17,25 @@ import org.greenrobot.greendao.annotation.Entity;
  */
 
 
-public class RVDemoEntity implements MultiItemEntity {
+public class RVDemoEntity extends BaseObservable implements MultiItemEntity {
     String  image;
     String  type;
     String  title;
+    @Bindable
     String  msg;
     int index;
+    ObservableField<String> content = new ObservableField<>();
+
+    public ObservableField<String> getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content.set(content);
+    }
+
+    public RVDemoEntity() {
+    }
 
     public RVDemoEntity(String image, String type, String title, String msg, int index) {
         this.image = image;
@@ -57,6 +75,7 @@ public class RVDemoEntity implements MultiItemEntity {
 
     public void setMsg(String msg) {
         this.msg = msg;
+        notifyChange();
     }
 
     public int getIndex() {
@@ -71,4 +90,6 @@ public class RVDemoEntity implements MultiItemEntity {
     public int getItemType() {
         return Integer.parseInt(type);
     }
+
+
 }

@@ -35,7 +35,7 @@ public class RecyclerDemoAdapter  extends BaseMultiItemQuickAdapter<RVDemoEntity
         //若需要实现多布局根据不同的布局类型赋值 。  注：对应的实体类必须实现MultiItemEntity接口
         switch (helper.getItemViewType()){
             case 0:
-                helper.setText(R.id.rv_item_tx1,item.getTitle());
+//                helper.setText(R.id.rv_item_tx1,item.getTitle());
                 helper.setText(R.id.rv_item_tx2,item.getMsg());
                 DisplayOption displayOption=new DisplayOption.Builder()
                         .setLoadErrorResId(R.drawable.ic_launcher_background)//设置加载错误图片
@@ -45,7 +45,7 @@ public class RecyclerDemoAdapter  extends BaseMultiItemQuickAdapter<RVDemoEntity
                 helper.addOnClickListener(R.id.rv_item_bt);//添加子View的点击事件
                 break;
             case 1:
-                helper.setText(R.id.rv_item_tx1,item.getTitle());
+//                helper.setText(R.id.rv_item_tx1,item.getTitle());
                 helper.setText(R.id.rv_item_tx2,item.getMsg());
                 ImageLoaderFactory.getInstance().displayImage((ImageView)helper.getView(R.id.rv_item_image),item.getImage());
                 helper.addOnClickListener(R.id.rv_item_bt);//添加子View的点击事件

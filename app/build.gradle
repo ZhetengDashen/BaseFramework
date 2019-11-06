@@ -18,6 +18,9 @@ android {
             abiFilters "armeabi"    //添加ndk支持
         }
     }
+    dataBinding {
+        enabled = true
+    }
     buildTypes {
         release {
             minifyEnabled false

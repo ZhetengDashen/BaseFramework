@@ -42,20 +42,20 @@ public class ZAandroid {
 	public native int  finger_power_on();
 	public native int  finger_power_off();
 	
-	/*****************************
-	*打开设备函数
-	*参数：
-	*nDeviceType 设备类型（0：有驱动 USB 设备， 1：串口设备， 2：无驱 UDISK 设备,3：有驱动 USB 设备+0x30， 4：串口设备+0x30， 5：无驱 UDISK 设备+0x30）；(0x30  4.0版本)
-	*nDeviceType (兼容050)设备类型（10：有驱动 USB 设备， 11：串口设备， 12：无驱 UDISK 设备,13：有驱动 USB 设备+0x30， 14：串口设备+0x30， 15：无驱 UDISK 设备+0x30）
-	*nDeviceType 设备类型新（20：有驱动 USB 设备， 21：串口设备， 22：无驱 UDISK 设备,23：有驱动 USB 设备+0x30， 24：串口设备+0x30， 25：无驱 UDISK 设备+0x30）；(0x30  4.0版本)
-	*nDeviceType (兼容050新)设备类型（30：有驱动 USB 设备， 31：串口设备， 32：无驱 UDISK 设备,33：有驱动 USB 设备+0x30， 34：串口设备+0x30， 35：无驱 UDISK 设备+0x30）
-	*iCom 串口号（1-16）（USB 设备和无驱 UDISK 设备该参数为 0）；(0-7   "/dev/ttySx",  10-17   "/dev/ttyMTx"  (x为0-7),  20-27   "/dev/ttysWKx"  (x为0-7),  30-37   "/dev/ttyHSLx"  (x为0-7)),	40-47   "/dev/ttyMAXx"  (x为0-7)),	50-57  "/dev/ttyAMAx"  (x为0-7)),	60-67
-	*iBaud 波特率（9600-57600）（USB 设备和无驱 UDISK 设备该参数为 0）波特率=iBaud*9600；
-	*nPackageSize 通讯包大小（默认:2）
-	*iDevNum 通讯端口号(默认 0)
-	*返回值：
-	*0 为成功，其它返回值请参考错误返回码
-	*****************************/
+//	/*****************************
+//	*打开设备函数
+//	*参数：
+//	*nDeviceType 设备类型（0：有驱动 USB 设备， 1：串口设备， 2：无驱 UDISK 设备,3：有驱动 USB 设备+0x30， 4：串口设备+0x30， 5：无驱 UDISK 设备+0x30）；(0x30  4.0版本)
+//	*nDeviceType (兼容050)设备类型（10：有驱动 USB 设备， 11：串口设备， 12：无驱 UDISK 设备,13：有驱动 USB 设备+0x30， 14：串口设备+0x30， 15：无驱 UDISK 设备+0x30）
+//	*nDeviceType 设备类型新（20：有驱动 USB 设备， 21：串口设备， 22：无驱 UDISK 设备,23：有驱动 USB 设备+0x30， 24：串口设备+0x30， 25：无驱 UDISK 设备+0x30）；(0x30  4.0版本)
+//	*nDeviceType (兼容050新)设备类型（30：有驱动 USB 设备， 31：串口设备， 32：无驱 UDISK 设备,33：有驱动 USB 设备+0x30， 34：串口设备+0x30， 35：无驱 UDISK 设备+0x30）
+//	*iCom 串口号（1-16）（USB 设备和无驱 UDISK 设备该参数为 0）；(0-7   "/dev/ttySx",  10-17   "/dev/ttyMTx"  (x为0-7),  20-27   "/dev/ttysWKx"  (x为0-7),  30-37   "/dev/ttyHSLx"  (x为0-7)),	40-47   "/dev/ttyMAXx"  (x为0-7)),	50-57  "/dev/ttyAMAx"  (x为0-7)),	60-67
+//	*iBaud 波特率（9600-57600）（USB 设备和无驱 UDISK 设备该参数为 0）波特率=iBaud*9600；
+//	*nPackageSize 通讯包大小（默认:2）
+//	*iDevNum 通讯端口号(默认 0)
+//	*返回值：
+//	*0 为成功，其它返回值请参考错误返回码
+//	*****************************/
 	public  int ZAZOpenDevice(int fd,int nDeviceType,int iCom,int iBaud,int nPackageSize/*=2*/,int iDevNum/*=0*/)
 	{
 		int ret = -1;
@@ -75,7 +75,7 @@ public class ZAandroid {
 	*0 为成功，其它返回值请参考错误返回码
 	***********************************/
 	public native int ZAZSetImageSize(int imagesize);
-	
+
 	/*******************************
 	*关闭设备函数
 	*参数：
