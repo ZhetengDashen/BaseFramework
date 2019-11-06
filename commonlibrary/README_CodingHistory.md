@@ -1,5 +1,10 @@
 # 编码记录
 
+
+  >  修改人： 王志强 <br>
+  >  修改时间：2019年11月6日16:47:56 <br>
+  >  修改内容：	增加BaseDataBinDingActivity、BaseDataBinDingFragment、ObjectAnimator_Utils等 <br> 
+
   >  修改人： 王志强 <br>
   >  修改时间：2019年10月24日10:29:43 <br>
   >  修改内容：	增加签字板、指纹录入、CustomDialog <br> 
