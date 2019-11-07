@@ -1,5 +1,6 @@
 package com.baseeasy.baseframework.demoactivity;
 
+
 import com.baseeasy.commonlibrary.basemvp.IBaseView;
 
 /**

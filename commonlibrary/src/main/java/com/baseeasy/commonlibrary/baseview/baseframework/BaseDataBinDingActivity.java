@@ -9,7 +9,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+
 import com.baseeasy.commonlibrary.basemvp.IBaseView;
+import com.baseeasy.commonlibrary.basemvp.psenter.BaseDadaBinDingPresenter;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.loading.MyLoader;
 import com.magiclon.individuationtoast.ToastUtil;
@@ -19,9 +21,9 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
  * 作者：WangZhiQiang
  * 时间：2019/11/6
  * 邮箱：sos181@163.com
- * 描述：
+ * 描述：<V,K>
  */
-public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends BasePresenter<V>, K extends ViewDataBinding> extends RxAppCompatActivity implements IBaseView {
+public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends BaseDadaBinDingPresenter<V,K>, K extends ViewDataBinding> extends RxAppCompatActivity implements IBaseView {
 
     public String  TAG="";
     public T presenter;
@@ -42,6 +44,7 @@ public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends Base
         }else {
             createPresenterComplete(false);
         }
+        presenter.setDataBinDing(dataBinding);
         init_data();
 
     }
@@ -50,6 +53,7 @@ public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends Base
 
 
     protected  abstract int   setContentViewId();
+
     public void init_view(){};
     public void init_data(){};
     protected   abstract  T createPresenter();
@@ -85,6 +89,10 @@ public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends Base
 
 
 
+//    @Override
+//    public K dataBinDing() {
+//        return dataBinding;
+//    }
     @Override
     protected void onDestroy() {
 
