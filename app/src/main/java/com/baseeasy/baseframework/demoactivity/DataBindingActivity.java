@@ -51,13 +51,8 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
 
     @Override
     protected DataBinDingPresenter<IDataBinDingView> createPresenter() {
-        return null;
+        return new DataBinDingPresenter<>(this,this);
     }
-
-//    @Override
-//    protected DataBinDingPresenter<IDataBinDingView> createPresenter() {
-//        return null;
-//    }
 
 
     @Override

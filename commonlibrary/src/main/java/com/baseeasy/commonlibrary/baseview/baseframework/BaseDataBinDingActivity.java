@@ -39,12 +39,12 @@ public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends Base
         presenter=createPresenter();
         if(presenter!=null){
             presenter.attachView((V) this);
-
+            presenter.setDataBinDing(dataBinding);
             createPresenterComplete(true);
         }else {
             createPresenterComplete(false);
         }
-        presenter.setDataBinDing(dataBinding);
+
         init_data();
 
     }
