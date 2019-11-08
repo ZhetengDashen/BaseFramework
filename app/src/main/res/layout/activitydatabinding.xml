@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="TestDataBinding" >
+        <import type="com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity"/>
          <variable
              name="rventity"
-             type="com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity" />
+             type="RVDemoEntity" />
     </data>
 
     <androidx.cardview.widget.CardView

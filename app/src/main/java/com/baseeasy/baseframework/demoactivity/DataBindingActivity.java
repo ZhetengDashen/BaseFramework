@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.baseeasy.baseframework.R;
 
@@ -39,14 +40,7 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
     @Override
     public void init_data() {
         super.init_data();
-        RVDemoEntity rvDemoEntity=new RVDemoEntity();
-        rvDemoEntity.setImage("https://imgsa.baidu.com/forum/w%3D580/sign=c47e413076cb0a4685228b315b62f63e/d772036d55fbb2fb8b9bfbd8424a20a44423dce1.jpg");
-        rvDemoEntity.setIndex(1);
-        rvDemoEntity.setMsg("May the world turn into a sea, and may you and I return to the first sight");
-        rvDemoEntity.setTitle("Deliberately");
-        rvDemoEntity.setType("1");
-        rvDemoEntity.setContent("22");
-        dataBinding.setRventity(rvDemoEntity);
+
     }
 
     @Override
@@ -58,8 +52,9 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.rv_item_bt){
-            editText.setText("123");
-
+//            editText.setText("123");
+//          dataBinding.getRventity().setMsg("456456");
+            Toast.makeText(this, dataBinding.getRventity().getMsg(), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -16,7 +16,7 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
  * 描述：
  */
 public abstract class BaseDadaBinDingPresenter<T extends IBaseView,K extends ViewDataBinding> extends BasePresenter<T>  {
-    private K dataBinDing;
+
     public BaseDadaBinDingPresenter(LifecycleProvider<ActivityEvent> provider) {
         super(provider);
     }
@@ -26,15 +26,14 @@ public abstract class BaseDadaBinDingPresenter<T extends IBaseView,K extends Vie
 
     }
 
-    public K getDataBinDing(){
-        return   dataBinDing;
 
-    }
     public void setDataBinDing(K dataBinDing){
-        this.dataBinDing=dataBinDing;
+        dataBinDing(dataBinDing);
     }
     /**
      * 是否使用EventBus
      */
     public abstract  boolean isOpenEventBus();
+
+    public abstract void dataBinDing(K dataBinDing);
 }
