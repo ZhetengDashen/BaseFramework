@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.basemvp.IBaseView;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
@@ -35,20 +36,24 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().inject(this);
+
         TAG="BaseLog:"+this.getLocalClassName();
+        if(this instanceof  BaseDataBinDingActivity){
 
-        setContentView(setContentViewId());
-        init_view();
-        presenter=createPresenter();
-        if(presenter!=null){
-            presenter.attachView((V) this);
-
-            createPresenterComplete(true);
         }else {
-            createPresenterComplete(false);
+            ARouter.getInstance().inject(this);
+            setContentView(setContentViewId());
+            init_view();
+            presenter=createPresenter();
+            if(presenter!=null){
+                presenter.attachView((V) this);
+                createPresenterComplete(true);
+            }else {
+                createPresenterComplete(false);
+            }
+            init_data();
         }
-        init_data();
+
 
     }
 

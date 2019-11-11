@@ -10,6 +10,7 @@ import androidx.databinding.ViewDataBinding;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.basemvp.IBaseView;
 import com.baseeasy.commonlibrary.basemvp.psenter.BaseDadaBinDingPresenter;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
@@ -23,18 +24,15 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
  * 邮箱：sos181@163.com
  * 描述：<V,K>
  */
-public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends BaseDadaBinDingPresenter<V,K>, K extends ViewDataBinding> extends RxAppCompatActivity implements IBaseView {
+public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends BaseDadaBinDingPresenter<V,K>, K extends ViewDataBinding> extends BaseActivity<V,T> implements IBaseView {
 
-    public String  TAG="";
-    public T presenter;
+
     public K dataBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
-        TAG="BaseLog:"+this.getLocalClassName();
         dataBinding=  DataBindingUtil.setContentView(this,setContentViewId());
-
+        super.onCreate(savedInstanceState);
         init_view();
         presenter=createPresenter();
         if(presenter!=null){
@@ -44,65 +42,20 @@ public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends Base
         }else {
             createPresenterComplete(false);
         }
-
         init_data();
-
     }
-
-
-
-
     protected  abstract int   setContentViewId();
 
-    public void init_view(){};
-    public void init_data(){};
-    protected   abstract  T createPresenter();
-
-    public void createPresenterComplete(Boolean isCreate){}
-
-
-    @Override
-    public void showCodeError(String errorCode, String errorMsg) {
-        ToastUtil.showerror(this,errorMsg);
-    }
-
-    @Override
-    public void showNetError() {
-        ToastUtil.showerror(this,"网络链接异常");
-    }
-
-
-    @Override
-    public void showLoading() {
-        MyLoader.showLoading(this);
-    }
-
-    @Override
-    public void hideLoading() {
-        MyLoader.stopLoading();
-    }
-
-    @Override
-    public void showMessage(String message) {
-        ToastUtil.showinfo(this,message);
-    }
 
 
 
-//    @Override
-//    public K dataBinDing() {
-//        return dataBinding;
-//    }
-    @Override
-    protected void onDestroy() {
 
-        super.onDestroy();
-        if(presenter!=null){
-            presenter.detachView();
 
-        }
 
-    }
+
+
+
+
 
 
 }

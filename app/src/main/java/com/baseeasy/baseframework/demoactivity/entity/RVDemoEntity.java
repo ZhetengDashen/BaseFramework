@@ -94,5 +94,10 @@ public class RVDemoEntity extends BaseObservable implements MultiItemEntity {
         return Integer.parseInt(type);
     }
 
-
+    @Override
+    public String toString() {
+        return "RVDemoEntity{" +
+                "title='" + title + '\'' +
+                '}';
+    }
 }

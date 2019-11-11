@@ -12,7 +12,9 @@ import com.baseeasy.baseframework.demoactivity.adapter.RecyclerDemoAdapter;
 import com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
+import com.baseeasy.commonlibrary.mytool.PickerUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.magiclon.individuationtoast.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,8 +106,13 @@ public class RecyclerViewActivity extends BaseActivity {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                if(view.getId()==R.id.rv_item_bt){
-                   Toast.makeText(RecyclerViewActivity.this, "点击了：ChildView"+position, Toast.LENGTH_SHORT).show();
-
+//                   Toast.makeText(RecyclerViewActivity.this, "点击了：ChildView"+position, Toast.LENGTH_SHORT).show();
+                   PickerUtils.getInstance().show(RecyclerViewActivity.this, rvDemoEntities, 2, new PickerUtils.OnSelectOptionsListener() {
+                       @Override
+                       public void onSelectOptionsListener(int options1) {
+                           ToastUtil.showwarning(RecyclerViewActivity.this,rvDemoEntities.get(options1).toString());
+                       }
+                   });
                }
             }
         });
