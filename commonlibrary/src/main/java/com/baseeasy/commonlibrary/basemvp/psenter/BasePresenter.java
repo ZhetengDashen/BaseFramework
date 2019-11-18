@@ -6,6 +6,7 @@ package com.baseeasy.commonlibrary.basemvp.psenter;
 
 import android.content.Context;
 
+import com.baseeasy.commonlibrary.basemvp.IBaseView;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.trello.rxlifecycle2.LifecycleProvider;
@@ -22,7 +23,7 @@ import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public abstract class BasePresenter<T> {
+public abstract class BasePresenter<T extends IBaseView> {
     private LifecycleProvider<ActivityEvent> provider;
     private Context view_context;
     public BasePresenter(LifecycleProvider<ActivityEvent> provider) {

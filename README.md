@@ -28,7 +28,12 @@
                     abiFilters "armeabi"    //添加ndk支持
                 }        
                  ..........
-            }    
+            }  
+            //所有使用到网络请求的mode都要添加        
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+             }   
            greendao {
                 schemaVersion 1
                 daoPackage 'XXXXX'//greendao //路径
