@@ -33,15 +33,15 @@ public class MyLoader{
     }
 
     public static void showLoading(Context context,String type){
-        final AppCompatDialog dialog=new AppCompatDialog(context, R.style.customdialog);
+         AppCompatDialog dialog=new AppCompatDialog(context, R.style.customdialog);
 
-        final AVLoadingIndicatorView avLoadingIndicatorView=LoaderCreator.create(type,context);
-        dialog.setContentView(avLoadingIndicatorView);
+         AVLoadingIndicatorView avLoadingIndicatorView=LoaderCreator.create(type,context);
+         dialog.setContentView(avLoadingIndicatorView);
 
         int deviceWidth= ScreenUtils.getScreenWidth(BaseApplication.getInstance());
         int deviceHeight= ScreenUtils.getScreenHeight(BaseApplication.getInstance());
 
-        final Window dialogWindow=dialog.getWindow();
+         Window dialogWindow=dialog.getWindow();
 
         if (dialogWindow!=null){
             WindowManager.LayoutParams lp=dialogWindow.getAttributes();
@@ -60,10 +60,10 @@ public class MyLoader{
 
     public static void stopLoading(){
         for (AppCompatDialog dialog:LOADERS){
-            if (dialog!=null){
-                if (dialog!=null){
-                    dialog.cancel();
-                }
+            if (null!=dialog){
+              if(dialog.isShowing()) {
+                  dialog.cancel();
+              }
             }
         }
     }
