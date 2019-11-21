@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--customdialog-->
     <style name="customdialog" parent="@android:style/Theme.Dialog">
@@ -20,5 +20,49 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+    <style name="ScreeningDialog" parent="@style/AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+    <style name="bt_style1">
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/bt_bg</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="bt_style2">
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/bt_bg2</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
 
+    <style name="bt_style1_rounded">
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/bt_bg_rounded</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="bt_style2_rounded">
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/bt_bg2_rounded</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+    <style name="bt_style_blue_40_rounded">
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/bt_bg_blue_40_rounded</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="bt_style_white_40_rounded">
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/bt_bg_white_40_rounded</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+    <style name="My_CheckBox" parent="@android:style/Widget.Material.CompoundButton.CheckBox"
+        tools:ignore="NewApi">
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
+        <item name="android:colorControlNormal">@color/colorPrimary</item>
+    </style>
+    <style name="tv_content">
+        <item name="android:textColor">@color/tv_content </item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

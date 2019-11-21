@@ -21,6 +21,7 @@ import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
+import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
 import com.baseeasy.commonlibrary.weight.signboard.WriteDialogListener;
 import com.baseeasy.commonlibrary.weight.signboard.WriteSignPadDialog;
 import com.baseeasy.commonlibrary.weight.signboard.WriteSignPadDialogNew;
@@ -31,6 +32,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = ARouterPath.AppMode.MAIN_ACTIVITY)
@@ -190,15 +192,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                });
 //                writeSignPadDialog.show();
-
-
-                WriteSignPadDialogNew writeSignPadDialogNew=new WriteSignPadDialogNew(MainActivity.this, new WriteDialogListener() {
+                ArrayList<String> aa=new ArrayList<>();
+                aa.add("aaa");
+                aa.add("bbb");
+                aa.add("ccc");
+                SelectActionListDialog.createDialog(MainActivity.this, aa, new SelectActionListDialog.ActionCallback<String>() {
                     @Override
-                    public void callPath(Object object) {
-                        Toast.makeText(MainActivity.this, ((File) object).getPath()+"", Toast.LENGTH_SHORT).show();
+                    public void callback(String action) {
+
                     }
-                });
-                writeSignPadDialogNew.show();
+                }).show();
+//                WriteSignPadDialogNew writeSignPadDialogNew=new WriteSignPadDialogNew(MainActivity.this, new WriteDialogListener() {
+//                    @Override
+//                    public void callPath(Object object) {
+//                        Toast.makeText(MainActivity.this, ((File) object).getPath()+"", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                writeSignPadDialogNew.show();
                 break;
 
             case  R.id.binding:

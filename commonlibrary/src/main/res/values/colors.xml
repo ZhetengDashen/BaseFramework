@@ -6,4 +6,6 @@
     <color name="dialogTopTx">#878787</color>
     <color name="greenbtn">#21d79a</color>
     <color name="lightgreen">#e8fbf5</color>
+    <color name="bty2">#F5F5F5</color>
+    <color name="tv_content">#616161</color>
 </resources>
