@@ -1,5 +1,10 @@
 # 编码记录
 
+
+  >  修改人： 王志强 <br>
+  >  修改时间：2019年11月21日17:18:34 <br>
+  >  修改内容：增加SelectActionListDialog 增加Button style <br> 
+
   >  修改人： 王志强 <br>
   >  修改时间：2019年11月21日13:53:05 <br>
   >  修改内容：	增加新版签名： WriteSignPadDialogNew <br> 
