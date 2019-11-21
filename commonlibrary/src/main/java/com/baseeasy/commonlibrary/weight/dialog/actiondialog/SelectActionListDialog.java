@@ -62,6 +62,7 @@ public class SelectActionListDialog extends Dialog {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 if(view.getId()==R.id.tv_content){
                     screeningCallback.callback(list.get(position));
+                    dialog.dismiss();
                 }
             }
         });
