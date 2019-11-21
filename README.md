@@ -24,6 +24,8 @@
     android {    
             defaultConfig {
                  ..........
+              //在app 和 mode 的build.gradle 下的defaultConfig里面添加
+
                 ndk {
                     abiFilters "armeabi"    //添加ndk支持
                 }        

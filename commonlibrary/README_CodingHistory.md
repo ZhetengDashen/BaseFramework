@@ -1,6 +1,11 @@
 # 编码记录
 
   >  修改人： 王志强 <br>
+  >  修改时间：2019年11月21日13:53:05 <br>
+  >  修改内容：	增加新版签名： WriteSignPadDialogNew <br> 
+
+
+  >  修改人： 王志强 <br>
   >  修改时间：2019年11月11日14:41:01 <br>
   >  修改内容：	修改BaseDataBinDingActivity 修改BaseDataBinDingFragment 增加PickerUtils <br> 
 

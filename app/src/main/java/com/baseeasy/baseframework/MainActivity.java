@@ -23,12 +23,14 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUti
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
 import com.baseeasy.commonlibrary.weight.signboard.WriteDialogListener;
 import com.baseeasy.commonlibrary.weight.signboard.WriteSignPadDialog;
+import com.baseeasy.commonlibrary.weight.signboard.WriteSignPadDialogNew;
 import com.magiclon.individuationtoast.ToastUtil;
 import com.test.TestUser;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.File;
 import java.util.List;
 
 @Route(path = ARouterPath.AppMode.MAIN_ACTIVITY)
@@ -180,14 +182,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             case R.id.qianming:
                 Toast.makeText(this, "222", Toast.LENGTH_SHORT).show();
-                WriteSignPadDialog writeSignPadDialog=new WriteSignPadDialog(this);
-                writeSignPadDialog.setDialogListener(new WriteDialogListener() {
+//                WriteSignPadDialog writeSignPadDialog=new WriteSignPadDialog(this);
+//                writeSignPadDialog.setDialogListener(new WriteDialogListener() {
+//                    @Override
+//                    public void callPath(Object object) {
+//
+//                    }
+//                });
+//                writeSignPadDialog.show();
+
+
+                WriteSignPadDialogNew writeSignPadDialogNew=new WriteSignPadDialogNew(MainActivity.this, new WriteDialogListener() {
                     @Override
                     public void callPath(Object object) {
-
+                        Toast.makeText(MainActivity.this, ((File) object).getPath()+"", Toast.LENGTH_SHORT).show();
                     }
                 });
-                writeSignPadDialog.show();
+                writeSignPadDialogNew.show();
                 break;
 
             case  R.id.binding:
