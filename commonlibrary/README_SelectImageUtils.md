@@ -110,6 +110,30 @@
 >    SelectImageUtils.getInstance().startTakingPhotoSeparate(this, "takingPhotoCallBack");
 >```
 
+#### 11.
+>  功能说明：单张拍照或图片选择 
+>  参数说明： activity、   takingPhotoSeparateCallBack  回调接口  
+>  回调方式：接口  
+>  使用示例：
+> ```
+>SelectActionListDialog.createDialog(MainActivity.this, aa, new SelectActionListDialog.ActionCallback<String>() {
+                    @Override
+                    public void callback(String action) {
+
+                    }
+                }).show();
+>```
+
+#### 12.
+>  功能说明：单张拍照或图片选择  
+>  参数说明： activity、"imageCallback"：EventBusFlagName    
+>  回调方式： EventBus  
+>  使用示例：
+> ```
+>    SelectImageUtils.getInstance().startTakingPhotoSeparate(this, "imageCallback");
+>```
+
+startTakingPhotoAndImageSeparate
 
 ### 附加说明：
  > 1.通过EventBus回调接收数据说明：  

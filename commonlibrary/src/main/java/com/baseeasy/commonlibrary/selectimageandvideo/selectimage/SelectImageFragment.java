@@ -27,8 +27,10 @@ import com.luck.picture.lib.entity.LocalMedia;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.SELECT_IMAGE_REQUEST;
 import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_REQUESTCODE;
-
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_SEPARATE_REQUESTCODE;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKING_PHOTO_REQUEST;
 
 
 /**
@@ -95,8 +97,19 @@ public class SelectImageFragment extends Fragment {
                 .compress(true)
                 .compressSavePath(Environment.getExternalStorageDirectory()+"/"+ AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                 .setOutputCameraPath("/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.CAMERA)
-                .forResult(PictureShared.TAKINGPHOTO_SEPARATE_REQUESTCODE);
+                .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }
+
+    public void startTakingPhotoAndImageSeparate() {
+        PictureSelector.create(this)
+                .openGallery(PictureMimeType.ofImage())
+                .compress(true)
+                .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                .setOutputCameraPath("/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.CAMERA)
+                .maxSelectNum(1)// 最大图片选择数量 int
+                .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
+    }
+
 
     public  void setTakingPhotoSeparateEventBusFlag(String takingPhotoSeparateEventBusFlag){
         this.takingPhotoSeparateEventBusFlag=takingPhotoSeparateEventBusFlag;
@@ -121,20 +134,14 @@ public class SelectImageFragment extends Fragment {
                 }else if(requestCode == TAKINGPHOTO_REQUESTCODE&&null!=takingPhotoCallBack){
                     takingPhotoCallBack.onTakingPhoto(selectImageBeans);
                 }
-            }else {
-                if(requestCode==PictureShared.TAKINGPHOTO_SEPARATE_REQUESTCODE&&!takingPhotoSeparateEventBusFlag.equals("")){
-
+            }else if(requestCode== TAKINGPHOTO_SEPARATE_REQUESTCODE&&!takingPhotoSeparateEventBusFlag.equals("")){
                  EventBusUtils.post(new EventMessage(EventConst.EVENT_CODE_OK,takingPhotoSeparateEventBusFlag,  ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))));
-
-
-                }else if(requestCode==PictureShared.TAKINGPHOTO_SEPARATE_REQUESTCODE&&null!=takingPhotoSeparateCallBack){
-
+                   }else if(requestCode== TAKINGPHOTO_SEPARATE_REQUESTCODE&&null!=takingPhotoSeparateCallBack){
                     List<LocalMedia> localMediaList=   PictureSelector.obtainMultipleResult(data);
                     takingPhotoSeparateCallBack.onTakingPhoto(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList).get(0));
-
                 }
 
-            }
+
         }
     }
 

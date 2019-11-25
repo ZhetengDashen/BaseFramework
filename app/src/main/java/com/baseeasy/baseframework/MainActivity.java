@@ -2,12 +2,15 @@ package com.baseeasy.baseframework;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.fastjson.JSON;
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
@@ -21,6 +24,7 @@ import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
 import com.baseeasy.commonlibrary.weight.signboard.WriteDialogListener;
 import com.baseeasy.commonlibrary.weight.signboard.WriteSignPadDialog;
@@ -30,6 +34,7 @@ import com.test.TestUser;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -158,15 +163,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                },selectImageBeans);
 
 //      SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
-                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
-                    @Override
-                    public void onTakingPhoto(List<SelectImageBean> localMediaList) {
-                        selectImageBeans = localMediaList;
-                        for (int i = 0; i < selectImageBeans.size(); i++) {
-                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
-                        }
-                    }
-                }, selectImageBeans);
+//                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
+//                    @Override
+//                    public void onTakingPhoto(List<SelectImageBean> localMediaList) {
+//                        selectImageBeans = localMediaList;
+//                        for (int i = 0; i < selectImageBeans.size(); i++) {
+//                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
+//                        }
+//                    }
+//                }, selectImageBeans);
+
+                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this,"imageCallback");
+//                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
+//                    @Override
+//                    public void onTakingPhoto(SelectImageBean imageBean) {
+//                        LogUtils.e(JSON.toJSONString(imageBean));
+//                    }
+//                });
 //                SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans);
 //                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
 //                    @Override
@@ -214,6 +227,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case  R.id.binding:
                  startActivity(new Intent(this, DataBindingActivity.class));
                 break;
+
+             default:
+                 break;
         }
     }
 

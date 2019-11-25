@@ -190,4 +190,26 @@ public class SelectImageUtils {
 
     }
 
+    /**
+     * 拍照或选择图片 单张
+     * @param activity
+     * @param takingPhotoSeparateCallBack 回调
+     *
+     **/
+    public void startTakingPhotoAndImageSeparate(FragmentActivity activity, TakingPhotoSeparateCallBack takingPhotoSeparateCallBack){
+
+        getTakingPhotoSeparateFragment(activity, takingPhotoSeparateCallBack).startTakingPhotoAndImageSeparate();
+    }
+    /**
+     * 拍照或选择图片 单张
+     * @param activity
+     * @param eventBusFlag 回调
+     **/
+    public void startTakingPhotoAndImageSeparate(FragmentActivity activity,String eventBusFlag){
+
+        getTakingPhotoSeparateFragment(activity, eventBusFlag).startTakingPhotoAndImageSeparate();
+
+    }
+
+
 }
