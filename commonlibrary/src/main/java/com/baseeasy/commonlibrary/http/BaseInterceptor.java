@@ -23,7 +23,12 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okio.Buffer;
 
-
+/**
+ * 作者：WangZhiQiang
+ * 时间：2018/11/20
+ * 邮箱：sos181@163.com
+ * 描述：
+ */
 public class BaseInterceptor implements Interceptor {
  @Override
 public Response intercept(Chain chain) throws IOException {
