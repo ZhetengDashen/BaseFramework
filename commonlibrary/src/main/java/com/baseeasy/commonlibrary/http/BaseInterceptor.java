@@ -120,7 +120,7 @@ public Response intercept(Chain chain) throws IOException {
                 userParameter.setUserid(userid);
             }
             jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter));
-
+            Log.e("BaseInterceptor:",jsonObject.toJSONString());
             formBody = builder
                     .add("json", jsonObject.toJSONString())
                     .build();
@@ -151,7 +151,7 @@ public Response intercept(Chain chain) throws IOException {
                 if(part.body().contentType().type().equals("application")){
                     Headers headers=part.headers();
                     for (int i = 0; i <headers.names().size() ; i++) {
-                        Log.e("ParameterInterceptor","headers======value="+headers.value(i));
+
                         String value=headers.value(i);//valueform-data; name="article_type"
                         String replaceValue="form-data; name=";//这段在MultipartBody.Part源码中看到
                         if(value.contains(replaceValue)){
@@ -185,7 +185,7 @@ public Response intercept(Chain chain) throws IOException {
                 userParameter.setUserid(userid);
             }
             jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter));
-
+            Log.e("BaseInterceptor:",jsonObject.toJSONString());
             formBody = builder
                     .addFormDataPart("json", jsonObject.toJSONString())
                     .build();

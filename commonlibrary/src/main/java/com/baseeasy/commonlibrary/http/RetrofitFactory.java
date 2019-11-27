@@ -14,10 +14,8 @@ public class RetrofitFactory {
                 .connectTimeout(HTTP_TIME, TimeUnit.SECONDS)
                 .readTimeout(HTTP_TIME, TimeUnit.SECONDS)
                 .writeTimeout(HTTP_TIME, TimeUnit.SECONDS)
-//                .addInterceptor(InterceptorUtil.tokenInterceptor())
                 .addInterceptor(new BaseInterceptor())//添加公共参数并且把数据统一添加到json字段中
-//          .addInterceptor(InterceptorUtil.addQueryParameterInterceptor())//添加公共参数
-                .addInterceptor(InterceptorUtil.LogInterceptor())//添加日志拦截器
+                .addInterceptor(LoggingInterceptor.LogInterceptor())//添加日志拦截器
 //                .addNetworkInterceptor(new Interceptor() {
 //                    @Override
 //                    public Response intercept(Chain chain) throws IOException {
