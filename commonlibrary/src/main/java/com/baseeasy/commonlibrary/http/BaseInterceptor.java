@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceKeys;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
@@ -158,8 +159,10 @@ public Response intercept(Chain chain) throws IOException {
                             String key=value.replace(replaceValue,"").replaceAll("\"","");;
 //                            Log.e("---------",key);
 //                              Log.e("---------",bodyToString(part.body()));
-                              String content=bodyToString(part.body());
-                              content=  trimFirstAndLastChar(content,"\"");
+
+                            String content=bodyToString(part.body());
+                            content=  trimFirstAndLastChar(content,"\"");
+                            content= content.replaceAll("\\\\","").trim();
                             if(key.equals("jsonString")){
                                 jsonObject.putAll(JSON.parseObject(content));
                             }else {

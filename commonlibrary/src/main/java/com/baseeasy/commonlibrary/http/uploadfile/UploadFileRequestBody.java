@@ -113,7 +113,7 @@ public class UploadFileRequestBody extends RequestBody {
 
                 }
                 if(mProgressListeners!=null){
-                    LogUtils.e(index+"/"+maxIndex+1+":"+(int)(bytesWritten * 100 / contentLength())+"%");
+//                    LogUtils.e(index+"/"+maxIndex+1+":"+(int)(bytesWritten * 100 / contentLength())+"%");
                    mainHandler.post(new Runnable() {
                        @Override
                        public void run() {

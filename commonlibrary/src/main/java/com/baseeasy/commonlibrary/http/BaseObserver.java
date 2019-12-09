@@ -99,7 +99,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
      * @throws
      */
     protected   void onCodeError(String errorCode, String errorMsg) throws Exception {
-        LogUtils.e(errorMsg);
+        Log.e("KK",errorMsg);
         if(iBaseView!=null){
             iBaseView.showCodeError(errorCode, errorMsg);
         }
