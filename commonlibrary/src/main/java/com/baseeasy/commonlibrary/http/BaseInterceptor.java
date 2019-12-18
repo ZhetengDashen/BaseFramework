@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
+import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceKeys;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 
@@ -183,7 +184,11 @@ public Response intercept(Chain chain) throws IOException {
             }
             String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
             CommonParameter userParameter=new CommonParameter();
-            userParameter.setAppversion(SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION));
+            String appVersion=SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION);
+             if(appVersion.equals("")){
+                 appVersion=   AppUtils.getVersionCode(BaseApplication.getInstance().getApplicationContext())+"";
+             }
+            userParameter.setAppversion(appVersion);
             if(!userid.equals("")){
                 userParameter.setUserid(userid);
             }
