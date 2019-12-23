@@ -17,6 +17,7 @@ android {
         ndk {
             abiFilters "armeabi"    //添加ndk支持
         }
+        multiDexEnabled true
     }
     dataBinding {
         enabled = true

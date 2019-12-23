@@ -10,6 +10,8 @@ import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceKeys;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,8 +74,12 @@ public Response intercept(Chain chain) throws IOException {
         }
         String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
         CommonParameter userParameter=new CommonParameter();
-        userParameter.setAppversion(SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION));
-        if(!userid.equals("")){
+        String appVersion=SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION);
+        if(appVersion.equals("")){
+            appVersion=   AppUtils.getVersionCode(BaseApplication.getInstance().getApplicationContext())+"";
+        }
+        userParameter.setAppversion(appVersion);
+            if(!userid.equals("")){
             userParameter.setUserid(userid);
         }
         jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter));
@@ -111,7 +117,6 @@ public Response intercept(Chain chain) throws IOException {
                         }else {
                             jsonObject.put(name,value);
                         }
-//                        parkeys.add(name);
                     }
                 }
             }
@@ -158,25 +163,22 @@ public Response intercept(Chain chain) throws IOException {
                         String replaceValue="form-data; name=";//这段在MultipartBody.Part源码中看到
                         if(value.contains(replaceValue)){
                             String key=value.replace(replaceValue,"").replaceAll("\"","");;
-//                            Log.e("---------",key);
-//                              Log.e("---------",bodyToString(part.body()));
-
                             String content=bodyToString(part.body());
                             content=  trimFirstAndLastChar(content,"\"");
-                            content= content.replaceAll("\\\\","").trim();
-                            if(key.equals("jsonString")){
+//                            content= content.replaceAll("\\\\","").trim();
+                            content=   StringEscapeUtils.unescapeJson(content);
+                            if("jsonString".equals(key)){
                                 jsonObject.putAll(JSON.parseObject(content));
                             }else {
                                 jsonObject.put(key,content);
                             }
-
 
                             break;
                         }
                     }
 
 
-                }else if(part.body().contentType().type().equals("multipart")){
+                }else if("multipart".equals(part.body().contentType().type())){
 
                     builder.addPart(part);
 
@@ -185,7 +187,7 @@ public Response intercept(Chain chain) throws IOException {
             String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
             CommonParameter userParameter=new CommonParameter();
             String appVersion=SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION);
-             if(appVersion.equals("")){
+             if("".equals(appVersion)){
                  appVersion=   AppUtils.getVersionCode(BaseApplication.getInstance().getApplicationContext())+"";
              }
             userParameter.setAppversion(appVersion);
@@ -198,7 +200,7 @@ public Response intercept(Chain chain) throws IOException {
                     .addFormDataPart("json", jsonObject.toJSONString())
                     .build();
 
-            request = request.newBuilder().post(formBody).build();
+           request = request.newBuilder().post(formBody).build();
         }else {
             Log.e("BaseInterceptor:","请求类型标记出错");
         }

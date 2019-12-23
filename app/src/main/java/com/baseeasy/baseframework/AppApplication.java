@@ -1,5 +1,7 @@
 package com.baseeasy.baseframework;
 
+import androidx.multidex.MultiDex;
+
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
 import com.baseeasy.commonlibrary.imageloader.GlideImageLoader;
 import com.baseeasy.commonlibrary.imageloader.ImageLoader;
@@ -15,7 +17,6 @@ public class AppApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
 
     }
 

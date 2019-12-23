@@ -134,4 +134,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/qianming"
         app:layout_constraintStart_toEndOf="@+id/qianming"
         app:layout_constraintTop_toTopOf="@+id/qianming" />
+
+    <Button
+        android:id="@+id/button_http"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="HTTP"
+        app:layout_constraintBottom_toBottomOf="@+id/binding"
+        app:layout_constraintStart_toEndOf="@+id/binding"
+        app:layout_constraintTop_toTopOf="@+id/binding"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
