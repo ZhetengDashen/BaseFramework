@@ -33,6 +33,7 @@ public abstract class BaseDadaBinDingPresenter<T extends IBaseView,K extends Vie
     /**
      * 是否使用EventBus
      */
+    @Override
     public abstract  boolean isOpenEventBus();
 
     public abstract void dataBinDing(K dataBinDing);

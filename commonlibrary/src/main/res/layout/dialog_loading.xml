@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loadingbg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/dialog_loading_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"
+            app:indicatorColor="@color/white"
+            app:indicatorName="LineScalePartyIndicator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/avi"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avi"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

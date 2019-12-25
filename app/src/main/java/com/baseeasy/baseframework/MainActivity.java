@@ -2,41 +2,29 @@ package com.baseeasy.baseframework;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.fastjson.JSON;
-import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
+import com.baseeasy.baseframework.demoactivity.httptest.HTTPTestActivity;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
-import com.baseeasy.commonlibrary.mytool.SharePreferenceKeys;
-import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
-import com.baseeasy.commonlibrary.weight.signboard.WriteDialogListener;
-import com.baseeasy.commonlibrary.weight.signboard.WriteSignPadDialog;
-import com.baseeasy.commonlibrary.weight.signboard.WriteSignPadDialogNew;
-import com.magiclon.individuationtoast.ToastUtil;
 import com.test.TestUser;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,10 +45,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView textView;
     private Button qianming;
     private Button button_data_binding;
-    @Override
-    protected int setContentViewId() {
-        return R.layout.activity_main;
-    }
+    private Button button_http;
+
+
 
     @Override
     public void init_view() {
@@ -88,8 +75,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         qianming = (Button) findViewById(R.id.qianming);
         qianming.setOnClickListener(this);
-        button_data_binding=findViewById(R.id.binding);
+        button_data_binding = findViewById(R.id.binding);
         button_data_binding.setOnClickListener(this);
+
+        button_http = (Button) findViewById(R.id.button_http);
+        button_http.setOnClickListener(this);
     }
 
     @Override
@@ -173,7 +163,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                }, selectImageBeans);
 
-                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this,"imageCallback");
+                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
 //                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
 //                    @Override
 //                    public void onTakingPhoto(SelectImageBean imageBean) {
@@ -205,7 +195,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                });
 //                writeSignPadDialog.show();
-                ArrayList<String> aa=new ArrayList<>();
+                ArrayList<String> aa = new ArrayList<>();
                 aa.add("aaa");
                 aa.add("bbb");
                 aa.add("ccc");
@@ -224,12 +214,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                writeSignPadDialogNew.show();
                 break;
 
-            case  R.id.binding:
-                 startActivity(new Intent(this, DataBindingActivity.class));
+            case R.id.binding:
+                startActivity(new Intent(this, DataBindingActivity.class));
                 break;
 
-             default:
-                 break;
+            default:
+                break;
+            case R.id.button_http:
+                 startActivity(new Intent(this, HTTPTestActivity.class));
+                break;
+
         }
     }
 
@@ -237,5 +231,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) and run LayoutCreator again
+    }
+
+    @Override
+    protected int setContentViewId() {
+        return R.layout.activity_main ;
     }
 }

@@ -1,5 +1,7 @@
 package com.baseeasy.baseframework;
 
+import androidx.multidex.MultiDex;
+
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
 import com.baseeasy.commonlibrary.imageloader.GlideImageLoader;
 import com.baseeasy.commonlibrary.imageloader.ImageLoader;
@@ -11,11 +13,10 @@ import com.baseeasy.commonlibrary.imageloader.PicassoImageLoader;
  * 邮箱：sos181@163.com
  * 描述：
  */
-public class AppApplication extends BaseApplication {
+public class TestWorkAppApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
 
     }
 

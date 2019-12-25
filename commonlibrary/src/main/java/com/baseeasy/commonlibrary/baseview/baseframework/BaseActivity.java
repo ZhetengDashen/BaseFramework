@@ -78,14 +78,25 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
     }
 
 
+
     @Override
     public void showLoading() {
-        MyLoader.showLoading(this);
+
+        if (this == null || this.isDestroyed() || this.isFinishing()) {
+
+        }else {
+            MyLoader.showLoading(this);
+        }
     }
 
     @Override
     public void hideLoading() {
-        MyLoader.stopLoading();
+        if (this == null || this.isDestroyed() || this.isFinishing()) {
+
+        }else {
+            MyLoader.stopLoading();
+        }
+
     }
 
     @Override

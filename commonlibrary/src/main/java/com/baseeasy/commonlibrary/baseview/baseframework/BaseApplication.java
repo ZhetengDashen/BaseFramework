@@ -11,6 +11,7 @@ import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.apkfuns.log2file.LogFileEngineFactory;
@@ -51,6 +52,7 @@ public  class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         singleton = this;
+        MultiDex.install(this);
         if (AppUtils.isApkInDebug(getApplicationContext())) {
             ARouter.openLog();     // 打印 ARouter日志
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)

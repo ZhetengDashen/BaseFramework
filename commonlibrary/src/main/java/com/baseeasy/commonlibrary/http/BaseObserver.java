@@ -36,7 +36,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
 
     @Override
     public void onNext(BaseResult<T> tBaseEntity) {
-
+        onRequestEnd();
         if (tBaseEntity.isSuccess()) {
             try {
 //                LogUtils.d(JSON.toJSONString(tBaseEntity));
@@ -53,7 +53,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResult<T>> {
                 e.printStackTrace();
             }
         }
-        onRequestEnd();
+
     }
 
     @Override

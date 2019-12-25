@@ -20,11 +20,8 @@ import java.util.ArrayList;
  * 描述：
  */
 public class MyLoader{
-    private static final int LOADER_SIZE_SCALE=8;
 
-    private static final int LOADER_OFFSET_SCALE=10;
-
-    private static final ArrayList<AppCompatDialog> LOADERS=new ArrayList<>();
+    private static final ArrayList<LoadingDialog> LOADERS=new ArrayList<>();
 
     private static final String DEFAULT_LOADER=LoaderStyle.BallPulseSyncIndicator.name();
 
@@ -33,23 +30,7 @@ public class MyLoader{
     }
 
     public static void showLoading(Context context,String type){
-         AppCompatDialog dialog=new AppCompatDialog(context, R.style.customdialog);
-
-         AVLoadingIndicatorView avLoadingIndicatorView=LoaderCreator.create(type,context);
-         dialog.setContentView(avLoadingIndicatorView);
-
-        int deviceWidth= ScreenUtils.getScreenWidth(BaseApplication.getInstance());
-        int deviceHeight= ScreenUtils.getScreenHeight(BaseApplication.getInstance());
-
-         Window dialogWindow=dialog.getWindow();
-
-        if (dialogWindow!=null){
-            WindowManager.LayoutParams lp=dialogWindow.getAttributes();
-            lp.width=deviceWidth/LOADER_SIZE_SCALE;
-            lp.height=deviceHeight/LOADER_SIZE_SCALE;
-            lp.height=lp.height+deviceHeight/LOADER_OFFSET_SCALE;
-            lp.gravity= Gravity.CENTER;
-        }
+        LoadingDialog dialog=new LoadingDialog(context,R.style.MyLoaderDialogStyle);
         LOADERS.add(dialog);
         dialog.show();
     }
@@ -59,7 +40,7 @@ public class MyLoader{
     }
 
     public static void stopLoading(){
-        for (AppCompatDialog dialog:LOADERS){
+        for (LoadingDialog dialog:LOADERS){
             if (null!=dialog){
               if(dialog.isShowing()) {
                   dialog.cancel();

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".demoactivity.httptest.HTTPTestActivity">
+   <EditText
+       android:id="@+id/ed"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       tools:ignore="MissingConstraints"></EditText>
+
+    <Button
+        android:id="@+id/bt"
+        style="@style/bt_style1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请求"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed"
+        tools:ignore="MissingConstraints"></Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

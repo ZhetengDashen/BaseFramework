@@ -44,6 +44,7 @@ public abstract class BaseDataBinDingActivity<V extends IBaseView,T extends Base
         }
         init_data();
     }
+    @Override
     protected  abstract int   setContentViewId();
 
 
