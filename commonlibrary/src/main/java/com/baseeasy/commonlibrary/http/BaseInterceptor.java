@@ -122,7 +122,11 @@ public Response intercept(Chain chain) throws IOException {
             }
             String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
             CommonParameter userParameter=new CommonParameter();
-            userParameter.setAppversion(SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION));
+            String appVersion=SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION);
+            if("".equals(appVersion)){
+                appVersion=   AppUtils.getVersionCode(BaseApplication.getInstance().getApplicationContext())+"";
+            }
+            userParameter.setAppversion(appVersion);
             if(!userid.equals("")){
                 userParameter.setUserid(userid);
             }
