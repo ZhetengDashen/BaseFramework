@@ -18,6 +18,7 @@ import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventConst;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 import com.luck.picture.lib.PictureSelector;
@@ -94,6 +95,7 @@ public class SelectImageFragment extends Fragment {
     public void startTakingPhotoSeparate() {
         PictureSelector.create(this)
                 .openCamera(PictureMimeType.ofImage())
+                .loadImageEngine(GlideEngine.createGlideEngine())
                 .compress(true)
                 .compressSavePath(Environment.getExternalStorageDirectory()+"/"+ AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                 .setOutputCameraPath("/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.CAMERA)
@@ -103,6 +105,7 @@ public class SelectImageFragment extends Fragment {
     public void startTakingPhotoAndImageSeparate() {
         PictureSelector.create(this)
                 .openGallery(PictureMimeType.ofImage())
+                .loadImageEngine(GlideEngine.createGlideEngine())
                 .compress(true)
                 .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                 .setOutputCameraPath("/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.CAMERA)

@@ -72,17 +72,8 @@ public Response intercept(Chain chain) throws IOException {
         for (int i = 0; i <parkeys.size() ; i++) {
             newBuilder.removeAllEncodedQueryParameters(parkeys.get(i));
         }
-        String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
-        CommonParameter userParameter=new CommonParameter();
-        String appVersion=SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION);
-        if(appVersion.equals("")){
-            appVersion=   AppUtils.getVersionCode(BaseApplication.getInstance().getApplicationContext())+"";
-        }
-        userParameter.setAppversion(appVersion);
-            if(!userid.equals("")){
-            userParameter.setUserid(userid);
-        }
-        jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter));
+
+        jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter()));
 
         HttpUrl url= newBuilder
                 .addQueryParameter("json", jsonObject.toJSONString())
@@ -120,17 +111,9 @@ public Response intercept(Chain chain) throws IOException {
                     }
                 }
             }
-            String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
-            CommonParameter userParameter=new CommonParameter();
-            String appVersion=SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION);
-            if("".equals(appVersion)){
-                appVersion=   AppUtils.getVersionCode(BaseApplication.getInstance().getApplicationContext())+"";
-            }
-            userParameter.setAppversion(appVersion);
-            if(!userid.equals("")){
-                userParameter.setUserid(userid);
-            }
-            jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter));
+
+
+            jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter()));
             Log.e("BaseInterceptor:",jsonObject.toJSONString());
             formBody = builder
                     .add("json", jsonObject.toJSONString())
@@ -188,17 +171,7 @@ public Response intercept(Chain chain) throws IOException {
 
                 }
             }
-            String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
-            CommonParameter userParameter=new CommonParameter();
-            String appVersion=SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION);
-             if("".equals(appVersion)){
-                 appVersion=   AppUtils.getVersionCode(BaseApplication.getInstance().getApplicationContext())+"";
-             }
-            userParameter.setAppversion(appVersion);
-            if(!userid.equals("")){
-                userParameter.setUserid(userid);
-            }
-            jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter));
+            jsonObject.putAll((JSONObject)JSONObject.toJSON(userParameter()));
             Log.e("BaseInterceptor:",jsonObject.toJSONString());
             formBody = builder
                     .addFormDataPart("json", jsonObject.toJSONString())
@@ -210,6 +183,23 @@ public Response intercept(Chain chain) throws IOException {
         }
 
         return request;
+    }
+    /**
+     * @return  公共参数
+     * **/
+    private static CommonParameter userParameter(){
+
+        String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
+        CommonParameter userParameter=new CommonParameter();
+        String appVersion=SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION);
+        if("".equals(appVersion)){
+            appVersion=   AppUtils.getVersionCode(BaseApplication.getInstance().getApplicationContext())+"";
+        }
+        userParameter.setAppversion(appVersion);
+        if(!userid.equals("")){
+            userParameter.setUserid(userid);
+        }
+        return  userParameter;
     }
 
         private static String bodyToString(final RequestBody request) {

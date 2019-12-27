@@ -12,4 +12,7 @@
     <color name="loading_color">#FFFFFF</color>
     <color name="loading_bg_color">#AB555555</color>
     <color name="loading_message_color">#FFFFFF</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="line_color">#F0EFEF</color>
 </resources>

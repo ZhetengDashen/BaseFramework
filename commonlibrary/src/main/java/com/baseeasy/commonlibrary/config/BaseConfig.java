@@ -13,6 +13,7 @@ public class BaseConfig {
         public static final String COMPRESSION="compression";//压缩图片路径
         public static final String SIGN="sign";//签名
         public static final String FINGERPRINT="fingerprint";//指纹图片路径
+        public static final String VIDEO ="video" ;//视频
     }
 
 }

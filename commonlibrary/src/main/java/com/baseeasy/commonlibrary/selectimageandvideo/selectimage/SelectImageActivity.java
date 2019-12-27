@@ -26,6 +26,7 @@ import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.luban.LuBanUtils;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -117,7 +118,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                     selectImageAdapter.remove(position);
 
                 }else  if(view.getId()==R.id.iv_image){
-                    PictureSelector.create(SelectImageActivity.this).themeStyle(R.style.picture_default_style).openExternalPreview(position, currentSelectList);
+                    PictureSelector.create(SelectImageActivity.this).themeStyle(R.style.picture_default_style)  .loadImageEngine(GlideEngine.createGlideEngine()).openExternalPreview(position, currentSelectList);
                 }
             }
         });
@@ -130,6 +131,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 case 0:
                     PictureSelector.create(SelectImageActivity.this)
                             .openGallery(PictureMimeType.ofImage())
+                            .loadImageEngine(GlideEngine.createGlideEngine())
                             .compress(true)
                             .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
                             .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
@@ -140,6 +142,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 case 1:
                     PictureSelector.create(SelectImageActivity.this)
                             .openCamera(PictureMimeType.ofImage())
+                            .loadImageEngine(GlideEngine.createGlideEngine())
                             .compress(true)
                             .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                             .setOutputCameraPath("/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.CAMERA)

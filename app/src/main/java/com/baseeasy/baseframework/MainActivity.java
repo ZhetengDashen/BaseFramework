@@ -2,6 +2,7 @@ package com.baseeasy.baseframework;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,7 +20,11 @@ import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoConfig;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
+import com.luck.picture.lib.PictureSelector;
 import com.test.TestUser;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -103,6 +108,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
                 }
                 break;
+            case "video":
+                  textView.setText((String)event.getEvent());
+                break;
         }
 
 
@@ -163,7 +171,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                }, selectImageBeans);
 
-                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
+//             SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
 //                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
 //                    @Override
 //                    public void onTakingPhoto(SelectImageBean imageBean) {
@@ -179,7 +187,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                });
 //
 //                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
-//                SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");
+//             SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");
+
+//                ShootVideoUtils.getInstance().startShootVideo(this,new ShootVideoConfig(10,0), new ShootVideoCallBack() {
+//                    @Override
+//                    public void onShootVideo(String videoPath) {
+//                        Log.e("KK",videoPath);
+//
+//                    }
+//                });
+                ShootVideoUtils.getInstance().startShootVideo(this,new ShootVideoConfig(10,0),"video");
                 break;
             case R.id.button_ff:
                 startActivity(new Intent(this, FingerprintActivity.class));

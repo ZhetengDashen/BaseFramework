@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                app:srcCompat="@drawable/ic_placeholder"
+                app:srcCompat="@drawable/picture_image_placeholder"
                 />
 
             <ImageView
@@ -28,7 +28,7 @@
                 android:layout_height="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_delete_photo"
+                app:srcCompat="@drawable/picture_icon_delete_photo"
                 tools:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.baseeasy.commonlibrary.weight.SquareFrameLayout>
