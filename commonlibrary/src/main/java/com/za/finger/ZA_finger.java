@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 /**
  * @author zhaohongwei
@@ -14,162 +14,162 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-//ZA_finger∫ÕZAndroid ±ÿ–Î∑≈µΩcom.fingerœ¬
+//ZA_fingerÂíåZAndroid ÂøÖÈ°ªÊîæÂà∞com.finger‰∏ã
 public class ZA_finger {
-	
-	final String HUB_RST_PATCH="/sys/zhwpower/zhw_hubrest";
-	final String CARD_POWER_PATCH="/sys/zhwpower/zhw_power_card";
-	final String FINGER_POWER_PATCH="/sys/zhwpower/zhw_power_finger";
-	final String DOOR1_POWER_PATCH="/sys/zhwpower/zhw_power_door1";
-	final String DOOR2_POWER_PATCH="/sys/zhwpower/zhw_power_door2";
-	
-	public int IO_Switch(String cardpowerPath, int on){
-		try{
-			
-			File powerFile = new File(cardpowerPath);
-			if(!powerFile.exists()){
-				
-				return 0;
-				
-			}
-			BufferedWriter bufWriter = new BufferedWriter(new FileWriter(powerFile));
-			bufWriter.write(Integer.toString(on));
-			bufWriter.close();
-			return 1;
-			
-		} catch (IOException e) {
-			e.printStackTrace();  return 0;
-		}
-		
-	}
-	
-	public static String SerialPortnum(){
-	
-		String cardpowerPath = "/sys/zhwpower/zhw_id";
-		String str = null;
-		
-		try{
-			
-			File powerFile = new File(cardpowerPath);
-			if(!powerFile.exists()){
-				return null;
-				
-			}
-			
-			BufferedReader bufReader = new BufferedReader(new FileReader(powerFile));
-			//bufWriter = new BufferedWriter(new FileWriter(powerFile));
-			str=bufReader.readLine();
-			bufReader.close();
-			
-			if(str.equals("0")){
-				str="/dev/ttyS0";
-				
-			}else if(str.equals("1")){
-				str="/dev/ttyS1";
-				
-			}else if(str.equals("2")){
-				
-				str="/dev/ttyS2";
-				
-			}else if(str.equals("3")){
-				
-				str="/dev/ttyS3";
-				
-			}else if(str.equals("4")){
-				
-				str="/dev/ttyS4";
-				
-			}else{
-				str="/dev/ttyS0";
-				
-			}
-			return str;
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();  return null;
-			
-		}
-		
-	}
-	
-	/**
-	 * ¥Úø™…Ì∑›÷§ƒ£øÈµÁ‘¥
-	 */
-	public   int  card_power_on()
-	{
-		return IO_Switch(CARD_POWER_PATCH,1);
 
-	}
-	/**
-	 * πÿ±’…Ì∑›÷§ƒ£øÈµÁ‘¥
-	 */
-	public   int  card_power_off() 
-	{
-		return IO_Switch(CARD_POWER_PATCH,0);	
-	}
-	/**
-	 * ¥Úø™÷∏Œ∆ƒ£øÈµÁ‘¥
-	 */
-	public   int  finger_power_on()
-	{
-		return IO_Switch(FINGER_POWER_PATCH,1);
-	}
-	/**
-	 * πÿ±’÷∏Œ∆ƒ£øÈµÁ‘¥
-	 */
-	public   int  finger_power_off()
-	{
-		return IO_Switch(FINGER_POWER_PATCH,0);
-	}
+    final String HUB_RST_PATCH="/sys/zhwpower/zhw_hubrest";
+    final String CARD_POWER_PATCH="/sys/zhwpower/zhw_power_card";
+    final String FINGER_POWER_PATCH="/sys/zhwpower/zhw_power_finger";
+    final String DOOR1_POWER_PATCH="/sys/zhwpower/zhw_power_door1";
+    final String DOOR2_POWER_PATCH="/sys/zhwpower/zhw_power_door2";
 
-	/**
-	 * USB hub ∏¥Œª
-	 */
-	public   int  hub_rest(int Ms)
-	{
-		
-		IO_Switch(HUB_RST_PATCH,0);
-		try {
-			Thread.sleep(Ms);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		IO_Switch(HUB_RST_PATCH,1);
-		return 0;	
+    public int IO_Switch(String cardpowerPath, int on){
+        try{
 
-	}
-	
-	/**
-	 * ¥Úø™√≈Ω˚1µÁ‘¥
-	 */
-	public   int  door1_power_on()
-	{
-		return IO_Switch(DOOR1_POWER_PATCH,1);
-	}
-	/**
-	 * πÿ±’√≈Ω˚1µÁ‘¥
-	 */
-	public   int  door1_power_off()
-	{
-		return IO_Switch(DOOR1_POWER_PATCH,0);
-	}
-	
-	/**
-	 * ¥Úø™√≈Ω˚2µÁ‘¥
-	 */
-	public   int  door2_power_on()
-	{
-		return IO_Switch(DOOR2_POWER_PATCH,1);
-	}
-	/**
-	 * πÿ±’√≈Ω˚2µÁ‘¥
-	 */
-	public   int  door2_power_off()
-	{
-		return IO_Switch(DOOR2_POWER_PATCH,0);
-	}
-	
-	
+            File powerFile = new File(cardpowerPath);
+            if(!powerFile.exists()){
+
+                return 0;
+
+            }
+            BufferedWriter bufWriter = new BufferedWriter(new FileWriter(powerFile));
+            bufWriter.write(Integer.toString(on));
+            bufWriter.close();
+            return 1;
+
+        } catch (IOException e) {
+            e.printStackTrace();  return 0;
+        }
+
+    }
+
+    public static String SerialPortnum(){
+
+        String cardpowerPath = "/sys/zhwpower/zhw_id";
+        String str = null;
+
+        try{
+
+            File powerFile = new File(cardpowerPath);
+            if(!powerFile.exists()){
+                return null;
+
+            }
+
+            BufferedReader bufReader = new BufferedReader(new FileReader(powerFile));
+            //bufWriter = new BufferedWriter(new FileWriter(powerFile));
+            str=bufReader.readLine();
+            bufReader.close();
+
+            if(str.equals("0")){
+                str="/dev/ttyS0";
+
+            }else if(str.equals("1")){
+                str="/dev/ttyS1";
+
+            }else if(str.equals("2")){
+
+                str="/dev/ttyS2";
+
+            }else if(str.equals("3")){
+
+                str="/dev/ttyS3";
+
+            }else if(str.equals("4")){
+
+                str="/dev/ttyS4";
+
+            }else{
+                str="/dev/ttyS0";
+
+            }
+            return str;
+
+        } catch (IOException e) {
+
+            e.printStackTrace();  return null;
+
+        }
+
+    }
+
+    /**
+     * ÊâìÂºÄË∫´‰ªΩËØÅÊ®°ÂùóÁîµÊ∫ê
+     */
+    public   int  card_power_on()
+    {
+        return IO_Switch(CARD_POWER_PATCH,1);
+
+    }
+    /**
+     * ÂÖ≥Èó≠Ë∫´‰ªΩËØÅÊ®°ÂùóÁîµÊ∫ê
+     */
+    public   int  card_power_off()
+    {
+        return IO_Switch(CARD_POWER_PATCH,0);
+    }
+    /**
+     * ÊâìÂºÄÊåáÁ∫πÊ®°ÂùóÁîµÊ∫ê
+     */
+    public   int  finger_power_on()
+    {
+        return IO_Switch(FINGER_POWER_PATCH,1);
+    }
+    /**
+     * ÂÖ≥Èó≠ÊåáÁ∫πÊ®°ÂùóÁîµÊ∫ê
+     */
+    public   int  finger_power_off()
+    {
+        return IO_Switch(FINGER_POWER_PATCH,0);
+    }
+
+    /**
+     * USB hub Â§ç‰Ωç
+     */
+    public   int  hub_rest(int Ms)
+    {
+
+        IO_Switch(HUB_RST_PATCH,0);
+        try {
+            Thread.sleep(Ms);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        IO_Switch(HUB_RST_PATCH,1);
+        return 0;
+
+    }
+
+    /**
+     * ÊâìÂºÄÈó®Á¶Å1ÁîµÊ∫ê
+     */
+    public   int  door1_power_on()
+    {
+        return IO_Switch(DOOR1_POWER_PATCH,1);
+    }
+    /**
+     * ÂÖ≥Èó≠Èó®Á¶Å1ÁîµÊ∫ê
+     */
+    public   int  door1_power_off()
+    {
+        return IO_Switch(DOOR1_POWER_PATCH,0);
+    }
+
+    /**
+     * ÊâìÂºÄÈó®Á¶Å2ÁîµÊ∫ê
+     */
+    public   int  door2_power_on()
+    {
+        return IO_Switch(DOOR2_POWER_PATCH,1);
+    }
+    /**
+     * ÂÖ≥Èó≠Èó®Á¶Å2ÁîµÊ∫ê
+     */
+    public   int  door2_power_off()
+    {
+        return IO_Switch(DOOR2_POWER_PATCH,0);
+    }
+
+
 }
