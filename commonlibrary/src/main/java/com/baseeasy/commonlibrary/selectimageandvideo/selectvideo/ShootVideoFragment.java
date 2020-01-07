@@ -65,7 +65,7 @@ public class ShootVideoFragment extends Fragment {
                 .loadImageEngine(GlideEngine.createGlideEngine())
                 .videoQuality(shootVideoConfig.getVideoQuality())
                 .recordVideoSecond(shootVideoConfig.getVideoSecond())
-                .setOutputCameraPath("/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.VIDEO)
+                .setOutputCameraPath("/"+PictureShared.FolderNameConfig.VIDEO)
                 .forResult(SHOOTVIDEO);
 
     }

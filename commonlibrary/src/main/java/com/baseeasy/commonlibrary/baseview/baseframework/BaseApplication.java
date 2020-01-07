@@ -95,7 +95,7 @@ public  class BaseApplication extends Application {
         //sdk日志配置
         LogUtils.getLog2FileConfig().configLog2FileEnable(isFileEnable)
                 // targetSdkVersion >= 23 需要确保有写sdcard权限
-                .configLog2FilePath(FileUtils.SDPATH +"/"+ AppUtils.getAppName(this)+"/"+ BaseConfig.FOLDER_NAME.LOG)
+                .configLog2FilePath(FileUtils.SDPATH+BaseConfig.FOLDER_PATH.LOG)
                 .configLog2FileNameFormat("%d{yyyyMMdd}.txt")
                 .configLogFileEngine(new MyLogFileEngine(getApplicationContext()));
     }

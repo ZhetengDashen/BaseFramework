@@ -72,8 +72,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_select_image);
         initView();
         initData();
-        FileUtils.createSDDir(AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION);
-        FileUtils.createNoMedia(AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION);
+        FileUtils.createSDDir(PictureShared.FolderNameConfig.COMPRESSION);
+        FileUtils.createNoMedia(PictureShared.FolderNameConfig.COMPRESSION);
 
     }
 
@@ -134,8 +134,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .loadImageEngine(GlideEngine.createGlideEngine())
                             .compress(true)
                             .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
-                            .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                            .setOutputCameraPath("/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.CAMERA)
+                            .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                            .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
                             .maxSelectNum(100)// 最大图片选择数量 int
                             .forResult(SELECT_IMAGE_REQUEST);
                     break;
@@ -144,8 +144,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .openCamera(PictureMimeType.ofImage())
                             .loadImageEngine(GlideEngine.createGlideEngine())
                             .compress(true)
-                            .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                            .setOutputCameraPath("/"+AppUtils.getAppName(this)+"/"+PictureShared.FolderNameConfig.CAMERA)
+                            .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                            .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
                             .forResult(TAKING_PHOTO_REQUEST);
                     break;
             }

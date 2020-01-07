@@ -45,8 +45,8 @@ public class ShootVideoUtils {
      private ShootVideoFragment initFragment(FragmentActivity activity){
          ShootVideoFragment selectVideoFragment = (ShootVideoFragment) activity.getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
          if (selectVideoFragment == null) {
-             FileUtils.createSDDir(AppUtils.getAppName(activity)+"/"+PictureShared.FolderNameConfig.VIDEO);
-             FileUtils.createNoMedia(AppUtils.getAppName(activity)+"/"+PictureShared.FolderNameConfig.VIDEO);
+             FileUtils.createSDDir(PictureShared.FolderNameConfig.VIDEO);
+             FileUtils.createNoMedia(PictureShared.FolderNameConfig.VIDEO);
              selectVideoFragment = new ShootVideoFragment();
              FragmentManager manager = activity.getSupportFragmentManager();
              manager.beginTransaction()

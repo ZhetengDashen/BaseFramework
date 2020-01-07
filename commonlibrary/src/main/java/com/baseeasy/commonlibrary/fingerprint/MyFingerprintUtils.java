@@ -483,7 +483,7 @@ public class MyFingerprintUtils {
                 timecount = (sd - st);
 
 
-                String str = FileUtils.SDPATH + AppUtils.getAppName(activity)+"/"+ BaseConfig.FOLDER_NAME.FINGERPRINT+"/" + UUID.randomUUID().toString().replace("-", "")+".bmp";
+                String str = FileUtils.SDPATH + BaseConfig.FOLDER_PATH.FINGERPRINT+"/" + UUID.randomUUID().toString().replace("-", "")+".bmp";
 
                 a6.ZAZImgData2BMP(Image, str);
                 temp = "获取图像成功";

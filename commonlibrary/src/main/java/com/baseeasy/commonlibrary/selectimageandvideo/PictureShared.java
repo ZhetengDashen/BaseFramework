@@ -29,9 +29,9 @@ public class PictureShared {
     }
       //文件夹相关配置
     public static class FolderNameConfig {
-         public final static String COMPRESSION = BaseConfig.FOLDER_NAME.COMPRESSION;//压缩文件目录
-          public final static String CAMERA = BaseConfig.FOLDER_NAME.CAMERA;//拍照路径
-          public final static String VIDEO=BaseConfig.FOLDER_NAME.VIDEO;//视频
+          public final static String COMPRESSION = BaseConfig.FOLDER_PATH.COMPRESSION;//压缩文件目录
+          public final static String CAMERA = BaseConfig.FOLDER_PATH.CAMERA;//拍照路径
+          public final static String VIDEO=BaseConfig.FOLDER_PATH.VIDEO;//视频
 
     }
 
