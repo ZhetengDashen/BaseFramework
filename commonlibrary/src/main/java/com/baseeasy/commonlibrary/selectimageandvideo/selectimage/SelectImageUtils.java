@@ -79,8 +79,20 @@ public class SelectImageUtils {
      *
      * */
     public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack){
-        getSelectImageFragment(activity, selectLocationCallBack).startSelectImage();
+        startSelectImage(activity,selectLocationCallBack,PictureShared.MAX_PHOTO_NUM);
     }
+
+
+    /**
+     * 选择照片
+     * @param  activity
+     * @param  selectLocationCallBack 回调接口
+     *
+     * */
+    public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,int maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startSelectImage(maxNum);
+    }
+
     /**
      * 选择照片
      *  @param  activity
@@ -89,7 +101,20 @@ public class SelectImageUtils {
      *
      * */
     public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<SelectImageBean> selectImageBeans){
-        getSelectImageFragment(activity, selectLocationCallBack).startSelectImage( JSONObject.toJSONString(selectImageBeans));
+          startSelectImage(activity,selectLocationCallBack,selectImageBeans,PictureShared.MAX_PHOTO_NUM);
+
+    }
+
+
+    /**
+     * 选择照片
+     *  @param  activity
+     * @param  selectLocationCallBack 回调接口
+     * @selectImageBeans 已选择照片
+     *
+     * */
+    public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<SelectImageBean> selectImageBeans,int  maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startSelectImage( JSONObject.toJSONString(selectImageBeans),maxNum);
     }
 
     /**
@@ -99,9 +124,22 @@ public class SelectImageUtils {
      * @param  eventBusFlag eventBus 回调标记
      * */
     public void startSelectImage(FragmentActivity activity,String eventBusFlag){
+        startSelectImage(activity,eventBusFlag,PictureShared.MAX_PHOTO_NUM);
+
+    }
+
+
+    /**
+     * 选择照片
+     * @param  activity
+     * @param  eventBusFlag 回调接口
+     * @param  eventBusFlag eventBus 回调标记
+     * */
+    public void startSelectImage(FragmentActivity activity,String eventBusFlag,int maxNum){
 
         Intent intent = new Intent(activity, SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.EVENT_BUS_FLAG,eventBusFlag);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         activity.startActivity(intent);
     }
 
@@ -113,9 +151,22 @@ public class SelectImageUtils {
      *
      * */
     public void startSelectImage(FragmentActivity activity,String eventBusFlag,List<SelectImageBean> selectImageBeans){
+        startSelectImage(activity,eventBusFlag,selectImageBeans,PictureShared.MAX_PHOTO_NUM);
+    }
+
+
+    /**
+     * 选择照片
+     * @param  activity
+     * @param  eventBusFlag eventBus 回调标记
+     * @selectImageBeans 已选择照片
+     *
+     * */
+    public void startSelectImage(FragmentActivity activity,String eventBusFlag,List<SelectImageBean> selectImageBeans,int maxNum){
         Intent intent = new Intent(activity, SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.EVENT_BUS_FLAG,eventBusFlag);
         intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES, JSONObject.toJSONString(selectImageBeans));
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         activity.startActivity(intent);
     }
 
@@ -126,7 +177,18 @@ public class SelectImageUtils {
     *
     **/
     public void startTakingPhoto(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack){
-        getTakingPhotoFragment(activity, takingPhotoCallBack).startTakingPhoto();
+
+        startTakingPhoto(activity,takingPhotoCallBack,PictureShared.MAX_PHOTO_NUM);
+    }
+
+    /**
+     * 只有拍照
+     * @param activity
+     * @param takingPhotoCallBack 回调
+     *
+     **/
+    public void startTakingPhoto(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack,int maxNum){
+        getTakingPhotoFragment(activity, takingPhotoCallBack).startTakingPhoto(maxNum);
     }
 
 
@@ -137,7 +199,19 @@ public class SelectImageUtils {
      * @param  takingPhoto 展示的照片
      **/
     public void startTakingPhoto(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack, List<SelectImageBean> takingPhoto){
-        getTakingPhotoFragment(activity, takingPhotoCallBack).startTakingPhoto( JSONObject.toJSONString(takingPhoto));
+
+        startTakingPhoto(activity,takingPhotoCallBack,takingPhoto,PictureShared.MAX_PHOTO_NUM);
+    }
+
+
+    /**
+     * 只有拍照
+     * @param activity
+     * @param takingPhotoCallBack 回调
+     * @param  takingPhoto 展示的照片
+     **/
+    public void startTakingPhoto(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack, List<SelectImageBean> takingPhoto,int maxNum){
+        getTakingPhotoFragment(activity, takingPhotoCallBack).startTakingPhoto( JSONObject.toJSONString(takingPhoto),maxNum);
     }
 
     /**
@@ -146,13 +220,22 @@ public class SelectImageUtils {
      * @param eventBusFlag 回调
      **/
     public void startTakingPhoto(FragmentActivity activity,String eventBusFlag){
+
+        startTakingPhoto(activity,eventBusFlag,PictureShared.MAX_PHOTO_NUM);
+    }
+    /**
+     * 只有拍照
+     * @param activity
+     * @param eventBusFlag 回调
+     **/
+    public void startTakingPhoto(FragmentActivity activity,String eventBusFlag, int maxNum){
         Intent intent = new Intent(activity, SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.EVENT_BUS_FLAG,eventBusFlag);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_TAKING_PHOTO);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         activity.startActivity(intent);
 
     }
-
 
 
     /**
@@ -162,12 +245,30 @@ public class SelectImageUtils {
      * @param  takingPhoto 展示的照片
      **/
     public void startTakingPhoto(FragmentActivity activity,String eventBusFlag,List<SelectImageBean> takingPhoto){
+        startTakingPhoto(activity,eventBusFlag,takingPhoto,PictureShared.MAX_PHOTO_NUM);
+    }
+
+
+    /**
+     * 只有拍照
+     * @param activity
+     * @param eventBusFlag 回调
+     * @param  takingPhoto 展示的照片
+     **/
+    public void startTakingPhoto(FragmentActivity activity,String eventBusFlag,List<SelectImageBean> takingPhoto,int maxNum){
         Intent intent = new Intent(activity, SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.EVENT_BUS_FLAG,eventBusFlag);
         intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES, JSONObject.toJSONString(takingPhoto));
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_TAKING_PHOTO);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         activity.startActivity(intent);
     }
+
+
+
+
+
+
 
     /**
      * 只有拍照 单张

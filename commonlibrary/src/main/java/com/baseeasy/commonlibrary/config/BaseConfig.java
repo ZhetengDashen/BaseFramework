@@ -23,7 +23,6 @@ public class BaseConfig {
         private static  String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
         public static final String APP_FOLDER_PATH=AppUtils.getAppName(BaseApplication.getInstance().getApplicationContext())+"/"+
                        userid=="" ?  MD5Utils.encodeMD5(userid):"0" +"/";
-
         public static final String LOG=APP_FOLDER_PATH+FOLDER_NAME.LOG;
         public static final String CAMERA=APP_FOLDER_PATH+FOLDER_NAME.CAMERA;
         public static final String COMPRESSION=APP_FOLDER_PATH+FOLDER_NAME.COMPRESSION;

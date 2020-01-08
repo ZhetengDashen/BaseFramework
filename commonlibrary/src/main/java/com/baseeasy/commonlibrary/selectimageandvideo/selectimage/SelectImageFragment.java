@@ -18,6 +18,7 @@ import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventConst;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
+import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
@@ -54,26 +55,30 @@ public class SelectImageFragment extends Fragment {
 
 
 
-    public void startSelectImage() {
+    public void startSelectImage(int maxNum) {
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_IMAGE);
         this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
     }
-    public void startSelectImage(String select) {
+    public void startSelectImage(String select,int maxNum) {
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_IMAGE);
         intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES,select);
         this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
     }
 
-    public void startTakingPhoto() {
+    public void startTakingPhoto(int maxNum) {
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_TAKING_PHOTO);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         this.startActivityForResult(intent, TAKINGPHOTO_REQUESTCODE);
     }
-    public void startTakingPhoto(String select) {
+    public void startTakingPhoto(String select,int maxNum) {
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_TAKING_PHOTO);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES,select);
         this.startActivityForResult(intent, TAKINGPHOTO_REQUESTCODE);
     }
@@ -97,8 +102,8 @@ public class SelectImageFragment extends Fragment {
                 .openCamera(PictureMimeType.ofImage())
                 .loadImageEngine(GlideEngine.createGlideEngine())
                 .compress(true)
-                .compressSavePath(Environment.getExternalStorageDirectory()+"/"+ AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                .setOutputCameraPath("/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.CAMERA)
+                .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }
 
@@ -107,8 +112,8 @@ public class SelectImageFragment extends Fragment {
                 .openGallery(PictureMimeType.ofImage())
                 .loadImageEngine(GlideEngine.createGlideEngine())
                 .compress(true)
-                .compressSavePath(Environment.getExternalStorageDirectory()+"/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                .setOutputCameraPath("/"+AppUtils.getAppName(getActivity())+"/"+PictureShared.FolderNameConfig.CAMERA)
+                .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
                 .maxSelectNum(1)// 最大图片选择数量 int
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }

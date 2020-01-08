@@ -178,7 +178,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                        LogUtils.e(JSON.toJSONString(imageBean));
 //                    }
 //                });
-//                SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans);
+             SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans,1);
 //                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
 //                    @Override
 //                    public void onTakingPhoto(SelectImageBean imageBean) {
@@ -188,7 +188,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //
 //                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
 //             SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");
-
+//
 //                ShootVideoUtils.getInstance().startShootVideo(this,new ShootVideoConfig(10,0), new ShootVideoCallBack() {
 //                    @Override
 //                    public void onShootVideo(String videoPath) {
@@ -196,7 +196,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //
 //                    }
 //                });
-                ShootVideoUtils.getInstance().startShootVideo(this,new ShootVideoConfig(10,0),"video");
+//                ShootVideoUtils.getInstance().startShootVideo(this,new ShootVideoConfig(10,0),"video");
                 break;
             case R.id.button_ff:
                 startActivity(new Intent(this, FingerprintActivity.class));

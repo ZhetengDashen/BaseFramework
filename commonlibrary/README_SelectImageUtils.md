@@ -103,7 +103,7 @@
 
 #### 10.
 >  功能说明：单张拍照  
->  参数说明： activity、   takingPhotoSeparateCallBack  回调接口  
+>  参数说明： activity、  "imageCallback"：EventBusFlagName    
 >  回调方式： EventBus  
 >  使用示例：
 > ```
@@ -116,12 +116,11 @@
 >  回调方式：接口  
 >  使用示例：
 > ```
->SelectActionListDialog.createDialog(MainActivity.this, aa, new SelectActionListDialog.ActionCallback<String>() {
-                    @Override
-                    public void callback(String action) {
-
-                    }
-                }).show();
+>      SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this,new TakingPhotoSeparateCallBack() {
+>                     @Override
+>                     public void onTakingPhoto(SelectImageBean imageBean) {     
+>                     }
+ >                }););
 >```
 
 #### 12.
@@ -130,10 +129,10 @@
 >  回调方式： EventBus  
 >  使用示例：
 > ```
->    SelectImageUtils.getInstance().startTakingPhotoSeparate(this, "imageCallback");
+>   SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
 >```
 
-startTakingPhotoAndImageSeparate
+
 
 ### 附加说明：
  > 1.通过EventBus回调接收数据说明：  

@@ -9,6 +9,8 @@ import com.baseeasy.commonlibrary.config.BaseConfig;
  * 描述：
  */
 public class PictureShared {
+    public final static int  MAX_PHOTO_NUM=100;
+    public final static int  MAX_VIDEO_NUM=100;
     public final static int SELECT_IMAGE_REQUEST = 0;
     public final static int TAKING_PHOTO_REQUEST = 1;
 
@@ -26,6 +28,8 @@ public class PictureShared {
         public final static String EXIST_IMAGES = "picture_data";
         public final static String ACTION_TYPE = "picture_action_type";
         public final static String SELECTIMAGE_DATA="picture_selectImageBeansData";
+        public  final static String MAXPHOTONUM="maxphotonum";
+        public  final static String MAXVIDEONUM="maxvideonum";
     }
       //文件夹相关配置
     public static class FolderNameConfig {

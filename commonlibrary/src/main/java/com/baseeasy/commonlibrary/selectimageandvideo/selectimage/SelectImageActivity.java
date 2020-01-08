@@ -34,6 +34,7 @@ import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.magiclon.individuationtoast.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,18 +55,15 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
     private ImageView iv_title_back;
     private TextView tv_title_title;
-
-
     private TextView tv_save;
     private String eventBugFlag="";
     private String localMediaList_json="";//展示的图片
     private int action_type=0;//0选择图片   1拍照
     private  List<LocalMedia> currentSelectList=new ArrayList<>();
-
     private RecyclerView recyclerView;
     private SelectImageAdapter selectImageAdapter;
-
     private TextView tv_add;
+    private int  maxPhoto=PictureShared.MAX_PHOTO_NUM;//默认100
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +104,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
            e.printStackTrace();
         }
          action_type=getIntent().getIntExtra(PictureShared.IntentExtraName.ACTION_TYPE, SELECT_IMAGE_REQUEST);
-
+         maxPhoto=getIntent().getIntExtra(PictureShared.IntentExtraName.MAXPHOTONUM,PictureShared.MAX_PHOTO_NUM);
 
         selectImageAdapter=new SelectImageAdapter(currentSelectList);
         recyclerView.setLayoutManager(new GridLayoutManager(this,4));
@@ -127,6 +125,11 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tv_add) {
+            int allowNum=  maxPhoto-selectImageAdapter.getData().size();
+            if(allowNum<=0){
+                ToastUtil.showwarning(this,"只能选择"+maxPhoto+"张");
+                return;
+            }
             switch (action_type){
                 case 0:
                     PictureSelector.create(SelectImageActivity.this)
@@ -136,7 +139,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                             .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
-                            .maxSelectNum(100)// 最大图片选择数量 int
+                            .maxSelectNum(allowNum)// 最大图片选择数量 int
                             .forResult(SELECT_IMAGE_REQUEST);
                     break;
                 case 1:
