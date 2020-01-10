@@ -29,7 +29,7 @@ public class BaseConfig {
         public static final String SIGN=APP_FOLDER_PATH+FOLDER_NAME.SIGN;
         public static final String FINGERPRINT=APP_FOLDER_PATH+FOLDER_NAME.FINGERPRINT;
         public static final String VIDEO=APP_FOLDER_PATH+FOLDER_NAME.VIDEO;
-
+        public static final String SCREENSHOTS=APP_FOLDER_PATH+FOLDER_NAME.SCREENSHOTS;
     }
     /**
      *文件夹名称
@@ -41,6 +41,7 @@ public class BaseConfig {
         public static final String SIGN="sign";//签名
         public static final String FINGERPRINT="fingerprint";//指纹图片路径
         public static final String VIDEO ="video" ;//视频
+        public static final String SCREENSHOTS="screenshots";//截图
     }
 
 }

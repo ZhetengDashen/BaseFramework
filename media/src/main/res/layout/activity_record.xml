@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.zyf.vc.view.CameraPreview
+        android:id="@+id/camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/change_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="35dp"
+        android:layout_toLeftOf="@+id/open_light"
+        android:src="@mipmap/icon_camera" />
+
+    <ImageView
+        android:id="@+id/open_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="35dp"
+        android:layout_toLeftOf="@+id/cancel_btn"
+        android:src="@mipmap/icon_light_off" />
+
+    <ImageView
+        android:id="@+id/cancel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="35dp"
+        android:src="@mipmap/icon_close" />
+
+    <com.zyf.vc.view.RecordProgressBar
+        app:rpb_runningColor="@color/colorPrimary"
+        android:id="@+id/record_pb"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@+id/button_start"
+        android:layout_marginBottom="30dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:src="@mipmap/btn_recording"
+        android:visibility="visible" />
+
+
+</RelativeLayout>

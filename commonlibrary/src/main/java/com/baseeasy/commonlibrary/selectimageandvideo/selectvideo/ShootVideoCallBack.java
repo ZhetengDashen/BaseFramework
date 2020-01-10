@@ -10,6 +10,8 @@ import java.util.List;
  * 邮箱：sos181@163.com
  * 描述：拍摄视频回调
  */
-public interface ShootVideoCallBack {
-    void onShootVideo(String videoPath);
+public interface ShootVideoCallBack   {
+    void onShootVideo(List<String> pathList);
+    void onAddVideoList(List<String> pathList);
+    void onDeleteVideoList(List<String> pathList);
 }

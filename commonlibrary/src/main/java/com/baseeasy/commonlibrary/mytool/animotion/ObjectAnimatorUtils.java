@@ -10,7 +10,7 @@ import com.daasuu.ei.EasingInterpolator;
 /**
  * Created by Wang on 2016/7/6.
  */
-public class ObjectAnimator_Utils {
+public class ObjectAnimatorUtils {
 //    scaleX
     //translationX 'rotationX' 'alpha'
 

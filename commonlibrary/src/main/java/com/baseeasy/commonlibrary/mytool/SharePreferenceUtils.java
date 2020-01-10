@@ -17,7 +17,7 @@ public class SharePreferenceUtils {
 
     public static void  setValue(Context context, String key, Object valve){
         if(sp==null){
-            sp=context.getSharedPreferences(sharePreferncesName,context.MODE_PRIVATE);
+            sp=context.getSharedPreferences(sharePreferncesName,Context.MODE_PRIVATE);
         }
         SharedPreferences.Editor editor =sp.edit();
         if(valve instanceof String){

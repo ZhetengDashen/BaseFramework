@@ -1,11 +1,13 @@
 package com.baseeasy.commonlibrary.mytool.file;
 
+import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -136,6 +138,26 @@ public class FileUtils {
         return file;
     }
 
+    /**
+     * 保存bitmap
+     * @param bitmap
+     * @param fileName
+     * @param path 保存文件的路径（不包括sd卡前缀）
+     * */
+    public static  File saveBitmapFile(Bitmap bitmap, String path,String fileName){
+        File file=null;
+        try {
+            createSDDir(path);
+            file= creatSDFile(path + fileName);
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, bos);
+            bos.flush();
+            bos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
     //获取指定文件夹下的图片不包括二级目录推荐使用getAllFile（） 方法
     public static List<String> getImagePathFromSD(String folderPath) {
         // 图片列表

@@ -162,6 +162,7 @@ public class MyFingerprintUtils {
         byte[] pPassword = new byte[4];
 //				skipshow("open");
         Runnable r = new Runnable() {
+            @Override
             public void run() {
                 isusbfinshed = 3;
                 //ZA_finger fppower = new ZA_finger();
@@ -265,10 +266,11 @@ public class MyFingerprintUtils {
             isconnect = true;
         } else {
             m_fEvent.sendMessage(m_fEvent.obtainMessage(openfail, 0, 0));
-            if (defDeviceType == 2)
+            if (defDeviceType == 2) {
                 defDeviceType = 12;
-            else if (defDeviceType == 12)
+            } else if (defDeviceType == 12) {
                 defDeviceType = 2;
+            }
             isconnect = false;
         }
         m_fEvent.sendMessage(m_fEvent.obtainMessage(enbtn, 0, 0));
@@ -326,6 +328,7 @@ public class MyFingerprintUtils {
     }
 
     private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
+        @Override
         public void onReceive(Context context, Intent intent) {
             context.unregisterReceiver(mUsbReceiver);
             isusbfinshed = 0;
@@ -391,17 +394,23 @@ public class MyFingerprintUtils {
                 e.printStackTrace();
             }
             timeover++;
-            if (isusbfinshed == 2) break;
-            if (isusbfinshed == 3) break;
+            if (isusbfinshed == 2) {
+                break;
+            }
+            if (isusbfinshed == 3) {
+                break;
+            }
             if (timeover > 100) {
                 isusbfinshed = 2;
                 break;
             }
         }
-        if (isusbfinshed == 2)
+        if (isusbfinshed == 2) {
             return false;
-        if (isusbfinshed == 3)
+        }
+        if (isusbfinshed == 3) {
             return false;
+        }
         return true;
     }
 
@@ -409,21 +418,33 @@ public class MyFingerprintUtils {
         UsbDevice mDevice = device;
         Log.d(TAG, "setDevice " + mDevice);
         int fd = -1;
-        if (mDevice == null) return -1;
+        if (mDevice == null) {
+            return -1;
+        }
         connection = mDevManager.openDevice(mDevice);
-        if (!connection.claimInterface(mDevice.getInterface(0), true)) return -1;
+        if (!connection.claimInterface(mDevice.getInterface(0), true)) {
+            return -1;
+        }
 
-        if (mDevice.getInterfaceCount() < 1) return -1;
+        if (mDevice.getInterfaceCount() < 1) {
+            return -1;
+        }
         intf = mDevice.getInterface(0);
 
-        if (intf.getEndpointCount() == 0) return -1;
+        if (intf.getEndpointCount() == 0) {
+            return -1;
+        }
 
         if ((connection != null)) {
-            if (true) Log.e(TAG, "open connection success!");
+            if (true) {
+                Log.e(TAG, "open connection success!");
+            }
             fd = connection.getFileDescriptor();
             return fd;
         } else {
-            if (true) Log.e(TAG, "finger device open connection FAIL");
+            if (true) {
+                Log.e(TAG, "finger device open connection FAIL");
+            }
             return -1;
         }
     }
@@ -437,6 +458,7 @@ public class MyFingerprintUtils {
     }
 
     private Runnable fpTasks = new Runnable() {
+        @Override
         public void run()// 运行该服务执行此函数
         {
             m_fEvent.sendMessage(m_fEvent.obtainMessage(disbtn, 0, 0));

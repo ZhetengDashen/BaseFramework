@@ -1,7 +1,5 @@
 package com.baseeasy.commonlibrary.http;
 
-import com.baseeasy.commonlibrary.mytool.TokenUtils;
-
 /**
  * 作者：WangZhiQiang
  * 时间：2019/8/14

@@ -6,7 +6,12 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+/**
+ * 作者：WangZhiQiang
+ * 时间：2018/7/19
+ * 邮箱：sos181@163.com
+ * 描述：
+ */
 public class RetrofitFactory {
     public static int HTTP_TIME = 3000;
     public static <T> T create(Class<T> service) {

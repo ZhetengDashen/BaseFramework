@@ -1,8 +1,9 @@
-package com.baseeasy.commonlibrary.mytool;
+package com.baseeasy.commonlibrary.http;
 
 import android.util.Log;
 
 import com.baseeasy.commonlibrary.http.CommonParameter;
+import com.baseeasy.commonlibrary.mytool.MD5Utils;
 
 /**
  * 作者：WangZhiQiang

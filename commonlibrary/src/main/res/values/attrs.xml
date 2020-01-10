@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="squareframelayout">
+        <attr name="reltiveWidth" format="float"/>
+        <attr name="reltiveHeight" format="float"/>
+    </declare-styleable>
+
+</resources>

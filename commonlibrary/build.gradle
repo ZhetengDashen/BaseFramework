@@ -84,4 +84,5 @@ dependencies {
     api 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     api group: 'org.apache.commons', name: 'commons-text', version: '1.8'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation project(':media')
 }

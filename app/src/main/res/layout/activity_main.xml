@@ -145,4 +145,14 @@
         app:layout_constraintStart_toEndOf="@+id/binding"
         app:layout_constraintTop_toTopOf="@+id/binding"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="拍摄"
+        app:layout_constraintEnd_toEndOf="@+id/button_http"
+        app:layout_constraintStart_toEndOf="@+id/binding"
+        app:layout_constraintTop_toBottomOf="@+id/button_http" />
 </androidx.constraintlayout.widget.ConstraintLayout>

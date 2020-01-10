@@ -20,6 +20,7 @@ import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoConfig;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
@@ -51,7 +52,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button qianming;
     private Button button_data_binding;
     private Button button_http;
-
+    private Button button_video;
 
 
     @Override
@@ -85,6 +86,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         button_http = (Button) findViewById(R.id.button_http);
         button_http.setOnClickListener(this);
+        button_video=findViewById(R.id.video);
+        button_video.setOnClickListener(this);
     }
 
     @Override
@@ -161,15 +164,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                },selectImageBeans);
 
 //      SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
-//                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
-//                    @Override
-//                    public void onTakingPhoto(List<SelectImageBean> localMediaList) {
-//                        selectImageBeans = localMediaList;
-//                        for (int i = 0; i < selectImageBeans.size(); i++) {
-//                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
-//                        }
-//                    }
-//                }, selectImageBeans);
+                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
+                    @Override
+                    public void onTakingPhoto(List<SelectImageBean> localMediaList) {
+                        selectImageBeans = localMediaList;
+                        for (int i = 0; i < selectImageBeans.size(); i++) {
+                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
+                        }
+                    }
+                }, selectImageBeans);
 
 //             SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
 //                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
@@ -178,7 +181,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                        LogUtils.e(JSON.toJSONString(imageBean));
 //                    }
 //                });
-             SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans,1);
+//             SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans,1);
 //                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
 //                    @Override
 //                    public void onTakingPhoto(SelectImageBean imageBean) {
@@ -240,7 +243,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.button_http:
                  startActivity(new Intent(this, HTTPTestActivity.class));
                 break;
+            case  R.id.video:
+                ShootVideoUtils.getInstance().startShootVideo(MainActivity.this, new ShootVideoCallBack() {
+                    @Override
+                    public void onShootVideo(List<String> pathList) {
 
+                    }
+
+                    @Override
+                    public void onAddVideoList(List<String> pathList) {
+                        textView.setText(textView.getText().toString()+"添加："+pathList);
+                    }
+
+                    @Override
+                    public void onDeleteVideoList(List<String> pathList) {
+
+                        textView.setText(textView.getText().toString()+"减去："+pathList);
+                    }
+                }, 3);
+                break;
         }
     }
 

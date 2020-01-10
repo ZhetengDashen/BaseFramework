@@ -3,6 +3,8 @@ package com.baseeasy.commonlibrary.http;
 import android.util.Log;
 
 import com.apkfuns.logutils.LogUtils;
+import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
+import com.baseeasy.commonlibrary.mytool.AppUtils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -22,7 +24,12 @@ public class LoggingInterceptor {
         HttpLoggingInterceptor httpLoggingInterceptor=      new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                Log.w(TAG, "log: " + message);
+
+               if( AppUtils.isApkInDebug(BaseApplication.getInstance().getApplicationContext())){
+
+                   Log.w(TAG, "log: " + message);
+               }
+
             }
         });
         httpLoggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);

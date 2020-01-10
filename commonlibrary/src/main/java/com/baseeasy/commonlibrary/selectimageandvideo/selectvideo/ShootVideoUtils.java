@@ -1,6 +1,8 @@
 package com.baseeasy.commonlibrary.selectimageandvideo.selectvideo;
 
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 
 import androidx.fragment.app.FragmentActivity;
@@ -16,8 +18,13 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCal
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageFragment;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
+
+import io.reactivex.functions.Consumer;
+import io.reactivex.internal.observers.BlockingBaseObserver;
 
 
 /**
@@ -62,47 +69,48 @@ public class ShootVideoUtils {
         shootVideoFragment.setShootVideoCallBack(shootVideoCallBack);
         return shootVideoFragment;
     }
-    private ShootVideoFragment getShootVideoFragment(FragmentActivity activity, String eventBusFlag) {
-        ShootVideoFragment   shootVideoFragment=   initFragment(activity);
-        shootVideoFragment.setShootVideoEventBusFlag(eventBusFlag);
-        return shootVideoFragment;
-    }
-    /**
-     * 拍摄视频
-     * @param  activity
-     * @param  shootVideoCallBack 回调接口
-     *
-     * */
-    public void startShootVideo(FragmentActivity activity, ShootVideoConfig shootVideoConfig,ShootVideoCallBack shootVideoCallBack){
-        getShootVideoFragment(activity, shootVideoCallBack).startShootVideo(shootVideoConfig);
-    }
+
+
 
     /**
      * 拍摄视频
      * @param  activity
-     * @param  shootVideoCallBack 回调接口
+     * @param  shootVideoCallBack
      *
      * */
     public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack){
-        getShootVideoFragment(activity, shootVideoCallBack).startShootVideo(null);
+        startShootVideo(activity,shootVideoCallBack,PictureShared.MAX_PHOTO_NUM);
     }
     /**
      * 拍摄视频
      * @param  activity
-     * @param  eventBusFlg
+     * @param  shootVideoCallBack
      *
      * */
-    public void startShootVideo(FragmentActivity activity, ShootVideoConfig shootVideoConfig,String eventBusFlg){
-        getShootVideoFragment(activity, eventBusFlg).startShootVideo(shootVideoConfig);
+    public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,int maxNum){
+        ShootVideoFragment shootVideoFragment= getShootVideoFragment(activity, shootVideoCallBack);
+        isChickPermission(shootVideoFragment.getActivity());
+        shootVideoFragment.startShootVideo(maxNum);
     }
 
-    /**
-     * 拍摄视频
-     * @param  activity
-     * @param  eventBusFlg 回调接口
-     *
-     * */
-    public void startShootVideo(FragmentActivity activity,String eventBusFlg){
-        getShootVideoFragment(activity, eventBusFlg).startShootVideo(null);
+    @SuppressLint("CheckResult")
+    public void isChickPermission(FragmentActivity activity){
+
+        RxPermissions rxPermissions=new RxPermissions(activity);
+        rxPermissions.requestEach(Manifest.permission.CAMERA,Manifest.permission.RECORD_AUDIO).subscribe(new Consumer<Permission>() {
+            @Override
+            public void accept(Permission permission) throws Exception {
+                if (permission.granted) {
+                    // 用户已经同意该权限
+
+                } else if (permission.shouldShowRequestPermissionRationale) {
+                    // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
+                    activity.finish();
+                } else {
+                    // 用户拒绝了该权限，并且选中『不再询问』
+                    activity.finish();
+                }
+            }
+        });
     }
 }
