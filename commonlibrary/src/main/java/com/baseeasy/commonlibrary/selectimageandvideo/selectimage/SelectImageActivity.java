@@ -192,7 +192,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 //                EventBusUtils.post(new EventMessage<String>(EventConst.EVENT_CODE_OK, EventBusFlagImageOrVideo.ADD_VIDEO,path));
 
                     // 图片、视频、音频选择结果回调
-                  currentSelectList.clear();
+//                  currentSelectList.clear();
                   currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
 //                    currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
 //                    for (int i = 0; i <currentSelectList.size() ; i++) {
