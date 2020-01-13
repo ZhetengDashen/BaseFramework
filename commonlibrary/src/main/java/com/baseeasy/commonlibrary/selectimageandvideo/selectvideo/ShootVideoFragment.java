@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.selectimageandvideo.EventBusFlagImageOrVideo;
@@ -42,8 +43,9 @@ import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.SHOOT
 public class ShootVideoFragment extends Fragment {
 
     private ShootVideoCallBack shootVideoCallBack;
-    private List<String> addData=new ArrayList<>();
-    private List<String> deleteData=new ArrayList<>();
+    private List<String> addData;
+    private List<String> deleteData;
+
 
     public ShootVideoFragment() {
         // Required empty public constructor
@@ -55,9 +57,13 @@ public class ShootVideoFragment extends Fragment {
         startShootVideo(new ArrayList<String>(),maxNum);
     }
     public void startShootVideo(List<String>  pathList,int maxNum) {
+        addData=new ArrayList<>();
+        deleteData=new ArrayList<>();
+
         Intent intent = new Intent(getActivity(), SelectVideoActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES, JSONObject.toJSONString(pathList));
+
         this.startActivityForResult(intent, PictureShared.SHOOTVIDEO);
     }
 
@@ -97,6 +103,7 @@ public class ShootVideoFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if ( resultCode == Activity.RESULT_OK && data != null) {
                 if(requestCode == SHOOTVIDEO&&null!=shootVideoCallBack ) {
+
                     String videodata=data.getStringExtra(PictureShared.IntentExtraName.SELECTVIDEO_DATA);
                     List<String> paths= new ArrayList<>();
                     paths.addAll(JSONObject.parseArray(videodata,String.class));

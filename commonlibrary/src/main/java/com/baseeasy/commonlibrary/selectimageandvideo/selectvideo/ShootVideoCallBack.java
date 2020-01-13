@@ -1,6 +1,6 @@
 package com.baseeasy.commonlibrary.selectimageandvideo.selectvideo;
 
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
+
 
 import java.util.List;
 

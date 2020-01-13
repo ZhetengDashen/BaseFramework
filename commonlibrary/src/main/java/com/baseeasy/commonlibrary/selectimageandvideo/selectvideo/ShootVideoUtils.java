@@ -9,18 +9,21 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.alibaba.fastjson.JSONObject;
+import com.apkfuns.logutils.LogUtils;
+import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageActivity;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
+
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageFragment;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
+
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.functions.Consumer;
@@ -88,10 +91,20 @@ public class ShootVideoUtils {
      *
      * */
     public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,int maxNum){
+        startShootVideo(activity,shootVideoCallBack,new ArrayList<String>(),maxNum);
+    }
+
+    /**
+     * 拍摄视频
+     * @param  activity
+     * @param  shootVideoCallBack
+     *
+     * */
+    public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,List<String> videoPaths,int maxNum){
         ShootVideoFragment shootVideoFragment= getShootVideoFragment(activity, shootVideoCallBack);
         isChickPermission(shootVideoFragment.getActivity());
-        shootVideoFragment.startShootVideo(maxNum);
-    }
+        shootVideoFragment.startShootVideo(videoPaths,maxNum);
+        }
 
     @SuppressLint("CheckResult")
     public void isChickPermission(FragmentActivity activity){

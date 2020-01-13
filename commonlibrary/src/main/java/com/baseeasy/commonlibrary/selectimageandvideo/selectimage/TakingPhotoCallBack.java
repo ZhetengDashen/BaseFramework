@@ -9,5 +9,7 @@ import java.util.List;
  * 描述：
  */
 public interface TakingPhotoCallBack {
- void onTakingPhoto(List<SelectImageBean> imageBeans);
+ void onTakingPhoto(List<String> imageBeans);
+ void onAddTakingPhoto(List<String> imageBeans);
+ void onDeleteTakingPhoto(List<String> imageBeans);
 }

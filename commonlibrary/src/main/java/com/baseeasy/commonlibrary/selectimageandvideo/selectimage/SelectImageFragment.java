@@ -10,21 +10,28 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.alibaba.fastjson.JSONArray;
 
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventConst;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.EventBusFlagImageOrVideo;
 import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+
+import org.apache.commons.lang3.StringUtils;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +53,8 @@ public class SelectImageFragment extends Fragment {
     private SelectImageCallBack selectImageCallBack;
     private TakingPhotoCallBack takingPhotoCallBack;
     private TakingPhotoSeparateCallBack takingPhotoSeparateCallBack;
-    private String  takingPhotoSeparateEventBusFlag="";
+
+//    private String  takingPhotoSeparateEventBusFlag="";
 
     public SelectImageFragment() {
         // Required empty public constructor
@@ -56,12 +64,14 @@ public class SelectImageFragment extends Fragment {
 
 
     public void startSelectImage(int maxNum) {
+
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_IMAGE);
         this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
     }
     public void startSelectImage(String select,int maxNum) {
+
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_IMAGE);
@@ -70,12 +80,14 @@ public class SelectImageFragment extends Fragment {
     }
 
     public void startTakingPhoto(int maxNum) {
+
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_TAKING_PHOTO);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         this.startActivityForResult(intent, TAKINGPHOTO_REQUESTCODE);
     }
     public void startTakingPhoto(String select,int maxNum) {
+
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_TAKING_PHOTO);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
@@ -119,32 +131,59 @@ public class SelectImageFragment extends Fragment {
     }
 
 
-    public  void setTakingPhotoSeparateEventBusFlag(String takingPhotoSeparateEventBusFlag){
-        this.takingPhotoSeparateEventBusFlag=takingPhotoSeparateEventBusFlag;
-   }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if ( resultCode == Activity.RESULT_OK && data != null) {
-
             if(requestCode == PictureShared.SELECTIMAGE_REQUESTCODE ||requestCode == TAKINGPHOTO_REQUESTCODE){
-                String selectImageList_json="";
-                List<SelectImageBean> selectImageBeans=new ArrayList<>();
-                selectImageList_json= data.getStringExtra(PictureShared.IntentExtraName.SELECTIMAGE_DATA);
-                if(null!=selectImageList_json&&(!selectImageList_json.equals(""))&&!selectImageList_json.equals("null")){
-                    selectImageBeans= JSONArray.parseArray(selectImageList_json, SelectImageBean.class);
-                }else {
-                    return;
+
+
+                List<String> selectImageBeans=new ArrayList<>();
+                List<String> addData=new ArrayList<>();
+                List<String> deleteData=new ArrayList<>();
+                String  selectImageList_json= data.getStringExtra(PictureShared.IntentExtraName.SELECTIMAGE_DATA);
+                String  addImageList_json= data.getStringExtra(PictureShared.IntentExtraName.SELECTIMAGE_ADD_DATA);
+                String  deleteImageList_json= data.getStringExtra(PictureShared.IntentExtraName.SELECTIMAGE_DELETE_DATA);
+
+                if(StringUtils.isNotBlank(selectImageList_json)){
+                    selectImageBeans= JSONArray.parseArray(selectImageList_json, String.class);
                 }
+                if(StringUtils.isNotBlank(addImageList_json)){
+                    addData= JSONArray.parseArray(addImageList_json, String.class);
+                }
+                if(StringUtils.isNotBlank(deleteImageList_json)){
+                    deleteData= JSONArray.parseArray(deleteImageList_json, String.class);
+
+                }
+
                 if(requestCode == PictureShared.SELECTIMAGE_REQUESTCODE&&null!=selectImageCallBack ){
-                    selectImageCallBack.onImageSelected(selectImageBeans);
+                    if(null!=selectImageBeans){
+                       selectImageCallBack.onImageSelected(selectImageBeans);
+                    }
+                   if(null!=addData){
+                       selectImageCallBack.onAddImage(addData);
+                   }
+                  if(null!=deleteData){
+                      selectImageCallBack.onDeleteImage(deleteData);
+                  }
+
                 }else if(requestCode == TAKINGPHOTO_REQUESTCODE&&null!=takingPhotoCallBack){
-                    takingPhotoCallBack.onTakingPhoto(selectImageBeans);
+
+                    if(null!=selectImageBeans){
+                        takingPhotoCallBack.onTakingPhoto(selectImageBeans);
+                    }
+                    if(null!=addData){
+                        takingPhotoCallBack.onAddTakingPhoto(addData);
+                    }
+                    if(null!=deleteData){
+                        takingPhotoCallBack.onDeleteTakingPhoto(deleteData);
+                    }
                 }
-            }else if(requestCode== TAKINGPHOTO_SEPARATE_REQUESTCODE&&!takingPhotoSeparateEventBusFlag.equals("")){
-                 EventBusUtils.post(new EventMessage(EventConst.EVENT_CODE_OK,takingPhotoSeparateEventBusFlag,  ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))));
-                   }else if(requestCode== TAKINGPHOTO_SEPARATE_REQUESTCODE&&null!=takingPhotoSeparateCallBack){
+
+
+            }else if(requestCode== TAKINGPHOTO_SEPARATE_REQUESTCODE&&null!=takingPhotoSeparateCallBack){
                     List<LocalMedia> localMediaList=   PictureSelector.obtainMultipleResult(data);
                     takingPhotoSeparateCallBack.onTakingPhoto(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList).get(0));
                 }
@@ -153,8 +192,14 @@ public class SelectImageFragment extends Fragment {
         }
     }
 
+
+
+
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
+
 }

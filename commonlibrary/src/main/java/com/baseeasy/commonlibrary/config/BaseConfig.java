@@ -8,6 +8,8 @@ import com.baseeasy.commonlibrary.mytool.SharePreferenceKeys;
 import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2019/10/23
@@ -20,9 +22,7 @@ public class BaseConfig {
     * 文件夹路径
     * */
     public static class FOLDER_PATH{
-        private static  String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
-        public static final String APP_FOLDER_PATH=AppUtils.getAppName(BaseApplication.getInstance().getApplicationContext())+"/"+
-                       userid=="" ?  MD5Utils.encodeMD5(userid):"0" +"/";
+         public static final String APP_FOLDER_PATH=AppUtils.getAppName(BaseApplication.getInstance().getApplicationContext())+"/"+getuser();
         public static final String LOG=APP_FOLDER_PATH+FOLDER_NAME.LOG;
         public static final String CAMERA=APP_FOLDER_PATH+FOLDER_NAME.CAMERA;
         public static final String COMPRESSION=APP_FOLDER_PATH+FOLDER_NAME.COMPRESSION;
@@ -43,5 +43,12 @@ public class BaseConfig {
         public static final String VIDEO ="video" ;//视频
         public static final String SCREENSHOTS="screenshots";//截图
     }
-
+    public   static String getuser(){
+       String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
+       if(StringUtils.isNotBlank(userid)){
+         return   MD5Utils.encodeMD5(userid)+"/";
+       }else  {
+           return "no_user/";
+       }
+    }
 }

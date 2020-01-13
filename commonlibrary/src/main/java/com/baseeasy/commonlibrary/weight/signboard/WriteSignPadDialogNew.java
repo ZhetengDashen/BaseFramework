@@ -74,7 +74,7 @@ public class WriteSignPadDialogNew extends Dialog {
             @Override
             public void onClick(View view) {
                 try {
-                    File sdRoot = new File(FileUtils.SDPATH + AppUtils.getAppName(context)+"/"+ BaseConfig.FOLDER_NAME.SIGN+"/");
+                    File sdRoot = new File(FileUtils.SDPATH + BaseConfig.FOLDER_PATH.SIGN+"/");
 
                     if (!sdRoot.exists()) {
                         sdRoot.mkdirs();

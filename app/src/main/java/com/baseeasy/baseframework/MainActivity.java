@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
 import com.baseeasy.baseframework.demoactivity.httptest.HTTPTestActivity;
@@ -18,7 +19,7 @@ import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageBean;
+
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
@@ -47,13 +48,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button bt_rxpermissions;
     private Button select_image;
     private Button fingbt;
-    private List<SelectImageBean> selectImageBeans;
+    private List<String> selectImageBeans=new ArrayList<>();
     private TextView textView;
     private Button qianming;
     private Button button_data_binding;
     private Button button_http;
     private Button button_video;
-
+    private  List<String> videopathList=new ArrayList<>();
 
     @Override
     public void init_view() {
@@ -106,9 +107,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case "imageCallback":
 
-                selectImageBeans = (List<SelectImageBean>) event.getEvent();
+                selectImageBeans = (List<String>) event.getEvent();
                 for (int i = 0; i < selectImageBeans.size(); i++) {
-                    textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
+                    textView.setText(textView.getText().toString() + selectImageBeans.get(i));
                 }
                 break;
             case "video":
@@ -166,11 +167,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //      SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
                 SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
                     @Override
-                    public void onTakingPhoto(List<SelectImageBean> localMediaList) {
-                        selectImageBeans = localMediaList;
-                        for (int i = 0; i < selectImageBeans.size(); i++) {
-                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
-                        }
+                    public void onTakingPhoto(List<String> localMediaList) {
+
+//                         selectImageBeans = localMediaList;
+//                        for (int i = 0; i < selectImageBeans.size(); i++) {
+//                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
+//                        }
+                    }
+
+                    @Override
+                    public void onAddTakingPhoto(List<String> imageBeans) {
+
+                        selectImageBeans.addAll(imageBeans);
+                    }
+
+                    @Override
+                    public void onDeleteTakingPhoto(List<String> imageBeans) {
+
+                        selectImageBeans.removeAll(imageBeans);
+
                     }
                 }, selectImageBeans);
 
@@ -244,23 +259,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                  startActivity(new Intent(this, HTTPTestActivity.class));
                 break;
             case  R.id.video:
+
                 ShootVideoUtils.getInstance().startShootVideo(MainActivity.this, new ShootVideoCallBack() {
                     @Override
                     public void onShootVideo(List<String> pathList) {
-
+//                        videopathList.clear();
+//                       pathList.addAll(pathList);
+//                        videopathList.addAll(pathList);
                     }
 
                     @Override
                     public void onAddVideoList(List<String> pathList) {
                         textView.setText(textView.getText().toString()+"添加："+pathList);
+                        videopathList.addAll(pathList);
                     }
 
                     @Override
                     public void onDeleteVideoList(List<String> pathList) {
-
+                        videopathList.removeAll(pathList);
                         textView.setText(textView.getText().toString()+"减去："+pathList);
                     }
-                }, 3);
+                }, videopathList,3);
+                Log.e("kk",videopathList.size()+"");
                 break;
         }
     }

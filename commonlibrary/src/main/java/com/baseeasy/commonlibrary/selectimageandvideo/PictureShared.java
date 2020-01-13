@@ -28,7 +28,9 @@ public class PictureShared {
         public final static String EXIST_IMAGES = "picture_data";
         public final static String ACTION_TYPE = "picture_action_type";
         public final static String SELECTIMAGE_DATA="picture_selectImageBeansData";
-        public final static String SELECTVIDEO_DATA="picture_selectImageBeansData";
+        public final static String SELECTIMAGE_ADD_DATA="picture_addImageBeansData";
+        public final static String SELECTIMAGE_DELETE_DATA="picture_deleteImageBeansData";
+        public final static String SELECTVIDEO_DATA="picture_selectVideoBeansData";
         public  final static String MAXPHOTONUM="maxphotonum";
         public  final static String MAXVIDEONUM="maxvideonum";
     }
