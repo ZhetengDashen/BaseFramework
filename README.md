@@ -1,4 +1,4 @@
-![Image ](http://cdn.baseeasy.com/Android%20BaseFramework.png)
+![Image ](http://cdn.baseeasy.com/AndroidBaseFramework2020114.png)
 # 目录
 * [编码记录](commonlibrary/README_CodingHistory.md)<br>
 
