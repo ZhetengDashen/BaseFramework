@@ -11,7 +11,7 @@ import java.util.List;
  * 描述：
  */
 public interface SelectImageCallBack {
- void onImageSelected (List<String> imageBeans);
- void onAddImage(List<String> imageBeans);
- void onDeleteImage(List<String> imageBeans);
+ void onImageSelected (List<String> imagePaths);
+ void onAddImage(List<String> imagePaths);
+ void onDeleteImage(List<String> imagePaths);
 }

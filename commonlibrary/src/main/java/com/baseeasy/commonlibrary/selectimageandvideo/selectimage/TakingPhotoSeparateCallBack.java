@@ -9,5 +9,5 @@ import java.util.List;
  * 描述：单张拍照回调
  */
 public interface TakingPhotoSeparateCallBack {
- void onTakingPhoto(String imageBean);
+ void onTakingPhoto(String imagePath);
 }

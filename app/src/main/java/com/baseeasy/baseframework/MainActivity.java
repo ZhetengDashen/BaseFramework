@@ -23,6 +23,7 @@ import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoConfig;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
@@ -166,22 +167,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                },selectImageBeans);
 
 //      SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
-                SelectImageUtils.getInstance().startSelectImage(this, new SelectImageCallBack() {
-                    @Override
-                    public void onImageSelected(List<String> imageBeans) {
-
-                    }
-
-                    @Override
-                    public void onAddImage(List<String> imageBeans) {
-                        selectImageBeans.addAll(imageBeans);
-                    }
-
-                    @Override
-                    public void onDeleteImage(List<String> imageBeans) {
-                        selectImageBeans.removeAll(imageBeans);
-                    }
-                },selectImageBeans);
+//                SelectImageUtils.getInstance().startSelectImage(this, new SelectImageCallBack() {
+//                    @Override
+//                    public void onImageSelected(List<String> imageBeans) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onAddImage(List<String> imageBeans) {
+//                        selectImageBeans.addAll(imageBeans);
+//                    }
+//
+//                    @Override
+//                    public void onDeleteImage(List<String> imageBeans) {
+//                        selectImageBeans.removeAll(imageBeans);
+//                    }
+//                },selectImageBeans);
 //                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
 //                    @Override
 //                    public void onTakingPhoto(List<String> localMediaList) {
@@ -232,6 +233,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                });
 //                ShootVideoUtils.getInstance().startShootVideo(this,new ShootVideoConfig(10,0),"video");
+                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
+                    @Override
+                    public void onTakingPhoto(String imagePath) {
+                        LogUtils.e(imagePath);
+                    }
+                });
                 break;
             case R.id.button_ff:
                 startActivity(new Intent(this, FingerprintActivity.class));
