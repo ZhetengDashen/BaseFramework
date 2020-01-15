@@ -64,7 +64,7 @@ public class IDCardUtil {
      * @param IDCard
      * @return
      */
-    public static Integer getAge(String IDCard) throws ParseException {
+    public static Integer getAge(String IDCard)  {
         Integer age = 0;
         Date date = new Date();
         if (isNotBlank(IDCard)&& isValid(IDCard)){
@@ -153,7 +153,8 @@ public class IDCardUtil {
      * @param id 号码内容
      * @return 是否有效
      */
-    public static boolean isValid(String id)throws ParseException{
+    public static boolean isValid(String id){
+        try{
         id=chageIdCardEndWithX(id);
 
         Boolean validResult = true;
@@ -196,6 +197,7 @@ public class IDCardUtil {
         String strDay = Ai.substring(12, 14);// 月份
         if (isDate(strYear + "-" + strMonth + "-" + strDay) == false) {
             Log.e("++ Mr.Z ++", "isValid: " +"身份证生日无效。");
+            validResult=false;
               return validResult;
         }
         GregorianCalendar gc = new GregorianCalendar();
@@ -205,6 +207,7 @@ public class IDCardUtil {
                     || (gc.getTime().getTime() - s.parse(
                     strYear + "-" + strMonth + "-" + strDay).getTime()) < 0) {
                 Log.e("++ Mr.Z ++", "isValid: " +"身份证生日不在有效范围。");
+                validResult=false;
                   return validResult;
             }
         } catch (NumberFormatException e) {
@@ -214,10 +217,12 @@ public class IDCardUtil {
         }
         if (Integer.parseInt(strMonth) > 12 || Integer.parseInt(strMonth) == 0) {
             Log.e("++ Mr.Z ++", "isValid: " +"身份证月份无效");
+            validResult=false;
               return validResult;
         }
         if (Integer.parseInt(strDay) > 31 || Integer.parseInt(strDay) == 0) {
             Log.e("++ Mr.Z ++", "isValid: " +"身份证日期无效");
+            validResult=false;
               return validResult;
         }
         // =====================(end)=====================
@@ -226,6 +231,7 @@ public class IDCardUtil {
         Hashtable h = GetAreaCode();
         if (h.get(Ai.substring(0, 2)) == null) {
             Log.e("++ Mr.Z ++", "isValid: " +"身份证地区编码错误。");
+            validResult=false;
               return validResult;
         }
         // ==============================================
@@ -244,13 +250,18 @@ public class IDCardUtil {
         if (id.length() == 18) {
             if (Ai.equals(id) == false) {
                 Log.e("++ Mr.Z ++", "isValid: " +"身份证无效，不是合法的身份证号码");
+                validResult=false;
                   return validResult;
             }
         } else {
             return validResult;
         }
         // =====================(end)=====================
-        return validResult;
+           return validResult;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
     /**
      * 功能：判断字符串是否为数字
