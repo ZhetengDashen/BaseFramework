@@ -1,158 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    <data>
+     <import type="com.baseeasy.commonlibrary.databinding.DataBinDingConvertDictionary"/>
+      <import type="com.baseeasy.baseframework.demoactivity.MyDictionary"/>
+    </data>
 
-    <Button
-        android:id="@+id/bt_arouter"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="ARouter"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <Button
-        android:id="@+id/bt_eventbus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="EventBus"
-        app:layout_constraintStart_toEndOf="@+id/bt_arouter"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/bt_imageloader"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="ImageLoader"
-        app:layout_constraintStart_toEndOf="@+id/bt_eventbus"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp" />
+        <Button
 
-    <Button
-        android:id="@+id/bt_loadingview"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="loadingview"
-        app:layout_constraintStart_toEndOf="@+id/bt_imageloader"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp" />
+            android:id="@+id/bt_arouter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@={DataBinDingConvertDictionary.convertCodeToName(MyDictionary.WORK.GDGZ,xx)}"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="8dp" />
 
-    <Button
-        android:id="@+id/bt_recycler"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="recycler"
-        app:layout_constraintTop_toBottomOf="@+id/bt_arouter"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="6dp" />
+        <Button
+            android:id="@+id/bt_eventbus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="EventBus"
+            app:layout_constraintStart_toEndOf="@+id/bt_arouter"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="0dp" />
 
-    <Button
-        android:id="@+id/bt_log"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
-        android:text="LogUtils"
-        app:layout_constraintStart_toEndOf="@+id/bt_recycler"
-        app:layout_constraintTop_toBottomOf="@+id/bt_eventbus"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/bt_imageloader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="ImageLoader"
+            app:layout_constraintStart_toEndOf="@+id/bt_eventbus"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="0dp" />
 
-    <Button
-        android:id="@+id/bt_rxpermissions"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="rxpermissions"
-        app:layout_constraintStart_toEndOf="@+id/bt_log"
-        app:layout_constraintTop_toBottomOf="@+id/bt_imageloader"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/bt_loadingview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="loadingview"
+            app:layout_constraintStart_toEndOf="@+id/bt_imageloader"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="0dp" />
 
-    <Button
-        android:id="@+id/bt_select_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="选择图片"
-        app:layout_constraintBottom_toBottomOf="@+id/bt_rxpermissions"
-        app:layout_constraintStart_toEndOf="@+id/bt_rxpermissions"
-        app:layout_constraintTop_toTopOf="@+id/bt_rxpermissions"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/bt_recycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="recycler"
+            app:layout_constraintTop_toBottomOf="@+id/bt_arouter"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="6dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="156dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_ff"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/bt_log"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:text="LogUtils"
+            app:layout_constraintStart_toEndOf="@+id/bt_recycler"
+            app:layout_constraintTop_toBottomOf="@+id/bt_eventbus"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/button_ff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="指纹"
-        app:layout_constraintBottom_toBottomOf="@+id/bt_select_image"
-        app:layout_constraintEnd_toEndOf="@+id/bt_recycler"
-        app:layout_constraintStart_toStartOf="@+id/bt_recycler"
-        app:layout_constraintTop_toBottomOf="@+id/bt_recycler"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/bt_rxpermissions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="rxpermissions"
+            app:layout_constraintStart_toEndOf="@+id/bt_log"
+            app:layout_constraintTop_toBottomOf="@+id/bt_imageloader"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/qianming"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="签名"
-        app:layout_constraintBottom_toBottomOf="@+id/button_ff"
-        app:layout_constraintEnd_toEndOf="@+id/bt_log"
-        app:layout_constraintStart_toStartOf="@+id/bt_log"
-        app:layout_constraintTop_toTopOf="@+id/button_ff" />
+        <Button
+            android:id="@+id/bt_select_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="选择图片"
+            app:layout_constraintBottom_toBottomOf="@+id/bt_rxpermissions"
+            app:layout_constraintStart_toEndOf="@+id/bt_rxpermissions"
+            app:layout_constraintTop_toTopOf="@+id/bt_rxpermissions"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/binding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="DataBinDing"
-        app:layout_constraintBottom_toBottomOf="@+id/qianming"
-        app:layout_constraintStart_toEndOf="@+id/qianming"
-        app:layout_constraintTop_toTopOf="@+id/qianming" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="156dp"
+            android:text=""
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_ff"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/button_http"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="HTTP"
-        app:layout_constraintBottom_toBottomOf="@+id/binding"
-        app:layout_constraintStart_toEndOf="@+id/binding"
-        app:layout_constraintTop_toTopOf="@+id/binding"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/button_ff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="指纹"
+            app:layout_constraintBottom_toBottomOf="@+id/bt_select_image"
+            app:layout_constraintEnd_toEndOf="@+id/bt_recycler"
+            app:layout_constraintStart_toStartOf="@+id/bt_recycler"
+            app:layout_constraintTop_toBottomOf="@+id/bt_recycler"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/video"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="拍摄"
-        app:layout_constraintEnd_toEndOf="@+id/button_http"
-        app:layout_constraintStart_toEndOf="@+id/binding"
-        app:layout_constraintTop_toBottomOf="@+id/button_http" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/qianming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="签名"
+            app:layout_constraintBottom_toBottomOf="@+id/button_ff"
+            app:layout_constraintEnd_toEndOf="@+id/bt_log"
+            app:layout_constraintStart_toStartOf="@+id/bt_log"
+            app:layout_constraintTop_toTopOf="@+id/button_ff" />
+
+        <Button
+            android:id="@+id/binding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="DataBinDing"
+            app:layout_constraintBottom_toBottomOf="@+id/qianming"
+            app:layout_constraintStart_toEndOf="@+id/qianming"
+            app:layout_constraintTop_toTopOf="@+id/qianming" />
+
+        <Button
+            android:id="@+id/button_http"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="HTTP"
+            app:layout_constraintBottom_toBottomOf="@+id/binding"
+            app:layout_constraintStart_toEndOf="@+id/binding"
+            app:layout_constraintTop_toTopOf="@+id/binding"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="拍摄"
+            app:layout_constraintEnd_toEndOf="@+id/button_http"
+            app:layout_constraintStart_toEndOf="@+id/binding"
+            app:layout_constraintTop_toBottomOf="@+id/button_http" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

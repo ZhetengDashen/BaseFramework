@@ -1,4 +1,4 @@
-package com.baseeasy.commonlibrary.mytool;
+package com.baseeasy.commonlibrary.databinding;
 
 import androidx.databinding.InverseMethod;
 
