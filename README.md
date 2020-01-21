@@ -26,7 +26,7 @@
                  ..........
               //在app 和 mode 的build.gradle 下的defaultConfig里面添加
                 ndk {
-                    abiFilters "armeabi"    //添加ndk支持
+                    abiFilters "armeabi-v7a"     //添加ndk支持
                 } 
                 
                 //在app的build.gradle中添加依赖，在defaultConfig中添加以下代码【注意：必须是app这个module，不能是其他的module】      
