@@ -33,6 +33,7 @@ public class PictureShared {
         public final static String SELECTVIDEO_DATA="picture_selectVideoBeansData";
         public  final static String MAXPHOTONUM="maxphotonum";
         public  final static String MAXVIDEONUM="maxvideonum";
+        public  final static String SHOOTVIDEOCONFIG="shootVideoConfig";
     }
       //文件夹相关配置
     public static class FolderNameConfig {

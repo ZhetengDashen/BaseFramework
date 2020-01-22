@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.luck.picture.lib.PictureSelector;
-import com.zyf.vc.ui.PlayVideoActiviy;
+import com.aliyun.svideo.paly.VideoPlayActivity;
+
 
 /**
  * 作者：WangZhiQiang
@@ -16,8 +16,10 @@ import com.zyf.vc.ui.PlayVideoActiviy;
 public class VideoPlayUtils {
     public static void play(Activity activity, String  videoPath){
 //        PictureSelector.create(activity).externalPictureVideo(videoPath);
-        Intent intent =new Intent(activity, PlayVideoActiviy.class);
-        intent.putExtra(PlayVideoActiviy.KEY_FILE_PATH, videoPath);
+
+
+        Intent intent =new Intent(activity, VideoPlayActivity.class);
+        intent.putExtra(VideoPlayActivity.KEY_FILE_PATH, videoPath);
         activity.startActivity(intent);
-    }
+   }
 }

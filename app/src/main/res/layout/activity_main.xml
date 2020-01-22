@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-     <import type="com.baseeasy.commonlibrary.databinding.DataBinDingConvertDictionary"/>
-      <import type="com.baseeasy.baseframework.demoactivity.MyDictionary"/>
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -19,7 +15,7 @@
             android:id="@+id/bt_arouter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@={DataBinDingConvertDictionary.convertCodeToName(MyDictionary.WORK.GDGZ,xx)}"
+            android:text="arouter"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="8dp" />
 

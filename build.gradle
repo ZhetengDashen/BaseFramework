@@ -5,12 +5,15 @@ buildscript {
     repositories {
         maven{
             url 'http://maven.aliyun.com/nexus/content/groups/public/'
+
         }
         google()
         jcenter()
         maven { url 'https://maven.google.com' }
         maven { url 'http://developer.huawei.com/repo'}
-
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'

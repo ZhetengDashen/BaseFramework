@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 android {
+
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.baseeasy.baseframework"
@@ -15,7 +16,11 @@ android {
             }
         }
         ndk {
-            abiFilters "armeabi"    //添加ndk支持
+           abiFilters "armeabi-v7a"    //添加ndk支持
+        }
+       sourceSets.main {
+        jni.srcDirs = []
+        jniLibs.srcDir "src/main/jniLibs"
         }
         multiDexEnabled true
     }
@@ -36,6 +41,7 @@ android {
 //            universalApk true
 //        }
 //    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

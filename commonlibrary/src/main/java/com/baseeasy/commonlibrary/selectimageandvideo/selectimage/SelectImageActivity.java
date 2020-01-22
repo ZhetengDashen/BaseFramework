@@ -148,7 +148,6 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .compress(true)
 //                            .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                            .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
                             .maxSelectNum(allowNum)// 最大图片选择数量 int
                             .forResult(SELECT_IMAGE_REQUEST);
                     break;
@@ -158,7 +157,6 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .loadImageEngine(GlideEngine.createGlideEngine())
                             .compress(true)
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                            .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
                             .forResult(TAKING_PHOTO_REQUEST);
                     break;
             }

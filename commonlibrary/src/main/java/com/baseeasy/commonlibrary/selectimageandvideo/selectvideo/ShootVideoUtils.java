@@ -54,9 +54,9 @@ public class ShootVideoUtils {
     }
      private ShootVideoFragment initFragment(FragmentActivity activity){
          ShootVideoFragment selectVideoFragment = (ShootVideoFragment) activity.getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
+         FileUtils.createSDDir(PictureShared.FolderNameConfig.VIDEO);
+         FileUtils.createNoMedia(PictureShared.FolderNameConfig.VIDEO);
          if (selectVideoFragment == null) {
-             FileUtils.createSDDir(PictureShared.FolderNameConfig.VIDEO);
-             FileUtils.createNoMedia(PictureShared.FolderNameConfig.VIDEO);
              selectVideoFragment = new ShootVideoFragment();
              FragmentManager manager = activity.getSupportFragmentManager();
              manager.beginTransaction()
@@ -101,10 +101,21 @@ public class ShootVideoUtils {
      *
      * */
     public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,List<String> videoPaths,int maxNum){
+        startShootVideo(activity,shootVideoCallBack,videoPaths,maxNum,new ShotVideoConfig());
+        }
+
+    /**
+     * 拍摄视频
+     * @param  activity
+     * @param  shootVideoCallBack
+     * @param shotVideoConfig 拍摄视频配置
+     *
+     * */
+    public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,List<String> videoPaths,int maxNum,ShotVideoConfig shotVideoConfig){
         ShootVideoFragment shootVideoFragment= getShootVideoFragment(activity, shootVideoCallBack);
         isChickPermission(shootVideoFragment.getActivity());
-        shootVideoFragment.startShootVideo(videoPaths,maxNum);
-        }
+        shootVideoFragment.startShootVideo(videoPaths,maxNum,shotVideoConfig);
+    }
 
     @SuppressLint("CheckResult")
     public void isChickPermission(FragmentActivity activity){

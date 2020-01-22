@@ -1,8 +1,4 @@
-![Image](http://cdn.baseeasy.com/AndroidBaseFramework20200116.png)
-# 目录
-* [编码记录](commonlibrary/README_CodingHistory.md)<br>
-
-* [详细功能使用说明](commonlibrary/README_FunctionDetails.md)<br>
+![Image](./AndroidBaseFramework20200122.png)
 
 #  配置
 ######  Step 1. JitPack库添加到你的构建文件

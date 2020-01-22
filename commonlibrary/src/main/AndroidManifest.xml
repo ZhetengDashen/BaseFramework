@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.baseeasy.commonlibrary">
+
     <uses-feature
         android:name="android.hardware.usb.host"
         android:sharedUserId="android.uid.system" />
-
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.READ_OWNER_DATA" />
     <uses-permission android:name="android.permission.WRITE_OWNER_DATA" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-
-    <application>
-        <activity android:name=".selectimageandvideo.selectvideo.SelectVideoActivity"></activity>
-        <activity android:name=".selectimageandvideo.selectimage.SelectImageActivity" />
-    </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -25,4 +19,10 @@
     <uses-permission
         android:name="android.hardware.usb.host"
         android:required="false" />
+
+    <application>
+        <activity android:name=".selectimageandvideo.selectvideo.SelectVideoActivity" />
+        <activity android:name=".selectimageandvideo.selectimage.SelectImageActivity" />
+    </application>
+
 </manifest>

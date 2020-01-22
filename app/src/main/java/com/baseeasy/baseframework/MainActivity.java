@@ -25,8 +25,9 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUti
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoConfig;
+
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShotVideoConfig;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
 import com.luck.picture.lib.PictureSelector;
 import com.test.TestUser;
@@ -283,7 +284,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                  startActivity(new Intent(this, HTTPTestActivity.class));
                 break;
             case  R.id.video:
-
+                ShotVideoConfig shotVideoConfig=
+                        new ShotVideoConfig.Builder()
+                                .withVideoQuality(ShotVideoConfig.ConfigParameter.PROGRESS_HIGH)
+                                .withEatioMode(ShotVideoConfig.ConfigParameter.RATIO_MODE_3_4)
+                                .withEesolutionMode(ShotVideoConfig.ConfigParameter.RESOLUTION_720P)
+                                .withMaxTime(30).build();
                 ShootVideoUtils.getInstance().startShootVideo(MainActivity.this, new ShootVideoCallBack() {
                     @Override
                     public void onShootVideo(List<String> pathList) {
@@ -303,7 +309,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         videopathList.removeAll(pathList);
                         textView.setText(textView.getText().toString()+"减去："+pathList);
                     }
-                }, videopathList,3);
+                }, videopathList,3,shotVideoConfig);
                 Log.e("kk",videopathList.size()+"");
                 break;
         }

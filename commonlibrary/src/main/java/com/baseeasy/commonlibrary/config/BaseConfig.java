@@ -22,7 +22,7 @@ public class BaseConfig {
     * 文件夹路径
     * */
     public static class FOLDER_PATH{
-         public static final String APP_FOLDER_PATH=AppUtils.getAppName(BaseApplication.getInstance().getApplicationContext())+"/"+getuser();
+         public static final String APP_FOLDER_PATH=getuser();
         public static final String LOG=APP_FOLDER_PATH+FOLDER_NAME.LOG;
         public static final String CAMERA=APP_FOLDER_PATH+FOLDER_NAME.CAMERA;
         public static final String COMPRESSION=APP_FOLDER_PATH+FOLDER_NAME.COMPRESSION;

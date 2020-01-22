@@ -24,7 +24,7 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
-    <style name="ScreeningDialog" parent="@style/AppTheme">
+    <style name="ScreeningDialog" >
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:windowIsFloating">true</item>
@@ -68,5 +68,12 @@
     <style name="tv_content">
         <item name="android:textColor">@color/tv_content </item>
         <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Full" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
     </style>
 </resources>

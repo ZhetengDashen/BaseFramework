@@ -43,8 +43,8 @@ import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.SHOOT
 public class ShootVideoFragment extends Fragment {
 
     private ShootVideoCallBack shootVideoCallBack;
-    private List<String> addData;
-    private List<String> deleteData;
+    private List<String> addData=new ArrayList<>();
+    private List<String> deleteData=new ArrayList<>();
 
 
     public ShootVideoFragment() {
@@ -54,16 +54,15 @@ public class ShootVideoFragment extends Fragment {
 
 
     public void startShootVideo(int maxNum) {
-        startShootVideo(new ArrayList<String>(),maxNum);
+        startShootVideo(new ArrayList<String>(),maxNum,new ShotVideoConfig());
     }
-    public void startShootVideo(List<String>  pathList,int maxNum) {
+    public void startShootVideo(List<String>  pathList,int maxNum,ShotVideoConfig shotVideoConfig) {
         addData=new ArrayList<>();
         deleteData=new ArrayList<>();
-
         Intent intent = new Intent(getActivity(), SelectVideoActivity.class);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES, JSONObject.toJSONString(pathList));
-
+        intent.putExtra(PictureShared.IntentExtraName.SHOOTVIDEOCONFIG,JSONObject.toJSONString(shotVideoConfig));
         this.startActivityForResult(intent, PictureShared.SHOOTVIDEO);
     }
 
@@ -103,20 +102,21 @@ public class ShootVideoFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if ( resultCode == Activity.RESULT_OK && data != null) {
                 if(requestCode == SHOOTVIDEO&&null!=shootVideoCallBack ) {
-
                     String videodata=data.getStringExtra(PictureShared.IntentExtraName.SELECTVIDEO_DATA);
                     List<String> paths= new ArrayList<>();
                     paths.addAll(JSONObject.parseArray(videodata,String.class));
                     shootVideoCallBack.onShootVideo(paths);
+                    List<String> retain=new ArrayList<>();
+                    retain.addAll(addData);
+                    retain.retainAll(deleteData);
+                    addData.removeAll(retain);
+                    deleteData.removeAll(retain);
+                    shootVideoCallBack.onAddVideoList(addData);
+                    shootVideoCallBack.onDeleteVideoList(deleteData);
+
                 }
         }
-        List<String> retain=new ArrayList<>();
-        retain.addAll(addData);
-        retain.retainAll(deleteData);
-        addData.removeAll(retain);
-        deleteData.removeAll(retain);
-        shootVideoCallBack.onAddVideoList(addData);
-        shootVideoCallBack.onDeleteVideoList(deleteData);
+
     }
 
     @Override

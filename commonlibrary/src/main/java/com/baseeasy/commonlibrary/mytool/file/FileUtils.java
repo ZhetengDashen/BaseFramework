@@ -1,10 +1,14 @@
 package com.baseeasy.commonlibrary.mytool.file;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
+import com.baseeasy.commonlibrary.config.BaseConfig;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 
 import java.io.BufferedOutputStream;
@@ -26,7 +30,7 @@ import java.util.List;
  */
 public class FileUtils {
 
-    public static final String SDPATH = Environment.getExternalStorageDirectory() + "/";
+    public static final String SDPATH = getROOTPath(BaseApplication.getInstance().getApplicationContext());
 
     public static final String [] FILE_TYPE_ALL={""};//所有类型
     public static final String [] FILE_TYPE_IMAGE={"jgp","jpg","png","gif","jpeg","bmp"};//图片类型
@@ -36,7 +40,27 @@ public class FileUtils {
     public static final String  [] FILE_TYPE_AUDIO={"wav","aif","au","mp3","ram","wma","amr","aac"};//音频文件
 
 
+    /**
+     *  android Q  /storage/emulated/0/Android/data/包名/files/...
+     *  android Q 以下版本 /storage/emulated/0/包名/...
+     *
+     */
 
+    public static String getROOTPath(Context context) {
+        String dir;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            dir = context.getExternalFilesDir("") + File.separator ;
+        } else {
+            dir = Environment.getExternalStorageDirectory() + File.separator +AppUtils.getPackageName(context)+ File.separator ;
+
+        }
+        File file = new File(dir);
+        if (!file.exists()) {
+            //noinspection ResultOfMethodCallIgnored
+            file.mkdirs();
+        }
+        return dir;
+    }
 
     /**
      * 在SD卡上创建文件
