@@ -85,9 +85,9 @@ dependencies {
     api group: 'org.apache.commons', name: 'commons-text', version: '1.8'
     implementation 'com.android.support:multidex:1.0.3'
     // implementation project(':media')
-    //  api 'com.github.ZhetengDashen:ALVideoRecorder:6.2'
-    api 'com.gitee.wzq0607:ALVideoRecorder:1.2'
-//    api 'com.github.ZhetengDashen:ALVideoRecorder:1.4'
+
+//    api 'com.gitee.wzq0607:ALVideoRecorder:1.2'
+  api 'com.github.ZhetengDashen:ALVideoRecorder:1.4'
 //    implementation 'com.gitee.wzq0607:ALVideoRecorder:1.0'
 
 }
