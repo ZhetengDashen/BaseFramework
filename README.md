@@ -1,13 +1,23 @@
 ![Image](http://cdn.baseeasy.com/AndroidBaseFramework20200203.png)
 
 #  配置
-######  Step 1. JitPack库添加到你的构建文件
+######  Step 1. 添加maven
 
   ```  
   allprojects {
 	repositories {
 			...
-			maven { url 'https://jitpack.io' }
+			maven{
+                url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            }
+            google()
+            jcenter()
+            mavenCentral()
+            maven { url "https://jitpack.io" }
+            maven { url 'https://maven.google.com' }
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+               }
 		}
 	}
 ```
@@ -58,35 +68,11 @@
                 classpath 'com.android.tools.build:gradle:3.1.2'
                 classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
             }
-     allprojects {
-        repositories {
-            maven{
-                url 'http://maven.aliyun.com/nexus/content/groups/public/'
-            }
-            google()
-            jcenter()
-            mavenCentral()
-            maven { url "https://jitpack.io" }
-            maven { url 'https://maven.google.com' }
-            maven {
-                url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
-               }
-             }
-        }
+    
     }
         
    ``` 
-` *注  每创建一个Bean类就需要创建一个BeanManager，用于管理数据库中的表。`  <br/>
-       `BeanManager 需要继承 BaseDbBeanManager .`   
-   ```   
-//例子
-public class UnitBeanManager extends BaseDbBeanManager<UnitBean,String> {
-  public UnitBeanManager(AbstractDao dao) {
-        super(dao);
-    }
-}
- 
-   ``` 
+
 ## Library
 + <strong> [ARouter](https://github.com/alibaba/ARouter)<br>
 + <strong> [FastJson](https://github.com/alibaba/fastjson)<br>
