@@ -4,10 +4,10 @@
 ######  Step 1. 添加maven
 
   ```  
-  allprojects {
-	repositories {
-			...
-			maven{
+allprojects {
+    repositories {
+	...
+           maven{
                 url 'http://maven.aliyun.com/nexus/content/groups/public/'
             }
             google()
