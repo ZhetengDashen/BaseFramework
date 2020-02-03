@@ -1,4 +1,4 @@
-![Image](./AndroidBaseFramework20200122.png)
+![Image](http://cdn.baseeasy.com/AndroidBaseFramework20200203.png)
 
 #  配置
 ######  Step 1. JitPack库添加到你的构建文件
