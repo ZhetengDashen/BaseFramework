@@ -41,7 +41,7 @@
             }
              }
            dependencies {
-               implementation 'com.github.ZhetengDashen:BaseFramework:2.0.7'
+               implementation 'com.github.ZhetengDashen:BaseFramework:xxx' 参考最新版本
             }  
  ``` 
 ######  
