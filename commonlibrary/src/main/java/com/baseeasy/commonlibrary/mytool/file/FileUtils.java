@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
+import android.os.StatFs;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -543,6 +544,80 @@ public class FileUtils {
 
     }
 
+    /**
+     * 复制文件
+     * @param oldPath
+     * @param newPath
+     */
+    public static String copyFile( final String oldPath, final String newPath) {
 
+        try {
+            int bytesum = 0;
+            int byteread = 0;
+            File oldfile = new File(oldPath);
+            if (oldfile.exists()) { //文件存在时
+                InputStream inStream = new FileInputStream(oldPath); //读入原文件
+                FileOutputStream fs = new FileOutputStream(newPath);
+                byte[] buffer = new byte[1444];
+                while ((byteread = inStream.read(buffer)) != -1) {
+                    bytesum += byteread; //字节数 文件大小
+                    fs.write(buffer, 0, byteread);
+                }
+                inStream.close();
+              return "完成";
+            } else {
+              return "没有找到文件";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "复制文件出错";
+        }
 
+    }
+
+    /**
+     * 获取sdcard剩余内存
+     * @return 单位b
+     */
+    public static long getSdcardAvailableSize() {
+
+        Context context=  BaseApplication.getInstance().getApplicationContext();
+        File directory ;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            directory = context.getExternalFilesDir("");
+        } else {
+            directory = Environment.getExternalStorageDirectory();
+
+        }
+
+        StatFs statFs = new StatFs(directory.getPath());
+        //获取可供程序使用的Block数量
+        long blockAvailable = statFs.getAvailableBlocks();
+        //获得Sdcard上每个block的size
+        long blockSize = statFs.getBlockSize();
+
+        return blockAvailable * blockSize;
+    }
+
+    /**
+     * 获取sdcard总内存大小
+     * @return 单位b
+     */
+    public static long getSdcardTotalSize() {
+        Context context=  BaseApplication.getInstance().getApplicationContext();
+        File directory ;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            directory = context.getExternalFilesDir("");
+        } else {
+            directory = Environment.getExternalStorageDirectory();
+
+        }
+        StatFs statFs = new StatFs(directory.getPath());
+        //获得sdcard上 block的总数
+        long blockCount = statFs.getBlockCount();
+        //获得sdcard上每个block 的大小
+        long blockSize = statFs.getBlockSize();
+
+        return blockCount * blockSize;
+    }
 }

@@ -52,13 +52,29 @@
         buildscript {
             repositories {
                 jcenter()
-                mavenCentral() // add repository
+                mavenCentral() 
             }
             dependencies {
                 classpath 'com.android.tools.build:gradle:3.1.2'
                 classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
             }
+     allprojects {
+        repositories {
+            maven{
+                url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            }
+            google()
+            jcenter()
+            mavenCentral()
+            maven { url "https://jitpack.io" }
+            maven { url 'https://maven.google.com' }
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+               }
+             }
         }
+    }
+        
    ``` 
 ` *注  每创建一个Bean类就需要创建一个BeanManager，用于管理数据库中的表。`  <br/>
        `BeanManager 需要继承 BaseDbBeanManager .`   

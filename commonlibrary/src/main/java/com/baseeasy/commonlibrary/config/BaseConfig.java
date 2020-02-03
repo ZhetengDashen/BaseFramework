@@ -1,6 +1,7 @@
 package com.baseeasy.commonlibrary.config;
 
 
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.MD5Utils;
@@ -23,7 +24,7 @@ public class BaseConfig {
     * */
     public static class FOLDER_PATH{
 
-         public static final String APP_FOLDER_PATH=getuser();
+        public static final String APP_FOLDER_PATH=getuser();
         public static final String LOG=APP_FOLDER_PATH+FOLDER_NAME.LOG;
         public static final String CAMERA=APP_FOLDER_PATH+FOLDER_NAME.CAMERA;
         public static final String COMPRESSION=APP_FOLDER_PATH+FOLDER_NAME.COMPRESSION;
@@ -31,6 +32,8 @@ public class BaseConfig {
         public static final String FINGERPRINT=APP_FOLDER_PATH+FOLDER_NAME.FINGERPRINT;
         public static final String VIDEO=APP_FOLDER_PATH+FOLDER_NAME.VIDEO;
         public static final String SCREENSHOTS=APP_FOLDER_PATH+FOLDER_NAME.SCREENSHOTS;
+        public static final String OUTPUTDB=APP_FOLDER_PATH+FOLDER_NAME.OUTPUTDB;
+        public static final String INPUTDB=APP_FOLDER_PATH+FOLDER_NAME.INPUTDB;
     }
     /**
      *文件夹名称
@@ -43,6 +46,8 @@ public class BaseConfig {
         public static final String FINGERPRINT="fingerprint";//指纹图片路径
         public static final String VIDEO ="video" ;//视频
         public static final String SCREENSHOTS="screenshots";//截图
+        public static final String OUTPUTDB="outputdb";//导出DB
+        public static final String INPUTDB="intputdb";//导入DB
     }
     public   static String getuser(){
        String userid= SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID);
