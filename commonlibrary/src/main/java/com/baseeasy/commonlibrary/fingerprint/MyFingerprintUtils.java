@@ -20,6 +20,7 @@ import com.baseeasy.commonlibrary.R;
 import com.baseeasy.commonlibrary.config.BaseConfig;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 import com.za.finger.ZA_finger;
 import com.za.finger.ZAandroid;
 
@@ -503,7 +504,8 @@ public class MyFingerprintUtils {
                 a6.ZAZUpImage(DEV_ADDR, Image, len);
                 sd = System.currentTimeMillis();
                 timecount = (sd - st);
-
+                FileUtils.createSDDir(BaseConfig.FOLDER_PATH.FINGERPRINT);
+                FileUtils.createNoMedia(BaseConfig.FOLDER_PATH.FINGERPRINT);
 
                 String str = FileUtils.SDPATH + BaseConfig.FOLDER_PATH.FINGERPRINT+"/" + UUID.randomUUID().toString().replace("-", "")+".bmp";
 
