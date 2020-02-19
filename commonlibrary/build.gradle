@@ -48,7 +48,7 @@ uploadArchives {
         }
         pom.groupId = "com.baseeasyandroid"
         pom.artifactId = "baseframework"
-        pom.version = "2.3.5"
+        pom.version = "2.3.6"
     }
 }
 dependencies {
