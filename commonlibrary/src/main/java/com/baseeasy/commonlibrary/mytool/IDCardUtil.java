@@ -64,42 +64,55 @@ public class IDCardUtil {
      * @param IDCard
      * @return
      */
-    public static Integer getAge(String IDCard)  {
+    public static Integer getAge(String IDCard){
         Integer age = 0;
         Date date = new Date();
         if (isNotBlank(IDCard)&& isValid(IDCard)){
             //15位身份证号
             if (IDCard.length() == FIFTEEN_ID_CARD){
                 // 身份证上的年份(15位身份证为1980年前的)
-                String uyear = "19" + IDCard.substring(6, 8);
-                // 身份证上的月份
-                String uyue = IDCard.substring(8, 10);
+                String  year = "19" + IDCard.substring(6, 8);
+                //身份证上的月份
+                String  month = IDCard.substring(8, 10);
+                //身份证上的日期
+                String   day= IDCard.substring(10, 12);
+
+
+
                 // 当前年份
                 String fyear = format.format(date).substring(0, 4);
                 // 当前月份
                 String fyue = format.format(date).substring(5, 7);
-                if (Integer.parseInt(uyue) <= Integer.parseInt(fyue)) {
-                    age = Integer.parseInt(fyear) - Integer.parseInt(uyear) + 1;
-                    // 当前用户还没过生
+                // 当前月份
+                String ri = format.format(date).substring(8, 10);
+                if (Integer.parseInt(month) <= Integer.parseInt(fyue)||(Integer.parseInt(month) == Integer.parseInt(fyue)&&Integer.parseInt(day)<=Integer.parseInt(ri))) {
+                    age = Integer.parseInt(fyear) - Integer.parseInt(year);
+
                 } else {
-                    age = Integer.parseInt(fyear) - Integer.parseInt(uyear);
+                    age = Integer.parseInt(fyear) - Integer.parseInt(year)-1;
                 }
                 //18位身份证号
             }else if(IDCard.length() == EIGHTEEN_ID_CARD){
                 // 身份证上的年份
-                String year = IDCard.substring(6).substring(0, 4);
+                String    year = IDCard.substring(6).substring(0, 4);
                 // 身份证上的月份
-                String yue = IDCard.substring(10).substring(0, 2);
+                String   month = IDCard.substring(10).substring(0, 2);
+                //身份证上的日期
+                String    day=IDCard.substring(12).substring(0,2);
+
+
                 // 当前年份
                 String fyear = format.format(date).substring(0, 4);
                 // 当前月份
                 String fyue = format.format(date).substring(5, 7);
-                // 当前月份大于用户出身的月份表示已过生日
-                if (Integer.parseInt(yue) <= Integer.parseInt(fyue)) {
-                    age = Integer.parseInt(fyear) - Integer.parseInt(year) + 1;
-                    // 当前用户还没过生日
-                } else {
+                // 当前月份
+                String ri = format.format(date).substring(8, 10);
+
+                if (Integer.parseInt(month) <= Integer.parseInt(fyue)||(Integer.parseInt(month) == Integer.parseInt(fyue)&&Integer.parseInt(day)<=Integer.parseInt(ri))) {
                     age = Integer.parseInt(fyear) - Integer.parseInt(year);
+
+                } else {
+                    age = Integer.parseInt(fyear) - Integer.parseInt(year)-1;
                 }
             }
         }
