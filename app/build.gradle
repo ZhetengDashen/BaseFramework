@@ -16,12 +16,15 @@ android {
             }
         }
         ndk {
-           abiFilters "armeabi-v7a"    //添加ndk支持
+            abiFilters "armeabi-v7a"     //添加ndk支持
         }
-       sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir "src/main/jniLibs"
-        }
+
+        //在app的build.gradle中添加依赖，在defaultConfig中添加以下代码【注意：必须是app这个module，不能是其他的module】
+        multiDexEnabled true
+//       sourceSets.main {
+//        jni.srcDirs = []
+//        jniLibs.srcDir "src/main/jniLibs"
+//        }
         multiDexEnabled true
     }
     dataBinding {

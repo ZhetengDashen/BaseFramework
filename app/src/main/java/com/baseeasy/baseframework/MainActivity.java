@@ -12,6 +12,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
+import com.baseeasy.baseframework.demoactivity.MuTestBean;
 import com.baseeasy.baseframework.demoactivity.httptest.HTTPTestActivity;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
@@ -29,7 +30,9 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCall
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShotVideoConfig;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
+import com.baseeasy.commonlibrary.weight.dialog.multipledialog.SelectMultipleListDialog;
 import com.luck.picture.lib.PictureSelector;
+import com.magiclon.individuationtoast.ToastUtil;
 import com.test.TestUser;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -92,6 +95,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         button_http.setOnClickListener(this);
         button_video=findViewById(R.id.video);
         button_video.setOnClickListener(this);
+
     }
 
     @Override
@@ -255,16 +259,37 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                });
 //                writeSignPadDialog.show();
-                ArrayList<String> aa = new ArrayList<>();
-                aa.add("aaa");
-                aa.add("bbb");
-                aa.add("ccc");
-                SelectActionListDialog.createDialog(MainActivity.this, aa, new SelectActionListDialog.ActionCallback<String>() {
-                    @Override
-                    public void callback(String action) {
 
+                ArrayList<MuTestBean> muTestBeans=new ArrayList<>();
+                muTestBeans.add(new MuTestBean("aaaaaa",true));
+                muTestBeans.add(new MuTestBean("bbbbbb",false));
+                muTestBeans.add(new MuTestBean("cccccc",false));
+                muTestBeans.add(new MuTestBean("dddddd",true));
+                muTestBeans.add(new MuTestBean("eeeeee",false));
+                muTestBeans.add(new MuTestBean("ffffff",true));
+                SelectMultipleListDialog.createDialog(MainActivity.this, "请选择", muTestBeans, new SelectMultipleListDialog.SelectCallback<MuTestBean>() {
+                    @Override
+                    public void callback(List<MuTestBean> list) {
+                        for (int i = 0; i <list.size() ; i++) {
+                         Log.e("KK",list.get(i).getMuCheckName());
+                         LogUtils.e(list.get(i));
+                        }
                     }
                 }).show();
+//                ArrayList<String> aa = new ArrayList<>();
+//                aa.add("aaa");
+//                aa.add("bbb");
+//                aa.add("ccc");
+//                SelectActionListDialog.createDialog(MainActivity.this, aa, new SelectActionListDialog.ActionCallback<String>() {
+//                    @Override
+//                    public void callback(String action) {
+//
+//                    }
+//                }).show();
+
+
+
+
 //                WriteSignPadDialogNew writeSignPadDialogNew=new WriteSignPadDialogNew(MainActivity.this, new WriteDialogListener() {
 //                    @Override
 //                    public void callPath(Object object) {

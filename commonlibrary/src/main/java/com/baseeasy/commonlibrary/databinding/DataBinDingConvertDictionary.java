@@ -23,7 +23,10 @@ public class DataBinDingConvertDictionary {
      */
     @InverseMethod("convertNameToCode")
     public static String convertCodeToName(DictionaryEnum defaultDictionaryEnum, String code) {
+        if(null==code||null==defaultDictionaryEnum){
 
+            return "";
+        }
         String name= DictionaryEnumUtil.getDictionaryName(code,defaultDictionaryEnum.getClass());
         if(StringUtils.isNotBlank(name)){
             return name;
@@ -32,6 +35,10 @@ public class DataBinDingConvertDictionary {
         }
     }
     public static String convertNameToCode(DictionaryEnum defaultDictionaryEnum,String name) {
+        if(null==name||null==defaultDictionaryEnum){
+
+            return "";
+        }
         String code=DictionaryEnumUtil.getDictionaryCode(name,defaultDictionaryEnum.getClass());
         if(StringUtils.isNotBlank(code)){
             return code;
