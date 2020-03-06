@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.aliyun.svideo.snap.record.AliShootVideoUtils;
 import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
