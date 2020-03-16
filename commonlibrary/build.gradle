@@ -48,7 +48,7 @@ uploadArchives {
         }
         pom.groupId = "com.baseeasyandroid"
         pom.artifactId = "baseframework"
-        pom.version = "2.3.8"
+        pom.version = "2.3.9"
     }
 }
 dependencies {
@@ -100,7 +100,7 @@ dependencies {
     // implementation project(':media')
 
 //    api 'com.gitee.wzq0607:ALVideoRecorder:1.2'
- api 'com.github.ZhetengDashen:ALVideoRecorder:1.5'
+ api 'com.github.ZhetengDashen:ALVideoRecorder:2.0.1'
 //    implementation 'com.gitee.wzq0607:ALVideoRecorder:1.0'
 
 }
