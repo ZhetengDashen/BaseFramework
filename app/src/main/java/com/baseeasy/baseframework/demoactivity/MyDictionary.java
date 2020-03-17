@@ -36,6 +36,7 @@ public class MyDictionary {
             this.code=code;
           }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -44,6 +45,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -130,6 +132,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -138,6 +141,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -200,6 +204,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -208,6 +213,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -248,6 +254,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -256,6 +263,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -286,6 +294,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -294,6 +303,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -337,6 +347,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -345,6 +356,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -378,6 +390,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -386,6 +399,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -416,6 +430,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -424,6 +439,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -454,6 +470,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -462,6 +479,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
@@ -493,6 +511,7 @@ public class MyDictionary {
             this.code=code;
         }
 
+        @Override
         public String getName() {
             return name;
         }
@@ -501,6 +520,7 @@ public class MyDictionary {
             this.name = name;
         }
 
+        @Override
         public String getCode() {
             return code;
         }
