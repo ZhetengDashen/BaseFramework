@@ -101,7 +101,8 @@ dependencies {
     // implementation project(':media')
 
 //    api 'com.gitee.wzq0607:ALVideoRecorder:1.2'
- api 'com.github.ZhetengDashen:ALVideoRecorder:2.0.1'
+    api 'com.github.ZhetengDashen:ALVideoRecorder:2.0.3'
+    api 'com.kyleduo.switchbutton:library:2.0.0'
 //    implementation 'com.gitee.wzq0607:ALVideoRecorder:1.0'
 
 }

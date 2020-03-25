@@ -1,5 +1,8 @@
 package com.test;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2019/3/14
@@ -8,6 +11,7 @@ package com.test;
  */
 
 public class TestUser {
+
     String  name;
     String  id;
     String  gender;
@@ -27,6 +31,7 @@ public class TestUser {
 
     public void setName(String name) {
         this.name = name;
+
     }
 
     public String getId() {

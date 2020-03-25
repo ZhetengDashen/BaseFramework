@@ -22,8 +22,9 @@ public class RVDemoEntity extends BaseObservable implements MultiItemEntity {
     String  image;
     String  type;
     String  title;
-
-
+    @Bindable
+    Boolean ischick;
+    @Bindable
    public  String  msg;
     int index;
     ObservableField<String> content = new ObservableField<>();
@@ -37,6 +38,15 @@ public class RVDemoEntity extends BaseObservable implements MultiItemEntity {
     }
 
     public RVDemoEntity() {
+    }
+
+    public Boolean getIschick() {
+        return ischick;
+    }
+
+    public void setIschick(Boolean ischick) {
+        this.ischick = ischick;
+        notifyChange();
     }
 
     public RVDemoEntity(String image, String type, String title, String msg, int index) {

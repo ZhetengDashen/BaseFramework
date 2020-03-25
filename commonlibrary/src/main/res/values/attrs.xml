@@ -2,8 +2,12 @@
 <resources>
 
     <declare-styleable name="squareframelayout">
-        <attr name="reltiveWidth" format="float"/>
-        <attr name="reltiveHeight" format="float"/>
+        <attr name="reltiveWidth" format="float" />
+        <attr name="reltiveHeight" format="float" />
     </declare-styleable>
+    <declare-styleable name="ztswitchbutton">
 
+        <attr name="ztswcontent" format="string"></attr>
+        <attr name="ztswchecked" format="boolean"></attr>
+    </declare-styleable>
 </resources>

@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">#2c97df</color>
     <color name="colorPrimaryDark">#2c97df</color>
-    <color name="colorAccent">#FF730F</color>
-    <color name="colorAV1">#FFFF730F</color>
+    <color name="colorAccent">#2c97df</color>
+    <color name="colorAV1">#2c97df</color>
     <color name="colorbtbg">#3B427C</color>
     <color name="colorbtstroke">#72d7b5</color>
 </resources>

@@ -53,7 +53,8 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
     public void onClick(View view) {
         if(view.getId()==R.id.rv_item_bt){
 //            editText.setText("123");
-//          dataBinding.getRventity().setMsg("456456");
+          dataBinding.getRventity().setTitle("456456");
+//            dataBinding.getRventity().setIschick(!dataBinding.getRventity().getIschick());
             Toast.makeText(this, dataBinding.getRventity().getMsg(), Toast.LENGTH_SHORT).show();
         }
     }
