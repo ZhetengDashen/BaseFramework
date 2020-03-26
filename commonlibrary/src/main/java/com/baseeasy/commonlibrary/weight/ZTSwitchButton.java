@@ -26,19 +26,24 @@ import androidx.databinding.adapters.TextViewBindingAdapter;
 import com.baseeasy.commonlibrary.R;
 import com.kyleduo.switchbutton.SwitchButton;
 
+import java.lang.reflect.Method;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2020/3/24
  * 邮箱：sos181@163.com
  * 描述：开关按钮 暂时不支持DataBinDing双向绑定
+ * 如果是在databinding 中使用必须设置属性ztswisdatabinding=  true
+ * 然后在onClick中动态改变checked状态
  */
 
 public class ZTSwitchButton extends FrameLayout {
+
     private TextView contentTextView;
     private SwitchButton switchButton;
     private String content = "";
     private Boolean checked = false;
-    private static InverseBindingListener mInverseBindingListener_content;
+    private Boolean isDataBinDing=false;//是否支持DataBinDing
     public ZTSwitchButton(Context context) {
         super(context);
         initView();
@@ -47,7 +52,7 @@ public class ZTSwitchButton extends FrameLayout {
     public ZTSwitchButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ztswitchbutton);
-        initByAttributes(typedArray);
+
         initView();
         typedArray.recycle();
     }
@@ -55,7 +60,7 @@ public class ZTSwitchButton extends FrameLayout {
     public ZTSwitchButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ztswitchbutton);
-        initByAttributes(typedArray);
+
         initView();
         typedArray.recycle();
     }
@@ -64,7 +69,7 @@ public class ZTSwitchButton extends FrameLayout {
     public ZTSwitchButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ztswitchbutton);
-        initByAttributes(typedArray);
+
         initView();
         typedArray.recycle();
     }
@@ -72,6 +77,8 @@ public class ZTSwitchButton extends FrameLayout {
     protected void initByAttributes(TypedArray attributes) {
         content = attributes.getString(R.styleable.ztswitchbutton_ztswcontent);
         checked = attributes.getBoolean(R.styleable.ztswitchbutton_ztswchecked, false);
+        isDataBinDing=attributes.getBoolean(R.styleable.ztswitchbutton_ztswisdatabinding, false);
+
 
     }
 
@@ -81,6 +88,12 @@ public class ZTSwitchButton extends FrameLayout {
         switchButton = view.findViewById(R.id.swbt);
         contentTextView.setText(content);
         switchButton.setChecked(checked);
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                     checked=isChecked;
+                }
+            });
 
     }
 
@@ -105,7 +118,7 @@ public class ZTSwitchButton extends FrameLayout {
     }
 
     public Boolean getChecked() {
-        return switchButton.isChecked();
+        return  checked;
     }
 
     public void setChecked(Boolean checked) {
@@ -122,6 +135,12 @@ public class ZTSwitchButton extends FrameLayout {
     public static void setSwitchButtonChecked(ZTSwitchButton ztSwitchButton, boolean isChecked) {
         ztSwitchButton.setChecked(isChecked);
     }
+
+    @BindingAdapter(value = "ztswisdatabinding", requireAll = false)
+    public static void setSwitchButtDatabinding(ZTSwitchButton ztSwitchButton, boolean isEnabled) {
+        ztSwitchButton.getSwitchButton().setEnabled(!isEnabled);
+    }
+
 
 //    @InverseBindingAdapter(attribute = "ztswcontent", event="contentAttrChanged")
 //    public static String getSwitchButtonContent(ZTSwitchButton ztSwitchButton) {

@@ -5,8 +5,10 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.baseeasy.baseframework.databinding.TestDataBinding;
 import com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity;
 
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseDataBinDingActivity;
+import com.baseeasy.commonlibrary.weight.ZTSwitchButton;
 
 
 public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingView,DataBinDingPresenter<IDataBinDingView>,TestDataBinding> implements View.OnClickListener{
@@ -58,5 +61,24 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
             Toast.makeText(this, dataBinding.getRventity().getMsg(), Toast.LENGTH_SHORT).show();
         }
     }
+    public CompoundButton.OnCheckedChangeListener  isCH(View view){
 
+        return new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.e("KK","22");
+            }
+        };
+    }
+
+    public class DetailsDataBinDingEvent{
+
+       public void  isCH(View view){
+       ZTSwitchButton ztSwitchButton= (ZTSwitchButton) view;
+        Boolean aBoolean=   ztSwitchButton.getChecked();
+        dataBinding.getRventity().setIschick(!aBoolean);
+
+       }
+
+   }
 }

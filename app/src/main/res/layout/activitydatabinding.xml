@@ -10,6 +10,11 @@
          <variable
              name="rventity"
              type="com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity" />
+
+        <variable
+            name="databindevent"
+            type="com.baseeasy.baseframework.demoactivity.DataBindingActivity.DetailsDataBinDingEvent" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -25,12 +30,17 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
             <com.baseeasy.commonlibrary.weight.ZTSwitchButton
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/qianming"
                 app:ztswchecked="@{rventity.ischick}"
                 app:ztswcontent="@{rventity.msg}"
+                app:ztswisdatabinding="true"
+
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="5dp" />
 

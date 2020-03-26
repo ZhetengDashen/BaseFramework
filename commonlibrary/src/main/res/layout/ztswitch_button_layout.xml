@@ -6,7 +6,6 @@
     android:id="@+id/ztll"
     android:layout_height="wrap_content">
 <TextView
-
     android:id="@+id/tv_ztsw_content"
     android:layout_gravity="center"
     android:gravity="center"
