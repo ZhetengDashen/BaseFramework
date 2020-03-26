@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/qianming"
                 app:ztswchecked="@{rventity.ischick}"
-                app:ztswcontent="@{rventity.msg}"
+                app:ztswcontent="2222"
                 app:ztswisdatabinding="true"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="5dp" />

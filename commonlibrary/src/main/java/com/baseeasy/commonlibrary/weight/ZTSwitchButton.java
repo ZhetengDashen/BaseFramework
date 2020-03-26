@@ -52,7 +52,7 @@ public class ZTSwitchButton extends FrameLayout {
     public ZTSwitchButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ztswitchbutton);
-
+        initByAttributes(typedArray);
         initView();
         typedArray.recycle();
     }
@@ -60,7 +60,7 @@ public class ZTSwitchButton extends FrameLayout {
     public ZTSwitchButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ztswitchbutton);
-
+        initByAttributes(typedArray);
         initView();
         typedArray.recycle();
     }
@@ -69,7 +69,7 @@ public class ZTSwitchButton extends FrameLayout {
     public ZTSwitchButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ztswitchbutton);
-
+        initByAttributes(typedArray);
         initView();
         typedArray.recycle();
     }
@@ -88,6 +88,7 @@ public class ZTSwitchButton extends FrameLayout {
         switchButton = view.findViewById(R.id.swbt);
         contentTextView.setText(content);
         switchButton.setChecked(checked);
+        switchButton.setEnabled(!isDataBinDing);
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
