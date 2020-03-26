@@ -33,8 +33,8 @@ import java.lang.reflect.Method;
  * 时间：2020/3/24
  * 邮箱：sos181@163.com
  * 描述：开关按钮 暂时不支持DataBinDing双向绑定
- * 如果是在databinding 中使用必须设置属性ztswisdatabinding=  true
- * 然后在onClick中动态改变checked状态
+ * 如果是在databinding 中使用必须设置属性ztswisdatabinding=  true  改变SwitchButton的状态只能通过数据源去改变
+ *
  */
 
 public class ZTSwitchButton extends FrameLayout {

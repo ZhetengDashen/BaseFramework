@@ -40,7 +40,6 @@
                 app:ztswchecked="@{rventity.ischick}"
                 app:ztswcontent="@{rventity.msg}"
                 app:ztswisdatabinding="true"
-
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="5dp" />
 
