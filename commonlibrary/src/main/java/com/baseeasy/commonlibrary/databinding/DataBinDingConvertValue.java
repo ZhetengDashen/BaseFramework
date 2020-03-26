@@ -49,4 +49,39 @@ public class DataBinDingConvertValue {
         return String.valueOf(value);
     }
 
+
+    public  static Boolean convertStringToBoolean(String valeue){
+        if(valeue.equals("是")){
+            return  true;
+        }else if(valeue.equals("否")){
+            return false ;
+        }
+        return false;
+    }
+    @InverseMethod("convertStringToBoolean")
+    public static String convertBooleanToString(Boolean aBoolean){
+           if(aBoolean){
+               return "是";
+           }else {
+               return "否";
+           }
+     }
+
+    public  static Boolean convertIntToBoolean(int valeue){
+        if(valeue==1){
+            return true;
+        }else if(valeue==2){
+            return false ;
+        }
+        return false;
+    }
+    @InverseMethod("convertIntToBoolean")
+    public static int convertBooleanToInt(Boolean aBoolean){
+        if(aBoolean){
+            return 1;
+        }else {
+            return 2;
+        }
+    }
+
 }
