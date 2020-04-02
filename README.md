@@ -1,4 +1,4 @@
-![Image](http://cdn.baseeasy.com/AndroidBaseFramework20200203.png)
+![Image](http://cdn.baseeasy.com/AndroidBaseFramework20200401.png)
 
 #  配置
 ######  Step 1. 添加maven
