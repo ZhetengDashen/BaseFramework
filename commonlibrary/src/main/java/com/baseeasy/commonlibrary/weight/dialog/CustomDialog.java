@@ -2,6 +2,7 @@ package com.baseeasy.commonlibrary.weight.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -172,6 +173,16 @@ public class CustomDialog {
         return false;
     }
 
+    /**
+     * 设置内容
+     * @param tvcontent
+     */
+    public void setContent(String  tvcontent){
+        if ((!TextUtils.isEmpty(tvcontent)) &&null!=tv_content) {
+            tv_content.setText(tvcontent);
+        }
+
+    }
     public static class DialogBuilder {
         protected String title;
         protected String content;
