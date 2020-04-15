@@ -35,7 +35,15 @@ public class CustomDialog {
     private LinearLayout ll_dialog_two;
 
 
+    public CustomDialog(DialogBuilder builder,Boolean isShow) {
+        initBuilder(builder);
+        showDialog(isShow);
+    }
     public CustomDialog(DialogBuilder builder) {
+        initBuilder(builder);
+        showDialog(true);
+    }
+    private void initBuilder(DialogBuilder builder){
         this.context = builder.context;
         this.title = builder.title;
         this.content = builder.content;
@@ -49,10 +57,9 @@ public class CustomDialog {
         this.oncustomrightclicklister = builder.onCustomRightClickLister;
         this.oncustommidclicklister = builder.onCustomMidClickLister;
         this.oncustomsingleclicklister = builder.onCustomSingleClickLister;
-        showDialog();
     }
 
-    private void showDialog() {
+    private void initDialog(){
         View dialogv = LayoutInflater.from(context).inflate(R.layout.dialog_customdialog, null);
         dialog = new Dialog(context, R.style.customdialog);
         dialog.setContentView(dialogv);
@@ -126,7 +133,14 @@ public class CustomDialog {
             });
         }
 
-        dialog.show();
+    }
+    private void showDialog(Boolean isShow) {
+        initDialog();
+        if(isShow){
+            dialog.show();
+        }
+
+
     }
 
     /**
