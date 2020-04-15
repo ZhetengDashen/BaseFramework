@@ -48,8 +48,8 @@ uploadArchives {
         }
         pom.groupId = "com.baseeasyandroid"
         pom.artifactId = "baseframework"
-        pom.version = "2.4.4"
-//      完整路径  com.baseeasyandroid:baseframework:2.3.9
+        pom.version = "2.4.5"
+//      完整路径  com.baseeasyandroid:baseframework:2.4.5
     }
 }
 dependencies {
@@ -101,7 +101,7 @@ dependencies {
     // implementation project(':media')
 
 //    api 'com.gitee.wzq0607:ALVideoRecorder:1.2'
-    api 'com.github.ZhetengDashen:ALVideoRecorder:2.0.3'
+    api 'com.github.ZhetengDashen:ALVideoRecorder:2.0.6'
     api 'com.kyleduo.switchbutton:library:2.0.0'
 //    implementation 'com.gitee.wzq0607:ALVideoRecorder:1.0'
 

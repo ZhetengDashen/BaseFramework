@@ -147,6 +147,17 @@ public class CustomDialog {
         }
     }
 
+    /**
+     * 判断是否显示
+     * @return
+     */
+    public boolean isShow(){
+        if (dialog != null&&dialog.isShowing()) {
+            return true;
+        }
+        return false;
+    }
+
     public static class DialogBuilder {
         protected String title;
         protected String content;
