@@ -3,6 +3,7 @@ package com.baseeasy.commonlibrary.weight.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -34,7 +35,7 @@ public class CustomDialog {
     private Dialog dialog;
     private TextView tv_title, tv_content, tv_left, tv_right, tv_middle, tv_sure;
     private LinearLayout ll_dialog_two;
-
+   private  View dialogv;
 
     public CustomDialog(DialogBuilder builder,Boolean isShow) {
         initBuilder(builder);
@@ -61,9 +62,14 @@ public class CustomDialog {
     }
 
     private void initDialog(){
-        View dialogv = LayoutInflater.from(context).inflate(R.layout.dialog_customdialog, null);
+        dialogv = LayoutInflater.from(context).inflate(R.layout.dialog_customdialog, null);
         dialog = new Dialog(context, R.style.customdialog);
         dialog.setContentView(dialogv);
+        initDialogViewDate();
+
+    }
+
+    private void initDialogViewDate(){
         tv_title = dialogv.findViewById(R.id.customdialog_title);
         tv_content = dialogv.findViewById(R.id.customdialog_content);
         if (title != null && !"".equals(title)) {
@@ -133,7 +139,6 @@ public class CustomDialog {
                 }
             });
         }
-
     }
     private void showDialog(Boolean isShow) {
         initDialog();
@@ -181,7 +186,15 @@ public class CustomDialog {
         if ((!TextUtils.isEmpty(tvcontent)) &&null!=tv_content) {
             tv_content.setText(tvcontent);
         }
+    }
 
+    /**
+     * 设置 dialogBuilder
+     * @param dialogBuilder
+     */
+    public void setDialogBuilder(DialogBuilder dialogBuilder){
+        initBuilder(dialogBuilder);
+        initDialogViewDate();
     }
     public static class DialogBuilder {
         protected String title;

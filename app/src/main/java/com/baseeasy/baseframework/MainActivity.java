@@ -30,6 +30,7 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCall
 
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShotVideoConfig;
+import com.baseeasy.commonlibrary.weight.dialog.CustomDialog;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
 import com.baseeasy.commonlibrary.weight.dialog.multipledialog.SelectMultipleListDialog;
 import com.luck.picture.lib.PictureSelector;
@@ -62,6 +63,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button button_http;
     private Button button_video;
     private  List<String> videopathList=new ArrayList<>();
+    CustomDialog customDialog;
+    CustomDialog.DialogBuilder dialogBuilder;
 
     @Override
     public void init_view() {
@@ -96,6 +99,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         button_http.setOnClickListener(this);
         button_video=findViewById(R.id.video);
         button_video.setOnClickListener(this);
+        dialogBuilder=new CustomDialog.DialogBuilder(this);
+        dialogBuilder.title("ttt").content("contn").left("123").right("312");
+        customDialog=new CustomDialog(dialogBuilder,false);
 
     }
 
@@ -161,6 +167,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ARouterTools.startActivity(ARouterPath.AppMode.DEMO_RXPERMISSIONS_ACTIVITY);
                 break;
             case R.id.bt_select_image:
+                customDialog.show();
 //                ARouterTools.startActivity(ARouterPath.CommonLibrary.COMMON_SELECTIMAGE_ACTIVITY);
 //                SelectImageUtils.getInstance().startSelectImage(this, new SelectImageCallBack() {
 //                    @Override
@@ -239,12 +246,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                });
 //                ShootVideoUtils.getInstance().startShootVideo(this,new ShootVideoConfig(10,0),"video");
-                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
-                    @Override
-                    public void onTakingPhoto(String imagePath) {
-                        LogUtils.e(imagePath);
-                    }
-                });
+//                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
+//                    @Override
+//                    public void onTakingPhoto(String imagePath) {
+//                        LogUtils.e(imagePath);
+//                    }
+//                });
                 break;
             case R.id.button_ff:
                 startActivity(new Intent(this, FingerprintActivity.class));
@@ -261,22 +268,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                });
 //                writeSignPadDialog.show();
 
-                ArrayList<MuTestBean> muTestBeans=new ArrayList<>();
-                muTestBeans.add(new MuTestBean("aaaaaa",true));
-                muTestBeans.add(new MuTestBean("bbbbbb",false));
-                muTestBeans.add(new MuTestBean("cccccc",false));
-                muTestBeans.add(new MuTestBean("dddddd",true));
-                muTestBeans.add(new MuTestBean("eeeeee",false));
-                muTestBeans.add(new MuTestBean("ffffff",true));
-                SelectMultipleListDialog.createDialog(MainActivity.this, "请选择", muTestBeans, new SelectMultipleListDialog.SelectCallback<MuTestBean>() {
-                    @Override
-                    public void callback(List<MuTestBean> list) {
-                        for (int i = 0; i <list.size() ; i++) {
-                         Log.e("KK",list.get(i).getMuCheckName());
-                         LogUtils.e(list.get(i));
-                        }
-                    }
-                }).show();
+//                ArrayList<MuTestBean> muTestBeans=new ArrayList<>();
+//                muTestBeans.add(new MuTestBean("aaaaaa",true));
+//                muTestBeans.add(new MuTestBean("bbbbbb",false));
+//                muTestBeans.add(new MuTestBean("cccccc",false));
+//                muTestBeans.add(new MuTestBean("dddddd",true));
+//                muTestBeans.add(new MuTestBean("eeeeee",false));
+//                muTestBeans.add(new MuTestBean("ffffff",true));
+//                SelectMultipleListDialog.createDialog(MainActivity.this, "请选择", muTestBeans, new SelectMultipleListDialog.SelectCallback<MuTestBean>() {
+//                    @Override
+//                    public void callback(List<MuTestBean> list) {
+//                        for (int i = 0; i <list.size() ; i++) {
+//                         Log.e("KK",list.get(i).getMuCheckName());
+//                         LogUtils.e(list.get(i));
+//                        }
+//                    }
+//                }).show();
 //                ArrayList<String> aa = new ArrayList<>();
 //                aa.add("aaa");
 //                aa.add("bbb");
@@ -298,6 +305,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    }
 //                });
 //                writeSignPadDialogNew.show();
+
+
                 break;
 
             case R.id.binding:
