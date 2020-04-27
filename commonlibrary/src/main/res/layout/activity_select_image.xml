@@ -38,7 +38,7 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:drawableRight="@mipmap/pic_add"
+
                 android:id="@+id/tv_add"
                 android:layout_marginRight="12dp"
                 android:textColor="@color/white"
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:gravity="center"
-                android:text="   添加   " />
+                android:text="      保存     " />
 
         </RelativeLayout>
 
@@ -61,15 +61,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <com.baseeasy.commonlibrary.weight.CenterTextView
             android:id="@+id/tv_save"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_alignParentEnd="true"
             android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="   保  存   "
+            android:text="   添  加   "
             android:textColor="@color/white"
+            android:drawableLeft="@mipmap/pic_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

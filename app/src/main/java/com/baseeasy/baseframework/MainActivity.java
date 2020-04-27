@@ -167,8 +167,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ARouterTools.startActivity(ARouterPath.AppMode.DEMO_RXPERMISSIONS_ACTIVITY);
                 break;
             case R.id.bt_select_image:
-                customDialog.show();
-//                ARouterTools.startActivity(ARouterPath.CommonLibrary.COMMON_SELECTIMAGE_ACTIVITY);
+//                customDialog.show();
+              ARouterTools.startActivity(ARouterPath.CommonLibrary.COMMON_SELECTIMAGE_ACTIVITY);
 //                SelectImageUtils.getInstance().startSelectImage(this, new SelectImageCallBack() {
 //                    @Override
 //                    public void onImageSelected(List<SelectImageBean> localMediaList) {

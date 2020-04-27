@@ -134,7 +134,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.tv_add) {
+        if (v.getId() == R.id.tv_save) {//按钮修改成添加
             int allowNum=  maxPhoto-selectImageAdapter.getData().size();
             if(allowNum<=0){
                 ToastUtil.showwarning(this,"只能选择"+maxPhoto+"张");
@@ -162,7 +162,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             }
 
 
-        }else if(v.getId()==R.id.tv_save){
+        }else if(v.getId()==R.id.tv_add){//按钮修改成保存
 //            if(null!=eventBugFlag&&!eventBugFlag.equals("")){
 //                EventBusUtils.post(new EventMessage(EventConst.EVENT_CODE_OK,eventBugFlag, ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)));
 //            }

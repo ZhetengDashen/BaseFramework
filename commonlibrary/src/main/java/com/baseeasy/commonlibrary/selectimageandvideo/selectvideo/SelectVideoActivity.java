@@ -141,7 +141,7 @@ public class SelectVideoActivity extends AppCompatActivity implements View.OnCli
     }
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.tv_add) {
+        if (v.getId() == R.id.tv_save ) {
             int allowNum=  maxVideoNum-selectVideoAdapter.getData().size();
             if(allowNum<=0){
                 ToastUtil.showwarning(this,"只能添加"+maxVideoNum+"个视频");
@@ -150,7 +150,7 @@ public class SelectVideoActivity extends AppCompatActivity implements View.OnCli
             startShootVideo(shotVideoConfig);
 
 
-        }else if(v.getId()==R.id.tv_save){
+        }else if(v.getId()==R.id.tv_add){
 
             Intent intent=new Intent();
             intent.putExtra(PictureShared.IntentExtraName.SELECTVIDEO_DATA, JSONObject.toJSONString(currentSelectList));
