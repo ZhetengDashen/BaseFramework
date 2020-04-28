@@ -1,18 +1,19 @@
 package com.baseeasy.commonlibrary.weight;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
+import androidx.appcompat.widget.AppCompatTextView;
 
-import androidx.appcompat.widget.AppCompatButton;
+
+public class RotateTextView extends AppCompatTextView {
+
+    final boolean topDown;
 
 
-public class RotateButton extends AppCompatButton {
-
-    final boolean topDown ;
-
-    public RotateButton(Context context, AttributeSet attrs) {
+    public RotateTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         final int gravity = getGravity();
         if(Gravity.isVertical(gravity) && (gravity& Gravity.VERTICAL_GRAVITY_MASK) == Gravity.BOTTOM) {
@@ -22,7 +23,6 @@ public class RotateButton extends AppCompatButton {
             topDown = true;
         }
     }
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
         super.onMeasure(heightMeasureSpec, widthMeasureSpec);
@@ -48,4 +48,8 @@ public class RotateButton extends AppCompatButton {
         canvas.clipRect(0, 0, getWidth(), getHeight(), android.graphics.Region.Op.REPLACE);
         super.draw(canvas);
     }
+
+
+
+
 }
