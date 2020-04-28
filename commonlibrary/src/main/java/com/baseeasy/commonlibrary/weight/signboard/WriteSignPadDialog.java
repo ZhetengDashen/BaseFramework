@@ -141,7 +141,7 @@ public class WriteSignPadDialog extends Dialog {
         private void init() {
             paint = new Paint();
             paint.setAntiAlias(true);
-            paint.setStrokeWidth(6);
+            paint.setStrokeWidth(12);
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(Color.BLACK);
             path = new Path();

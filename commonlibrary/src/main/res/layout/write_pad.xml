@@ -1,53 +1,89 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal">
-
+    <com.baseeasy.commonlibrary.weight.RotateButton
+        android:id="@+id/tablet_clear"
+        android:layout_width="40dp"
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_pad_btn"
+        android:text="清除"
+        android:textColor="@color/greenbtn"
+        android:textSize="16dp" />
+    <View
+        android:id="@+id/line2"
+        android:layout_width="1dp"
+        android:background="@color/line_color"
+        android:layout_height="match_parent" />
     <FrameLayout
         android:id="@+id/tablet_view"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:background="@color/white"></FrameLayout>
+        android:background="@color/white">
 
-    <LinearLayout
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="50dp"
         android:layout_height="fill_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
+        <View
+            android:id="@+id/line1"
+            android:layout_width="1dp"
+            android:background="@color/line_color"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <com.baseeasy.commonlibrary.weight.RotateButton
+            android:id="@+id/tablet_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:padding="0dp"
+            android:text="取消"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/line1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.baseeasy.commonlibrary.weight.RotateTextView
+            android:id="@+id/rotateTextView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="请在下方方框内签字"
+            android:textColor="@android:color/black"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/tablet_ok"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/line1"
+            app:layout_constraintTop_toBottomOf="@+id/tablet_cancel" />
+
         <com.baseeasy.commonlibrary.weight.RotateButton
             android:id="@+id/tablet_ok"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
-            android:padding="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:textColor="@color/white"
-            android:background="@drawable/bt_ordinary"
-            android:layout_weight="1"
-            android:text="保存" />
+            android:layout_marginBottom="20dp"
+            android:background="@null"
+            android:padding="0dp"
+            android:text="确定"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/line1" />
 
-        <com.baseeasy.commonlibrary.weight.RotateButton
-            android:layout_margin="5dp"
-            android:background="@drawable/bt_error"
-            android:padding="0dp"
-            android:id="@+id/tablet_clear"
-            android:textColor="@color/white"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="清除" />
 
-        <com.baseeasy.commonlibrary.weight.RotateButton
-            android:layout_margin="5dp"
-            android:textColor="@color/white"
-            android:id="@+id/tablet_cancel"
-            android:padding="0dp"
-            android:background="@drawable/bt_gray"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="取消" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
