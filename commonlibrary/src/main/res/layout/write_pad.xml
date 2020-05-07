@@ -59,7 +59,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:text="请在下方方框内签字"
+            android:text="请签字"
             android:textColor="@android:color/black"
             android:paddingTop="10dp"
             android:layout_marginLeft="5dp"
