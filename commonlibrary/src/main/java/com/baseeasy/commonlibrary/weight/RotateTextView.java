@@ -2,6 +2,8 @@ package com.baseeasy.commonlibrary.weight;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Region;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
@@ -45,7 +47,11 @@ public class RotateTextView extends AppCompatTextView {
             canvas.translate(0, getWidth());
             canvas.rotate(-90);
         }
-        canvas.clipRect(0, 0, getWidth(), getHeight(), android.graphics.Region.Op.REPLACE);
+        if(Build.VERSION.SDK_INT >= 26){
+            canvas.clipRect(0, 0, getWidth(), getHeight());
+        }else {
+            canvas.clipRect(0, 0, getWidth(), getHeight(), Region.Op.UNION);
+        }
         super.draw(canvas);
     }
 
