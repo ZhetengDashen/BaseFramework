@@ -80,6 +80,7 @@ public Response intercept(Chain chain) throws IOException {
                 .build();
         Request request = original.newBuilder()
                 .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+                .addHeader("Connection","close")
                 .method(original.method(), original.body())
                 .url(url)
                 .build();
@@ -119,7 +120,7 @@ public Response intercept(Chain chain) throws IOException {
                     .add("json", jsonObject.toJSONString())
                     .build();
 
-            request = request.newBuilder().post(formBody).build();
+            request = request.newBuilder() .addHeader("Connection","close").post(formBody).build();
         }else {
             Log.e("BaseInterceptor:","请求类型标记出错");
         }
@@ -177,7 +178,7 @@ public Response intercept(Chain chain) throws IOException {
                     .addFormDataPart("json", jsonObject.toJSONString())
                     .build();
 
-           request = request.newBuilder().post(formBody).build();
+           request = request.newBuilder() .addHeader("Connection","close").post(formBody).build();
         }else {
             Log.e("BaseInterceptor:","请求类型标记出错");
         }

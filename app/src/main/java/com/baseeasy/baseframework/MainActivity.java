@@ -30,6 +30,7 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCall
 
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShotVideoConfig;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.VideoPlayUtils;
 import com.baseeasy.commonlibrary.weight.dialog.CustomDialog;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
 import com.baseeasy.commonlibrary.weight.dialog.multipledialog.SelectMultipleListDialog;
@@ -168,7 +169,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.bt_select_image:
 //                customDialog.show();
-              ARouterTools.startActivity(ARouterPath.CommonLibrary.COMMON_SELECTIMAGE_ACTIVITY);
+//              ARouterTools.startActivity(ARouterPath.CommonLibrary.COMMON_SELECTIMAGE_ACTIVITY);
 //                SelectImageUtils.getInstance().startSelectImage(this, new SelectImageCallBack() {
 //                    @Override
 //                    public void onImageSelected(List<SelectImageBean> localMediaList) {
@@ -196,29 +197,29 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                        selectImageBeans.removeAll(imageBeans);
 //                    }
 //                },selectImageBeans);
-//                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
-//                    @Override
-//                    public void onTakingPhoto(List<String> localMediaList) {
-//
-////                         selectImageBeans = localMediaList;
-////                        for (int i = 0; i < selectImageBeans.size(); i++) {
-////                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
-////                        }
-//                    }
-//
-//                    @Override
-//                    public void onAddTakingPhoto(List<String> imageBeans) {
-//
-//                        selectImageBeans.addAll(imageBeans);
-//                    }
-//
-//                    @Override
-//                    public void onDeleteTakingPhoto(List<String> imageBeans) {
-//
-//                        selectImageBeans.removeAll(imageBeans);
-//
-//                    }
-//                }, selectImageBeans);
+                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
+                    @Override
+                    public void onTakingPhoto(List<String> localMediaList) {
+
+//                         selectImageBeans = localMediaList;
+//                        for (int i = 0; i < selectImageBeans.size(); i++) {
+//                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
+//                        }
+                    }
+
+                    @Override
+                    public void onAddTakingPhoto(List<String> imageBeans) {
+
+                        selectImageBeans.addAll(imageBeans);
+                    }
+
+                    @Override
+                    public void onDeleteTakingPhoto(List<String> imageBeans) {
+
+                        selectImageBeans.removeAll(imageBeans);
+
+                    }
+                }, selectImageBeans);
 
 //             SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
 //                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
@@ -319,32 +320,34 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                  startActivity(new Intent(this, HTTPTestActivity.class));
                 break;
             case  R.id.video:
-                ShotVideoConfig shotVideoConfig=
-                        new ShotVideoConfig.Builder()
-                                .withVideoQuality(ShotVideoConfig.ConfigParameter.PROGRESS_HIGH)
-                                .withEatioMode(ShotVideoConfig.ConfigParameter.RATIO_MODE_3_4)
-                                .withEesolutionMode(ShotVideoConfig.ConfigParameter.RESOLUTION_720P)
-                                .withMaxTime(30).build();
-                ShootVideoUtils.getInstance().startShootVideo(MainActivity.this, new ShootVideoCallBack() {
-                    @Override
-                    public void onShootVideo(List<String> pathList) {
-//                        videopathList.clear();
-//                       pathList.addAll(pathList);
+                VideoPlayUtils.play(this,"http://cdn.baseeasy.com/%E4%B8%81%E4%B8%96%E8%B4%B51501031965041325551588846442498.mp4");
+
+//                ShotVideoConfig shotVideoConfig=
+//                        new ShotVideoConfig.Builder()
+//                                .withVideoQuality(ShotVideoConfig.ConfigParameter.PROGRESS_HIGH)
+//                                .withEatioMode(ShotVideoConfig.ConfigParameter.RATIO_MODE_3_4)
+//                                .withEesolutionMode(ShotVideoConfig.ConfigParameter.RESOLUTION_720P)
+//                                .withMaxTime(30).build();
+//                ShootVideoUtils.getInstance().startShootVideo(MainActivity.this, new ShootVideoCallBack() {
+//                    @Override
+//                    public void onShootVideo(List<String> pathList) {
+////                        videopathList.clear();
+////                       pathList.addAll(pathList);
+////                        videopathList.addAll(pathList);
+//                    }
+//
+//                    @Override
+//                    public void onAddVideoList(List<String> pathList) {
+//                        textView.setText(textView.getText().toString()+"添加："+pathList);
 //                        videopathList.addAll(pathList);
-                    }
-
-                    @Override
-                    public void onAddVideoList(List<String> pathList) {
-                        textView.setText(textView.getText().toString()+"添加："+pathList);
-                        videopathList.addAll(pathList);
-                    }
-
-                    @Override
-                    public void onDeleteVideoList(List<String> pathList) {
-                        videopathList.removeAll(pathList);
-                        textView.setText(textView.getText().toString()+"减去："+pathList);
-                    }
-                }, videopathList,3,shotVideoConfig);
+//                    }
+//
+//                    @Override
+//                    public void onDeleteVideoList(List<String> pathList) {
+//                        videopathList.removeAll(pathList);
+//                        textView.setText(textView.getText().toString()+"减去："+pathList);
+//                    }
+//                }, videopathList,3,shotVideoConfig);
                 Log.e("kk",videopathList.size()+"");
                 break;
         }
