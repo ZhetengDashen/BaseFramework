@@ -25,9 +25,10 @@ public class RetryIntercepter implements Interceptor {
         Request request = chain.request();
         System.out.println("retryNum=" + retryNum);
         Response response = chain.proceed(request);
+        System.out.println("response.isSuccessful()" +response.isSuccessful());
         while (!response.isSuccessful() && retryNum < maxRetry) {
             retryNum++;
-            System.out.println("retryNum=" + retryNum);
+            System.out.println("retryNum重试=" + retryNum);
             response = chain.proceed(request);
         }
         return response;

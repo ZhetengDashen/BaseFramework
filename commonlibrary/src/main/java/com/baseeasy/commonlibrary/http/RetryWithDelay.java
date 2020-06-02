@@ -1,6 +1,7 @@
 package com.baseeasy.commonlibrary.http;
 
 import android.util.DebugUtils;
+import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +38,7 @@ public class RetryWithDelay implements
                     @Override
                     public ObservableSource<?> apply(Throwable throwable) throws Exception {
                         if (++retryCount <= maxRetries) {
-
+                            Log.e("RetryWithDelay:","retryCount:"+retryCount);
                             // When this Observable calls onNext, the original Observable will be retried (i.e. re-subscribed).
                             return Observable.timer(retryDelayMillis * retryCount,
                                     TimeUnit.MILLISECONDS);
