@@ -19,7 +19,7 @@ public class RetrofitFactory {
                 .connectTimeout(HTTP_TIME, TimeUnit.SECONDS)
                 .readTimeout(HTTP_TIME, TimeUnit.SECONDS)
                 .writeTimeout(HTTP_TIME, TimeUnit.SECONDS)
-//                .addInterceptor(new RetryIntercepter(3))
+              .addInterceptor(new RetryIntercepter(3))
                 .addInterceptor(new BaseInterceptor())//添加公共参数并且把数据统一添加到json字段中
                 .addInterceptor(LoggingInterceptor.LogInterceptor())//添加日志拦截器
 //                .addNetworkInterceptor(new Interceptor() {
