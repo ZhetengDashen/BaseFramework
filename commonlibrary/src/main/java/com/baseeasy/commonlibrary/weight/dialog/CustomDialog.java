@@ -28,6 +28,7 @@ public class CustomDialog {
     private String single;
     private boolean isSingle = false;
     private boolean isDouble = true;
+    private boolean isDialogAutoDismiss = true;
     private OnCustomLeftClickLister oncustomleftclicklister;
     private OnCustomRightClickLister oncustomrightclicklister;
     private OnCustomMidClickLister oncustommidclicklister;
@@ -55,6 +56,7 @@ public class CustomDialog {
         this.single = builder.single;
         this.isSingle = builder.isSingle;
         this.isDouble = builder.isDouble;
+        this.isDialogAutoDismiss=builder.isDialogAutoDismiss;
         this.oncustomleftclicklister = builder.onCustomLeftClickLister;
         this.oncustomrightclicklister = builder.onCustomRightClickLister;
         this.oncustommidclicklister = builder.onCustomMidClickLister;
@@ -87,7 +89,9 @@ public class CustomDialog {
             tv_sure.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dialog.dismiss();
+                    if (isDialogAutoDismiss) {
+                        dialog.dismiss();
+                    }
                     if (oncustomsingleclicklister != null) {
                         oncustomsingleclicklister.onSingleClicked();
                     }
@@ -113,7 +117,9 @@ public class CustomDialog {
                 tv_middle.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dialog.dismiss();
+                        if (isDialogAutoDismiss) {
+                            dialog.dismiss();
+                        }
                         if (oncustommidclicklister != null) {
                             oncustommidclicklister.onMiddleClicked();
                         }
@@ -123,7 +129,9 @@ public class CustomDialog {
             tv_left.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dialog.dismiss();
+                    if (isDialogAutoDismiss) {
+                        dialog.dismiss();
+                    }
                     if (oncustomleftclicklister != null) {
                         oncustomleftclicklister.onLeftClicked();
                     }
@@ -132,7 +140,9 @@ public class CustomDialog {
             tv_right.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dialog.dismiss();
+                    if (isDialogAutoDismiss) {
+                        dialog.dismiss();
+                    }
                     if (oncustomrightclicklister != null) {
                         oncustomrightclicklister.onRightClicked();
                     }
@@ -206,6 +216,7 @@ public class CustomDialog {
         protected Context context;
         protected boolean isSingle = false;
         protected boolean isDouble = true;
+        protected boolean isDialogAutoDismiss = true;
         protected OnCustomLeftClickLister onCustomLeftClickLister;
         protected OnCustomRightClickLister onCustomRightClickLister;
         protected OnCustomMidClickLister onCustomMidClickLister;
@@ -350,7 +361,15 @@ public class CustomDialog {
             this.onCustomSingleClickLister = onCustomSingleClickLister;
             return this;
         }
-
+        /**
+         * 是否单独点击弹窗消息
+         * @param isDialogAutoDismiss
+         * @return
+         */
+        public DialogBuilder isAutoDismiss(boolean isDialogAutoDismiss) {
+            this.isDialogAutoDismiss = isDialogAutoDismiss;
+            return this;
+        }
         /**
          * 创建dialog
          *
