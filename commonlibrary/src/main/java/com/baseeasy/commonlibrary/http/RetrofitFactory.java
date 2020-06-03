@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 描述：
  */
 public class RetrofitFactory {
-    public static int HTTP_TIME = 90;
+    public static int HTTP_TIME = 180;
     public static <T> T create(Class<T> service) {
         OkHttpClient mOkHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(HTTP_TIME, TimeUnit.SECONDS)
