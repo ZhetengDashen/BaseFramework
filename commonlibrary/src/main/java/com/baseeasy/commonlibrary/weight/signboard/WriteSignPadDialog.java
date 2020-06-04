@@ -84,7 +84,7 @@ public class WriteSignPadDialog extends Dialog {
                         if (!sdRoot.exists()) {
                             sdRoot.mkdirs();
                         }
-                        File file = new File(sdRoot, System.currentTimeMillis() + ".ing");
+                        File file = new File(sdRoot, System.currentTimeMillis() + ".jpg");
                         FileOutputStream fos = new FileOutputStream(file);
                         Matrix matrix = new Matrix();
                         matrix.postRotate(-90f);

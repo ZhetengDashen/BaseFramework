@@ -79,7 +79,7 @@ public class WriteSignPadDialogNew extends Dialog {
                     if (!sdRoot.exists()) {
                         sdRoot.mkdirs();
                     }
-                    File file = new File(sdRoot, System.currentTimeMillis() + ".ing");
+                    File file = new File(sdRoot, System.currentTimeMillis() + ".jpg");
                     FileOutputStream fos = new FileOutputStream(file);
                     Bitmap bitmap = null;
                     if (mView.cachebBitmap.getWidth() > 350) {
