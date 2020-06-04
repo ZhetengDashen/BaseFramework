@@ -84,7 +84,7 @@ public class WriteSignPadDialog extends Dialog {
                         if (!sdRoot.exists()) {
                             sdRoot.mkdirs();
                         }
-                        File file = new File(sdRoot, System.currentTimeMillis() + ".ing");
+                        File file = new File(sdRoot, System.currentTimeMillis() + ".jpg");
                         FileOutputStream fos = new FileOutputStream(file);
                         Matrix matrix = new Matrix();
                         matrix.postRotate(-90f);
@@ -203,10 +203,12 @@ public class WriteSignPadDialog extends Dialog {
                 return;
             }
 
-            if (curW < w)
+            if (curW < w) {
                 curW = w;
-            if (curH < h)
+            }
+            if (curH < h) {
                 curH = h;
+            }
 
             Bitmap newBitmap = Bitmap.createBitmap(curW, curH, Config.ARGB_8888);
             Canvas newCanvas = new Canvas();
