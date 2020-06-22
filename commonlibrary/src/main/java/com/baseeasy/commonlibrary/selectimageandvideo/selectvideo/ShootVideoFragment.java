@@ -54,12 +54,13 @@ public class ShootVideoFragment extends Fragment {
 
 
     public void startShootVideo(int maxNum) {
-        startShootVideo(new ArrayList<String>(),maxNum,new ShotVideoConfig());
+        startShootVideo(new ArrayList<String>(),maxNum,new ShotVideoConfig(),false);
     }
-    public void startShootVideo(List<String>  pathList,int maxNum,ShotVideoConfig shotVideoConfig) {
+    public void startShootVideo(List<String>  pathList,int maxNum,ShotVideoConfig shotVideoConfig,Boolean isPreView) {
         addData=new ArrayList<>();
         deleteData=new ArrayList<>();
         Intent intent = new Intent(getActivity(), SelectVideoActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.ISPREVIEW,isPreView);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
         intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES, JSONObject.toJSONString(pathList));
         intent.putExtra(PictureShared.IntentExtraName.SHOOTVIDEOCONFIG,JSONObject.toJSONString(shotVideoConfig));

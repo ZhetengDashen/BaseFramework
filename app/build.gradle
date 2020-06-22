@@ -27,8 +27,13 @@ android {
 //        }
         multiDexEnabled true
     }
-    dataBinding {
-        enabled = true
+//    dataBinding {
+//        enabled = true
+//    }
+    buildFeatures{
+        dataBinding = true
+        // for view binding :
+//        viewBinding = true
     }
     buildTypes {
         release {

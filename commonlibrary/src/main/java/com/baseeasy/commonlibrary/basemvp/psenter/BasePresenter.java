@@ -26,10 +26,10 @@ import io.reactivex.schedulers.Schedulers;
 public abstract class BasePresenter<T extends IBaseView> {
     private LifecycleProvider<ActivityEvent> provider;
     private Context view_context;
-    public BasePresenter(LifecycleProvider<ActivityEvent> provider) {
+    public BasePresenter(LifecycleProvider provider) {
         this.provider = provider;
     }
-    public BasePresenter(LifecycleProvider<ActivityEvent> provider, Context context) {
+    public BasePresenter(LifecycleProvider provider, Context context) {
         this.provider = provider;
         this.view_context=context;
     }

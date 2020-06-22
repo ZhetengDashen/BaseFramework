@@ -17,11 +17,11 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
  */
 public abstract class BaseDadaBinDingPresenter<T extends IBaseView,K extends ViewDataBinding> extends BasePresenter<T>  {
 
-    public BaseDadaBinDingPresenter(LifecycleProvider<ActivityEvent> provider) {
+    public BaseDadaBinDingPresenter(LifecycleProvider provider) {
         super(provider);
     }
 
-    public BaseDadaBinDingPresenter(LifecycleProvider<ActivityEvent> provider, Context context) {
+    public BaseDadaBinDingPresenter(LifecycleProvider provider, Context context) {
         super(provider, context);
 
     }

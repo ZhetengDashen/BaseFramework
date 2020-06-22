@@ -203,10 +203,12 @@ public class WriteSignPadDialog extends Dialog {
                 return;
             }
 
-            if (curW < w)
+            if (curW < w) {
                 curW = w;
-            if (curH < h)
+            }
+            if (curH < h) {
                 curH = h;
+            }
 
             Bitmap newBitmap = Bitmap.createBitmap(curW, curH, Config.ARGB_8888);
             Canvas newCanvas = new Canvas();

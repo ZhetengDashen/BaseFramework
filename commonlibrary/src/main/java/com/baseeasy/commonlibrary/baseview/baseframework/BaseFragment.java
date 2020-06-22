@@ -86,6 +86,8 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
         return view;
     }
 
+    public  abstract String   title();
+
     /*
     * 设置View
     * */

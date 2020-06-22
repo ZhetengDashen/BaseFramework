@@ -166,21 +166,31 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 //            if(null!=eventBugFlag&&!eventBugFlag.equals("")){
 //                EventBusUtils.post(new EventMessage(EventConst.EVENT_CODE_OK,eventBugFlag, ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)));
 //            }
-            Intent intent=new Intent();
-            String current=JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList));
-            intent.putExtra(PictureShared.IntentExtraName.SELECTIMAGE_DATA,current);
-            String add=JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(getAddData()));
-            intent.putExtra(PictureShared.IntentExtraName.SELECTIMAGE_ADD_DATA,add);
-            String del=JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(getDeleteData()));
-            intent.putExtra(PictureShared.IntentExtraName.SELECTIMAGE_DELETE_DATA,del);
-
-            setResult(RESULT_OK, intent);
+            save();
             finish();
         }else  if(v.getId()==R.id.iv_title_back){
+            save();
             finish();
         }
     }
 
+    @Override
+    public void onBackPressed() {
+      save();
+        super.onBackPressed();
+    }
+
+    private  void save(){
+        Intent intent=new Intent();
+        String current=JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList));
+        intent.putExtra(PictureShared.IntentExtraName.SELECTIMAGE_DATA,current);
+        String add=JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(getAddData()));
+        intent.putExtra(PictureShared.IntentExtraName.SELECTIMAGE_ADD_DATA,add);
+        String del=JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(getDeleteData()));
+        intent.putExtra(PictureShared.IntentExtraName.SELECTIMAGE_DELETE_DATA,del);
+
+        setResult(RESULT_OK, intent);
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

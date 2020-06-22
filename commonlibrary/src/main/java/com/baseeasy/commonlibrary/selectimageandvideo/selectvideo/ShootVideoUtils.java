@@ -88,6 +88,7 @@ public class ShootVideoUtils {
      * 拍摄视频
      * @param  activity
      * @param  shootVideoCallBack
+     * @param maxNum
      *
      * */
     public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,int maxNum){
@@ -98,23 +99,28 @@ public class ShootVideoUtils {
      * 拍摄视频
      * @param  activity
      * @param  shootVideoCallBack
+     * @param videoPaths
+     * @param maxNum
      *
      * */
     public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,List<String> videoPaths,int maxNum){
-        startShootVideo(activity,shootVideoCallBack,videoPaths,maxNum,new ShotVideoConfig());
+        startShootVideo(activity,shootVideoCallBack,videoPaths,maxNum,new ShotVideoConfig(),false);
         }
 
     /**
      * 拍摄视频
      * @param  activity
      * @param  shootVideoCallBack
+     * @param videoPaths
+     * @param maxNum
      * @param shotVideoConfig 拍摄视频配置
+     * @param isPreView 是否自动预览
      *
      * */
-    public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,List<String> videoPaths,int maxNum,ShotVideoConfig shotVideoConfig){
+    public void startShootVideo(FragmentActivity activity,ShootVideoCallBack shootVideoCallBack,List<String> videoPaths,int maxNum,ShotVideoConfig shotVideoConfig,Boolean isPreView){
         ShootVideoFragment shootVideoFragment= getShootVideoFragment(activity, shootVideoCallBack);
         isChickPermission(shootVideoFragment.getActivity());
-        shootVideoFragment.startShootVideo(videoPaths,maxNum,shotVideoConfig);
+        shootVideoFragment.startShootVideo(videoPaths,maxNum,shotVideoConfig,isPreView);
     }
 
     @SuppressLint("CheckResult")

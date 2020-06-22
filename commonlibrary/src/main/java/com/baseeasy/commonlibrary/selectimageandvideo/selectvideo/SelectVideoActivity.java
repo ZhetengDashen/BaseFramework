@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -73,6 +74,7 @@ public class SelectVideoActivity extends AppCompatActivity implements View.OnCli
     private TextView tv_add;
     private int  maxVideoNum= PictureShared.MAX_VIDEO_NUM;//默认100
     private ShotVideoConfig shotVideoConfig;
+    private Boolean isPreView=false;//是否预览视频
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +107,7 @@ public class SelectVideoActivity extends AppCompatActivity implements View.OnCli
             if(null!=pathList_json&&!pathList_json.equals("")&&!pathList_json.equals("null")){
                 currentSelectList= JSONArray.parseArray(pathList_json, String.class);
             }
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -120,7 +123,7 @@ public class SelectVideoActivity extends AppCompatActivity implements View.OnCli
         }
 
         maxVideoNum=getIntent().getIntExtra(PictureShared.IntentExtraName.MAXVIDEONUM,PictureShared.MAX_VIDEO_NUM);
-
+        isPreView=getIntent().getBooleanExtra(PictureShared.IntentExtraName.ISPREVIEW,false);
         selectVideoAdapter=new SelectVideoAdapter(currentSelectList);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setAdapter(selectVideoAdapter);
@@ -152,15 +155,28 @@ public class SelectVideoActivity extends AppCompatActivity implements View.OnCli
 
         }else if(v.getId()==R.id.tv_add){
 
-            Intent intent=new Intent();
-            intent.putExtra(PictureShared.IntentExtraName.SELECTVIDEO_DATA, JSONObject.toJSONString(currentSelectList));
-            setResult(RESULT_OK, intent);
+            save();
             finish();
         }else  if(v.getId()==R.id.iv_title_back){
+
+            save();
             finish();
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        save();
+        super.onBackPressed();
+    }
+
+    private void save(){
+
+        Intent intent=new Intent();
+        intent.putExtra(PictureShared.IntentExtraName.SELECTVIDEO_DATA, JSONObject.toJSONString(currentSelectList));
+        setResult(RESULT_OK, intent);
+
+    }
     /**
      * 开启拍摄视频
      * **/
@@ -215,7 +231,7 @@ public class SelectVideoActivity extends AppCompatActivity implements View.OnCli
                 .build();
 
         if (!FastClickUtil.isFastClickActivity(AliyunVideoRecorder.class.getSimpleName())) {
-            AliyunVideoRecorder.startRecordForResult(this, SHOOTVIDEO, recordParam,videoPath);
+            AliyunVideoRecorder.startRecordForResult(this, SHOOTVIDEO, recordParam,videoPath,isPreView);
            }
         } catch (Exception e) {
             e.printStackTrace();
