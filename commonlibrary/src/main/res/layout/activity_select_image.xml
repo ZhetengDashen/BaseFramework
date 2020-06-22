@@ -38,7 +38,7 @@
                 android:textSize="16dp" />
 
             <TextView
-
+                android:visibility="gone"
                 android:id="@+id/tv_add"
                 android:layout_marginRight="12dp"
                 android:textColor="@color/white"
