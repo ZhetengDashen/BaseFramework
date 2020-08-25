@@ -103,8 +103,13 @@
  [ARouterPath.java]( src\/main\/java\/com\/baseeasy\/commonlibrary\/arouter\/ARouterPath.java) :<br> 各个Activity路由配置地址管理类
   
  `注： ARouter的初始化已经放在了BaseApplication当中, 引用commonlibrary的app需要在AndroidManifest中配置BaseApplication。` <br>
- `如果需要请自定义Application需要继承BaseApplication 避免ARouter 出错 `
- 
+ `如果需要请自定义Application需要继承BaseApplication 避免ARouter 出错 ` <br>
+ ` * 描述：各个Activity路由跳转路径，每个静态内部类为mode名称，如果新建了mode请新建一个静态内部类。` <br>
+ ` * 注： 路径名称规范:"/mode名称/activity名称"` <br>
+ ` * 不同module的一级路径必须不同，否则会导致一个moudle中的一级路径失效！！！` <br>
+ ` * 多个mode必须都在app中添加依赖 否则无法找到路由路径`<br>
+ ` * 多个mode必须都在app中添加依赖 否则无法找到路由路径`<br>
+ ` *  arouter传值、对象中不可私有变量`<br>
  [ARouterTools.java](src\/main\/java\/com\/baseeasy\/commonlibrary\/arouter\/ARouterTools.java): <br> Activity 路由跳转工具类
  
  [JsonServiceImpl.java](src\/main\/java\/com\/baseeasy\/commonlibrary\/arouter\/JsonServiceImpl.java): <br> Activity 路由跳转传递对象时候序列化用到的。

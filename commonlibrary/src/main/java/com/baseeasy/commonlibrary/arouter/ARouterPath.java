@@ -7,6 +7,7 @@ package com.baseeasy.commonlibrary.arouter;
  * 描述：各个Activity路由跳转路径，每个静态内部类为mode名称，如果新建了mode请新建一个静态内部类。
  * 注： 路径名称规范:"/mode名称/activity名称"
  * 不同module的一级路径必须不同，否则会导致一个moudle中的一级路径失效！！！
+ * 多个mode必须都在app中添加依赖 否则无法找到路由路径
  */
 public class ARouterPath {
 
