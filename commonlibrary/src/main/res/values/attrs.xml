@@ -11,4 +11,7 @@
         <attr name="ztswchecked" format="boolean"></attr>
         <attr name="ztswisdatabinding" format="boolean"></attr>
     </declare-styleable>
+    <declare-styleable name="NumberEditText">
+        <attr name="maxDecimalPoint" format="integer" />
+    </declare-styleable>
 </resources>
