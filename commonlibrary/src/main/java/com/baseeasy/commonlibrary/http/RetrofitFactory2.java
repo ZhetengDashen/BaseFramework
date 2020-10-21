@@ -6,31 +6,24 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2018/7/19
  * 邮箱：sos181@163.com
- * 描述：
+ * 描述：请求参数不添加到‘json’中,请求头中添加User-Agent、prefix_user_token_ 等
  */
-public class RetrofitFactory {
+public class RetrofitFactory2 {
     public static int HTTP_TIME = 180;
     public static <T> T create(Class<T> service) {
         OkHttpClient mOkHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(HTTP_TIME, TimeUnit.SECONDS)
                 .readTimeout(HTTP_TIME, TimeUnit.SECONDS)
                 .writeTimeout(HTTP_TIME, TimeUnit.SECONDS)
-
               .addInterceptor(new RetryIntercepter(3))
-                .addInterceptor(new BaseInterceptor())//添加公共参数并且把数据统一添加到json字段中
+                .addInterceptor(new AddHeaderInterceptor())//添加公共参数并且把数据统一添加到json字段中
                 .addInterceptor(LoggingInterceptor.LogInterceptor())//添加日志拦截器
-//                .addNetworkInterceptor(new Interceptor() {
-//                    @Override
-//                    public Response intercept(Chain chain) throws IOException {
-//                        return null;
-//                    }
-//                })
                 .retryOnConnectionFailure(true)
-
                 .build();
         Retrofit mRetrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.6.134/appdb_nm/")//这里必须设置一个baseurl 否则会抛出异常 所以先随便设置一个
@@ -38,14 +31,6 @@ public class RetrofitFactory {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//添加rxjava转换器
                 .client(mOkHttpClient)
                 .build();
-
-
         return mRetrofit.create(service);
     }
-
-
-
-
-
-
 }
