@@ -108,7 +108,7 @@ public class IDCardUtil {
                 // 当前月份
                 String ri = format.format(date).substring(8, 10);
 
-                if (Integer.parseInt(month) <= Integer.parseInt(fyue)||(Integer.parseInt(month) == Integer.parseInt(fyue)&&Integer.parseInt(day)<=Integer.parseInt(ri))) {
+                if (Integer.parseInt(month) < Integer.parseInt(fyue)||(Integer.parseInt(month) == Integer.parseInt(fyue)&&Integer.parseInt(day)<=Integer.parseInt(ri))) {
                     age = Integer.parseInt(fyear) - Integer.parseInt(year);
 
                 } else {
