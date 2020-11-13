@@ -39,7 +39,7 @@ public class WriteSignPadDialogNew extends Dialog {
     WriteDialogListener dialogListener;
     int BACKGROUND_COLOR = Color.WHITE;
     PaintView mView;
-
+    private int paintStrokeWidth=6;
     public WriteSignPadDialogNew(Context context, WriteDialogListener dialogListener) {
         super(context);
         this.context = context;
@@ -117,6 +117,9 @@ public class WriteSignPadDialogNew extends Dialog {
         });
     }
 
+    public void setPaintStrokeWidth(int width){
+        this.paintStrokeWidth=width;
+    }
     /**
      * This view implements the drawing canvas.
      * <p>
@@ -141,7 +144,7 @@ public class WriteSignPadDialogNew extends Dialog {
         private void init() {
             paint = new Paint(Paint.DITHER_FLAG);
             paint.setAntiAlias(true);
-            paint.setStrokeWidth(6);
+            paint.setStrokeWidth(paintStrokeWidth);
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeCap(Paint.Cap.ROUND);
             paint.setStrokeJoin(Paint.Join.ROUND);

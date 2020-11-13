@@ -34,6 +34,7 @@ public class WriteSignPadDialog extends Dialog {
     LayoutParams p;
     WriteDialogListener dialogListener;
     PaintView mView;
+    private int paintStrokeWidth=12;
     /**
      * The index of the current color to use.
      */
@@ -46,7 +47,9 @@ public class WriteSignPadDialog extends Dialog {
     public void setDialogListener(WriteDialogListener dialogListener) {
         this.dialogListener = dialogListener;
     }
-
+    public void setPaintStrokeWidth(int width){
+        this.paintStrokeWidth=width;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,7 +144,7 @@ public class WriteSignPadDialog extends Dialog {
         private void init() {
             paint = new Paint();
             paint.setAntiAlias(true);
-            paint.setStrokeWidth(12);
+            paint.setStrokeWidth(paintStrokeWidth);
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(Color.BLACK);
             path = new Path();
