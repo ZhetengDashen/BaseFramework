@@ -320,34 +320,34 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                  startActivity(new Intent(this, HTTPTestActivity.class));
                 break;
             case  R.id.video:
-                VideoPlayUtils.play(this,"http://cdn.baseeasy.com/%E4%B8%81%E4%B8%96%E8%B4%B51501031965041325551588846442498.mp4");
+//                VideoPlayUtils.play(this,"http://cdn.baseeasy.com/%E4%B8%81%E4%B8%96%E8%B4%B51501031965041325551588846442498.mp4");
 
-//                ShotVideoConfig shotVideoConfig=
-//                        new ShotVideoConfig.Builder()
-//                                .withVideoQuality(ShotVideoConfig.ConfigParameter.PROGRESS_HIGH)
-//                                .withEatioMode(ShotVideoConfig.ConfigParameter.RATIO_MODE_3_4)
-//                                .withEesolutionMode(ShotVideoConfig.ConfigParameter.RESOLUTION_720P)
-//                                .withMaxTime(30).build();
-//                ShootVideoUtils.getInstance().startShootVideo(MainActivity.this, new ShootVideoCallBack() {
-//                    @Override
-//                    public void onShootVideo(List<String> pathList) {
-////                        videopathList.clear();
-////                       pathList.addAll(pathList);
-////                        videopathList.addAll(pathList);
-//                    }
-//
-//                    @Override
-//                    public void onAddVideoList(List<String> pathList) {
-//                        textView.setText(textView.getText().toString()+"添加："+pathList);
+                ShotVideoConfig shotVideoConfig=
+                        new ShotVideoConfig.Builder()
+                                .withVideoQuality(ShotVideoConfig.ConfigParameter.PROGRESS_HIGH)
+                                .withEatioMode(ShotVideoConfig.ConfigParameter.RATIO_MODE_3_4)
+                                .withEesolutionMode(ShotVideoConfig.ConfigParameter.RESOLUTION_720P)
+                                .withMaxTime(30).build();
+                ShootVideoUtils.getInstance().startShootVideo(MainActivity.this, new ShootVideoCallBack() {
+                    @Override
+                    public void onShootVideo(List<String> pathList) {
+//                        videopathList.clear();
+//                       pathList.addAll(pathList);
 //                        videopathList.addAll(pathList);
-//                    }
-//
-//                    @Override
-//                    public void onDeleteVideoList(List<String> pathList) {
-//                        videopathList.removeAll(pathList);
-//                        textView.setText(textView.getText().toString()+"减去："+pathList);
-//                    }
-//                }, videopathList,3,shotVideoConfig);
+                    }
+
+                    @Override
+                    public void onAddVideoList(List<String> pathList) {
+                        textView.setText(textView.getText().toString()+"添加："+pathList);
+                        videopathList.addAll(pathList);
+                    }
+
+                    @Override
+                    public void onDeleteVideoList(List<String> pathList) {
+                        videopathList.removeAll(pathList);
+                        textView.setText(textView.getText().toString()+"减去："+pathList);
+                    }
+                }, videopathList,3,shotVideoConfig,true);
                 Log.e("kk",videopathList.size()+"");
                 break;
         }
