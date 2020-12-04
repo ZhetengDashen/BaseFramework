@@ -110,7 +110,6 @@ public class IDCardUtil {
 
                 if (Integer.parseInt(month) < Integer.parseInt(fyue)||(Integer.parseInt(month) == Integer.parseInt(fyue)&&Integer.parseInt(day)<=Integer.parseInt(ri))) {
                     age = Integer.parseInt(fyear) - Integer.parseInt(year);
-
                 } else {
                     age = Integer.parseInt(fyear) - Integer.parseInt(year)-1;
                 }
