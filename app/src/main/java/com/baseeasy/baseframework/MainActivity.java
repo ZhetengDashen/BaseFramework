@@ -19,6 +19,7 @@ import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
+import com.baseeasy.commonlibrary.baseview.baseframework.BaseFragment;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 
@@ -255,6 +256,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                });
                 break;
             case R.id.button_ff:
+
                 startActivity(new Intent(this, FingerprintActivity.class));
                 break;
 

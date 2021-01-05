@@ -11,6 +11,7 @@ import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -24,7 +25,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public abstract class BasePresenter<T extends IBaseView> {
-    private LifecycleProvider<ActivityEvent> provider;
+    private LifecycleProvider provider;
     private Context view_context;
     public BasePresenter(LifecycleProvider provider) {
         this.provider = provider;
@@ -33,7 +34,7 @@ public abstract class BasePresenter<T extends IBaseView> {
         this.provider = provider;
         this.view_context=context;
     }
-    public LifecycleProvider<ActivityEvent> getProvider() {
+    public LifecycleProvider getProvider() {
         return provider;
     }
 
@@ -72,11 +73,18 @@ public abstract class BasePresenter<T extends IBaseView> {
         return new ObservableTransformer<T,T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(getProvider().<T>bindUntilEvent(ActivityEvent.DESTROY));
+                return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(getProvider().bindUntilEvent(ActivityEvent.DESTROY));
             }
         };
     }
-
+    public <T> ObservableTransformer<T,T> setThreadAndLifecycleFragment(){
+        return new ObservableTransformer<T,T>() {
+            @Override
+            public ObservableSource<T> apply(Observable<T> upstream) {
+                return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(getProvider().bindUntilEvent(FragmentEvent.DESTROY));
+            }
+        };
+    }
     // 在主线程处理
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void eventBusMessageOnMainThread(EventMessage event) {
