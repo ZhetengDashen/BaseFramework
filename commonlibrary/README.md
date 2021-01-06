@@ -60,7 +60,7 @@
             }
             dependencies {
                 classpath 'com.android.tools.build:gradle:3.1.2'
-                classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
+                classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add plugin
             }
         }
    ``` 
