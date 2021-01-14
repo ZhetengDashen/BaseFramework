@@ -46,7 +46,9 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
     }
     @Override
     public void showMessage(String message) {
-        ToastUtil.showinfo(getContext(),message);
+        if(!message.isEmpty()) {
+            ToastUtil.showinfo(getContext(), message);
+        }
     }
 
 
@@ -56,7 +58,9 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
     }
     @Override
     public void showCodeError(String errorCode, String errorMsg) {
-        ToastUtil.showerror(getContext(),errorMsg);
+        if(!errorMsg.isEmpty()) {
+            ToastUtil.showerror(getContext(), errorMsg);
+        }
     }
 
 

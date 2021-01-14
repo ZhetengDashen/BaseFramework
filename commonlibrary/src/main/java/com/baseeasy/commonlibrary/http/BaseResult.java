@@ -17,6 +17,7 @@ public class BaseResult<T> {
     private String success="";
     private String message="";
     private String code="";
+    private String msg="";
 
 
     private T data;
@@ -40,8 +41,22 @@ public class BaseResult<T> {
         this.success = success;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+
     public String getMessage() {
-        return message;
+        if(!msg.equals("")){
+            return msg;
+        }else {
+            return message;
+        }
+
     }
 
     public void setMessage(String message) {
