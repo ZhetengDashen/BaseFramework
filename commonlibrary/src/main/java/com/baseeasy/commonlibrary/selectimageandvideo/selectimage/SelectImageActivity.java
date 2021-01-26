@@ -126,7 +126,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                     selectImageAdapter.remove(position);
 
                 }else  if(view.getId()==R.id.iv_image){
-                    PictureSelector.create(SelectImageActivity.this).themeStyle(R.style.picture_default_style)  .loadImageEngine(GlideEngine.createGlideEngine()).openExternalPreview(position, currentSelectList);
+                    PictureSelector.create(SelectImageActivity.this).themeStyle(R.style.picture_default_style)  .imageEngine(GlideEngine.createGlideEngine()).openExternalPreview(position, currentSelectList);
                 }
             }
         });
@@ -144,8 +144,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 case 0:
                     PictureSelector.create(SelectImageActivity.this)
                             .openGallery(PictureMimeType.ofImage())
-                            .loadImageEngine(GlideEngine.createGlideEngine())
-                            .compress(true)
+                            .imageEngine(GlideEngine.createGlideEngine())
+                            .isCompress(true)
 //                            .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                             .maxSelectNum(allowNum)// 最大图片选择数量 int
@@ -154,11 +154,13 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 case 1:
                     PictureSelector.create(SelectImageActivity.this)
                             .openCamera(PictureMimeType.ofImage())
-                            .loadImageEngine(GlideEngine.createGlideEngine())
-                            .compress(true)
+                            .imageEngine(GlideEngine.createGlideEngine())
+                            .isCompress(true)
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                             .forResult(TAKING_PHOTO_REQUEST);
                     break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + action_type);
             }
 
 

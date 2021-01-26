@@ -261,6 +261,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
 
             case R.id.qianming:
+
                 Toast.makeText(this, "222", Toast.LENGTH_SHORT).show();
 //                WriteSignPadDialog writeSignPadDialog=new WriteSignPadDialog(this);
 //                writeSignPadDialog.setDialogListener(new WriteDialogListener() {
