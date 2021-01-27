@@ -115,7 +115,7 @@ public class SelectImageFragment extends Fragment {
                 .imageEngine(GlideEngine.createGlideEngine())
                 .isCompress(true)
                 .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
+                .setOutputCameraPath(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }
 
@@ -125,7 +125,7 @@ public class SelectImageFragment extends Fragment {
                 .imageEngine(GlideEngine.createGlideEngine())
                 .isCompress(true)
                 .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                .setOutputCameraPath("/"+PictureShared.FolderNameConfig.CAMERA)
+                .setOutputCameraPath(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
                 .maxSelectNum(1)// 最大图片选择数量 int
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }
