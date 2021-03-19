@@ -21,7 +21,7 @@ public class RetrofitFactory2 {
                 .readTimeout(HTTP_TIME, TimeUnit.SECONDS)
                 .writeTimeout(HTTP_TIME, TimeUnit.SECONDS)
               .addInterceptor(new RetryIntercepter(3))
-                .addInterceptor(new AddHeaderInterceptor())//添加公共参数并且把数据统一添加到json字段中
+                .addInterceptor(new AddHeaderInterceptor())//添加请求头拦截器 添加token等
                 .addInterceptor(LoggingInterceptor.LogInterceptor())//添加日志拦截器
                 .retryOnConnectionFailure(true)
                 .build();

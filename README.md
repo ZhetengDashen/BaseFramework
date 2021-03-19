@@ -95,7 +95,7 @@ allprojects {
 + <strong> [RxLifecycle](https://github.com/trello/RxLifecycle)<br>
 + <strong> [Retrofit2](https://square.github.io/retrofit/)<br>   
    
-# 注
+## 注
 
 > `项目修改请补充文件说明。`<br/>
 > `第三方类库请注明出处地址或参考文档地址。`

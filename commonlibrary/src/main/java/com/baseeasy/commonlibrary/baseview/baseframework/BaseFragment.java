@@ -54,7 +54,7 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
 
     @Override
     public void showNetError() {
-        ToastUtil.showerror(getContext(),"网络链接异常");
+        ToastUtil.showerror(getContext(),"网络异常");
     }
     @Override
     public void showCodeError(String errorCode, String errorMsg) {

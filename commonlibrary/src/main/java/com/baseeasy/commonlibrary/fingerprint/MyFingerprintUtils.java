@@ -507,7 +507,7 @@ public class MyFingerprintUtils {
                 FileUtils.createSDDir(BaseConfig.FOLDER_PATH.FINGERPRINT);
                 FileUtils.createNoMedia(BaseConfig.FOLDER_PATH.FINGERPRINT);
 
-                String str = FileUtils.SDPATH + BaseConfig.FOLDER_PATH.FINGERPRINT+"/" + UUID.randomUUID().toString().replace("-", "")+".bmp";
+                String str = FileUtils.SDPATH + BaseConfig.FOLDER_PATH.FINGERPRINT+"/" + UUID.randomUUID().toString().replace("-", "")+".jpg";
 
                 a6.ZAZImgData2BMP(Image, str);
                 temp = "获取图像成功";

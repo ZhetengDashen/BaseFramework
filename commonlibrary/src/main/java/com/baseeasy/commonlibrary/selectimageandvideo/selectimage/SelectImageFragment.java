@@ -114,6 +114,7 @@ public class SelectImageFragment extends Fragment {
                 .openCamera(PictureMimeType.ofImage())
                 .imageEngine(GlideEngine.createGlideEngine())
                 .isCompress(true)
+                .imageFormat(PictureMimeType.PNG)
                 .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                 .setOutputCameraPath(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
