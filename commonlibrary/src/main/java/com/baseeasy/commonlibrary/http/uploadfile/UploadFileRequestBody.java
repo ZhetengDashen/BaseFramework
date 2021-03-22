@@ -98,7 +98,7 @@ public class UploadFileRequestBody extends RequestBody {
                 bytesWritten += byteCount;
                 //回调上传接口
                 if(mProgressListener!=null){
-                    LogUtils.e((int)(bytesWritten * 100 / contentLength())+"%");
+//                    LogUtils.e((int)(bytesWritten * 100 / contentLength())+"%");
                     mainHandler.post(new Runnable() {
                         @Override
                         public void run() {

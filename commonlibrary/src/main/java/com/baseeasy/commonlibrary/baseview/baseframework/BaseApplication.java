@@ -59,7 +59,7 @@ public  class BaseApplication extends Application {
         }
         ARouter.init(this); // 尽可能早，推荐在Application中初始化
         ImageLoaderFactory.init(initImageLoader());
-        initLog();
+//        initLog();
         SharePreferenceUtils.setValue(this, SharePreferenceKeys.APP_VERSION,""+AppUtils.getVersionCode(this));
     }
    //初始化图形加载框架
