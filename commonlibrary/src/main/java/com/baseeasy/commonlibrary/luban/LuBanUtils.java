@@ -13,7 +13,7 @@ import top.zibin.luban.OnCompressListener;
 import top.zibin.luban.OnRenameListener;
 
 /**
- * 作者：WangZhiQiang
+ * 作者：WangZhiQiang.
  * 时间：2018/12/13
  * 邮箱：sos181@163.com
  * 描述：图片压缩
