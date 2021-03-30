@@ -36,6 +36,7 @@ import com.baseeasy.commonlibrary.weight.dialog.CustomDialog;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
 import com.baseeasy.commonlibrary.weight.dialog.multipledialog.SelectMultipleListDialog;
 import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.PictureSelectorCameraEmptyActivity;
 import com.magiclon.individuationtoast.ToastUtil;
 import com.test.TestUser;
 
@@ -198,29 +199,29 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                        selectImageBeans.removeAll(imageBeans);
 //                    }
 //                },selectImageBeans);
-//                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
-//                    @Override
-//                    public void onTakingPhoto(List<String> localMediaList) {
-//
-////                         selectImageBeans = localMediaList;
-////                        for (int i = 0; i < selectImageBeans.size(); i++) {
-////                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
-////                        }
-//                    }
-//
-//                    @Override
-//                    public void onAddTakingPhoto(List<String> imageBeans) {
-//
-//                        selectImageBeans.addAll(imageBeans);
-//                    }
-//
-//                    @Override
-//                    public void onDeleteTakingPhoto(List<String> imageBeans) {
-//
-//                        selectImageBeans.removeAll(imageBeans);
-//
-//                    }
-//                }, selectImageBeans);
+                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
+                    @Override
+                    public void onTakingPhoto(List<String> localMediaList) {
+
+//                         selectImageBeans = localMediaList;
+//                        for (int i = 0; i < selectImageBeans.size(); i++) {
+//                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
+//                        }
+                    }
+
+                    @Override
+                    public void onAddTakingPhoto(List<String> imageBeans) {
+
+                        selectImageBeans.addAll(imageBeans);
+                    }
+
+                    @Override
+                    public void onDeleteTakingPhoto(List<String> imageBeans) {
+
+                        selectImageBeans.removeAll(imageBeans);
+
+                    }
+                }, selectImageBeans);
 
 //             SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
 //                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
@@ -231,9 +232,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                });
 //             SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans,1);
 //                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
+//
 //                    @Override
-//                    public void onTakingPhoto(SelectImageBean imageBean) {
-//                        textView.setText(imageBean.getPath());
+//                    public void onTakingPhoto(String imagePath) {
+//
 //                    }
 //                });
 //
