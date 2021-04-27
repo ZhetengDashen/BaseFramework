@@ -111,6 +111,23 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
     }
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(null!=presenter){
+            presenter.eventBusRegister();
+        }
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(null!=presenter){
+            presenter.eventBusUnregister();
+        }
+
+    }
 
     @Override
     protected void onDestroy() {

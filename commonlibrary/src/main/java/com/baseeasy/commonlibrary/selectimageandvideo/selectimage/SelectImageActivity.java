@@ -3,6 +3,7 @@ package com.baseeasy.commonlibrary.selectimageandvideo.selectimage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.luban.LuBanUtils;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
+import com.baseeasy.commonlibrary.mytool.time.TimeUtil;
 import com.baseeasy.commonlibrary.selectimageandvideo.EventBusFlagImageOrVideo;
 import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
@@ -38,6 +40,12 @@ import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.magiclon.individuationtoast.ToastUtil;
 
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.Console;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +86,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         initData();
         FileUtils.createSDDir(PictureShared.FolderNameConfig.COMPRESSION);
         FileUtils.createNoMedia(PictureShared.FolderNameConfig.COMPRESSION);
+
 
     }
 
@@ -152,6 +161,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .forResult(SELECT_IMAGE_REQUEST);
                     break;
                 case 1:
+//                openCamera();
+//                    break;
                     PictureSelector.create(SelectImageActivity.this)
                             .openCamera(PictureMimeType.ofImage())
                             .imageEngine(GlideEngine.createGlideEngine())
@@ -222,6 +233,9 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
                     break;
                 case TAKING_PHOTO_REQUEST:
+//                    String path, long duration, int chooseModel, String mimeType
+
+
                     currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
                     selectImageAdapter.notifyDataSetChanged();
                     break;
@@ -275,5 +289,48 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         a.removeAll(b);
         return  a;
     }
+
+
+    /**
+     * 作者：WangZhiQiang
+     * 时间：2021/4/5
+     * 邮箱：sos181@163.com
+     * 描述：由于之前PictureSelector框架有问题 现在这种办法临时解决。
+     */
+    private void openCamera(){
+        File file = null;
+        try {
+        file=File.createTempFile(TimeUtil.getnow_time_seconds(),".jpg",new File(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+//        CoCo.with(this).take(file).then() //处理图片
+//                .dispose().start(new CoCoAdapter<DisposeResult>() {
+//            @Override
+//            public void onFailed(@NotNull Exception exception) {
+//                super.onFailed(exception);
+//                exception.printStackTrace();
+//
+//            }
+//
+//            @Override
+//            public void onSuccess(DisposeResult disposeResult) {
+//                super.onSuccess(disposeResult);
+//                 if(!disposeResult.getSavedFile().getAbsolutePath().isEmpty()){
+//                     LocalMedia localMedia= new LocalMedia();
+//                     localMedia.setPath(disposeResult.getSavedFile().getAbsolutePath());
+//                     currentSelectList.add(localMedia);
+//                     selectImageAdapter.notifyDataSetChanged();
+//                 }
+//
+//
+//
+//            }
+//        });
+
+    }
+
+
 
 }

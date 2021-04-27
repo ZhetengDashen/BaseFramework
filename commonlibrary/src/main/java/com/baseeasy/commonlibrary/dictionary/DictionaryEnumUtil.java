@@ -26,6 +26,39 @@ public class DictionaryEnumUtil {
 
 
     }
+    /**
+     * 通过code编码获取枚举对象
+     * @param code   枚举的编码
+     * @param tClass  枚举类
+     * @param <T>
+     * @return
+     */
+    public static<T extends DictionaryEnum> T getDictionaryFromCode(String code, Class<T> tClass){
+        for(T each:tClass.getEnumConstants()){
+            if(code.equals(each.getCode())){
+                return each;
+            }
+
+        }
+        return null;
+
+
+    }
+    /**
+     * 通过code编码获字典取枚举Name
+     * @param name   名称
+     * @param tClass  枚举类
+     * @param <T>
+     * @return
+     */
+    public static<T extends DictionaryEnum> T getDictionaryFromName(String name, Class<T> tClass){
+        for(T each:tClass.getEnumConstants()){
+            if(name.equals(each.getName())){
+                return each;
+            }
+        }
+        return null;
+    }
 
     /**
      * 通过name编码获字典取枚举Code

@@ -92,6 +92,24 @@ public abstract class BaseFragment<V extends IBaseView,T extends BasePresenter<V
 
     public  abstract String   title();
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(null!=presenter){
+            presenter.eventBusRegister();
+        }
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(null!=presenter){
+            presenter.eventBusUnregister();
+        }
+
+    }
     /*
     * 设置View
     * */

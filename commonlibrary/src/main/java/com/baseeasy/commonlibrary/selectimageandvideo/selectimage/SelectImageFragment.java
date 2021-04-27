@@ -21,6 +21,7 @@ import com.baseeasy.commonlibrary.eventbus.EventConst;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
+import com.baseeasy.commonlibrary.mytool.time.TimeUtil;
 import com.baseeasy.commonlibrary.selectimageandvideo.EventBusFlagImageOrVideo;
 import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
@@ -29,10 +30,14 @@ import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 
+
 import org.apache.commons.lang3.StringUtils;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +115,8 @@ public class SelectImageFragment extends Fragment {
         this.takingPhotoSeparateCallBack = takingPhotoSeparateCallBack;
     }
     public void startTakingPhotoSeparate() {
+//        openCamera();
+
         PictureSelector.create(this)
                 .openCamera(PictureMimeType.ofImage())
                 .imageEngine(GlideEngine.createGlideEngine())
@@ -118,6 +125,44 @@ public class SelectImageFragment extends Fragment {
                 .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                 .setOutputCameraPath(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
+    }
+
+    /**
+     * 作者：WangZhiQiang
+     * 时间：2021/4/5
+     * 邮箱：sos181@163.com
+     * 描述：由于之前PictureSelector框架有问题 现在这种办法临时解决。
+     */
+    public void openCamera(){
+        File file = null;
+        try {
+            file=File.createTempFile(TimeUtil.getnow_time_seconds(),".jpg",new File(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+//        CoCo.with(this).take(file).then() //处理图片
+//                .dispose().start(new CoCoAdapter<DisposeResult>() {
+//            @Override
+//            public void onFailed(@NotNull Exception exception) {
+//                super.onFailed(exception);
+//                exception.printStackTrace();
+//
+//            }
+//
+//            @Override
+//            public void onSuccess(DisposeResult disposeResult) {
+//                super.onSuccess(disposeResult);
+//               if(!disposeResult.getSavedFile().getAbsolutePath().isEmpty()){
+//                   takingPhotoSeparateCallBack.onTakingPhoto(disposeResult.getSavedFile().getAbsolutePath());
+//
+//               }
+//
+//
+//
+//            }
+//        });
+
     }
 
     public void startTakingPhotoAndImageSeparate() {

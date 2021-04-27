@@ -23,6 +23,7 @@
     <application>
         <activity android:name=".selectimageandvideo.selectvideo.SelectVideoActivity" />
         <activity android:name=".selectimageandvideo.selectimage.SelectImageActivity" />
+
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
-import com.luck.picture.lib.entity.LocalMedia;
+
 
 import java.util.List;
 

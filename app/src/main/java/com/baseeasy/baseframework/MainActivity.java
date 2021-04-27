@@ -14,6 +14,7 @@ import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
 import com.baseeasy.baseframework.demoactivity.MuTestBean;
+import com.baseeasy.baseframework.demoactivity.SZActivity;
 import com.baseeasy.baseframework.demoactivity.httptest.HTTPTestActivity;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
@@ -68,10 +69,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private  List<String> videopathList=new ArrayList<>();
     CustomDialog customDialog;
     CustomDialog.DialogBuilder dialogBuilder;
-
+    private  Button button_btsz;
     @Override
     public void init_view() {
         super.init_view();
+
+        button_btsz = (Button) findViewById(R.id.btsz);
+        button_btsz.setOnClickListener(this);
         bt_arouter = (Button) findViewById(R.id.bt_arouter);
         bt_arouter.setOnClickListener(this);
         bt_eventbus = (Button) findViewById(R.id.bt_eventbus);
@@ -147,6 +151,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case  R.id.btsz:
+                startActivity(new Intent(this, SZActivity.class));
+                break;
             case R.id.bt_arouter:
                 ARouterTools.startActivity(ARouterPath.AppMode.DEMO_AROUTER_ACTIVITY, "user", new TestUser("王大锤", "0", "女"));
                 break;
@@ -170,6 +177,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ARouterTools.startActivity(ARouterPath.AppMode.DEMO_RXPERMISSIONS_ACTIVITY);
                 break;
             case R.id.bt_select_image:
+
+//                LogUtils.d("KKKKKK------------------");
 //                customDialog.show();
 //              ARouterTools.startActivity(ARouterPath.CommonLibrary.COMMON_SELECTIMAGE_ACTIVITY);
 //                SelectImageUtils.getInstance().startSelectImage(this, new SelectImageCallBack() {

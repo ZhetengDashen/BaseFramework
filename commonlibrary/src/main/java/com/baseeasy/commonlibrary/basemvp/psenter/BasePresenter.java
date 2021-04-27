@@ -47,19 +47,38 @@ public abstract class BasePresenter<T extends IBaseView> {
     //    绑定View
     public void attachView(T view){
         this.mViewRef=new WeakReference<T>(view);
-        if ((!EventBusUtils.isRegister(this))&& isOpenEventBus()==true) {
-            EventBusUtils.register(this);
-        }
+
     }
     //    解绑
     public void detachView(){
         if(this.mViewRef.isEnqueued()){
-            if (EventBusUtils.isRegister(this)&&isOpenEventBus()==true) {
-                EventBusUtils.unregister(this);
-            }
+
             this.mViewRef.clear();
         }
     }
+    /**
+     * 作者：WangZhiQiang
+     * 时间：2021/4/6
+     * 邮箱：sos181@163.com
+     * 描述：注册eventBus
+     */
+    public void  eventBusRegister(){
+        if ((!EventBusUtils.isRegister(this))&& isOpenEventBus()==true) {
+            EventBusUtils.register(this);
+        }
+    }
+    /**
+     * 作者：WangZhiQiang
+     * 时间：2021/4/6
+     * 邮箱：sos181@163.com
+     * 描述：注销eventBus
+     */
+    public void  eventBusUnregister(){
+        if (EventBusUtils.isRegister(this)&&isOpenEventBus()==true) {
+            EventBusUtils.unregister(this);
+        }
+    }
+
     /**
      * 是否使用EventBus
      */

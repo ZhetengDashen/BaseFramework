@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" >
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" >
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                <ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content"  android:layout_weight="2" android:src="@drawable/alivc_record_focus" />
+                <Spinner android:id="@+id/Spinner_city" android:layout_width="wrap_content" android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                <Button android:id="@+id/btnopen" android:layout_width="120dp" android:layout_height="wrap_content"  android:text="@string/openstr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btngetimg" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="@string/getimagestr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btngetchar" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="@string/getcharstr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btndownchar" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="测试" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btnmacth" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="@string/macthFPstr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btnregister" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="@string/registerstr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btndelone" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="@string/delonestr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btndelall" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="@string/delallstr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btngetfpcnt" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="@string/getfpcntstr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+                <Button android:id="@+id/btnsearch" android:layout_width="120dp" android:layout_height="wrap_content" style="?android:attr/buttonStyle" android:text="@string/searchstr" android:layout_gravity="right" android:layout_marginRight="10dp"  />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"  android:text="@string/nullstr" />
+    </LinearLayout>
+</RelativeLayout>

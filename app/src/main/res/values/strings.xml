@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">BaseFramework</string>
+
+        <string name="nullstr"></string>
+        <string name="getimagestr"> 获 取 图 像  </string>
+        <string name="openstr">打      开</string>
+        <string name="closestr">关      闭</string>
+        <string name="getcharstr">获取特征</string>
+        <string name="macthFPstr">比对指纹</string>
+        <string name="registerstr">注册指纹</string>
+        <string name="delonestr">删除指纹</string>
+        <string name="delallstr">清空指纹</string>
+        <string name="getfpcntstr">指纹总数</string>
+        <string name="searchstr">搜索指纹</string>
+
+
 </resources>

@@ -22,7 +22,7 @@ public class TestWorkAppApplication extends BaseApplication {
 
     @Override
     public ImageLoader initImageLoader() {
-//        return new PicassoImageLoader(getApplicationContext());
-        return new GlideImageLoader(getApplicationContext());
+//       return new PicassoImageLoader(getApplicationContext());
+     return new GlideImageLoader(getApplicationContext());
     }
 }

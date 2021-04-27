@@ -171,7 +171,15 @@
             app:layout_constraintStart_toEndOf="@+id/binding"
             app:layout_constraintTop_toBottomOf="@+id/button_http" />
 
-
+        <Button
+            android:id="@+id/btsz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="指纹——申指"
+            app:layout_constraintStart_toStartOf="@+id/button_ff"
+            app:layout_constraintTop_toBottomOf="@+id/button_ff"
+            tools:ignore="MissingConstraints"></Button>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

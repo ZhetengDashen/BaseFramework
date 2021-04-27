@@ -23,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".demoactivity.httptest.HTTPTestActivity"></activity>
+        <activity android:name=".demoactivity.SZActivity"></activity>
+        <activity android:name=".demoactivity.httptest.HTTPTestActivity" />
         <activity android:name=".demoactivity.DataBindingActivity" />
         <activity android:name=".demoactivity.FingerprintActivity" />
         <activity android:name=".demoactivity.RxPermissionsActivity" />
