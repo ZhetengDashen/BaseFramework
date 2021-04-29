@@ -23,13 +23,13 @@ public class SharePreferenceUtils {
         if(valve instanceof String){
          editor.putString(key,valve+"").commit();
         }else if(valve instanceof Boolean){
-            editor.putBoolean(key,(Boolean) valve);
+            editor.putBoolean(key,(Boolean) valve).commit();
         }else if(valve instanceof Float){
-           editor.putFloat(key,(Float) valve);
+           editor.putFloat(key,(Float) valve).commit();
         }else if (valve instanceof Integer){
-            editor.putInt(key,(int) valve);
+            editor.putInt(key,(int) valve).commit();
         }else if (valve instanceof Long){
-            editor.putLong(key,(Long)valve);
+            editor.putLong(key,(Long)valve).commit();
         }
     }
     public static Boolean getBoolean(Context context, String key){

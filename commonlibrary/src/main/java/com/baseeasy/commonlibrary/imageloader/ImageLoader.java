@@ -1,6 +1,9 @@
 package com.baseeasy.commonlibrary.imageloader;
 
 import android.widget.ImageView;
+
+import com.baseeasy.commonlibrary.mytool.SharePreferenceUtils;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2019/4/28

@@ -39,6 +39,9 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.magiclon.individuationtoast.ToastUtil;
+//import com.qw.photo.CoCo;
+//import com.qw.photo.callback.CoCoAdapter;
+//import com.qw.photo.pojo.DisposeResult;
 
 
 import org.jetbrains.annotations.NotNull;
@@ -155,6 +158,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .openGallery(PictureMimeType.ofImage())
                             .imageEngine(GlideEngine.createGlideEngine())
                             .isCompress(true)
+                            .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
 //                            .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                             .maxSelectNum(allowNum)// 最大图片选择数量 int
@@ -167,6 +171,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .openCamera(PictureMimeType.ofImage())
                             .imageEngine(GlideEngine.createGlideEngine())
                             .isCompress(true)
+                            .cameraFileName("camera"+System.currentTimeMillis() +".jpg")
+                            .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                             .forResult(TAKING_PHOTO_REQUEST);
                     break;

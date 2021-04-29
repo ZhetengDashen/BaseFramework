@@ -13,6 +13,7 @@ import com.aliyun.svideo.snap.record.AliShootVideoUtils;
 import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
+import com.baseeasy.baseframework.demoactivity.FingerprintActivitysz;
 import com.baseeasy.baseframework.demoactivity.MuTestBean;
 import com.baseeasy.baseframework.demoactivity.SZActivity;
 import com.baseeasy.baseframework.demoactivity.httptest.HTTPTestActivity;
@@ -152,7 +153,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case  R.id.btsz:
-                startActivity(new Intent(this, SZActivity.class));
+                startActivity(new Intent(this, FingerprintActivitysz.class));
                 break;
             case R.id.bt_arouter:
                 ARouterTools.startActivity(ARouterPath.AppMode.DEMO_AROUTER_ACTIVITY, "user", new TestUser("王大锤", "0", "女"));

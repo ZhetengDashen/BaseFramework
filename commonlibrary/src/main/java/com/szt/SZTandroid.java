@@ -45,7 +45,15 @@ public class SZTandroid {
     public final int MODEL_BUFFER = 0x03;
 
     public native String  init();
-
+    public  int SZTOpenDevice(int fd,int nDeviceType,int iCom,int iBaud,int nPackageSize/*=2*/,int iDevNum/*=0*/)
+    {
+        int ret = -1;
+        ret = SZTOpenDeviceEx(fd,nDeviceType,iCom,iBaud,nPackageSize,iDevNum);
+        if(ret == 1)
+            return 0;
+        else
+            return -2;
+    }
     /*****************************
      *打开设备函数
      *参数：

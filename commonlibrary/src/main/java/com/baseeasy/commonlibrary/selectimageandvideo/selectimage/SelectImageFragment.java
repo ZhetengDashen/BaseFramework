@@ -29,6 +29,9 @@ import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+//import com.qw.photo.CoCo;
+//import com.qw.photo.callback.CoCoAdapter;
+//import com.qw.photo.pojo.DisposeResult;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -122,6 +125,8 @@ public class SelectImageFragment extends Fragment {
                 .imageEngine(GlideEngine.createGlideEngine())
                 .isCompress(true)
                 .imageFormat(PictureMimeType.PNG)
+                .cameraFileName("camera"+System.currentTimeMillis() +".jpg")
+                .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
                 .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                 .setOutputCameraPath(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
