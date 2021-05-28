@@ -342,7 +342,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                                 .withVideoQuality(ShotVideoConfig.ConfigParameter.PROGRESS_HIGH)
                                 .withEatioMode(ShotVideoConfig.ConfigParameter.RATIO_MODE_3_4)
                                 .withEesolutionMode(ShotVideoConfig.ConfigParameter.RESOLUTION_720P)
-                                .withMaxTime(30).build();
+                                .withMaxTime(30)
+                                .withMinTime(20)
+                                .build();
                 ShootVideoUtils.getInstance().startShootVideo(MainActivity.this, new ShootVideoCallBack() {
                     @Override
                     public void onShootVideo(List<String> pathList) {

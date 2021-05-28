@@ -7,6 +7,7 @@ package com.baseeasy.commonlibrary.selectimageandvideo.selectvideo;
  * 描述：拍摄视频配置
  */
 public class ShotVideoConfig {
+    int minTime=15;//最小时长秒
     int maxTime=120;//最大时长秒
     int eesolutionMode= ConfigParameter.RESOLUTION_480P;//分辨率
     int eatioMode= ConfigParameter.RATIO_MODE_3_4;//比例
@@ -20,6 +21,21 @@ public class ShotVideoConfig {
         this.eesolutionMode = eesolutionMode;
         this.eatioMode = eatioMode;
         this.videoQuality = videoQuality;
+    }
+    public ShotVideoConfig(int maxTime, int minTime,int eesolutionMode, int eatioMode, int videoQuality) {
+        this.maxTime = maxTime;
+        this.minTime =minTime;
+        this.eesolutionMode = eesolutionMode;
+        this.eatioMode = eatioMode;
+        this.videoQuality = videoQuality;
+    }
+
+    public int getMinTime() {
+        return minTime;
+    }
+
+    public void setMinTime(int minTime) {
+        this.minTime = minTime;
     }
 
     public int getMaxTime() {
@@ -74,6 +90,7 @@ public class ShotVideoConfig {
     }
 
     public static final class Builder {
+        int minTime=15;//最小时长秒
         int maxTime=120;//最大时长秒
         int eesolutionMode= ConfigParameter.RESOLUTION_480P;//分辨率
         int eatioMode= ConfigParameter.RATIO_MODE_3_4;//比例
@@ -90,7 +107,10 @@ public class ShotVideoConfig {
             this.maxTime = maxTime;
             return this;
         }
-
+        public Builder withMinTime(int minTime) {
+            this.minTime = minTime;
+            return this;
+        }
         public Builder withEesolutionMode(int eesolutionMode) {
             this.eesolutionMode = eesolutionMode;
             return this;
@@ -107,7 +127,7 @@ public class ShotVideoConfig {
         }
 
         public ShotVideoConfig build() {
-            return new ShotVideoConfig(maxTime, eesolutionMode, eatioMode, videoQuality);
+            return new ShotVideoConfig(maxTime,minTime ,eesolutionMode, eatioMode, videoQuality);
         }
     }
 }
