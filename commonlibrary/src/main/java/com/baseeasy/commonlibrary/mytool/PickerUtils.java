@@ -1,15 +1,23 @@
 package com.baseeasy.commonlibrary.mytool;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
-import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
-import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
-import com.bigkoo.pickerview.view.OptionsPickerView;
+//import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
+//import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+//import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+//import com.bigkoo.pickerview.view.OptionsPickerView;
 
+import com.github.gzuliyujiang.wheelpicker.OptionPicker;
+import com.github.gzuliyujiang.wheelpicker.contract.OnOptionPickedListener;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+
 
 /**
  * 作者：WangZhiQiang
@@ -33,15 +41,33 @@ public class PickerUtils<T> {
     }
     public void   show(Context context, List<T> optionsItems,int selectOption,OnSelectOptionsListener onSelectOptionsListener){
 
-        OptionsPickerView optionsPickerView=new OptionsPickerBuilder(context, new OnOptionsSelectListener() {
+//        OptionsPickerView optionsPickerView=new OptionsPickerBuilder(context, new OnOptionsSelectListener() {
+//            @Override
+//            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+//                onSelectOptionsListener.onSelectOptionsListener(options1);
+//            }
+//        }).build();
+//        optionsPickerView.setPicker(optionsItems);
+//        optionsPickerView.setSelectOptions(selectOption);
+//        optionsPickerView.show();
+
+
+
+        OptionPicker picker = new OptionPicker((Activity) context);
+        picker.setData(optionsItems);
+        picker.setOnOptionPickedListener(new OnOptionPickedListener() {
             @Override
-            public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                onSelectOptionsListener.onSelectOptionsListener(options1);
+            public void onOptionPicked(int position, Object item) {
+                if(null!=onSelectOptionsListener){
+                    onSelectOptionsListener.onSelectOptionsListener(position);
+                }
             }
-        }).build();
-        optionsPickerView.setPicker(optionsItems);
-        optionsPickerView.setSelectOptions(selectOption);
-        optionsPickerView.show();
+        });
+
+        picker.getTitleView().setText("");
+        picker.show();
+
+
 
     }
     public interface OnSelectOptionsListener {
