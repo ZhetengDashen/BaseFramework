@@ -419,32 +419,39 @@ public class MyFingerprintUtils_Sz {
         if (mDevice == null) {
             return -1;
         }
-        connection = mDevManager.openDevice(mDevice);
-        if (!connection.claimInterface(mDevice.getInterface(0), true)) {
-            return -1;
-        }
+       try {
+           connection = mDevManager.openDevice(mDevice);
+           if (!connection.claimInterface(mDevice.getInterface(0), true)) {
+               return -1;
+           }
 
-        if (mDevice.getInterfaceCount() < 1) {
-            return -1;
-        }
-        intf = mDevice.getInterface(0);
+           if (mDevice.getInterfaceCount() < 1) {
+               return -1;
+           }
+           intf = mDevice.getInterface(0);
 
-        if (intf.getEndpointCount() == 0) {
-            return -1;
-        }
+           if (intf.getEndpointCount() == 0) {
+               return -1;
+           }
 
-        if ((connection != null)) {
-            if (true) {
-                Log.e(TAG, "open connection success!");
-            }
-            fd = connection.getFileDescriptor();
-            return fd;
-        } else {
-            if (true) {
-                Log.e(TAG, "finger device open connection FAIL");
-            }
-            return -1;
-        }
+           if ((connection != null)) {
+               if (true) {
+                   Log.e(TAG, "open connection success!");
+               }
+               fd = connection.getFileDescriptor();
+               return fd;
+           } else {
+               if (true) {
+                   Log.e(TAG, "finger device open connection FAIL");
+               }
+               return -1;
+           }
+
+       }catch (Exception e){
+          e.printStackTrace();
+           return -1;
+       }
+
     }
 
     //获取图像
