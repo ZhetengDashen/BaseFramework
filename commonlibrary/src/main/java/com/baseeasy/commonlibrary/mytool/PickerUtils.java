@@ -63,7 +63,10 @@ public class PickerUtils<T> {
                 }
             }
         });
-
+        picker.setDefaultPosition(selectOption);
+        picker.getWheelView().setCurvedEnabled(true);
+        picker.getWheelView().setCurvedMaxAngle(40);
+        picker.getWheelView().setDefaultPosition(selectOption);
         picker.getTitleView().setText("");
         picker.show();
 
