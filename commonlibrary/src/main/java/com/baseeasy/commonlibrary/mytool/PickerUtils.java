@@ -56,7 +56,9 @@ public class PickerUtils {
         });
         picker.setDefaultPosition(selectOption);
         picker.getWheelView().setCurvedEnabled(true);
-        picker.getWheelView().setCurvedMaxAngle(40);
+        picker.getWheelView().setItemSpace(100);
+        picker.setBodyHeight(200);
+        picker.getWheelView().setCurvedMaxAngle(30);
         picker.getTitleView().setText("");
         picker.show();
 
