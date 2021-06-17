@@ -25,6 +25,7 @@ import com.baseeasy.commonlibrary.baseview.baseframework.BaseFragment;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 
+import com.baseeasy.commonlibrary.mytool.PickerUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
@@ -143,6 +144,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initView() {
+
 //       ARouterTools.startActivity(ARouterPath.AppMode.MAIN_TEST,"wo","卡机是");//
 //     ARouterTools.startActivity(ARouterPath.TestMode.TEST_ACTIVITY,"user",new TestUser("王大锤" ,"0","女"));
 

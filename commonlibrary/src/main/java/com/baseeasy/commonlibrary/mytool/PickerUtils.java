@@ -25,21 +25,12 @@ import java.util.List;
  * 邮箱：sos181@163.com
  * 描述：
  */
-public class PickerUtils<T> {
-    public volatile static PickerUtils pickerUtils;
+public class PickerUtils {
 
-    public static PickerUtils getInstance() {
-        if (pickerUtils == null) {
-            synchronized (PickerUtils.class) {
-                if (pickerUtils == null) {
-                    pickerUtils = new PickerUtils();
-
-                }
-            }
-        }
-        return pickerUtils;
+    public PickerUtils() {
     }
-    public void   show(Context context, List<T> optionsItems,int selectOption,OnSelectOptionsListener onSelectOptionsListener){
+
+    public void   show(Context context, List<?> optionsItems, int selectOption, OnSelectOptionsListener onSelectOptionsListener){
 
 //        OptionsPickerView optionsPickerView=new OptionsPickerBuilder(context, new OnOptionsSelectListener() {
 //            @Override
@@ -66,7 +57,6 @@ public class PickerUtils<T> {
         picker.setDefaultPosition(selectOption);
         picker.getWheelView().setCurvedEnabled(true);
         picker.getWheelView().setCurvedMaxAngle(40);
-        picker.getWheelView().setDefaultPosition(selectOption);
         picker.getTitleView().setText("");
         picker.show();
 
