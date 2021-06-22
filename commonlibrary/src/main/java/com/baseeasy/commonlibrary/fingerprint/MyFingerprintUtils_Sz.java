@@ -19,7 +19,7 @@ import com.baseeasy.commonlibrary.R;
 import com.baseeasy.commonlibrary.config.BaseConfig;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 import com.szt.SZTandroid;
-import com.za.finger.ZA_finger;
+
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -281,8 +281,8 @@ public class MyFingerprintUtils_Sz {
         m_fEvent.sendMessage(m_fEvent.obtainMessage(disbtn, 0, 0));
 //		skipshow("close");
         int status = a6.SZTCloseDeviceEx();
-        ZA_finger fppower = new ZA_finger();
-        fppower.finger_power_off();
+//        ZA_finger fppower = new ZA_finger();
+//        fppower.finger_power_off();
         Log.e(TAG, " close status: " + status);
         //offLine(false);
 
@@ -309,7 +309,9 @@ public class MyFingerprintUtils_Sz {
         activity.registerReceiver(mUsbReceiver, filter);
         //this.registerReceiver(mUsbReceiver, new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED));
         HashMap<String, UsbDevice> deviceList = mDevManager.getDeviceList();
-        if (true) Log.e(TAG, "news:" + "mDevManager");
+        if (true) {
+            Log.e(TAG, "news:" + "mDevManager");
+        }
 
 
         for (UsbDevice tdevice : deviceList.values()) {
@@ -337,11 +339,15 @@ public class MyFingerprintUtils_Sz {
                     Log.e("BroadcastReceiver", "3333");
                     if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
                         if (device != null) {
-                            if (true) Log.e(TAG, "Authorize permission " + device);
+                            if (true) {
+                                Log.e(TAG, "Authorize permission " + device);
+                            }
                             isusbfinshed = 1;
                         }
                     } else {
-                        if (true) Log.e(TAG, "permission denied for device " + device);
+                        if (true) {
+                            Log.e(TAG, "permission denied for device " + device);
+                        }
                         device = null;
                         isusbfinshed = 2;
 
