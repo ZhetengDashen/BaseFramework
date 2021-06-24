@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 /**
  * 作者：WangZhiQiang
  * 时间：2019/4/28
@@ -31,7 +33,10 @@ public class GlideImageLoader implements ImageLoader {
     public void displayImage(ImageView iv, String imageUrl, DisplayOption option) {
         RequestBuilder requestBuilder=  mRequestManager.load(imageUrl);
         if (option != null) {
-            requestBuilder.skipMemoryCache(option.isSkipMemoryCache());
+            requestBuilder.skipMemoryCache(option.getSkipMemoryCache());
+            if (null!=option.getNeedHaveCache()&& option.getNeedHaveCache()){
+                requestBuilder.diskCacheStrategy(DiskCacheStrategy.NONE);
+            }
             if (option.getPlaceHolderResId() != DisplayOption.NONE && option.getLoadErrorResId() != DisplayOption.NONE ) {
                 requestBuilder.placeholder(option.getPlaceHolderResId())
                         .error(option.getLoadErrorResId());

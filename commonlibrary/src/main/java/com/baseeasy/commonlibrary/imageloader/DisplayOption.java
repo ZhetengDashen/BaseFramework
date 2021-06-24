@@ -32,7 +32,10 @@ public  class DisplayOption {
          */
         private  Boolean skipMemoryCache=false;
 
-
+        /**
+         * 是否的图片进行缓存
+         */
+         private Boolean isNeedHaveCache=false;
 
         public DisplayOption(int loadErrorResId, int placeHolderResId, int width, int height) {
                 this.loadErrorResId = loadErrorResId;
@@ -40,15 +43,24 @@ public  class DisplayOption {
                 this.width = width;
                 this.height = height;
         }
-        public DisplayOption(int loadErrorResId, int placeHolderResId, int width, int height,Boolean skipMemoryCache) {
+        public DisplayOption(int loadErrorResId, int placeHolderResId, int width, int height,Boolean skipMemoryCache,Boolean isNeedHaveCache) {
                 this.loadErrorResId = loadErrorResId;
                 this.placeHolderResId = placeHolderResId;
                 this.width = width;
                 this.height = height;
                 this.skipMemoryCache=skipMemoryCache;
+                this.isNeedHaveCache=isNeedHaveCache;
         }
 
-        public boolean isSkipMemoryCache() {
+        public Boolean getNeedHaveCache() {
+                return isNeedHaveCache;
+        }
+
+        public void setNeedHaveCache(Boolean needHaveCache) {
+                isNeedHaveCache = needHaveCache;
+        }
+
+        public Boolean getSkipMemoryCache() {
                 return skipMemoryCache != null && skipMemoryCache;
         }
 
@@ -98,7 +110,7 @@ public  class DisplayOption {
 
                 private  int height=NONE;
                 private  Boolean skipMemoryCache=false;
-
+                private Boolean isNeedHaveCache=false;
 
                 public Builder setLoadErrorResId(int loadErrorResId) {
                         this.loadErrorResId = loadErrorResId;
@@ -122,14 +134,18 @@ public  class DisplayOption {
                         this.skipMemoryCache=skipMemoryCache;
                         return this;
                 }
+                public Builder setIsNeedHaveCache(boolean isNeedHaveCache) {
+                        this.isNeedHaveCache=isNeedHaveCache;
+                        return this;
+                }
 
                 public Builder setHeight(int height) {
                         this.height = height;
                         return this;
                 }
                 public DisplayOption create() {
-                        if (null!=skipMemoryCache) {
-                                return new DisplayOption(loadErrorResId, placeHolderResId, width, height, skipMemoryCache);
+                        if (null!=skipMemoryCache || null!=isNeedHaveCache) {
+                                return new DisplayOption(loadErrorResId, placeHolderResId, width, height, skipMemoryCache,isNeedHaveCache);
                         }else {
                                 return new DisplayOption(loadErrorResId, placeHolderResId, width, height);
                         }
