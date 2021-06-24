@@ -31,6 +31,7 @@ public class GlideImageLoader implements ImageLoader {
     public void displayImage(ImageView iv, String imageUrl, DisplayOption option) {
         RequestBuilder requestBuilder=  mRequestManager.load(imageUrl);
         if (option != null) {
+            requestBuilder.skipMemoryCache(option.isSkipMemoryCache());
             if (option.getPlaceHolderResId() != DisplayOption.NONE && option.getLoadErrorResId() != DisplayOption.NONE ) {
                 requestBuilder.placeholder(option.getPlaceHolderResId())
                         .error(option.getLoadErrorResId());

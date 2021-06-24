@@ -27,6 +27,10 @@ public  class DisplayOption {
          * 高
          */
         private  int height=NONE;
+        /**
+         * 是否跳过内存缓存
+         */
+        private  Boolean skipMemoryCache=false;
 
 
 
@@ -35,6 +39,21 @@ public  class DisplayOption {
                 this.placeHolderResId = placeHolderResId;
                 this.width = width;
                 this.height = height;
+        }
+        public DisplayOption(int loadErrorResId, int placeHolderResId, int width, int height,Boolean skipMemoryCache) {
+                this.loadErrorResId = loadErrorResId;
+                this.placeHolderResId = placeHolderResId;
+                this.width = width;
+                this.height = height;
+                this.skipMemoryCache=skipMemoryCache;
+        }
+
+        public boolean isSkipMemoryCache() {
+                return skipMemoryCache != null && skipMemoryCache;
+        }
+
+        public void setSkipMemoryCache(Boolean skipMemoryCache) {
+                this.skipMemoryCache = skipMemoryCache;
         }
 
         public int getLoadErrorResId() {
@@ -78,6 +97,7 @@ public  class DisplayOption {
                 private  int width=NONE;
 
                 private  int height=NONE;
+                private  Boolean skipMemoryCache=false;
 
 
                 public Builder setLoadErrorResId(int loadErrorResId) {
@@ -98,14 +118,21 @@ public  class DisplayOption {
                         return this;
                 }
 
-
+                public Builder setSkipMemoryCache(boolean skipMemoryCache) {
+                        this.skipMemoryCache=skipMemoryCache;
+                        return this;
+                }
 
                 public Builder setHeight(int height) {
                         this.height = height;
                         return this;
                 }
                 public DisplayOption create() {
-                        return new DisplayOption(loadErrorResId, placeHolderResId, width,height);
+                        if (null!=skipMemoryCache) {
+                                return new DisplayOption(loadErrorResId, placeHolderResId, width, height, skipMemoryCache);
+                        }else {
+                                return new DisplayOption(loadErrorResId, placeHolderResId, width, height);
+                        }
                 }
         }
     }
