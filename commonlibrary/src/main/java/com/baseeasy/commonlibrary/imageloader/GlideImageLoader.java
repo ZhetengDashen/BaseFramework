@@ -34,7 +34,7 @@ public class GlideImageLoader implements ImageLoader {
         RequestBuilder requestBuilder=  mRequestManager.load(imageUrl);
         if (option != null) {
             requestBuilder.skipMemoryCache(option.getSkipMemoryCache());
-            if (null!=option.getNeedHaveCache()&& option.getNeedHaveCache()){
+            if (null!=option.getNeedHaveCache()&& !option.getNeedHaveCache()){
                 requestBuilder.diskCacheStrategy(DiskCacheStrategy.NONE);
             }
             if (option.getPlaceHolderResId() != DisplayOption.NONE && option.getLoadErrorResId() != DisplayOption.NONE ) {

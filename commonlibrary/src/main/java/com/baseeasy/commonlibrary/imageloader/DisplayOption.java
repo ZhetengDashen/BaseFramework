@@ -35,7 +35,7 @@ public  class DisplayOption {
         /**
          * 是否的图片进行缓存
          */
-         private Boolean isNeedHaveCache=false;
+         private Boolean isNeedHaveCache=true;
 
         public DisplayOption(int loadErrorResId, int placeHolderResId, int width, int height) {
                 this.loadErrorResId = loadErrorResId;
@@ -53,7 +53,7 @@ public  class DisplayOption {
         }
 
         public Boolean getNeedHaveCache() {
-                return isNeedHaveCache;
+                return isNeedHaveCache == null || isNeedHaveCache;
         }
 
         public void setNeedHaveCache(Boolean needHaveCache) {
@@ -110,7 +110,7 @@ public  class DisplayOption {
 
                 private  int height=NONE;
                 private  Boolean skipMemoryCache=false;
-                private Boolean isNeedHaveCache=false;
+                private Boolean isNeedHaveCache=true;
 
                 public Builder setLoadErrorResId(int loadErrorResId) {
                         this.loadErrorResId = loadErrorResId;
