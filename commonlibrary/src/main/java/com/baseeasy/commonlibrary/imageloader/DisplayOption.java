@@ -28,12 +28,12 @@ public  class DisplayOption {
          */
         private  int height=NONE;
         /**
-         * 是否跳过内存缓存
+         * 是否跳过内存缓存  false 不跳过  true 跳过
          */
         private  Boolean skipMemoryCache=false;
 
         /**
-         * 是否的图片进行缓存
+         * 是否对图片进行缓存 false 不需要 true 需要
          */
          private Boolean isNeedHaveCache=true;
 
