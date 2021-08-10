@@ -1,6 +1,6 @@
 package com.baseeasy.baseframework.demoactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -85,6 +85,14 @@ public class FingerprintActivity extends AppCompatActivity implements View.OnCli
                                 //录入成功
                                 content.setText(data);
                                 Glide.with(FingerprintActivity.this).load(data).into(image);
+                                MyFingerprintUtils.getInstance(FingerprintActivity.this).fingerprintClose(new MyFingerprintUtils.OnFingerprintCallBack() {
+                                    @Override
+                                    public void callBack(int code, String msg, String data, String signatureTag) {
+
+                                    }
+                                });
+
+
                                 break;
 
                         }

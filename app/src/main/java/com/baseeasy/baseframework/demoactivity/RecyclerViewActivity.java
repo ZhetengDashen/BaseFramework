@@ -107,12 +107,7 @@ public class RecyclerViewActivity extends BaseActivity {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                if(view.getId()==R.id.rv_item_bt){
 //                   Toast.makeText(RecyclerViewActivity.this, "点击了：ChildView"+position, Toast.LENGTH_SHORT).show();
-                   PickerUtils.getInstance().show(RecyclerViewActivity.this, rvDemoEntities, 2, new PickerUtils.OnSelectOptionsListener() {
-                       @Override
-                       public void onSelectOptionsListener(int options1) {
-                           ToastUtil.showwarning(RecyclerViewActivity.this,rvDemoEntities.get(options1).toString());
-                       }
-                   });
+
                }
             }
         });

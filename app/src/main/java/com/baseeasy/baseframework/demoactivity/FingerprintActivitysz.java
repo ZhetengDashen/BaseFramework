@@ -86,6 +86,13 @@ public class FingerprintActivitysz extends AppCompatActivity implements View.OnC
                                 //录入成功
                                 content.setText(data);
                                 Glide.with(FingerprintActivitysz.this).load(data).into(image);
+
+                                MyFingerprintUtils_Sz.getInstance(FingerprintActivitysz.this).fingerprintClose(new MyFingerprintUtils_Sz.OnFingerprintCallBack() {
+                                    @Override
+                                    public void callBack(int code, String msg, String data, String signatureTag) {
+                                        
+                                    }
+                                });
                                 break;
 
                         }
