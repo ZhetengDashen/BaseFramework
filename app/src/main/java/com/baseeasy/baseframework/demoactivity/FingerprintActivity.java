@@ -15,7 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.baseeasy.baseframework.R;
 import com.baseeasy.commonlibrary.fingerprint.MyFingerprintUtils;
 import com.bumptech.glide.Glide;
-
+/**
+ * 作者：WangZhiQiang
+ * 时间：2021/9/14
+ * 邮箱：sos181@163.com
+ * 描述：指纹
+ */
 public class FingerprintActivity extends AppCompatActivity implements View.OnClickListener {
 
 
