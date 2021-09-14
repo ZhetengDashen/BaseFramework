@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.baseeasy.baseframework.R;
 import com.baseeasy.commonlibrary.fingerprint.MyFingerprintUtils;
 import com.bumptech.glide.Glide;
