@@ -224,7 +224,10 @@ public class SZTandroid {
      *pnImageLen：指纹图像数据长度
      *返回值：
      *0 为成功，其它返回值请参考错误返回码
+     *
      ********************************************************************/
+
+    public native int SZTImgData2BMP_Red(byte[] pImgData,String str);
     public native int SZTGetImgDataFromBMP(String str,byte[] pImageData,int[] pnImageLen);
 
     /*******************************************************************

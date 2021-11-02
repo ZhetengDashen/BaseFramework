@@ -26,6 +26,7 @@ import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 
 import com.baseeasy.commonlibrary.mytool.PickerUtils;
+import com.baseeasy.commonlibrary.mytool.time.DateUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
@@ -36,6 +37,8 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtil
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShotVideoConfig;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.VideoPlayUtils;
 import com.baseeasy.commonlibrary.weight.dialog.CustomDialog;
+import com.baseeasy.commonlibrary.weight.dialog.OnCustomLeftClickLister;
+import com.baseeasy.commonlibrary.weight.dialog.OnCustomRightClickLister;
 import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
 import com.baseeasy.commonlibrary.weight.dialog.multipledialog.SelectMultipleListDialog;
 import com.luck.picture.lib.PictureSelector;
@@ -102,6 +105,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         qianming = (Button) findViewById(R.id.qianming);
         qianming.setOnClickListener(this);
         button_data_binding = findViewById(R.id.binding);
+
         button_data_binding.setOnClickListener(this);
 
         button_http = (Button) findViewById(R.id.button_http);
@@ -109,8 +113,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         button_video=findViewById(R.id.video);
         button_video.setOnClickListener(this);
         dialogBuilder=new CustomDialog.DialogBuilder(this);
-        dialogBuilder.title("ttt").content("contn").left("123").right("312");
+        dialogBuilder.title("ttt").content("contn").left("123").right("312").leftLister(new OnCustomLeftClickLister() {
+            @Override
+            public void onLeftClicked() {
+
+            }
+        }).rightLister(new OnCustomRightClickLister() {
+            @Override
+            public void onRightClicked() {
+
+            }
+        });
         customDialog=new CustomDialog(dialogBuilder,false);
+
 
     }
 
