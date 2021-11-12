@@ -35,6 +35,7 @@ public class PictureShared {
         public  final static String MAXVIDEONUM="maxvideonum";
         public  final static String SHOOTVIDEOCONFIG="shootVideoConfig";
         public  final static String ISPREVIEW="previewVideo";
+        public  final static String REQUSETCODE="requestCode";
     }
       //文件夹相关配置
     public static class FolderNameConfig {

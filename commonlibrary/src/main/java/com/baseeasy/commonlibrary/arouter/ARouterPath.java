@@ -35,6 +35,7 @@ public class ARouterPath {
     }
     public  static  class CommonLibrary{
         public static  final String COMMON_SELECTIMAGE_ACTIVITY="/selectimageandvideo/selectimage/SelectImageActivity";
+        public static  final String COMMON_SELECTIMAGE_ACTIVITY2="/selectimageandvideo/selectimage/SelectImageActivity2";
         public static  final String COMMON_SELECTVIDEO_ACTIVITY="/selectimageandvideo/selectvideo/SelectVideoActivity";
 
     }

@@ -23,6 +23,7 @@
     <application>
         <activity android:name=".selectimageandvideo.selectvideo.SelectVideoActivity" />
         <activity android:name=".selectimageandvideo.selectimage.SelectImageActivity" />
+        <activity android:name=".selectimageandvideo.selectimage2.SelectImageActivity2" />
 
     </application>
 
