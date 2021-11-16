@@ -21,9 +21,9 @@
         android:required="false" />
 
     <application>
-        <activity android:name=".selectimageandvideo.selectvideo.SelectVideoActivity" />
-        <activity android:name=".selectimageandvideo.selectimage.SelectImageActivity" />
-        <activity android:name=".selectimageandvideo.selectimage2.SelectImageActivity2" />
+        <activity android:name=".selectimageandvideo.selectvideo.SelectVideoActivity" android:screenOrientation="portrait" />
+        <activity android:name=".selectimageandvideo.selectimage.SelectImageActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".selectimageandvideo.selectimage2.SelectImageActivity2" android:screenOrientation="portrait" />
 
     </application>
 
