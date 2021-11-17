@@ -1,5 +1,7 @@
 package com.baseeasy.commonlibrary.databinding;
 
+import android.text.TextUtils;
+
 import androidx.databinding.InverseMethod;
 
 /**
@@ -51,10 +53,10 @@ public class DataBinDingConvertValue {
 
 
     public  static Boolean convertStringToBoolean(String valeue){
-        if(valeue.equals("是")){
+        if (TextUtils.isEmpty(valeue)){
+            return false;
+        }else if(valeue.equals("是")){
             return  true;
-        }else if(valeue.equals("否")){
-            return false ;
         }
         return false;
     }
