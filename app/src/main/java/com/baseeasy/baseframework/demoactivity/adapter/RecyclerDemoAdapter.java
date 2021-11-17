@@ -40,6 +40,7 @@ public class RecyclerDemoAdapter  extends BaseMultiItemQuickAdapter<RVDemoEntity
                 DisplayOption displayOption=new DisplayOption.Builder()
                         .setLoadErrorResId(R.drawable.ic_launcher_background)//设置加载错误图片
                         .setPlaceHolderResId(R.drawable.ic_launcher_foreground)//设置占位图
+                        .setSkipMemoryCache(true)
                         .create();
                 ImageLoaderFactory.getInstance().displayImage((ImageView)helper.getView(R.id.rv_item_image),item.getImage(),displayOption);
                 helper.addOnClickListener(R.id.rv_item_bt);//添加子View的点击事件

@@ -43,6 +43,7 @@ public class ImageLoaderActivity extends BaseActivity {
                 .setPlaceHolderResId(R.mipmap.ic_launcher)//设置占位图
                 .setHeight(500)//设置宽高
                 .setWidth(500)
+                .setSkipMemoryCache(true)
                 .create();
 
         ImageLoaderFactory.getInstance().displayImage(image,"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4084320817,2521788326&fm=111&gp=0.jpg",displayOption);
