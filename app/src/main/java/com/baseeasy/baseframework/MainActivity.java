@@ -1,7 +1,9 @@
 package com.baseeasy.baseframework;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,46 +11,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.aliyun.svideo.snap.record.AliShootVideoUtils;
-import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivitysz;
-import com.baseeasy.baseframework.demoactivity.MuTestBean;
-import com.baseeasy.baseframework.demoactivity.SZActivity;
 import com.baseeasy.baseframework.demoactivity.httptest.HTTPTestActivity;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
-import com.baseeasy.commonlibrary.baseview.baseframework.BaseFragment;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 
-import com.baseeasy.commonlibrary.mytool.PickerUtils;
-import com.baseeasy.commonlibrary.mytool.time.DateUtils;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
 
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShotVideoConfig;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.VideoPlayUtils;
+import com.baseeasy.commonlibrary.soloader.SoLoader;
+import com.baseeasy.commonlibrary.soloader.SoUtils;
 import com.baseeasy.commonlibrary.weight.dialog.CustomDialog;
 import com.baseeasy.commonlibrary.weight.dialog.OnCustomLeftClickLister;
 import com.baseeasy.commonlibrary.weight.dialog.OnCustomRightClickLister;
-import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
-import com.baseeasy.commonlibrary.weight.dialog.multipledialog.SelectMultipleListDialog;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.PictureSelectorCameraEmptyActivity;
-import com.magiclon.individuationtoast.ToastUtil;
+import com.getkeepsafe.relinker.ReLinker;
 import com.test.TestUser;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,10 +66,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     CustomDialog customDialog;
     CustomDialog.DialogBuilder dialogBuilder;
     private  Button button_btsz;
+    private Button button_sz;
+    private Button button_za;
     @Override
     public void init_view() {
         super.init_view();
-
+        button_sz=findViewById(R.id.button_sz);
+        button_sz.setOnClickListener(this);
+        button_za=findViewById(R.id.button_za);
+        button_za.setOnClickListener(this);
         button_btsz = (Button) findViewById(R.id.btsz);
         button_btsz.setOnClickListener(this);
         bt_arouter = (Button) findViewById(R.id.bt_arouter);
@@ -384,6 +380,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 }, videopathList,3,shotVideoConfig,true);
                 Log.e("kk",videopathList.size()+"");
                 break;
+            case R.id.button_sz:
+                loadSoFromAssetPathCopy();
+
+
+
+                break;
+            case R.id.button_za:
+
+                break;
         }
     }
 
@@ -397,4 +402,104 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected int setContentViewId() {
         return R.layout.activity_main ;
     }
+
+    private void loadSoFromAssetPathCopy() {
+        List<String> out = new ArrayList<>();
+        try {
+            SoUtils.copyAssetsDirectory(this, "szso", out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //arm64-v8a, armeabi-v7a, armeabi
+        Log.d(TAG, "supported api:" + Build.CPU_ABI + " " + Build.CPU_ABI2);
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            String[] abis = Build.SUPPORTED_ABIS;
+            for (String abi : abis) {
+                if (loadSoFile(abi, out)) {
+                    break;
+                }
+            }
+        } else {
+            if (TextUtils.isEmpty(Build.CPU_ABI)) {
+                if (loadSoFile(Build.CPU_ABI, out)) {
+                    return;
+                }
+            }
+            if (TextUtils.isEmpty(Build.CPU_ABI2)) {
+                if (loadSoFile(Build.CPU_ABI2, out)) {
+                    return;
+                }
+            }
+            if (loadSoFile("armeabi", out)) {
+                return;
+            }
+        }
+
+    }
+
+    private boolean loadSoFile(String abi, List<String> out) {
+        Log.i("KK1",abi);
+        boolean success = false;
+        for (final String soPath : out) {
+            Log.i("KK2",soPath);
+            if (soPath.contains(abi)) {
+                Log.i("KK3",soPath);
+
+                String parentDir = SoUtils.getParentDir(new File(soPath));
+                //注入so路径，如果清除了的话。没有清除可以不用每次注入
+                boolean b = SoLoader.loadSoFile(this, parentDir);
+                //加载so库
+                if (b && new File(soPath).exists()) {
+                    final String soName = soPath.substring(soPath.lastIndexOf("/") + 1, soPath.lastIndexOf(".")).substring(3);
+                /*    final String soName = soPath.substring(soPath.lastIndexOf("/") + 1, soPath.lastIndexOf(".")).substring(3);
+                    System.loadLibrary(soName); //加载有可能直接崩掉
+                    //System.load(soPath); //load使用的是文件绝对路径
+                    */
+                    //or 使用第三方库加载，这个加载报错回调failure，不会直接崩溃，底层也是 System.load实现，只不过加载之前做了一些验证
+                    ReLinker.loadLibrary(this, soName, new ReLinker.LoadListener() {
+                        @Override
+                        public void success() {
+                            Log.i(TAG, "加载成功:" + soPath);
+
+                        }
+
+                        @Override
+                        public void failure(Throwable t) {
+                            Log.e(TAG, "加载异常:" + soPath, t);
+                        }
+                    });
+                    success = true;
+                    break;
+                }
+            }
+        }
+        return success;
+    }
+
+
+    /**
+     * 检查能否找到动态链接库，如果找不到，请修改工程配置
+     *
+     * @param libraries 需要的动态链接库
+     * @return 动态库是否存在
+     */
+    private boolean checkSoFile(String[] libraries) {
+        File dir = new File(getApplicationInfo().nativeLibraryDir);
+
+        File[] files = dir.listFiles();
+        if (files == null || files.length == 0) {
+            return false;
+        }
+        List<String> libraryNameList = new ArrayList<>();
+        for (File file : files) {
+            libraryNameList.add(file.getName());
+        }
+        boolean exists = true;
+        for (String library : libraries) {
+            exists &= libraryNameList.contains(library);
+        }
+        return exists;
+    }
+
 }

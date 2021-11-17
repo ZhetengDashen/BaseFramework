@@ -1,11 +1,14 @@
 package com.baseeasy.baseframework;
 
+import android.content.Context;
+
 import androidx.multidex.MultiDex;
 
 import com.baseeasy.commonlibrary.baseview.baseframework.BaseApplication;
 import com.baseeasy.commonlibrary.imageloader.GlideImageLoader;
 import com.baseeasy.commonlibrary.imageloader.ImageLoader;
 import com.baseeasy.commonlibrary.imageloader.PicassoImageLoader;
+import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * 作者：WangZhiQiang
@@ -17,9 +20,13 @@ public class TestWorkAppApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        CrashReport.initCrashReport(getApplicationContext(), "b905e1a395", true);
     }
-
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(context);
+//        Multidex.install(this);
+//    }
     @Override
     public ImageLoader initImageLoader() {
 //       return new PicassoImageLoader(getApplicationContext());
