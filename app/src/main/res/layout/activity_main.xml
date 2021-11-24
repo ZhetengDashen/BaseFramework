@@ -18,8 +18,8 @@
             android:text="1111111111111111111"
 
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="39dp"
-            tools:layout_editor_absoluteY="257dp"></com.baseeasy.commonlibrary.weight.RotateTextView>
+            tools:layout_editor_absoluteX="353dp"
+            tools:layout_editor_absoluteY="244dp"></com.baseeasy.commonlibrary.weight.RotateTextView>
 
         <Button
 
@@ -181,5 +181,22 @@
             app:layout_constraintTop_toBottomOf="@+id/button_ff"
             tools:ignore="MissingConstraints"></Button>
 
+        <Button
+            android:id="@+id/button_sz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载申指驱动"
+            app:layout_constraintStart_toStartOf="@+id/btsz"
+            app:layout_constraintTop_toBottomOf="@+id/btsz"
+            tools:ignore="MissingConstraints"></Button>
+
+        <Button
+            android:id="@+id/button_za"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载指昂驱动"
+            app:layout_constraintStart_toStartOf="@+id/btsz"
+            app:layout_constraintTop_toBottomOf="@+id/button_sz"
+            tools:ignore="MissingConstraints"></Button>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

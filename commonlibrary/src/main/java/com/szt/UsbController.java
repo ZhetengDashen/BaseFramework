@@ -60,7 +60,7 @@ public class UsbController {
     private final UsbManager mUsbManager;
     private final int VID;
     private final int PID;
-
+    final String SO_SZ_NAME="SZTandroid";
 
 
     private boolean m_bInit = false;
