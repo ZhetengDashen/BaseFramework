@@ -393,7 +393,7 @@ public class ZAandroid {
     public native int ZAZReadInfPage(int nAddr,byte[] pVersion);
 
 
-//    static {
-//        System.loadLibrary("ZAandroid");
-//    }
+    static {
+        System.loadLibrary("ZAandroid");
+    }
 }

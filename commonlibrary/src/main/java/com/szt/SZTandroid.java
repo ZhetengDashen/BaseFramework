@@ -393,7 +393,7 @@ public class SZTandroid {
     public native int SZTReadInfPage(int nAddr,byte[] pVersion);
 
 
-//    static {
-//        System.loadLibrary("SZTandroid");
-//    }
+    static {
+        System.loadLibrary("SZTandroid");
+    }
 }
