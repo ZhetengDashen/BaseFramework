@@ -40,7 +40,10 @@ public Response intercept(Chain chain) throws IOException {
      Request.Builder requestBuilder = original.newBuilder()
              .header("User-Agent", "app_enter_home")
              .header("appversion", SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION))
-             .header("timestamp", System.currentTimeMillis()+"");
+             .header("timestamp", System.currentTimeMillis()+"")
+             .header("APPUSERID", SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID))
+
+             ;
        if(!TextUtils.isEmpty(token)){
            requestBuilder.header("prefix_user_token_",token);
        }
