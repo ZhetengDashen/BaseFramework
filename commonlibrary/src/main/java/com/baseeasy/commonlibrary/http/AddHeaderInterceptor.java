@@ -31,7 +31,7 @@ import okio.Buffer;
  * 作者：WangZhiQiang
  * 时间：2018/11/20
  * 邮箱：sos181@163.com
- * 描述：添加请求头拦截器 添加token  添加 */
+ * 描述：添加请求头拦截器 添加token  添加  */
 public class AddHeaderInterceptor implements Interceptor {
  @Override
 public Response intercept(Chain chain) throws IOException {
