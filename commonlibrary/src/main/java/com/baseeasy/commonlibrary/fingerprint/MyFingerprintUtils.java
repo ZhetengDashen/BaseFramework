@@ -11,12 +11,9 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 
 import com.baseeasy.commonlibrary.R;
@@ -24,18 +21,12 @@ import com.baseeasy.commonlibrary.config.BaseConfig;
 import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
-import com.baseeasy.commonlibrary.soloader.SoLoader;
-import com.baseeasy.commonlibrary.soloader.SoUtils;
-import com.getkeepsafe.relinker.ReLinker;
-import com.luck.picture.lib.tools.SPUtils;
 import com.za.finger.ZA_finger;
 import com.za.finger.ZAandroid;
 
 import java.io.DataOutputStream;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -65,7 +56,7 @@ public class MyFingerprintUtils {
 
 
     private int testcount = 0;
-    private ZAandroid a6 ;
+    private ZAandroid a6 = new ZAandroid();
     private int fpcharbuf = 1;
     private byte[] pTempletbase = new byte[2304];
     private int IMG_SIZE = 0;//同参数：（0:256x288 1:256x360）
@@ -140,96 +131,8 @@ public class MyFingerprintUtils {
         ahandle = activity;        //页面句柄
         rootqx = 1;            //系统权限(0:not root  1:root)
         defDeviceType = 12;    //设备通讯类型(2:usb  1:串口)
-        a6 = new ZAandroid();
-        loadSoFromAssetPathCopy(activity);
     }
-    private void loadSoFromAssetPathCopy(Activity activity) {
-        List<String> out = new ArrayList<>();
-        try {
-            SoUtils.copyAssetsDirectory(activity, "zaso", out);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //arm64-v8a, armeabi-v7a, armeabi
-        Log.d(TAG, "supported api:" + Build.CPU_ABI + " " + Build.CPU_ABI2);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            String[] abis = Build.SUPPORTED_ABIS;
-            for (String abi : abis) {
-                if (loadSoFile(abi, out,activity)) {
-                    break;
-                }
-            }
-        } else {
-            if (TextUtils.isEmpty(Build.CPU_ABI)) {
-                if (loadSoFile(Build.CPU_ABI, out,activity)) {
-                    return;
-                }
-            }
-            if (TextUtils.isEmpty(Build.CPU_ABI2)) {
-                if (loadSoFile(Build.CPU_ABI2, out,activity)) {
-                    return;
-                }
-            }
-            if (loadSoFile("armeabi", out,activity)) {
-                return;
-            }
-        }
-
-    }
-    private boolean loadSoFile(String abi, List<String> out,Activity activity) {
-        boolean success = false;
-        for (final String soPath : out) {
-            if (soPath.contains(abi)) {
-                //判断指昂驱动是否存在
-                String szpath= SPUtils.getInstance().getString("SZPATH");
-                if(szpath!=""){
-                    File sofile=  new File(szpath);
-                    if(sofile.exists()){
-                        try {
-                            sofile.delete();
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-
-
-                    }
-
-
-                }
-
-
-
-                String parentDir = SoUtils.getParentDir(new File(soPath));
-                //注入so路径，如果清除了的话。没有清除可以不用每次注入
-                boolean b = SoLoader.loadSoFile(activity, parentDir);
-                //加载so库
-                if (b && new File(soPath).exists()) {
-                    final String soName = soPath.substring(soPath.lastIndexOf("/") + 1, soPath.lastIndexOf(".")).substring(3);
-                /*    final String soName = soPath.substring(soPath.lastIndexOf("/") + 1, soPath.lastIndexOf(".")).substring(3);
-                    System.loadLibrary(soName); //加载有可能直接崩掉
-                    //System.load(soPath); //load使用的是文件绝对路径
-                    */
-                    //or 使用第三方库加载，这个加载报错回调failure，不会直接崩溃，底层也是 System.load实现，只不过加载之前做了一些验证
-                    ReLinker.loadLibrary(activity, soName, new ReLinker.LoadListener() {
-                        @Override
-                        public void success() {
-                            Log.i(TAG, "加载成功:" + soPath);
-                            SPUtils.getInstance().put("ZAPATH",soPath);
-                        }
-
-                        @Override
-                        public void failure(Throwable t) {
-                            Log.e(TAG, "加载异常:" + soPath, t);
-                        }
-                    });
-                    success = true;
-                    break;
-                }
-            }
-        }
-        return success;
-    }
     private volatile static MyFingerprintUtils singleton;
 
     public static MyFingerprintUtils getInstance(Activity activity) {
@@ -302,9 +205,6 @@ public class MyFingerprintUtils {
     }
 
 
-    /**
-     *
-     */
     //打开设备
     private void OpenDev() {
         // TODO Auto-generated method stub

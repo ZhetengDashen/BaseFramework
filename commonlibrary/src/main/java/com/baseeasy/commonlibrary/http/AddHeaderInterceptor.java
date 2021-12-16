@@ -31,7 +31,7 @@ import okio.Buffer;
  * 作者：WangZhiQiang
  * 时间：2018/11/20
  * 邮箱：sos181@163.com
- * 描述：添加请求头拦截器 添加token  添加 */
+ * 描述：添加请求头拦截器 添加token  添加  */
 public class AddHeaderInterceptor implements Interceptor {
  @Override
 public Response intercept(Chain chain) throws IOException {
@@ -40,7 +40,10 @@ public Response intercept(Chain chain) throws IOException {
      Request.Builder requestBuilder = original.newBuilder()
              .header("User-Agent", "app_enter_home")
              .header("appversion", SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.APP_VERSION))
-             .header("timestamp", System.currentTimeMillis()+"");
+             .header("timestamp", System.currentTimeMillis()+"")
+             .header("APPUSERID", SharePreferenceUtils.getString(BaseApplication.getInstance().getApplicationContext(), SharePreferenceKeys.USER_ID))
+
+             ;
        if(!TextUtils.isEmpty(token)){
            requestBuilder.header("prefix_user_token_",token);
        }

@@ -16,7 +16,7 @@ import java.io.IOException;
 
 //ZA_finger和ZAndroid 必须放到com.finger下
 public class ZA_finger {
-    final String SO_ZA_NAME="ZAandroid";
+
     final String HUB_RST_PATCH="/sys/zhwpower/zhw_hubrest";
     final String CARD_POWER_PATCH="/sys/zhwpower/zhw_power_card";
     final String FINGER_POWER_PATCH="/sys/zhwpower/zhw_power_finger";
