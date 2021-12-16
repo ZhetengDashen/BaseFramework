@@ -46,13 +46,19 @@ public class NumberEditText extends EditText {
 			}
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				String s1 = s.toString().trim();
+				if (s1.length()>1 &&s1.startsWith("0")){
+					String s2 = s1.substring(1);
+					setText(s2);
+					setSelection(s2.length());
+				}
 				if (start >= 0) {//从一输入就开始判断，
 						try {
-							if (s.toString().startsWith(".")){
+							if (s1.startsWith(".")){
 								setText("0.");
 								setSelection(s.length()+1);
-							}else if (s.toString().contains(".")&&(s.toString().length()-s.toString().indexOf(".")>(maxDecimalPoint+1))){
-								setText(s.toString().substring(0,s.length()-1));
+							}else if (s1.contains(".")&&(s1.length()- s1.indexOf(".")>(maxDecimalPoint+1))){
+								setText(s1.substring(0,s.length()-1));
 								setSelection(s.length()-1);
 							}
 						} catch (Exception e) {
