@@ -117,7 +117,7 @@ public class NumberUtils {
 //                return "请填写数字";
             }
         }
-        String s = keepPrecision(result, precision) + "";
+        String s = keepPrecision(result+"", precision);
         if (precision > 0) {
             return s;
         } else {
@@ -170,7 +170,7 @@ public class NumberUtils {
             return "请填写数字";
         }
 
-        return keepPrecision(result, precision) + "";
+        return keepPrecision(result+"", precision) ;
     }
 
     /**
@@ -312,7 +312,7 @@ public class NumberUtils {
         } else {
             result = v + "";
         }
-        return result;
+        return keepPrecision(result,precision);
     }
 
     /**
@@ -355,7 +355,7 @@ public class NumberUtils {
             result = v + "";
         }
 
-        return result;
+        return keepPrecision(result,precision);
     }
 
 }
