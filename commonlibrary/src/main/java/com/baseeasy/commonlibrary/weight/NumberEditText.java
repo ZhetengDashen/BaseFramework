@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.EditText;
 
 import com.baseeasy.commonlibrary.R;
@@ -29,6 +30,7 @@ public class NumberEditText extends EditText {
 		super(context,attrs);
 		changeText(context,attrs);
 		setTextWatcher();
+		setFocusChange();
 	}
 
 	public void changeText(Context context, AttributeSet attrs) {
@@ -77,6 +79,18 @@ public class NumberEditText extends EditText {
 		});
 	}
 
-
-
+	public void setFocusChange(){
+	 	setOnFocusChangeListener(new OnFocusChangeListener() {
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if (!hasFocus){
+					String trim = getText().toString().trim();
+					while (trim.contains(".")&&(trim.endsWith("0") ||trim.endsWith("."))){
+						trim=trim.substring(0,trim.length()-1);
+						setText(trim);
+					}
+				}
+			}
+		});
+	}
 }
