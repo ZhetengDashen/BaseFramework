@@ -105,6 +105,9 @@ public class NumberUtils {
      * @return
      */
     public static String addDoubleNum(int precision, String... num) {
+        return addDoubleNum(true,precision,num);
+    }
+    public static String addDoubleNum(boolean isNeedDealEndWithZero,int precision, String... num) {
         double result = 0;
         for (String i : num) {
             try {
@@ -117,7 +120,7 @@ public class NumberUtils {
 //                return "请填写数字";
             }
         }
-        String s = keepPrecision(result+"", precision);
+        String s = keepPrecision(result+"", precision,isNeedDealEndWithZero);
         if (precision > 0) {
             return s;
         } else {
@@ -157,6 +160,9 @@ public class NumberUtils {
      * @return
      */
     public static String productDoubleNum(int precision, String num1, String num2) {
+        return productDoubleNum(true,precision,num1,num2);
+    }
+    public static String productDoubleNum(boolean isNeedDealEndWithZero,int precision, String num1, String num2) {
         double result = 0;
 
         try {
@@ -170,7 +176,7 @@ public class NumberUtils {
             return "请填写数字";
         }
 
-        return keepPrecision(result+"", precision) ;
+        return keepPrecision(result+"", precision,isNeedDealEndWithZero) ;
     }
 
     /**
@@ -287,6 +293,9 @@ public class NumberUtils {
      * @return 默认四舍五入
      */
     public static String exceptDoubleNum(int precision, String num1, String num2, boolean isHalfUp) {
+        return exceptDoubleNum(precision, num1, num2, isHalfUp,true);
+    }
+    public static String exceptDoubleNum(int precision, String num1, String num2, boolean isHalfUp,boolean isNeedDealEndWithZero) {
         double doubleResult = 0;
         String result = "";
         try {
@@ -312,7 +321,7 @@ public class NumberUtils {
         } else {
             result = v + "";
         }
-        return keepPrecision(result,precision);
+        return keepPrecision(result,precision,isNeedDealEndWithZero);
     }
 
     /**
