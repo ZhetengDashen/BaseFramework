@@ -125,11 +125,8 @@ public class NumberUtils {
             }
         }
         String s = keepPrecision(result+"", precision,isNeedDealEndWithZero);
-        if (precision > 0) {
-            return s;
-        } else {
-            return s.substring(0, s.length() - 2);
-        }
+        return s;
+
     }
 
     /**
