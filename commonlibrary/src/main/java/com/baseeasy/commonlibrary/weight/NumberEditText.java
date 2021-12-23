@@ -4,12 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import com.baseeasy.commonlibrary.R;
+import com.baseeasy.commonlibrary.mytool.NumberUtils;
+
+import java.text.DecimalFormat;
 
 
 /**
@@ -85,10 +90,13 @@ public class NumberEditText extends EditText {
 			public void onFocusChange(View v, boolean hasFocus) {
 				if (!hasFocus){
 					String trim = getText().toString().trim();
-					while (trim.contains(".")&&(trim.endsWith("0") ||trim.endsWith("."))){
-						trim=trim.substring(0,trim.length()-1);
-						setText(trim);
+					if (!TextUtils.isEmpty(trim)) {
+						double v1 = Double.parseDouble(trim);
+						DecimalFormat decimalFormat = new DecimalFormat("###################.###########");
+						String format = decimalFormat.format(v1);
+						setText(format);
 					}
+
 				}
 			}
 		});

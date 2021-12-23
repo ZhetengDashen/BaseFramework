@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.aliyun.common.utils.StringUtils;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 /**
  * *********************************************
@@ -43,8 +44,11 @@ public class NumberUtils {
         BigDecimal bg = new BigDecimal(number);
         String s = bg.setScale(precision, BigDecimal.ROUND_HALF_UP).toPlainString();
         if (isNeedDealEndWithZero) {
-            while (s.contains(".") && (s.endsWith("0") || s.endsWith("."))) {
-                s = s.substring(0, s.length() - 1);
+            if (!TextUtils.isEmpty(s)) {
+                double v1 = Double.parseDouble(s);
+                DecimalFormat decimalFormat = new DecimalFormat("###################.###########");
+                s = decimalFormat.format(v1);
+
             }
         }
         return s;
