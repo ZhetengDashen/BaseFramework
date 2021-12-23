@@ -25,80 +25,87 @@ import java.text.DecimalFormat;
  */
 @SuppressLint("AppCompatCustomView")
 public class NumberEditText extends EditText {
-	private  int maxDecimalPoint=2;
-	 public NumberEditText(Context context) {
-		super(context);
-		// TODO Auto-generated constructor stub
-	}
+    private int maxDecimalPoint = 2;
+    private boolean isFocus = false;
 
-	public NumberEditText(Context context, AttributeSet attrs) {
-		super(context,attrs);
-		changeText(context,attrs);
-		setTextWatcher();
-		setFocusChange();
-	}
+    public NumberEditText(Context context) {
+        super(context);
+        // TODO Auto-generated constructor stub
+    }
 
-	public void changeText(Context context, AttributeSet attrs) {
+    public NumberEditText(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        changeText(context, attrs);
+        setTextWatcher();
+        setFocusChange();
+    }
 
-		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.NumberEditText);
-		maxDecimalPoint = array.getInt(R.styleable.NumberEditText_maxDecimalPoint, 2);
-		array.recycle();
+    public void changeText(Context context, AttributeSet attrs) {
 
-	}
-	public void setTextWatcher() {
-		addTextChangedListener(new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.NumberEditText);
+        maxDecimalPoint = array.getInt(R.styleable.NumberEditText_maxDecimalPoint, 2);
+        array.recycle();
 
-			}
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				String s1 = s.toString().trim();
-				if (s1.length()>1 &&s1.startsWith("0")){
-					String s2 = s1.substring(1);
-					setText(s2);
-					setSelection(s2.length());
-				}
-				if (start >= 0) {//从一输入就开始判断，
-						try {
-							if (s1.startsWith(".")){
-								setText("0.");
-								setSelection(s.length()+1);
-							}else if (s1.contains(".")&&(s1.length()- s1.indexOf(".")>(maxDecimalPoint+1))){
-								setText(s1.substring(0,s.length()-1));
-								setSelection(s.length()-1);
-							}
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+    }
 
-						return;
-					}
+    public void setTextWatcher() {
+        addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-			}
+            }
 
-			@Override
-			public void afterTextChanged(Editable s) {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (isFocus) {
+                    String s1 = s.toString().trim();
+                    if (s1.length() > 1 && s1.startsWith("0")) {
+                        String s2 = s1.substring(1);
+                        setText(s2);
+                        setSelection(s2.length());
+                    }
+                    if (start >= 0) {//从一输入就开始判断，
+                        try {
+                            if (s1.startsWith(".")) {
+                                setText("0.");
+                                setSelection(s.length() + 1);
+                            } else if (s1.contains(".") && (s1.length() - s1.indexOf(".") > (maxDecimalPoint + 1))) {
+                                setText(s1.substring(0, s.length() - 1));
+                                setSelection(s.length() - 1);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-			}
-		});
-	}
+                        return;
+                    }
 
-	public void setFocusChange(){
-	 	setOnFocusChangeListener(new OnFocusChangeListener() {
-			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				if (!hasFocus){
-					String trim = getText().toString().trim();
-					if (!TextUtils.isEmpty(trim)) {
-						double v1 = Double.parseDouble(trim);
-						DecimalFormat decimalFormat = new DecimalFormat("###################.###########");
-						String format = decimalFormat.format(v1);
-						setText(format);
-					}
+                }
+            }
 
-				}
-			}
-		});
-	}
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    public void setFocusChange() {
+        setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                isFocus = hasFocus;
+                if (!hasFocus) {
+                    String trim = getText().toString().trim();
+                    if (!TextUtils.isEmpty(trim)) {
+                        double v1 = Double.parseDouble(trim);
+                        DecimalFormat decimalFormat = new DecimalFormat("###################.###########");
+                        String format = decimalFormat.format(v1);
+                        setText(format);
+                    }
+
+                }
+            }
+        });
+    }
 }
