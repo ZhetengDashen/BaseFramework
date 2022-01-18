@@ -27,54 +27,62 @@ import io.reactivex.schedulers.Schedulers;
 public abstract class BasePresenter<T extends IBaseView> {
     private LifecycleProvider provider;
     private Context view_context;
+
     public BasePresenter(LifecycleProvider provider) {
         this.provider = provider;
     }
+
     public BasePresenter(LifecycleProvider provider, Context context) {
         this.provider = provider;
-        this.view_context=context;
+        this.view_context = context;
     }
+
     public LifecycleProvider getProvider() {
         return provider;
     }
 
-    public Context getView_context(){
-      return   view_context;
+    public Context getView_context() {
+        return view_context;
     }
 
     // 改成弱引用的方式
     protected WeakReference<T> mViewRef;
+
     //    绑定View
-    public void attachView(T view){
-        this.mViewRef=new WeakReference<T>(view);
+    public void attachView(T view) {
+        this.mViewRef = new WeakReference<T>(view);
 
     }
+
+
     //    解绑
-    public void detachView(){
-        if(this.mViewRef.isEnqueued()){
+    public void detachView() {
+        if (this.mViewRef.isEnqueued()) {
 
             this.mViewRef.clear();
         }
     }
+
     /**
      * 作者：WangZhiQiang
      * 时间：2021/4/6
      * 邮箱：sos181@163.com
      * 描述：注册eventBus
      */
-    public void  eventBusRegister(){
-        if ((!EventBusUtils.isRegister(this))&& isOpenEventBus()==true) {
+    public void eventBusRegister() {
+        if ((!EventBusUtils.isRegister(this)) && isOpenEventBus() == true) {
             EventBusUtils.register(this);
         }
     }
+
     /**
      * 作者：WangZhiQiang
      * 时间：2021/4/6
      * 邮箱：sos181@163.com
      * 描述：注销eventBus
      */
-    public void  eventBusUnregister(){
-        if (EventBusUtils.isRegister(this)&&isOpenEventBus()==true) {
+    public void eventBusUnregister() {
+        if (EventBusUtils.isRegister(this) && isOpenEventBus() == true) {
             EventBusUtils.unregister(this);
         }
     }
@@ -82,28 +90,32 @@ public abstract class BasePresenter<T extends IBaseView> {
     /**
      * 是否使用EventBus
      */
-    public abstract  boolean isOpenEventBus();
+    public abstract boolean isOpenEventBus();
+
     /**
      * 设置线程并且绑定Lifecycle生命周期
+     *
      * @param <T>
      * @return
      */
-    public <T> ObservableTransformer<T,T> setThreadAndLifecycle(){
-        return new ObservableTransformer<T,T>() {
+    public <T> ObservableTransformer<T, T> setThreadAndLifecycle() {
+        return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
                 return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(getProvider().bindUntilEvent(ActivityEvent.DESTROY));
             }
         };
     }
-    public <T> ObservableTransformer<T,T> setThreadAndLifecycleFragment(){
-        return new ObservableTransformer<T,T>() {
+
+    public <T> ObservableTransformer<T, T> setThreadAndLifecycleFragment() {
+        return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
                 return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).compose(getProvider().bindUntilEvent(FragmentEvent.DESTROY));
             }
         };
     }
+
     // 在主线程处理
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void eventBusMessageOnMainThread(EventMessage event) {
@@ -126,7 +138,7 @@ public abstract class BasePresenter<T extends IBaseView> {
     // 在主线程处理粘性事件
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void eventBusMessageOnMainStickyThread(EventMessage event) {
-
-
+//        EventBusUtils.removeAllSticky();
+        EventBusUtils.removeSticky(event);
     }
 }

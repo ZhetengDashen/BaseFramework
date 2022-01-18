@@ -27,6 +27,7 @@ public class EventBusUtils {
      */
     public static void register(Object subscribe) {
         EventBus.getDefault().register(subscribe);
+
     }
 
     /**
@@ -36,6 +37,23 @@ public class EventBusUtils {
     public static void unregister(Object subscribe) {
         EventBus.getDefault().unregister(subscribe);
     }
+
+    /***
+     * 移除黏性事件
+     */
+    public static void removeSticky(Object  event) {
+        EventBus.getDefault().removeStickyEvent(event);
+    }
+
+
+    /***
+     * 移除所有黏性事件
+     */
+    public static void removeAllSticky() {
+        EventBus.getDefault().removeAllStickyEvents();
+    }
+
+
 
     /**
      * @param event
