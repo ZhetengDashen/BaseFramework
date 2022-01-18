@@ -9,6 +9,7 @@ import com.baseeasy.baseframework.demoactivity.entity.RVDemoEntity;
 import com.baseeasy.commonlibrary.basemvp.IBaseView;
 import com.baseeasy.commonlibrary.basemvp.psenter.BaseDadaBinDingPresenter;
 import com.baseeasy.commonlibrary.basemvp.psenter.BasePresenter;
+import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.trello.rxlifecycle2.LifecycleProvider;
 
 /**
@@ -48,5 +49,16 @@ public class DataBinDingPresenter<T extends IDataBinDingView> extends BaseDadaBi
         dataBinDing.setRventity(rvDemoEntity);
         rvDemoEntity.setMsg("MG___________________-");
 
+    }
+
+    @Override
+    public void eventBusMessageOnMainStickyThread(EventMessage event) {
+        super.eventBusMessageOnMainStickyThread(event);
+    }
+
+    @Override
+
+    public void eventBusMessageOnMainStickyThread(Object event) {
+        super.eventBusMessageOnMainStickyThread(event);
     }
 }

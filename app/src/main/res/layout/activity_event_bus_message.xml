@@ -16,4 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/bt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送BUS2"
+        app:layout_constraintEnd_toEndOf="@+id/bt"
+        app:layout_constraintStart_toStartOf="@+id/bt"
+        app:layout_constraintTop_toBottomOf="@+id/bt"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

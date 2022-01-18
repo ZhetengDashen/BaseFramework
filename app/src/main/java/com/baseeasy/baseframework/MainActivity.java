@@ -11,9 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivitysz;
+import com.baseeasy.baseframework.demoactivity.MainPresenter;
+import com.baseeasy.baseframework.demoactivity.eventbuspresenter.EventBusMainPresenter;
+import com.baseeasy.baseframework.demoactivity.eventbuspresenter.IEventBusView;
 import com.baseeasy.baseframework.demoactivity.httptest.HTTPTestActivity;
 import com.baseeasy.commonlibrary.arouter.ARouterPath;
 import com.baseeasy.commonlibrary.arouter.ARouterTools;
@@ -44,7 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = ARouterPath.AppMode.MAIN_ACTIVITY)
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEventBusView>> implements View.OnClickListener {
 
 
     private Button bt_arouter;
@@ -96,7 +100,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         textView = findViewById(R.id.textView);
         fingbt = findViewById(R.id.button_ff);
         fingbt.setOnClickListener(this);
-        EventBusUtils.register(this);
+       EventBusUtils.register(this);
 
         qianming = (Button) findViewById(R.id.qianming);
         qianming.setOnClickListener(this);
@@ -126,8 +130,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected MainPresenter<IEventBusView> createPresenter() {
+        return new MainPresenter<>(this,this);
     }
 
 
@@ -148,6 +152,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case "video":
                   textView.setText((String)event.getEvent());
+                break;
+            case "456":
+                LogUtils.e("Activity:456");
                 break;
         }
 

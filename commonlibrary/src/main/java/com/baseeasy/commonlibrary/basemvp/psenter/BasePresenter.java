@@ -73,6 +73,10 @@ public abstract class BasePresenter<T extends IBaseView> {
         if ((!EventBusUtils.isRegister(this)) && isOpenEventBus() == true) {
             EventBusUtils.register(this);
         }
+
+//        if ((!EventBusUtils.isRegister(this)) && isOpenEventBus() == true) {
+//            EventBusUtils.register(this);
+//        }
     }
 
     /**
@@ -128,6 +132,7 @@ public abstract class BasePresenter<T extends IBaseView> {
 
     }
 
+
     // 在发送事件的同一线程中处理事件
     @Subscribe(threadMode = ThreadMode.POSTING)
     public void eventBusMessageOnPostThread(EventMessage event) {
@@ -138,6 +143,12 @@ public abstract class BasePresenter<T extends IBaseView> {
     // 在主线程处理粘性事件
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void eventBusMessageOnMainStickyThread(EventMessage event) {
+//        EventBusUtils.removeAllSticky();
+      EventBusUtils.removeSticky(event);
+    }
+    // 在主线程处理粘性事件
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void eventBusMessageOnMainStickyThread(Object event) {
 //        EventBusUtils.removeAllSticky();
         EventBusUtils.removeSticky(event);
     }
