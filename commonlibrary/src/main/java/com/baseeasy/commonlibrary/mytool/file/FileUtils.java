@@ -81,9 +81,9 @@ public class FileUtils {
      */
     public static File createSDDir(String dirName) {
         File dir = new File(SDPATH + "/" + dirName);
-        if(!isDirectoryExist(dirName)){
+//        if(!isDirectoryExist(dirName)){
              dir.mkdirs();
-        }
+//        }
 
         return dir;
     }

@@ -62,12 +62,28 @@ public class EventBusUtils {
     public static void post(EventMessage event) {
         EventBus.getDefault().post(event);
     }
+    /**
+     * @param event
+     * 立即发送
+     */
+    public static void post(Object event) {
+        EventBus.getDefault().post(event);
+    }
+
 
     /**
      * @param stickyEvent
      * 滞留发布
      */
     public static void postSticky(EventMessage stickyEvent) {
+        EventBus.getDefault().postSticky(stickyEvent);
+    }
+
+    /**
+     * @param stickyEvent
+     * 滞留发布
+     */
+    public static void postSticky(Object stickyEvent) {
         EventBus.getDefault().postSticky(stickyEvent);
     }
 }

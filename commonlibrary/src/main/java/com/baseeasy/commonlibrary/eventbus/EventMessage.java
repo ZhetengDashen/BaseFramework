@@ -57,4 +57,5 @@ public class EventMessage<T> {
             return new EventMessage<T>(code, flag, event);
         }
     }
+
 }
