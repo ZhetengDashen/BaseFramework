@@ -95,6 +95,9 @@ public class PickerUtils {
      * @param thirdDatas 三级数据
      */
     public void   showThirdPicker(Context context, List<?> firstDatas, List<?> secondDatas, List<?> thirdDatas,OnSelectThirdOptionsListener onSelectThirdOptionsListener ){
+        showThirdPicker(context,firstDatas,secondDatas,thirdDatas,0,0,0,onSelectThirdOptionsListener);
+    }
+    public void   showThirdPicker(Context context, List<?> firstDatas, List<?> secondDatas, List<?> thirdDatas,int firstDefaultPos,int secondDefaultPos,int thirdDefaultPos,OnSelectThirdOptionsListener onSelectThirdOptionsListener ){
 
         LinkagePicker picker = new LinkagePicker((Activity) context);
         LinkageProvider provider =new LinkageProvider() {
@@ -131,17 +134,17 @@ public class PickerUtils {
 
             @Override
             public int findFirstIndex(Object firstValue) {
-                return 0;
+                return firstDefaultPos;
             }
 
             @Override
             public int findSecondIndex(int firstIndex, Object secondValue) {
-                return 0;
+                return secondDefaultPos;
             }
 
             @Override
             public int findThirdIndex(int firstIndex, int secondIndex, Object thirdValue) {
-                return 0;
+                return thirdDefaultPos;
             }
         };
         picker.setData(provider);
