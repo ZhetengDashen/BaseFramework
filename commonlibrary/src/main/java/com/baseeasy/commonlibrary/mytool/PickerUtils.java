@@ -67,6 +67,33 @@ public class PickerUtils {
         void onSelectThirdOptionsListener(Object first,int options1, Object second,int options2, Object third,int options3);
 
     }
+    /**
+     * @author：Mr.Zan
+     * @date： 2022/2/10 11:28
+     * email：644962006@qq.com
+     * detail：三级联动选择
+     * 用法:
+     *              PickerUtils pickerUtils =new PickerUtils();
+     *                 List<SexBean.WORK> first = Arrays.asList(SexBean.WORK.values());
+     *
+     *                 ArrayList<Object> second = new ArrayList<>();
+     *                 for (int i = 0; i < 3; i++) {
+     *                     second.add("二级"+i);
+     *                 }
+     *                 ArrayList<Object> third = new ArrayList<>();
+     *                 for (int i = 0; i < 3; i++) {
+     *                     third.add("三级"+i);
+     *                 }
+     *                 pickerUtils.showThirdPicker(this, first, null, null, new PickerUtils.OnSelectThirdOptionsListener() {
+     *                     @Override
+     *                     public void onSelectThirdOptionsListener(Object first, int options1, Object second, int options2, Object third, int options3) {
+     *                     }
+     *                 });
+     * @param context
+     * @param firstDatas 一级数据
+     * @param secondDatas 二级数据
+     * @param thirdDatas 三级数据
+     */
     public void   showThirdPicker(Context context, List<?> firstDatas, List<?> secondDatas, List<?> thirdDatas,OnSelectThirdOptionsListener onSelectThirdOptionsListener ){
 
         LinkagePicker picker = new LinkagePicker((Activity) context);
