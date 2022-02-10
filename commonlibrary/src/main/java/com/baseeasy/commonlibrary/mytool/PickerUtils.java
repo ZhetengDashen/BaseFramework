@@ -10,8 +10,15 @@ import android.view.View;
 //import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 //import com.bigkoo.pickerview.view.OptionsPickerView;
 
+import androidx.annotation.NonNull;
+
+import com.github.gzuliyujiang.wheelpicker.LinkagePicker;
 import com.github.gzuliyujiang.wheelpicker.OptionPicker;
+import com.github.gzuliyujiang.wheelpicker.contract.LinkageProvider;
+import com.github.gzuliyujiang.wheelpicker.contract.OnLinkagePickedListener;
 import com.github.gzuliyujiang.wheelpicker.contract.OnOptionPickedListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,19 +38,6 @@ public class PickerUtils {
     }
 
     public void   show(Context context, List<?> optionsItems, int selectOption, OnSelectOptionsListener onSelectOptionsListener){
-
-//        OptionsPickerView optionsPickerView=new OptionsPickerBuilder(context, new OnOptionsSelectListener() {
-//            @Override
-//            public void onOptionsSelect(int options1, int options2, int options3, View v) {
-//                onSelectOptionsListener.onSelectOptionsListener(options1);
-//            }
-//        }).build();
-//        optionsPickerView.setPicker(optionsItems);
-//        optionsPickerView.setSelectOptions(selectOption);
-//        optionsPickerView.show();
-
-
-
         OptionPicker picker = new OptionPicker((Activity) context);
         picker.setData(optionsItems);
         picker.setOnOptionPickedListener(new OnOptionPickedListener() {
@@ -69,5 +63,100 @@ public class PickerUtils {
          void onSelectOptionsListener(int options1);
 
         }
+    public interface OnSelectThirdOptionsListener {
+        void onSelectThirdOptionsListener(Object first,int options1, Object second,int options2, Object third,int options3);
 
+    }
+    public void   showThirdPicker(Context context, List<?> firstDatas, List<?> secondDatas, List<?> thirdDatas,OnSelectThirdOptionsListener onSelectThirdOptionsListener ){
+
+        LinkagePicker picker = new LinkagePicker((Activity) context);
+        LinkageProvider provider =new LinkageProvider() {
+            @Override
+            public boolean firstLevelVisible() {
+                return null!=firstDatas;
+            }
+
+            @Override
+            public boolean thirdLevelVisible() {
+                return null!=thirdDatas;
+            }
+
+            @NonNull
+            @NotNull
+            @Override
+            public List<?> provideFirstData() {
+                return firstDatas;
+            }
+
+            @NonNull
+            @NotNull
+            @Override
+            public List<?> linkageSecondData(int firstIndex) {
+                return secondDatas;
+            }
+
+            @NonNull
+            @NotNull
+            @Override
+            public List<?> linkageThirdData(int firstIndex, int secondIndex) {
+                return thirdDatas;
+            }
+
+            @Override
+            public int findFirstIndex(Object firstValue) {
+                return 0;
+            }
+
+            @Override
+            public int findSecondIndex(int firstIndex, Object secondValue) {
+                return 0;
+            }
+
+            @Override
+            public int findThirdIndex(int firstIndex, int secondIndex, Object thirdValue) {
+                return 0;
+            }
+        };
+        picker.setData(provider);
+        picker.setOnLinkagePickedListener(new OnLinkagePickedListener() {
+            @Override
+            public void onLinkagePicked(Object first, Object second, Object third) {
+                if (null!=onSelectThirdOptionsListener){
+                    int pos1=-1;
+                    int pos2=-1;
+                    int pos3=-1;
+                    if (null != firstDatas){
+                        for (int i = 0; i < firstDatas.size(); i++) {
+                            if (firstDatas.get(i).equals(first)){
+                                pos1=i;
+                            }
+                        }
+                    }
+                    if (null != secondDatas){
+                        for (int i = 0; i < secondDatas.size(); i++) {
+                            if (secondDatas.get(i).equals(second)){
+                                pos2=i;
+                            }
+                        }
+                    }
+                    if (null != thirdDatas){
+                        for (int i = 0; i < thirdDatas.size(); i++) {
+                            if (thirdDatas.get(i).equals(third)){
+                                pos3=i;
+                            }
+                        }
+                    }
+                    onSelectThirdOptionsListener.onSelectThirdOptionsListener(first,pos1,second,pos2,third,pos3);
+                }
+            }
+        });
+
+        picker.setBodyHeight(200);
+
+        picker.getTitleView().setText("");
+        picker.show();
+
+
+
+    }
 }
