@@ -144,12 +144,12 @@ public abstract class BasePresenter<T extends IBaseView> {
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void eventBusMessageOnMainStickyThread(EventMessage event) {
 //        EventBusUtils.removeAllSticky();
-      EventBusUtils.removeSticky(event);
+//      EventBusUtils.removeSticky(event);
     }
     // 在主线程处理粘性事件
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void eventBusMessageOnMainStickyThread(Object event) {
 //        EventBusUtils.removeAllSticky();
-        EventBusUtils.removeSticky(event);
+//        EventBusUtils.removeSticky(event);
     }
 }
