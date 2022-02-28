@@ -59,7 +59,7 @@ public class NumberEditText extends EditText {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (isFocus) {
                     String s1 = s.toString().trim();
-                    if (s1.length() > 1 && s1.startsWith("0")) {
+                    if (s1.length() > 1 && s1.startsWith("0") && !s1.startsWith("0.")) {
                         String s2 = s1.substring(1);
                         setText(s2);
                         setSelection(s2.length());
