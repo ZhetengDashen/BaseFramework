@@ -185,26 +185,37 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK && null!=data) {
             switch (requestCode) {
                 case SELECT_IMAGE_REQUEST:
                     // 图片、视频、音频选择结果回调
-                  currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
-                   selectImageAdapter.notifyDataSetChanged();
-                   // 例如 LocalMedia 里面返回三种path
-                // 1.media.getPath(); 为原图path
-                // 2.media.getCutPath();为裁剪后path，需判断media.isCut();是否为true  注意：音视频除外
-                // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true  注意：音视频除外
-                    // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
-                    SelectImageFragment2.mSelectFileResultCallBack.onCurrentSelectResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)),this.requestCode);
-                    SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))),this.requestCode);
-                    break;
+                    try {
+                        currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
+                        selectImageAdapter.notifyDataSetChanged();
+                        // 例如 LocalMedia 里面返回三种path
+                        // 1.media.getPath(); 为原图path
+                        // 2.media.getCutPath();为裁剪后path，需判断media.isCut();是否为true  注意：音视频除外
+                        // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true  注意：音视频除外
+                        // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
+                        SelectImageFragment2.mSelectFileResultCallBack.onCurrentSelectResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)),this.requestCode);
+                        SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))),this.requestCode);
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                         break;
                 case TAKING_PHOTO_REQUEST:
-                    currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
-                    selectImageAdapter.notifyDataSetChanged();
-                    SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))),this.requestCode);
-                    SelectImageFragment2.mSelectFileResultCallBack.onCurrentSelectResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)),this.requestCode);
-                    break;
+                    try {
+                        currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
+                        selectImageAdapter.notifyDataSetChanged();
+                        SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))),this.requestCode);
+                        SelectImageFragment2.mSelectFileResultCallBack.onCurrentSelectResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)),this.requestCode);
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                         break;
                 default:
                     break;
             }

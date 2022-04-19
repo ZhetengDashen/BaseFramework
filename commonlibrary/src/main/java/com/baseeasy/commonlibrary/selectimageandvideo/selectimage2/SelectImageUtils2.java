@@ -17,7 +17,7 @@ import java.util.List;
  * @author：Mr.Zan
  * @date： 2021/11/11 15:29
  * email：644962006@qq.com
- * detail：
+ * detail：实时回调保存删除图片
  */
 public class SelectImageUtils2 {
     public static final String FRAGMENT_TAG = "SelectImageUtils2";
