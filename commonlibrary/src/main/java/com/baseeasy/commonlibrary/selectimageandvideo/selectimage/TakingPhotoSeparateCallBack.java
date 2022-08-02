@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface TakingPhotoSeparateCallBack {
  void onTakingPhoto(String imagePath);
+ void onTakingPhotoResult(List<String> imagePaths);
 }

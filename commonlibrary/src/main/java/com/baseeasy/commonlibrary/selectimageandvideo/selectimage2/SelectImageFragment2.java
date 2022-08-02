@@ -123,15 +123,17 @@ public class SelectImageFragment2 extends Fragment{
             e.printStackTrace();
         }
     }
-
-    public void startTakingPhotoAndImageSeparate() {
+    public void startTakingPhotoAndImageSeparate(){
+        startTakingPhotoAndImageSeparate(1);
+    }
+    public void startTakingPhotoAndImageSeparate(int maxNum) {
         PictureSelector.create(this)
                 .openGallery(PictureMimeType.ofImage())
                 .imageEngine(GlideEngine.createGlideEngine())
                 .isCompress(true)
                 .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                 .setOutputCameraPath(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
-                .maxSelectNum(1)// 最大图片选择数量 int
+                .maxSelectNum(maxNum)// 最大图片选择数量 int
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }
 
@@ -186,6 +188,7 @@ public class SelectImageFragment2 extends Fragment{
             }else if(requestCode== TAKINGPHOTO_SEPARATE_REQUESTCODE&&null!=takingPhotoSeparateCallBack){
                     List<LocalMedia> localMediaList=   PictureSelector.obtainMultipleResult(data);
                     takingPhotoSeparateCallBack.onTakingPhoto(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList).get(0));
+                    takingPhotoSeparateCallBack.onTakingPhotoResult(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList));
                 }
         }
     }

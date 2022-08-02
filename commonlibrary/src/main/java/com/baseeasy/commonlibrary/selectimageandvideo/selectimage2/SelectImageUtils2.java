@@ -189,6 +189,16 @@ public class SelectImageUtils2 {
 
         getTakingPhotoSeparateFragment(activity, takingPhotoSeparateCallBack).startTakingPhotoAndImageSeparate();
     }
+    /**
+     * 拍照或选择图片 多张
+     * @param activity
+     * @param takingPhotoSeparateCallBack 回调
+     *
+     **/
+    public void startTakingPhotoAndImageSeparate(FragmentActivity activity, TakingPhotoSeparateCallBack takingPhotoSeparateCallBack,int maxNum){
+
+        getTakingPhotoSeparateFragment(activity, takingPhotoSeparateCallBack).startTakingPhotoAndImageSeparate(maxNum);
+    }
 
 
 }
