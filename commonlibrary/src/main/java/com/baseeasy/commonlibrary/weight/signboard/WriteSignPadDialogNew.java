@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.baseeasy.commonlibrary.R;
@@ -74,6 +75,10 @@ public class WriteSignPadDialogNew extends Dialog {
             @Override
             public void onClick(View view) {
                 try {
+                    if (!mView.isHavePath()) {
+                        Toast.makeText(context,"请签字",Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     File sdRoot = new File(FileUtils.SDPATH + BaseConfig.FOLDER_PATH.SIGN+"/");
 
                     if (!sdRoot.exists()) {
@@ -131,7 +136,7 @@ public class WriteSignPadDialogNew extends Dialog {
         private Bitmap cachebBitmap;
         private Path path;
         private float cur_x, cur_y;
-
+        private boolean isHavePath=false;
         public PaintView(Context context) {
             super(context);
             init();
@@ -162,10 +167,13 @@ public class WriteSignPadDialogNew extends Dialog {
                 cacheCanvas.drawPaint(paint);
                 paint.setColor(Color.BLACK);
                 cacheCanvas.drawColor(Color.WHITE);
+                isHavePath=false;
                 invalidate();
             }
         }
-
+        public boolean isHavePath(){
+            return isHavePath;
+        }
         @Override
         protected void onDraw(Canvas canvas) {
             if (cachebBitmap == null || cachebBitmap.isRecycled()) {
@@ -191,6 +199,9 @@ public class WriteSignPadDialogNew extends Dialog {
                 }
                 case MotionEvent.ACTION_MOVE: {
                     path.quadTo(cur_x, cur_y, (x + cur_x) / 2, (y + cur_y) / 2);
+                    if ((cur_x-x)!=0.0 || (cur_y-y)!=0.0) {
+                        isHavePath = true;
+                    }
                     cur_x = x;
                     cur_y = y;
                     break;

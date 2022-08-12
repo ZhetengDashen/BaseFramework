@@ -10,6 +10,8 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -17,11 +19,11 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 
 import com.baseeasy.commonlibrary.R;
 import com.baseeasy.commonlibrary.config.BaseConfig;
-import com.baseeasy.commonlibrary.mytool.AppUtils;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 
 import java.io.File;
@@ -75,13 +77,16 @@ public class WriteSignPadDialog extends Dialog {
 
             }
         });
-
         Button btnOk = (Button) findViewById(R.id.tablet_ok);
         btnOk.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (null != dialogListener) {
+                    if (!mView.isHavePath()) {
+                        Toast.makeText(context,"请签字",Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     try {
                         File sdRoot = new File(FileUtils.SDPATH + BaseConfig.FOLDER_PATH.SIGN+"/");
                         if (!sdRoot.exists()) {
@@ -135,7 +140,7 @@ public class WriteSignPadDialog extends Dialog {
         private Bitmap cachebBitmap;
         private Path path;
         private float cur_x, cur_y;
-
+        private boolean isHavePath=false;
         public PaintView(Context context) {
             super(context);
             init();
@@ -163,10 +168,13 @@ public class WriteSignPadDialog extends Dialog {
                 cacheCanvas.drawPaint(paint);
                 paint.setColor(Color.BLACK);
                 cacheCanvas.drawColor(Color.WHITE);
+                isHavePath=false;
                 invalidate();
             }
         }
-
+        public boolean isHavePath(){
+            return isHavePath;
+        }
         @Override
         public boolean onTouchEvent(MotionEvent event) {
 
@@ -183,6 +191,9 @@ public class WriteSignPadDialog extends Dialog {
 
                 case MotionEvent.ACTION_MOVE: {
                     path.quadTo(cur_x, cur_y, x, y);
+                    if ((cur_x-x)!=0.0 || (cur_y-y)!=0.0) {
+                        isHavePath = true;
+                    }
                     cur_x = x;
                     cur_y = y;
                     break;
@@ -192,6 +203,8 @@ public class WriteSignPadDialog extends Dialog {
                     path.reset();
                     break;
                 }
+                default:
+                    break;
             }
             invalidate();
             return true;
