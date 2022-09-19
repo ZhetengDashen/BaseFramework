@@ -14,15 +14,10 @@ import androidx.fragment.app.Fragment;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.selectimageandvideo.EventBusFlagImageOrVideo;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageActivity;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.entity.LocalMedia;
 
 import org.apache.commons.lang3.StringUtils;
 import org.greenrobot.eventbus.Subscribe;

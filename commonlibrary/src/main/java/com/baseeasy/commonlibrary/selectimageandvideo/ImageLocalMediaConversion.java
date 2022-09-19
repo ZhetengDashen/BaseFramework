@@ -28,8 +28,8 @@ public class ImageLocalMediaConversion {
         return selectImageBeans;
     }
 
-    public static  List<LocalMedia> selectImageToLocalMedia(List<String> selectImageBeans){
-        List<LocalMedia> localMediaList=new ArrayList<>();
+    public static  ArrayList<LocalMedia> selectImageToLocalMedia(List<String> selectImageBeans){
+        ArrayList<LocalMedia> localMediaList=new ArrayList<>();
         for (int i = 0; i <selectImageBeans.size() ; i++) {
             LocalMedia localMedia=new LocalMedia();
             localMedia.setPath(selectImageBeans.get(i));

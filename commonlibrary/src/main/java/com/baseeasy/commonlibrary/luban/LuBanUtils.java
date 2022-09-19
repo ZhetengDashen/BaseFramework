@@ -26,7 +26,7 @@ public class LuBanUtils {
     }
 
 
-    public static  void compressionImage(String path, Context context,OnCompressListener onCompressListener) {
+    public static  void compressionImage(String path, Context context, OnCompressListener onCompressListener) {
         String directory = path.substring(0, path.lastIndexOf('/'));
         final String fileName = path.substring(path.lastIndexOf('/') + 1, path.length());
         Luban.with(context)
@@ -84,14 +84,14 @@ public class LuBanUtils {
                     }
 
                     @Override
-                    public void onSuccess(File file) {
+                    public void onSuccess(int index,File file) {
                         n++;
                         compressionImage(path, context,onCompressionImageListListener);
                         onCompressionImageListListener.onSuccess(file,n);
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(int index,Throwable e) {
                         Log.e("失败：", e.toString());
                         onCompressionImageListListener.onError(e);
                     }

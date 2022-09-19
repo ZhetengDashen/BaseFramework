@@ -1,5 +1,7 @@
 package com.baseeasy.commonlibrary.selectimageandvideo.selectimage2;
 
+import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,10 +22,13 @@ import com.baseeasy.commonlibrary.mytool.time.TimeUtil;
 import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.ImageFileCompressEngine;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.MeOnCameraInterceptListener;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.basic.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.config.SelectMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.magiclon.individuationtoast.ToastUtil;
 
@@ -56,7 +61,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
     private int  maxPhoto=PictureShared.MAX_PHOTO_NUM;//默认100
     private int requestCode;
 
-    private  List<LocalMedia> currentSelectList=new ArrayList<>();
+    private  ArrayList<LocalMedia> currentSelectList=new ArrayList<>();
     private  List<LocalMedia> initialSelectList=new ArrayList<>();//初始数据
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +123,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                     SelectImageFragment2.mSelectFileResultCallBack.onCurrentSelectResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)),requestCode);
                     selectImageAdapter.notifyDataSetChanged();
                 }else  if(view.getId()==R.id.iv_image){
-                    PictureSelector.create(SelectImageActivity2.this).themeStyle(R.style.picture_default_style)  .imageEngine(GlideEngine.createGlideEngine()).openExternalPreview(position, currentSelectList);
+                    PictureSelector.create(SelectImageActivity2.this).openPreview().setImageEngine(GlideEngine.createGlideEngine()).startActivityPreview(position, false,currentSelectList);
                 }
             }
         });
@@ -135,24 +140,21 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
             switch (action_type){
                 case 0:
                     PictureSelector.create(SelectImageActivity2.this)
-                            .openGallery(PictureMimeType.ofImage())
-                            .imageEngine(GlideEngine.createGlideEngine())
-                            .isCompress(true)
-                            .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
-//                            .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
-                            .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                            .maxSelectNum(allowNum)// 最大图片选择数量 int
+                            .openGallery(SelectMimeType.ofImage())
+                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
+                            .setImageEngine(GlideEngine.createGlideEngine())
+                            .setRequestedOrientation(ORIENTATION_PORTRAIT)
+                            .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
+                            .setMaxSelectNum(allowNum)// 最大图片选择数量 int
                             .forResult(SELECT_IMAGE_REQUEST);
                     break;
                 case 1:
                     PictureSelector.create(SelectImageActivity2.this)
-                            .openCamera(PictureMimeType.ofImage())
-                            .imageEngine(GlideEngine.createGlideEngine())
-                            .isCompress(true)
-                            .cameraFileName("camera"+System.currentTimeMillis() +".jpg")
-                            .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
-                            .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                            .forResult(TAKING_PHOTO_REQUEST);
+                            .openCamera(SelectMimeType.ofImage())
+                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
+                            .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
+                            .setOutputCameraImageFileName("camera"+System.currentTimeMillis() +".jpg")
+                            .forResultActivity(TAKING_PHOTO_REQUEST);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + action_type);
@@ -190,7 +192,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                 case SELECT_IMAGE_REQUEST:
                     // 图片、视频、音频选择结果回调
                     try {
-                        currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
+                        currentSelectList.addAll(PictureSelector.obtainSelectorList(data));
                         selectImageAdapter.notifyDataSetChanged();
                         // 例如 LocalMedia 里面返回三种path
                         // 1.media.getPath(); 为原图path
@@ -198,7 +200,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                         // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true  注意：音视频除外
                         // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
                         SelectImageFragment2.mSelectFileResultCallBack.onCurrentSelectResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)),this.requestCode);
-                        SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))),this.requestCode);
+                        SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainSelectorList(data))),this.requestCode);
 
                     }catch (Exception e){
                         e.printStackTrace();
@@ -207,9 +209,9 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                          break;
                 case TAKING_PHOTO_REQUEST:
                     try {
-                        currentSelectList.addAll(PictureSelector.obtainMultipleResult(data));
+                        currentSelectList.addAll(PictureSelector.obtainSelectorList(data));
                         selectImageAdapter.notifyDataSetChanged();
-                        SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainMultipleResult(data))),this.requestCode);
+                        SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(PictureSelector.obtainSelectorList(data))),this.requestCode);
                         SelectImageFragment2.mSelectFileResultCallBack.onCurrentSelectResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)),this.requestCode);
 
                     }catch (Exception e){

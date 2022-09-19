@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.fastjson.JSON;
 import com.apkfuns.logutils.LogUtils;
 import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
@@ -26,8 +27,10 @@ import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
 
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
@@ -216,7 +219,6 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 //                SelectImageUtils.getInstance().startSelectImage(this, new SelectImageCallBack() {
 //                    @Override
 //                    public void onImageSelected(List<String> imageBeans) {
-//
 //                    }
 //
 //                    @Override
@@ -229,29 +231,29 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 //                        selectImageBeans.removeAll(imageBeans);
 //                    }
 //                },selectImageBeans);
-                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
-                    @Override
-                    public void onTakingPhoto(List<String> localMediaList) {
-
-//                         selectImageBeans = localMediaList;
-//                        for (int i = 0; i < selectImageBeans.size(); i++) {
-//                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
-//                        }
-                    }
-
-                    @Override
-                    public void onAddTakingPhoto(List<String> imageBeans) {
-
-                        selectImageBeans.addAll(imageBeans);
-                    }
-
-                    @Override
-                    public void onDeleteTakingPhoto(List<String> imageBeans) {
-
-                        selectImageBeans.removeAll(imageBeans);
-
-                    }
-                }, selectImageBeans);
+//                SelectImageUtils.getInstance().startTakingPhoto(this, new TakingPhotoCallBack() {
+//                    @Override
+//                    public void onTakingPhoto(List<String> localMediaList) {
+//
+////                         selectImageBeans = localMediaList;
+////                        for (int i = 0; i < selectImageBeans.size(); i++) {
+////                            textView.setText(textView.getText().toString() + selectImageBeans.get(i).getPath());
+////                        }
+//                    }
+//
+//                    @Override
+//                    public void onAddTakingPhoto(List<String> imageBeans) {
+//
+//                        selectImageBeans.addAll(imageBeans);
+//                    }
+//
+//                    @Override
+//                    public void onDeleteTakingPhoto(List<String> imageBeans) {
+//
+//                        selectImageBeans.removeAll(imageBeans);
+//
+//                    }
+//                }, selectImageBeans);
 
 //             SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
 //                SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
@@ -259,15 +261,25 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 //                    public void onTakingPhoto(String imagePath) {
 //                        selectImageBeans.add(imagePath);
 //                    }
-//                });
-//             SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans,1);
-//                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
 //
 //                    @Override
-//                    public void onTakingPhoto(String imagePath) {
+//                    public void onTakingPhotoResult(List<String> imagePaths) {
 //
 //                    }
 //                });
+//             SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans,1);
+                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
+
+                    @Override
+                    public void onTakingPhoto(String imagePath) {
+
+                    }
+
+                    @Override
+                    public void onTakingPhotoResult(List<String> imagePaths) {
+
+                    }
+                });
 //
 //                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
 //             SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");

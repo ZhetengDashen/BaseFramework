@@ -23,7 +23,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.aliyun.svideo.common.utils.FastClickUtil;
-import com.aliyun.svideo.sdk.external.struct.common.CropKey;
 import com.aliyun.svideo.sdk.external.struct.common.VideoQuality;
 import com.aliyun.svideo.sdk.external.struct.encoder.VideoCodecs;
 import com.aliyun.svideo.sdk.external.struct.recorder.CameraType;
@@ -38,15 +37,11 @@ import com.baseeasy.commonlibrary.eventbus.EventConst;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 import com.baseeasy.commonlibrary.mytool.file.FileUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.EventBusFlagImageOrVideo;
-import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
-import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
+
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageActivity;
-import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageAdapter;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureMimeType;
-import com.luck.picture.lib.entity.LocalMedia;
+
 import com.magiclon.individuationtoast.ToastUtil;
 
 
@@ -57,10 +52,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.SELECTIMAGE_REQUESTCODE;
-import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.SELECT_IMAGE_REQUEST;
 import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.SHOOTVIDEO;
-import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKING_PHOTO_REQUEST;
 
 @Route(path = ARouterPath.CommonLibrary.COMMON_SELECTVIDEO_ACTIVITY)
 public class SelectVideoActivity extends AppCompatActivity implements View.OnClickListener {

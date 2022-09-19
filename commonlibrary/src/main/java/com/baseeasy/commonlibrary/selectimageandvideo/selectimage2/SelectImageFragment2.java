@@ -17,10 +17,13 @@ import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.ImageFileCompressEngine;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.MeOnCameraInterceptListener;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
-import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.basic.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.config.SelectMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 
 import org.apache.commons.lang3.StringUtils;
@@ -98,15 +101,13 @@ public class SelectImageFragment2 extends Fragment{
     }
     public void startTakingPhotoSeparate() {
         PictureSelector.create(this)
-                .openCamera(PictureMimeType.ofImage())
-                .imageEngine(GlideEngine.createGlideEngine())
-                .isCompress(true)
-                .imageFormat(PictureMimeType.PNG)
-                .cameraFileName("camera"+System.currentTimeMillis() +".jpg")
-                .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
-                .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                .setOutputCameraPath(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
-                .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
+                .openCamera(SelectMimeType.ofImage())
+                .setCameraInterceptListener(new MeOnCameraInterceptListener())
+                .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
+                .setCameraImageFormat(PictureMimeType.PNG)
+                .setOutputCameraImageFileName("camera"+System.currentTimeMillis() +".jpg")
+                .setOutputCameraDir(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
+                .forResultActivity(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }
 
     /**
@@ -128,12 +129,12 @@ public class SelectImageFragment2 extends Fragment{
     }
     public void startTakingPhotoAndImageSeparate(int maxNum) {
         PictureSelector.create(this)
-                .openGallery(PictureMimeType.ofImage())
-                .imageEngine(GlideEngine.createGlideEngine())
-                .isCompress(true)
-                .compressSavePath(FileUtils.SDPATH +PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
-                .setOutputCameraPath(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
-                .maxSelectNum(maxNum)// 最大图片选择数量 int
+                .openGallery(SelectMimeType.ofImage())
+                .setCameraInterceptListener(new MeOnCameraInterceptListener())
+                .setImageEngine(GlideEngine.createGlideEngine())
+                .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
+                .setOutputCameraDir(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)
+                .setMaxSelectNum(maxNum)// 最大图片选择数量 int
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }
 
@@ -186,7 +187,7 @@ public class SelectImageFragment2 extends Fragment{
                     }
                 }
             }else if(requestCode== TAKINGPHOTO_SEPARATE_REQUESTCODE&&null!=takingPhotoSeparateCallBack){
-                    List<LocalMedia> localMediaList=   PictureSelector.obtainMultipleResult(data);
+                    List<LocalMedia> localMediaList=   PictureSelector.obtainSelectorList(data);
                     takingPhotoSeparateCallBack.onTakingPhoto(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList).get(0));
                     takingPhotoSeparateCallBack.onTakingPhotoResult(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList));
                 }

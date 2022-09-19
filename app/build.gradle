@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 android {
 
-    compileSdkVersion 29
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.baseeasy.baseframework"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 2
         versionName "2.0"
