@@ -14,11 +14,11 @@ public class MeOnCameraInterceptListener implements OnCameraInterceptListener {
     @Override
     public void openCamera(Fragment fragment, int cameraMode, int requestCode) {
         SimpleCameraX camera = SimpleCameraX.of();
-        camera.isAutoRotation(true);
+//        camera.isAutoRotation(true);
         camera.setCameraMode(cameraMode);
         camera.isDisplayRecordChangeTime(true);
-        camera.isManualFocusCameraPreview(true);
-        camera.isZoomCameraPreview(true);
+//        camera.isManualFocusCameraPreview(true);
+//        camera.isZoomCameraPreview(true);
         camera.setImageEngine(GlideEngine.createGlideEngine());
         camera.start(fragment.requireActivity(), fragment, requestCode);
     }

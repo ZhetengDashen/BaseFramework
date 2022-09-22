@@ -4,7 +4,7 @@ apply plugin: 'maven'
 
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
@@ -93,12 +93,22 @@ dependencies {
 //    compileOnly('io.github.lucksiege:pictureselector:v2.7.2')
     api 'io.github.lucksiege:pictureselector:v3.10.6'
     // 图片压缩 (按需引入)
-    api 'io.github.lucksiege:compress:v3.0.9'
+    api 'io.github.lucksiege:compress:v3.10.6'
     // 图片裁剪 (按需引入)
 
     api 'io.github.lucksiege:ucrop:v3.10.6'
 
-    api 'io.github.lucksiege:camerax:v3.10.6'
+    api ('io.github.lucksiege:camerax:v3.0.4'){
+        exclude group: 'androidx.camera', module:'camera-core'
+        exclude group: 'androidx.camera', module:'camera-camera2'
+        exclude group: 'androidx.camera', module:'camera-view'
+        exclude group: 'androidx.camera', module:'camera-lifecycle'
+        exclude group: 'androidx.appcompat', module:'appcompat'
+    }
+    api "androidx.camera:camera-core:1.0.2"
+    api "androidx.camera:camera-camera2:1.0.2"
+    implementation "androidx.camera:camera-lifecycle:1.0.2"
+    implementation "androidx.camera:camera-view:1.0.0-alpha28"
 
 //    api 'top.zibin:Luban:1.1.8'
     api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'

@@ -17,6 +17,7 @@ import com.baseeasy.baseframework.demoactivity.DataBindingActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivity;
 import com.baseeasy.baseframework.demoactivity.FingerprintActivitysz;
 import com.baseeasy.baseframework.demoactivity.MainPresenter;
+import com.baseeasy.baseframework.demoactivity.MuTestBean;
 import com.baseeasy.baseframework.demoactivity.eventbuspresenter.EventBusMainPresenter;
 import com.baseeasy.baseframework.demoactivity.eventbuspresenter.IEventBusView;
 import com.baseeasy.baseframework.demoactivity.httptest.HTTPTestActivity;
@@ -40,6 +41,7 @@ import com.baseeasy.commonlibrary.soloader.SoUtils;
 import com.baseeasy.commonlibrary.weight.dialog.CustomDialog;
 import com.baseeasy.commonlibrary.weight.dialog.OnCustomLeftClickLister;
 import com.baseeasy.commonlibrary.weight.dialog.OnCustomRightClickLister;
+import com.baseeasy.commonlibrary.weight.dialog.multipledialog.SelectMultipleListDialog;
 import com.getkeepsafe.relinker.ReLinker;
 import com.test.TestUser;
 
@@ -316,22 +318,22 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 //                });
 //                writeSignPadDialog.show();
 
-//                ArrayList<MuTestBean> muTestBeans=new ArrayList<>();
-//                muTestBeans.add(new MuTestBean("aaaaaa",true));
-//                muTestBeans.add(new MuTestBean("bbbbbb",false));
-//                muTestBeans.add(new MuTestBean("cccccc",false));
-//                muTestBeans.add(new MuTestBean("dddddd",true));
-//                muTestBeans.add(new MuTestBean("eeeeee",false));
-//                muTestBeans.add(new MuTestBean("ffffff",true));
-//                SelectMultipleListDialog.createDialog(MainActivity.this, "请选择", muTestBeans, new SelectMultipleListDialog.SelectCallback<MuTestBean>() {
-//                    @Override
-//                    public void callback(List<MuTestBean> list) {
-//                        for (int i = 0; i <list.size() ; i++) {
-//                         Log.e("KK",list.get(i).getMuCheckName());
-//                         LogUtils.e(list.get(i));
-//                        }
-//                    }
-//                }).show();
+                ArrayList<MuTestBean> muTestBeans=new ArrayList<>();
+                muTestBeans.add(new MuTestBean("aaaaaa",true));
+                muTestBeans.add(new MuTestBean("bbbbbb",false));
+                muTestBeans.add(new MuTestBean("cccccc",false));
+                muTestBeans.add(new MuTestBean("dddddd",true));
+                muTestBeans.add(new MuTestBean("eeeeee",false));
+                muTestBeans.add(new MuTestBean("ffffff",true));
+                SelectMultipleListDialog.createDialog(MainActivity.this, "请选择", muTestBeans, new SelectMultipleListDialog.SelectCallback<MuTestBean>() {
+                    @Override
+                    public void callback(List<MuTestBean> list) {
+                        for (int i = 0; i <list.size() ; i++) {
+                         Log.e("KK",list.get(i).getMuCheckName());
+                         LogUtils.e(list.get(i));
+                        }
+                    }
+                }).show();
 //                ArrayList<String> aa = new ArrayList<>();
 //                aa.add("aaa");
 //                aa.add("bbb");
