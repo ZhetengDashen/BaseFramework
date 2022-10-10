@@ -118,7 +118,7 @@ public class SelectImageFragment extends Fragment {
 
         PictureSelector.create(this)
                 .openCamera(SelectMimeType.ofImage())
-                .setCameraInterceptListener(new MeOnCameraInterceptListener())
+//                .setCameraInterceptListener(new MeOnCameraInterceptListener())
                 .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
                 .setCameraImageFormat(PictureMimeType.PNG)
                 .setOutputCameraImageFileName("camera"+System.currentTimeMillis() +".jpg")
@@ -167,7 +167,7 @@ public class SelectImageFragment extends Fragment {
     public void startTakingPhotoAndImageSeparate() {
         PictureSelector.create(this)
                 .openGallery(SelectMimeType.ofImage())
-                .setCameraInterceptListener(new MeOnCameraInterceptListener())
+//                .setCameraInterceptListener(new MeOnCameraInterceptListener())
                 .setImageEngine(GlideEngine.createGlideEngine())
                 .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
                 .setOutputCameraDir(FileUtils.SDPATH +PictureShared.FolderNameConfig.CAMERA)

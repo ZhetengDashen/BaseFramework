@@ -141,7 +141,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                 case 0:
                     PictureSelector.create(SelectImageActivity2.this)
                             .openGallery(SelectMimeType.ofImage())
-                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
+//                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
                             .setImageEngine(GlideEngine.createGlideEngine())
                             .setRequestedOrientation(ORIENTATION_PORTRAIT)
                             .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
@@ -151,7 +151,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                 case 1:
                     PictureSelector.create(SelectImageActivity2.this)
                             .openCamera(SelectMimeType.ofImage())
-                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
+//                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
                             .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
                             .setOutputCameraImageFileName("camera"+System.currentTimeMillis() +".jpg")
                             .forResultActivity(TAKING_PHOTO_REQUEST);
