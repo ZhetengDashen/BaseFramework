@@ -13,13 +13,14 @@
 
         <com.baseeasy.commonlibrary.weight.RotateTextView
 
+            android:id="@+id/rotateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1111111111111111111"
 
+            android:text="1111111111111111111"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="353dp"
-            tools:layout_editor_absoluteY="244dp"></com.baseeasy.commonlibrary.weight.RotateTextView>
+            tools:layout_editor_absoluteX="339dp"
+            tools:layout_editor_absoluteY="296dp"></com.baseeasy.commonlibrary.weight.RotateTextView>
 
         <Button
 
@@ -99,12 +100,11 @@
             android:id="@+id/bt_select_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="212dp"
             android:text="选择图片"
-            app:layout_constraintBottom_toBottomOf="@+id/bt_rxpermissions"
-            app:layout_constraintStart_toEndOf="@+id/bt_rxpermissions"
-            app:layout_constraintTop_toTopOf="@+id/bt_rxpermissions"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_recycler"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -126,9 +126,10 @@
             android:text="指纹"
             app:layout_constraintBottom_toBottomOf="@+id/bt_select_image"
             app:layout_constraintEnd_toEndOf="@+id/bt_recycler"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/bt_recycler"
             app:layout_constraintTop_toBottomOf="@+id/bt_recycler"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.23" />
 
         <Button
             android:id="@+id/qianming"
@@ -175,7 +176,8 @@
             android:id="@+id/btsz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="196dp"
+            android:layout_marginTop="64dp"
             android:text="指纹——申指"
             app:layout_constraintStart_toStartOf="@+id/button_ff"
             app:layout_constraintTop_toBottomOf="@+id/button_ff"
