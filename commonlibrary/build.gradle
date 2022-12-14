@@ -46,12 +46,16 @@ android {
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: "http://baseeasy.uicp.top:81/nexus/content/repositories/releases/"){
-                authentication(userName: "admin", password: "admin123")
+//        repository(url: "http://baseeasy.uicp.top:81/nexus/content/repositories/releases/"){
+//                authentication(userName: "admin", password: "admin123")
+//        }
+        repository(url: "http://192.168.6.128:8081/nexus/content/repositories/releases/"){
+            authentication(userName: "admin", password: "admin123")
         }
+
         pom.groupId = "com.baseeasyandroid"
         pom.artifactId = "baseframework"
-        pom.version = "2.8.8_3_beta3"
+        pom.version = "2.8.8_4"
 //      完整路径  com.baseeasyandroid:baseframework:2.5.8
     }
 }
