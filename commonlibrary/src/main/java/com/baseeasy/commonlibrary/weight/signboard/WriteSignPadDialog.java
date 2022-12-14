@@ -37,6 +37,7 @@ public class WriteSignPadDialog extends Dialog {
     WriteDialogListener dialogListener;
     PaintView mView;
     private int paintStrokeWidth=12;
+    private int drawColor=Color.WHITE;
     /**
      * The index of the current color to use.
      */
@@ -52,6 +53,15 @@ public class WriteSignPadDialog extends Dialog {
     public void setPaintStrokeWidth(int width){
         this.paintStrokeWidth=width;
     }
+
+    public int getDrawColor() {
+        return  drawColor;
+    }
+
+    public void setDrawColor(int drawColor) {
+        this.drawColor = drawColor;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -155,7 +165,7 @@ public class WriteSignPadDialog extends Dialog {
             path = new Path();
             cachebBitmap = Bitmap.createBitmap(p.width, p.height, Config.ARGB_8888);
             cacheCanvas = new Canvas(cachebBitmap);
-            cacheCanvas.drawColor(Color.WHITE);
+            cacheCanvas.drawColor(drawColor);
         }
 
         public Bitmap getCachebBitmap() {
@@ -167,7 +177,7 @@ public class WriteSignPadDialog extends Dialog {
                 paint.setColor(BACKGROUND_COLOR);
                 cacheCanvas.drawPaint(paint);
                 paint.setColor(Color.BLACK);
-                cacheCanvas.drawColor(Color.WHITE);
+                cacheCanvas.drawColor(drawColor);
                 isHavePath=false;
                 invalidate();
             }
@@ -238,7 +248,6 @@ public class WriteSignPadDialog extends Dialog {
 
         @Override
         protected void onDraw(Canvas canvas) {
-            // canvas.drawColor(BRUSH_COLOR);
             if (cachebBitmap == null || cachebBitmap.isRecycled()) {
                 init();
             }
