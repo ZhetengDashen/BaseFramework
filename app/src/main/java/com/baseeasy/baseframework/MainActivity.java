@@ -32,6 +32,7 @@ import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCal
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoSeparateCallBack;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage2.SelectImageUtils2;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
 
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
@@ -270,18 +271,18 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 //                    }
 //                });
 //             SelectImageUtils.getInstance().startTakingPhoto(this,"imageCallback",selectImageBeans,1);
-                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
-
-                    @Override
-                    public void onTakingPhoto(String imagePath) {
-
-                    }
-
-                    @Override
-                    public void onTakingPhotoResult(List<String> imagePaths) {
-
-                    }
-                });
+//                SelectImageUtils.getInstance().startTakingPhotoSeparate(this, new TakingPhotoSeparateCallBack() {
+//
+//                    @Override
+//                    public void onTakingPhoto(String imagePath) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onTakingPhotoResult(List<String> imagePaths) {
+//
+//                    }
+//                });
 //
 //                SelectImageUtils.getInstance().startSelectImage(this,"imageCallback",selectImageBeans);
 //             SelectImageUtils.getInstance().startTakingPhotoSeparate(this,"imageCallback");
@@ -300,6 +301,35 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 //                        LogUtils.e(imagePath);
 //                    }
 //                });
+//                SelectImageUtils2.getInstance().startSelectImage();
+//                SelectImageUtils2.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
+//                    @Override
+//                    public void onTakingPhoto(String imagePath) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onTakingPhotoResult(List<String> imagePaths) {
+//
+//                    }
+//                },100);
+
+                SelectImageUtils2.getInstance().startSelectImage(this, new SelectImageCallBack() {
+                    @Override
+                    public void onImageSelected(List<String> imagePaths) {
+
+                    }
+
+                    @Override
+                    public void onAddImage(List<String> imagePaths) {
+
+                    }
+
+                    @Override
+                    public void onDeleteImage(List<String> imagePaths) {
+
+                    }
+                },10);
                 break;
             case R.id.button_ff:
 
