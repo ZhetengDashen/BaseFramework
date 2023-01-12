@@ -16,6 +16,7 @@ public class PictureShared {
 
     public final static int ACTION_TYPE_SELECT_IMAGE=0;
     public final static int ACTION_TYPE_TAKING_PHOTO=1;
+    public final static int ACTION_TYPE_SELECT_VIDEO=2;
 
 
     public static final int SELECTIMAGE_REQUESTCODE = 1001;

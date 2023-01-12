@@ -87,6 +87,20 @@ public class SelectImageFragment extends Fragment {
         this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
     }
 
+    public void startSelectVideo(int maxNum) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_VIDEO);
+        this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
+    }
+    public void startSelectVideo(String select,int maxNum) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_VIDEO);
+        intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES,select);
+        this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
+    }
+
     public void startTakingPhoto(int maxNum) {
 
         Intent intent = new Intent(getActivity(), SelectImageActivity.class);

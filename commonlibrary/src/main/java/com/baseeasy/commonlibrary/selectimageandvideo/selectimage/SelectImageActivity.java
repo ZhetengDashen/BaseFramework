@@ -71,7 +71,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     private TextView tv_save;
 //    private String eventBugFlag="";
     private String localMediaList_json="";//展示的图片
-    private int action_type=0;//0选择图片   1拍照
+    private int action_type=0;//0选择图片   1拍照 2 选择视频
 
     private RecyclerView recyclerView;
     private SelectImageAdapter selectImageAdapter;
@@ -175,6 +175,16 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                             .forResult(TAKING_PHOTO_REQUEST);
+                    break;
+                case 2:
+                    PictureSelector.create(SelectImageActivity.this)
+                            .openGallery(PictureMimeType.ofVideo())
+                            .imageEngine(GlideEngine.createGlideEngine())
+                            .isCompress(false)
+                            .cameraFileName("camera"+System.currentTimeMillis() +".jpg")
+                            .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
+                            .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                            .forResult(SELECT_IMAGE_REQUEST);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + action_type);

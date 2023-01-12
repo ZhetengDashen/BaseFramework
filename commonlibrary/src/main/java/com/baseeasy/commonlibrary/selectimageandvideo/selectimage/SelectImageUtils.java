@@ -82,6 +82,10 @@ public class SelectImageUtils {
         startSelectImage(activity,selectLocationCallBack,PictureShared.MAX_PHOTO_NUM);
     }
 
+    public void startSelectVideo(FragmentActivity activity, SelectImageCallBack selectLocationCallBack){
+        startSelectVideo(activity,selectLocationCallBack,PictureShared.MAX_PHOTO_NUM);
+    }
+
 
     /**
      * 选择照片
@@ -94,6 +98,15 @@ public class SelectImageUtils {
     }
 
     /**
+     * 选择视频
+     * @param  activity
+     * @param  selectLocationCallBack 回调接口
+     *
+     * */
+    public void startSelectVideo(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,int maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startSelectVideo(maxNum);
+    }
+    /**
      * 选择照片
      *  @param  activity
      * @param  selectLocationCallBack 回调接口
@@ -103,6 +116,10 @@ public class SelectImageUtils {
     public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans){
           startSelectImage(activity,selectLocationCallBack,selectImageBeans,PictureShared.MAX_PHOTO_NUM);
 
+    }
+
+    public void startSelectVideo(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans){
+        startSelectVideo(activity,selectLocationCallBack,selectImageBeans,PictureShared.MAX_PHOTO_NUM);
     }
 
 
@@ -115,6 +132,10 @@ public class SelectImageUtils {
      * */
     public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans,int  maxNum){
         getSelectImageFragment(activity, selectLocationCallBack).startSelectImage( JSONObject.toJSONString(selectImageBeans),maxNum);
+    }
+
+    public void startSelectVideo(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans,int  maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startSelectVideo( JSONObject.toJSONString(selectImageBeans),maxNum);
     }
 
 //    /**
