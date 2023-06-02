@@ -1,5 +1,5 @@
 # SelectImageUtils使用说明与注意事项
-## 使用说明  
+## 使用说明
 #### 1.
 >  功能说明：选择图片+图片列表编辑  
 >  参数说明： activity、   SelectImageCallBack：回调接口  
@@ -111,7 +111,7 @@
 >```
 
 #### 11.
->  功能说明：单张拍照或图片选择 
+>  功能说明：单张拍照或图片选择
 >  参数说明： activity、   takingPhotoSeparateCallBack  回调接口  
 >  回调方式：接口  
 >  使用示例：
@@ -133,7 +133,7 @@
 >```
 
 #### 13.
->  功能说明：拍摄身份证头像面+裁剪 
+>  功能说明：拍摄身份证头像面+裁剪
 >  参数说明： activity、TakingPhotoIDCardCallBack 接口    
 >  回调方式： 接口  
 >  使用示例：
@@ -150,7 +150,7 @@
                        
                     }
                 });
->```
+>```  
 #### 14.
 >  功能说明：拍摄身份证头像面+裁剪
 >  参数说明： activity、TakingPhotoIDCardCallBack 接口    
@@ -170,7 +170,7 @@
 
                     }
                 });
->```
+>```  
 #### 15.
 >  功能说明：拍摄银行卡
 >  参数说明： activity、TakingPhotoBankCallBack 接口    
@@ -183,10 +183,10 @@
                         ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
                     }
                 });
->```
+>```  
 ### 附加说明：
- > 1.通过EventBus回调接收数据说明：  
- ```  
+> 1.通过EventBus回调接收数据说明：
+ ```    
  @Override
    public void eventBusMessageOnMainThread(EventMessage event) {
          super.eventBusMessageOnMainThread(event);  
@@ -195,14 +195,14 @@
               break;
        }
  }
-  ```
-  >2.实体类：SelectImageBean  
- ``` 
+  ```  
+>2.实体类：SelectImageBean
+ ```   
      String path="";//原图路径  
      String compressPath="";//压缩图路径
- ```
- 
- 
- 其他功能请参考： PictureSelector <br>（有时间封装其他功能）
+ ``` 
+
+
+其他功能请参考： PictureSelector <br>（有时间封装其他功能）
 >介绍：图片选择、拍照、视频、压缩、头像截图  <br>
 >使用说明：[PictureSelector 使用说明与注意事项](README_PictureSelector.md)
