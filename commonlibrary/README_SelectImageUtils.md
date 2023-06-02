@@ -144,8 +144,7 @@
                         ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
                     }
                     @Override
-                    public void onTakingPhotoEmblem(String imagePaths) {
-                       
+                    public void onTakingPhotoEmblem(String imagePaths) {               
                     }
                 });
 ```  
@@ -157,13 +156,10 @@
 ```
    SelectImageUtils.getInstance().startTakingPhotoIdCardImageEmblem(this, new TakingPhotoIDCardCallBack() {
                     @Override
-                    public void onTakingPhotoHead(String imagePaths) {
-                    }
+                    public void onTakingPhotoHead(String imagePaths) {}
                     @Override
-                    public void onTakingPhotoEmblem(String imagePaths) {                       
-                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
-
-                    }
+                    public void onTakingPhotoEmblem(String imagePaths) {                
+                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);                    }
                 });
 ```  
 #### 15.
@@ -175,8 +171,7 @@
 SelectImageUtils.getInstance().startTakingPhotoBankImage(this, new TakingPhotoBankCallBack() {
                     @Override
                     public void onTakingPhoto(String imagePaths) {
-                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
-                    }
+                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);                   }
                 });
 ```  
 ### 附加说明：
