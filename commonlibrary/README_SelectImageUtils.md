@@ -137,11 +137,10 @@
 >  参数说明： activity、TakingPhotoIDCardCallBack 接口    
 >  回调方式： 接口  
 >  使用示例：
-> ```
->    SelectImageUtils.getInstance().startTakingPhotoIdCardImageHead(this, new TakingPhotoIDCardCallBack() {
+```
+    SelectImageUtils.getInstance().startTakingPhotoIdCardImageHead(this, new TakingPhotoIDCardCallBack() {
                     @Override
-                    public void onTakingPhotoHead(String imagePaths) {
-                      
+                    public void onTakingPhotoHead(String imagePaths) {                      
                         ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
                     }
 
@@ -150,43 +149,40 @@
                        
                     }
                 });
->```  
+```  
 #### 14.
 >  功能说明：拍摄身份证头像面+裁剪
 >  参数说明： activity、TakingPhotoIDCardCallBack 接口    
 >  回调方式： 接口  
 >  使用示例：
-> ```
->    SelectImageUtils.getInstance().startTakingPhotoIdCardImageEmblem(this, new TakingPhotoIDCardCallBack() {
+```
+   SelectImageUtils.getInstance().startTakingPhotoIdCardImageEmblem(this, new TakingPhotoIDCardCallBack() {
                     @Override
                     public void onTakingPhotoHead(String imagePaths) {
-
                     }
-
                     @Override
-                    public void onTakingPhotoEmblem(String imagePaths) {
-                       
+                    public void onTakingPhotoEmblem(String imagePaths) {                       
                         ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
 
                     }
                 });
->```  
+```  
 #### 15.
 >  功能说明：拍摄银行卡
 >  参数说明： activity、TakingPhotoBankCallBack 接口    
 >  回调方式： 接口  
 >  使用示例：
-> ```
->     SelectImageUtils.getInstance().startTakingPhotoBankImage(this, new TakingPhotoBankCallBack() {
+```
+SelectImageUtils.getInstance().startTakingPhotoBankImage(this, new TakingPhotoBankCallBack() {
                     @Override
                     public void onTakingPhoto(String imagePaths) {
                         ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
                     }
                 });
->```  
+```  
 ### 附加说明：
 > 1.通过EventBus回调接收数据说明：
- ```    
+ ```  
  @Override
    public void eventBusMessageOnMainThread(EventMessage event) {
          super.eventBusMessageOnMainThread(event);  
@@ -195,12 +191,12 @@
               break;
        }
  }
-  ```  
+  ```
 >2.实体类：SelectImageBean
- ```   
+ ``` 
      String path="";//原图路径  
      String compressPath="";//压缩图路径
- ``` 
+ ```
 
 
 其他功能请参考： PictureSelector <br>（有时间封装其他功能）
