@@ -143,7 +143,6 @@
                     public void onTakingPhotoHead(String imagePaths) {                      
                         ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
                     }
-
                     @Override
                     public void onTakingPhotoEmblem(String imagePaths) {
                        
