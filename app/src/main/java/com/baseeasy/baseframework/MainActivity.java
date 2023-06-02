@@ -79,10 +79,17 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
     private Button button_za;
     private Button button_idcard;
     private ImageView image;
+
+    private Button button_idcard_fm;
+    private Button button_bank;
     @Override
     public void init_view() {
         super.init_view();
         image=findViewById(R.id.image);
+        button_idcard_fm=findViewById(R.id.button);
+        button_idcard_fm.setOnClickListener(this);
+        button_bank=findViewById(R.id.button2);
+        button_bank.setOnClickListener(this);
         button_idcard=findViewById(R.id.bt_idcard);
         button_idcard.setOnClickListener(this);
         button_sz=findViewById(R.id.button_sz);
@@ -408,6 +415,7 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
                 break;
 
             case R.id.bt_idcard:
+                Log.e("asd","555");
                 SelectImageUtils.getInstance().startTakingPhotoIdCardImageHead(this, new TakingPhotoIDCardCallBack() {
                     @Override
                     public void onTakingPhotoHead(String imagePaths) {
@@ -420,6 +428,11 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 
                     }
                 });
+
+
+                break;
+
+            case R.id.button:
                 SelectImageUtils.getInstance().startTakingPhotoIdCardImageEmblem(this, new TakingPhotoIDCardCallBack() {
                     @Override
                     public void onTakingPhotoHead(String imagePaths) {
@@ -433,6 +446,8 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 
                     }
                 });
+                break;
+            case R.id.button2:
                 SelectImageUtils.getInstance().startTakingPhotoBankImage(this, new TakingPhotoBankCallBack() {
                     @Override
                     public void onTakingPhoto(String imagePaths) {

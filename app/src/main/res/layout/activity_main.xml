@@ -199,12 +199,14 @@
             app:layout_constraintTop_toBottomOf="@+id/button_sz"
             tools:ignore="MissingConstraints"></Button>
 
+
         <Button
             android:id="@+id/bt_idcard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="身份证拍摄"
+            android:text="身份证拍摄正面"
             app:layout_constraintEnd_toEndOf="@+id/button_za"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/button_za"
             app:layout_constraintTop_toBottomOf="@+id/button_za"
             tools:ignore="MissingConstraints"></Button>
@@ -212,9 +214,31 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="300dp"
             android:src="@mipmap/image_bg"
             app:layout_constraintTop_toBottomOf="@+id/bt_idcard"
           ></ImageView>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:text="身份证反面"
+            app:layout_constraintBottom_toBottomOf="@+id/bt_idcard"
+            app:layout_constraintStart_toEndOf="@+id/bt_idcard"
+            app:layout_constraintTop_toBottomOf="@+id/button_za"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:text="银行卡"
+            app:layout_constraintBottom_toBottomOf="@+id/button"
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toTopOf="@+id/button"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
