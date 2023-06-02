@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +27,12 @@ import com.baseeasy.commonlibrary.baseview.baseframework.BaseActivity;
 import com.baseeasy.commonlibrary.eventbus.EventBusUtils;
 import com.baseeasy.commonlibrary.eventbus.EventMessage;
 
+import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
+import com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.IDCardCameraActivity;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoBankCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoIDCardCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
 
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
@@ -72,9 +77,14 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
     private  Button button_btsz;
     private Button button_sz;
     private Button button_za;
+    private Button button_idcard;
+    private ImageView image;
     @Override
     public void init_view() {
         super.init_view();
+        image=findViewById(R.id.image);
+        button_idcard=findViewById(R.id.bt_idcard);
+        button_idcard.setOnClickListener(this);
         button_sz=findViewById(R.id.button_sz);
         button_sz.setOnClickListener(this);
         button_za=findViewById(R.id.button_za);
@@ -395,6 +405,40 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
                 break;
             case R.id.button_za:
 
+                break;
+
+            case R.id.bt_idcard:
+                SelectImageUtils.getInstance().startTakingPhotoIdCardImageHead(this, new TakingPhotoIDCardCallBack() {
+                    @Override
+                    public void onTakingPhotoHead(String imagePaths) {
+                        Log.e("asd",imagePaths);
+                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+                    }
+
+                    @Override
+                    public void onTakingPhotoEmblem(String imagePaths) {
+
+                    }
+                });
+                SelectImageUtils.getInstance().startTakingPhotoIdCardImageEmblem(this, new TakingPhotoIDCardCallBack() {
+                    @Override
+                    public void onTakingPhotoHead(String imagePaths) {
+
+                    }
+
+                    @Override
+                    public void onTakingPhotoEmblem(String imagePaths) {
+                        Log.e("BEIMIAN",imagePaths);
+                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+
+                    }
+                });
+                SelectImageUtils.getInstance().startTakingPhotoBankImage(this, new TakingPhotoBankCallBack() {
+                    @Override
+                    public void onTakingPhoto(String imagePaths) {
+                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+                    }
+                });
                 break;
         }
     }

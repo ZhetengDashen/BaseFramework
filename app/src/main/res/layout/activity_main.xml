@@ -198,5 +198,23 @@
             app:layout_constraintStart_toStartOf="@+id/btsz"
             app:layout_constraintTop_toBottomOf="@+id/button_sz"
             tools:ignore="MissingConstraints"></Button>
+
+        <Button
+            android:id="@+id/bt_idcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身份证拍摄"
+            app:layout_constraintEnd_toEndOf="@+id/button_za"
+            app:layout_constraintStart_toStartOf="@+id/button_za"
+            app:layout_constraintTop_toBottomOf="@+id/button_za"
+            tools:ignore="MissingConstraints"></Button>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/image_bg"
+            app:layout_constraintTop_toBottomOf="@+id/bt_idcard"
+          ></ImageView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

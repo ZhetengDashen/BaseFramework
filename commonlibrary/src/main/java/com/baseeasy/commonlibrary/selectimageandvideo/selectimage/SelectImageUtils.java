@@ -67,6 +67,19 @@ public class SelectImageUtils {
         selectImageFragment.setTakingPhotoSeparateCallBack(takingPhotoSeparateCallBack);
         return selectImageFragment;
     }
+
+
+    private SelectImageFragment getTakingPhotoIdCardImageHeadFragment(FragmentActivity activity, TakingPhotoIDCardCallBack takingPhotoIDCardCallBack) {
+        SelectImageFragment   selectImageFragment=   initFragment(activity);
+        selectImageFragment.setTakingPhotoIDCardCallBack(takingPhotoIDCardCallBack);
+        return selectImageFragment;
+    }
+
+    private SelectImageFragment getTakingPhotoBankImageFragment(FragmentActivity activity, TakingPhotoBankCallBack takingPhotoIDCardCallBack) {
+        SelectImageFragment   selectImageFragment=   initFragment(activity);
+        selectImageFragment.setTakingPhotoBankCallBack(takingPhotoIDCardCallBack);
+        return selectImageFragment;
+    }
 //    private SelectImageFragment getTakingPhotoSeparateFragment(FragmentActivity activity, String eventBusFlag) {
 //        SelectImageFragment selectImageFragment=   initFragment(activity);
 //        selectImageFragment.setTakingPhotoSeparateEventBusFlag(eventBusFlag);
@@ -333,5 +346,36 @@ public class SelectImageUtils {
 //
 //    }
 
+    /**
+     * 只有拍照 单张
+     * @param activity
+     * @param takingPhotoIDCardCallBack 回调
+     *
+     **/
+    public void startTakingPhotoIdCardImageHead(FragmentActivity activity, TakingPhotoIDCardCallBack takingPhotoIDCardCallBack ){
 
+      getTakingPhotoIdCardImageHeadFragment(activity,takingPhotoIDCardCallBack).startTakingPhotoIdCardImageHead();
+    }
+    /**
+     * 身份证国徽面
+     * @param activity
+     * @param takingPhotoIDCardCallBack
+     *
+     **/
+    public void startTakingPhotoIdCardImageEmblem(FragmentActivity activity, TakingPhotoIDCardCallBack takingPhotoIDCardCallBack ){
+
+        getTakingPhotoIdCardImageHeadFragment(activity,takingPhotoIDCardCallBack).startTakingPhotoIdCardImageHeadEmblem();
+    }
+    /**
+     * 银行卡
+     * @param activity
+     * @param takingPhotoBankCallBack
+     *
+     **/
+    public void startTakingPhotoBankImage(FragmentActivity activity, TakingPhotoBankCallBack takingPhotoBankCallBack ){
+
+
+        getTakingPhotoBankImageFragment(activity,takingPhotoBankCallBack).startTakingPhotoBank();
+
+       }
 }

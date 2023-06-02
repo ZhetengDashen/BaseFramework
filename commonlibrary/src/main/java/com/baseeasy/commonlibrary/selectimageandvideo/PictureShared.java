@@ -23,6 +23,9 @@ public class PictureShared {
     public static final int TAKINGPHOTO_REQUESTCODE=1002;
     public static final int TAKINGPHOTO_SEPARATE_REQUESTCODE=1003;
     public  static final int SHOOTVIDEO=1004;
+    public  static final int TAKINGPHOTO_IDCRD_HEAD=1005;
+    public  static final int TAKINGPHOTO_IDCRD_EMBLEM=1006;
+    public  static final int TAKINGPHOTO_BANK=1007;
     //IntentExtra Name
     public static class IntentExtraName {
         public final static String EVENT_BUS_FLAG = "picture_eventBusFlag";
@@ -37,6 +40,7 @@ public class PictureShared {
         public  final static String SHOOTVIDEOCONFIG="shootVideoConfig";
         public  final static String ISPREVIEW="previewVideo";
         public  final static String REQUSETCODE="requestCode";
+        public  final static String IDCARD_RESULT_DATA="idCardResultData";
     }
       //文件夹相关配置
     public static class FolderNameConfig {

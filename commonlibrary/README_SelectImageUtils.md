@@ -132,8 +132,58 @@
 >   SelectImageUtils.getInstance().startTakingPhotoAndImageSeparate(this, "imageCallback");
 >```
 
+#### 13.
+>  功能说明：拍摄身份证头像面+裁剪 
+>  参数说明： activity、TakingPhotoIDCardCallBack 接口    
+>  回调方式： 接口  
+>  使用示例：
+> ```
+>    SelectImageUtils.getInstance().startTakingPhotoIdCardImageHead(this, new TakingPhotoIDCardCallBack() {
+                    @Override
+                    public void onTakingPhotoHead(String imagePaths) {
+                      
+                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+                    }
 
+                    @Override
+                    public void onTakingPhotoEmblem(String imagePaths) {
+                       
+                    }
+                });
+>```
+#### 14.
+>  功能说明：拍摄身份证头像面+裁剪
+>  参数说明： activity、TakingPhotoIDCardCallBack 接口    
+>  回调方式： 接口  
+>  使用示例：
+> ```
+>    SelectImageUtils.getInstance().startTakingPhotoIdCardImageEmblem(this, new TakingPhotoIDCardCallBack() {
+                    @Override
+                    public void onTakingPhotoHead(String imagePaths) {
 
+                    }
+
+                    @Override
+                    public void onTakingPhotoEmblem(String imagePaths) {
+                       
+                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+
+                    }
+                });
+>```
+#### 15.
+>  功能说明：拍摄银行卡
+>  参数说明： activity、TakingPhotoBankCallBack 接口    
+>  回调方式： 接口  
+>  使用示例：
+> ```
+>     SelectImageUtils.getInstance().startTakingPhotoBankImage(this, new TakingPhotoBankCallBack() {
+                    @Override
+                    public void onTakingPhoto(String imagePaths) {
+                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+                    }
+                });
+>```
 ### 附加说明：
  > 1.通过EventBus回调接收数据说明：  
  ```  

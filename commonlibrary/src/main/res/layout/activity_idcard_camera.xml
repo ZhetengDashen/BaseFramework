@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".selectimageandvideo.idcardcamera.IDCardCameraActivity">
+    <FrameLayout
+        android:id="@+id/preview_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+        <ImageView
+            android:id="@+id/preview_snapshot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.view.PreviewView
+            android:id="@+id/preview_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.view.MaskView
+            android:id="@+id/maskview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.view.CropView
+            android:id="@+id/cropview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+    <RelativeLayout
+        android:background="#232323"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        >
+        <include layout="@layout/basecamera_preview_bar_views"></include>
+        <include layout="@layout/basecamera_action_bar_views"></include>
+    </RelativeLayout>
+</LinearLayout>
