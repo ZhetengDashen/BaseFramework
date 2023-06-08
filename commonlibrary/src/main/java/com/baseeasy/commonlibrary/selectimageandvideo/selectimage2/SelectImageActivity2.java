@@ -20,6 +20,8 @@ import com.baseeasy.commonlibrary.mytool.time.TimeUtil;
 import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
+import com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.IDCardCameraActivity;
+import com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.parameter.IDCardBaseParameter;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.luck.picture.lib.PictureSelector;
@@ -32,8 +34,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.ACTION_TAKING_BANK_REQUEST;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.ACTION_TAKING_IDCARDEMBLEM_REQUEST;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.ACTION_TAKING_IDCARDHEAD_REQUEST;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.IntentExtraName.IDCARD_RESULT_DATA;
 import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.SELECT_IMAGE_REQUEST;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_BANK;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_IDCRD_EMBLEM;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_IDCRD_HEAD;
 import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKING_PHOTO_REQUEST;
+import static com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.parameter.IDCardBaseParameter.KEY_MAIN;
 
 /**
  * @author：Mr.Zan
@@ -154,6 +164,34 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                             .forResult(TAKING_PHOTO_REQUEST);
                     break;
+                case  ACTION_TAKING_IDCARDHEAD_REQUEST:
+                    //拍身份证人像面
+                    Intent intent = new Intent(this, IDCardCameraActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(IDCardBaseParameter.KEY_TAKE_PICTURE_TYPE, IDCardBaseParameter.TYPE_MANUAL);
+                    bundle.putInt(IDCardBaseParameter.KEY_MASK_TYPE, IDCardBaseParameter.MASK_TYPE_IDCARD_FRONT);
+                    intent.putExtra(KEY_MAIN, bundle);
+                    startActivityForResult(intent, TAKINGPHOTO_IDCRD_HEAD);
+                    break;
+                case ACTION_TAKING_IDCARDEMBLEM_REQUEST:
+                    //拍身份证国徽面
+                    Intent intent1 = new Intent(this, IDCardCameraActivity.class);
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putInt(IDCardBaseParameter.KEY_TAKE_PICTURE_TYPE, IDCardBaseParameter.TYPE_MANUAL);
+                    bundle1.putInt(IDCardBaseParameter.KEY_MASK_TYPE, IDCardBaseParameter.MASK_TYPE_IDCARD_BACK);
+                    intent1.putExtra(KEY_MAIN, bundle1);
+                    startActivityForResult(intent1, TAKINGPHOTO_IDCRD_EMBLEM);
+                    break;
+
+                case ACTION_TAKING_BANK_REQUEST:
+                    //拍银行卡
+                    Intent intent2 = new Intent(this, IDCardCameraActivity.class);
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putInt(IDCardBaseParameter.KEY_TAKE_PICTURE_TYPE, IDCardBaseParameter.TYPE_MANUAL);
+                    bundle2.putInt(IDCardBaseParameter.KEY_MASK_TYPE, IDCardBaseParameter.MASK_TYPE_BANKCARD);
+                    intent2.putExtra(KEY_MAIN, bundle2);
+                    startActivityForResult(intent2, TAKINGPHOTO_BANK);
+                    break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + action_type);
             }
@@ -216,6 +254,23 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                         e.printStackTrace();
                     }
                          break;
+                case TAKINGPHOTO_IDCRD_HEAD:
+                case TAKINGPHOTO_IDCRD_EMBLEM:
+                case TAKINGPHOTO_BANK:
+                    try {
+                        String path= data.getExtras().getString(IDCARD_RESULT_DATA);
+                        List<String> paths=new ArrayList<>(1);
+                        paths.add(path);
+                        List<LocalMedia> localMediaList=ImageLocalMediaConversion.selectImageToLocalMedia(paths);
+                        currentSelectList.addAll(localMediaList);
+                        selectImageAdapter.notifyDataSetChanged();
+                        SelectImageFragment2.mSelectFileResultCallBack.onAddResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList)),this.requestCode);
+                        SelectImageFragment2.mSelectFileResultCallBack.onCurrentSelectResult(JSONObject.toJSONString(ImageLocalMediaConversion.localMediaToSelectImage(currentSelectList)),this.requestCode);
+                    }catch (Exception e){
+                       e.printStackTrace();
+                    }
+                    break;
+
                 default:
                     break;
             }

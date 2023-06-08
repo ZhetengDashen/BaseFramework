@@ -29,10 +29,12 @@ import com.baseeasy.commonlibrary.eventbus.EventMessage;
 
 import com.baseeasy.commonlibrary.imageloader.ImageLoaderFactory;
 import com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.IDCardCameraActivity;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.SelectImageUtils;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoBankCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoCallBack;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectimage.TakingPhotoIDCardCallBack;
+import com.baseeasy.commonlibrary.selectimageandvideo.selectimage2.SelectImageUtils2;
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoCallBack;
 
 import com.baseeasy.commonlibrary.selectimageandvideo.selectvideo.ShootVideoUtils;
@@ -416,42 +418,90 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 
             case R.id.bt_idcard:
                 Log.e("asd","555");
-                SelectImageUtils.getInstance().startTakingPhotoIdCardImageHead(this, new TakingPhotoIDCardCallBack() {
+//                SelectImageUtils.getInstance().startTakingPhotoIdCardImageHead(this, new TakingPhotoIDCardCallBack() {
+//                    @Override
+//                    public void onTakingPhotoHead(String imagePaths) {
+//                        Log.e("asd",imagePaths);
+//                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+//                    }
+//
+//                    @Override
+//                    public void onTakingPhotoEmblem(String imagePaths) {
+//
+//                    }
+//                });
+                SelectImageUtils2.getInstance().startTakeIdcardHead(this, new SelectImageCallBack() {
                     @Override
-                    public void onTakingPhotoHead(String imagePaths) {
-                        Log.e("asd",imagePaths);
-                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+                    public void onImageSelected(List<String> imagePaths) {
+
                     }
 
                     @Override
-                    public void onTakingPhotoEmblem(String imagePaths) {
-
+                    public void onAddImage(List<String> imagePaths) {
+                        selectImageBeans.addAll(imagePaths);
                     }
-                });
+
+                    @Override
+                    public void onDeleteImage(List<String> imagePaths) {
+                        selectImageBeans.removeAll(imagePaths);
+                    }
+                },selectImageBeans);
 
 
                 break;
 
             case R.id.button:
-                SelectImageUtils.getInstance().startTakingPhotoIdCardImageEmblem(this, new TakingPhotoIDCardCallBack() {
+//                SelectImageUtils.getInstance().startTakingPhotoIdCardImageEmblem(this, new TakingPhotoIDCardCallBack() {
+//                    @Override
+//                    public void onTakingPhotoHead(String imagePaths) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onTakingPhotoEmblem(String imagePaths) {
+//                        Log.e("BEIMIAN",imagePaths);
+//                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+//
+//                    }
+//                });
+                SelectImageUtils2.getInstance().startTakeIdcardEmblem(this, new SelectImageCallBack() {
                     @Override
-                    public void onTakingPhotoHead(String imagePaths) {
+                    public void onImageSelected(List<String> imagePaths) {
 
                     }
 
                     @Override
-                    public void onTakingPhotoEmblem(String imagePaths) {
-                        Log.e("BEIMIAN",imagePaths);
-                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+                    public void onAddImage(List<String> imagePaths) {
+                        selectImageBeans.addAll(imagePaths);
+                    }
 
+                    @Override
+                    public void onDeleteImage(List<String> imagePaths) {
+                        selectImageBeans.removeAll(imagePaths);
                     }
                 });
                 break;
             case R.id.button2:
-                SelectImageUtils.getInstance().startTakingPhotoBankImage(this, new TakingPhotoBankCallBack() {
+//                SelectImageUtils.getInstance().startTakingPhotoBankImage(this, new TakingPhotoBankCallBack() {
+//                    @Override
+//                    public void onTakingPhoto(String imagePaths) {
+//                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+//                    }
+//                });
+                SelectImageUtils2.getInstance().startTakeBankCard(this, new SelectImageCallBack() {
                     @Override
-                    public void onTakingPhoto(String imagePaths) {
-                        ImageLoaderFactory.getInstance().displayImage(image,imagePaths);
+                    public void onImageSelected(List<String> imagePaths) {
+
+                    }
+
+                    @Override
+                    public void onAddImage(List<String> imagePaths) {
+                        selectImageBeans.addAll(imagePaths);
+                    }
+
+                    @Override
+                    public void onDeleteImage(List<String> imagePaths) {
+                        selectImageBeans.removeAll(imagePaths);
                     }
                 });
                 break;

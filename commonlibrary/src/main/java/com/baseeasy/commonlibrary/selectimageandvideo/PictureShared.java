@@ -14,10 +14,22 @@ public class PictureShared {
     public final static int SELECT_IMAGE_REQUEST = 0;
     public final static int TAKING_PHOTO_REQUEST = 1;
 
+
     public final static int ACTION_TYPE_SELECT_IMAGE=0;
     public final static int ACTION_TYPE_TAKING_PHOTO=1;
     public final static int ACTION_TYPE_SELECT_VIDEO=2;
-
+    /**
+     * 拍身份证人像面
+     */
+    public final static int ACTION_TAKING_IDCARDHEAD_REQUEST = 3;
+    /**
+     * 拍身份证国徽面
+     */
+    public final static int ACTION_TAKING_IDCARDEMBLEM_REQUEST = 4;
+    /**
+     * 拍银行卡
+     */
+    public final static int ACTION_TAKING_BANK_REQUEST = 5;
 
     public static final int SELECTIMAGE_REQUESTCODE = 1001;
     public static final int TAKINGPHOTO_REQUESTCODE=1002;

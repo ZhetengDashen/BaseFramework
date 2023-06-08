@@ -101,6 +101,36 @@ public class SelectImageUtils2 {
         getSelectImageFragment(activity, selectLocationCallBack).startSelectImage(maxNum);
     }
 
+    public void startTakeIdcardHead(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans,int maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoIdcarHead(JSONObject.toJSONString(selectImageBeans),maxNum);
+    }
+    public void startTakeIdcardEmblem(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,List<String> selectImageBeans,int maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoIdcarEmblem(JSONObject.toJSONString(selectImageBeans),maxNum);
+    }
+    public void startTakeBankCard(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,List<String> selectImageBeans,int maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoBank(JSONObject.toJSONString(selectImageBeans),maxNum);
+    }
+
+    public void startTakeIdcardHead(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoIdcarHead(JSONObject.toJSONString(selectImageBeans),PictureShared.MAX_PHOTO_NUM);
+    }
+    public void startTakeIdcardEmblem(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,List<String> selectImageBeans){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoIdcarEmblem(JSONObject.toJSONString(selectImageBeans),PictureShared.MAX_PHOTO_NUM);
+    }
+    public void startTakeBankCard(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,List<String> selectImageBeans){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoBank(JSONObject.toJSONString(selectImageBeans),PictureShared.MAX_PHOTO_NUM);
+    }
+
+    public void startTakeIdcardHead(FragmentActivity activity, SelectImageCallBack selectLocationCallBack){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoIdcarHead(null,PictureShared.MAX_PHOTO_NUM);
+    }
+    public void startTakeIdcardEmblem(FragmentActivity activity, SelectImageCallBack selectLocationCallBack){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoIdcarEmblem(null,PictureShared.MAX_PHOTO_NUM);
+    }
+    public void startTakeBankCard(FragmentActivity activity, SelectImageCallBack selectLocationCallBack){
+        getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoBank(null,PictureShared.MAX_PHOTO_NUM);
+    }
+
     /**
      * 选择照片
      *  @param  activity
