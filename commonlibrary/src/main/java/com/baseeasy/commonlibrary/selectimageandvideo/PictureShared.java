@@ -11,6 +11,7 @@ import com.baseeasy.commonlibrary.config.BaseConfig;
 public class PictureShared {
     public final static int  MAX_PHOTO_NUM=100;
     public final static int  MAX_VIDEO_NUM=100;
+    public final static int  MINPHOTOCOMPRESSSIZE=100;
     public final static int SELECT_IMAGE_REQUEST = 0;
     public final static int TAKING_PHOTO_REQUEST = 1;
 
@@ -48,6 +49,7 @@ public class PictureShared {
         public final static String SELECTIMAGE_DELETE_DATA="picture_deleteImageBeansData";
         public final static String SELECTVIDEO_DATA="picture_selectVideoBeansData";
         public  final static String MAXPHOTONUM="maxphotonum";
+        public  final static String MINCOMPRESSSIZE="mincompresssize";
         public  final static String MAXVIDEONUM="maxvideonum";
         public  final static String SHOOTVIDEOCONFIG="shootVideoConfig";
         public  final static String ISPREVIEW="previewVideo";

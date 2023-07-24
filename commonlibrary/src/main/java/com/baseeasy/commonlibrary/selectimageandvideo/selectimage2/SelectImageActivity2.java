@@ -64,6 +64,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
     private SelectImageAdapter selectImageAdapter;
     private TextView tv_add;
     private int  maxPhoto=PictureShared.MAX_PHOTO_NUM;//默认100
+    private  int  minCompressSize=PictureShared.MINPHOTOCOMPRESSSIZE;
     private int requestCode;
 
     private  List<LocalMedia> currentSelectList=new ArrayList<>();
@@ -110,7 +111,8 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
         }
          action_type=getIntent().getIntExtra(PictureShared.IntentExtraName.ACTION_TYPE, SELECT_IMAGE_REQUEST);
          maxPhoto=getIntent().getIntExtra(PictureShared.IntentExtraName.MAXPHOTONUM,PictureShared.MAX_PHOTO_NUM);
-        selectImageAdapter=new SelectImageAdapter(currentSelectList);
+        minCompressSize=getIntent().getIntExtra(PictureShared.IntentExtraName.MINCOMPRESSSIZE,PictureShared.MINPHOTOCOMPRESSSIZE);
+         selectImageAdapter=new SelectImageAdapter(currentSelectList);
         recyclerView.setLayoutManager(new GridLayoutManager(this,4));
         recyclerView.setAdapter(selectImageAdapter);
         selectImageAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -148,6 +150,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                             .openGallery(PictureMimeType.ofImage())
                             .imageEngine(GlideEngine.createGlideEngine())
                             .isCompress(true)
+                            .minimumCompressSize(minCompressSize)
                             .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
 //                            .selectionMedia(getCurrentSDCardSelectList(currentSelectList))
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
@@ -159,6 +162,7 @@ public class SelectImageActivity2 extends AppCompatActivity implements View.OnCl
                             .openCamera(PictureMimeType.ofImage())
                             .imageEngine(GlideEngine.createGlideEngine())
                             .isCompress(true)
+                            .minimumCompressSize(minCompressSize)
                             .cameraFileName("camera"+System.currentTimeMillis() +".jpg")
                             .renameCompressFile("compress"+System.currentTimeMillis() +".jpg")
                             .compressSavePath(FileUtils.SDPATH+PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址

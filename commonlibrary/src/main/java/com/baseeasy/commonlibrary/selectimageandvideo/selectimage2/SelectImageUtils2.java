@@ -54,6 +54,9 @@ public class SelectImageUtils2 {
         selectImageFragment.setSelectImageCallBack(selectLocationCallBack);
         return selectImageFragment;
     }
+
+
+
     private SelectImageFragment2 getTakingPhotoFragment(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack) {
         SelectImageFragment2   selectImageFragment=   initFragment(activity);
         SelectImageUtils2.takingPhotoCallBack =new TakingPhotoCallBack() {
@@ -75,6 +78,9 @@ public class SelectImageUtils2 {
 //        selectImageFragment.setTakingPhotoCallBack(takingPhotoCallBack);
         return selectImageFragment;
     }
+
+
+
     private SelectImageFragment2 getTakingPhotoSeparateFragment(FragmentActivity activity, TakingPhotoSeparateCallBack takingPhotoSeparateCallBack) {
         SelectImageFragment2   selectImageFragment=   initFragment(activity);
         selectImageFragment.setTakingPhotoSeparateCallBack(takingPhotoSeparateCallBack);
@@ -91,6 +97,7 @@ public class SelectImageUtils2 {
     }
 
 
+
     /**
      * 选择照片
      * @param  activity
@@ -100,6 +107,11 @@ public class SelectImageUtils2 {
     public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,int maxNum){
         getSelectImageFragment(activity, selectLocationCallBack).startSelectImage(maxNum);
     }
+
+    public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,int maxNum,int minComposeSize){
+        getSelectImageFragment(activity, selectLocationCallBack).startSelectImage(maxNum,minComposeSize);
+    }
+
 
     public void startTakeIdcardHead(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans,int maxNum){
         getSelectImageFragment(activity, selectLocationCallBack).startTakingPhotoIdcarHead(JSONObject.toJSONString(selectImageBeans),maxNum);
@@ -143,7 +155,6 @@ public class SelectImageUtils2 {
 
     }
 
-
     /**
      * 选择照片
      *  @param  activity
@@ -154,8 +165,12 @@ public class SelectImageUtils2 {
     public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans,int  maxNum){
         getSelectImageFragment(activity, selectLocationCallBack).startSelectImage( JSONObject.toJSONString(selectImageBeans),maxNum);
     }
+    public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans,int  maxNum,int minComposeSize){
+        getSelectImageFragment(activity, selectLocationCallBack).startSelectImage( JSONObject.toJSONString(selectImageBeans),maxNum,minComposeSize);
+    }
 
-   /**
+
+    /**
     * 只有拍照
     * @param activity
     * @param takingPhotoCallBack 回调
@@ -174,6 +189,10 @@ public class SelectImageUtils2 {
      **/
     public void startTakingPhoto(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack,int maxNum){
         getTakingPhotoFragment(activity, takingPhotoCallBack).startTakingPhoto(maxNum);
+    }
+
+    public void startTakingPhoto(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack,int maxNum,int minComposeSize){
+        getTakingPhotoFragment(activity, takingPhotoCallBack).startTakingPhoto(maxNum,minComposeSize);
     }
 
 
@@ -197,6 +216,9 @@ public class SelectImageUtils2 {
      **/
     public void startTakingPhoto(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack, List<String> takingPhoto,int maxNum){
         getTakingPhotoFragment(activity, takingPhotoCallBack).startTakingPhoto( JSONObject.toJSONString(takingPhoto),maxNum);
+    }
+    public void startTakingPhoto(FragmentActivity activity, TakingPhotoCallBack takingPhotoCallBack, List<String> takingPhoto,int maxNum,int minComposeSize){
+        getTakingPhotoFragment(activity, takingPhotoCallBack).startTakingPhoto( JSONObject.toJSONString(takingPhoto),maxNum,minComposeSize);
     }
 
     /**
@@ -228,6 +250,10 @@ public class SelectImageUtils2 {
     public void startTakingPhotoAndImageSeparate(FragmentActivity activity, TakingPhotoSeparateCallBack takingPhotoSeparateCallBack,int maxNum){
 
         getTakingPhotoSeparateFragment(activity, takingPhotoSeparateCallBack).startTakingPhotoAndImageSeparate(maxNum);
+    }
+    public void startTakingPhotoAndImageSeparate(FragmentActivity activity, TakingPhotoSeparateCallBack takingPhotoSeparateCallBack,int maxNum,int minComposeSize){
+
+        getTakingPhotoSeparateFragment(activity, takingPhotoSeparateCallBack).startTakingPhotoAndImageSeparate(maxNum,minComposeSize);
     }
 
 

@@ -51,6 +51,8 @@ public class SelectImageFragment2 extends Fragment {
     private TakingPhotoSeparateCallBack takingPhotoSeparateCallBack;
     public static SelectFileResultCallBack mSelectFileResultCallBack;
 
+    private int minCompressSize=PictureShared.MINPHOTOCOMPRESSSIZE;
+
     public SelectImageFragment2() {
     }
 
@@ -58,6 +60,14 @@ public class SelectImageFragment2 extends Fragment {
     public void startSelectImage(int maxNum) {
         Intent intent = new Intent(getActivity(), SelectImageActivity2.class);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM, maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE, PictureShared.ACTION_TYPE_SELECT_IMAGE);
+        intent.putExtra(PictureShared.IntentExtraName.REQUSETCODE, PictureShared.SELECTIMAGE_REQUESTCODE);
+        this.startActivity(intent);
+    }
+    public void startSelectImage(int maxNum,int compressSize) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity2.class);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM, maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.MINCOMPRESSSIZE, compressSize);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE, PictureShared.ACTION_TYPE_SELECT_IMAGE);
         intent.putExtra(PictureShared.IntentExtraName.REQUSETCODE, PictureShared.SELECTIMAGE_REQUESTCODE);
         this.startActivity(intent);
@@ -71,11 +81,28 @@ public class SelectImageFragment2 extends Fragment {
         intent.putExtra(PictureShared.IntentExtraName.REQUSETCODE, PictureShared.SELECTIMAGE_REQUESTCODE);
         this.startActivity(intent);
     }
+    public void startSelectImage(String select, int maxNum,int compressSize) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity2.class);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM, maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.MINCOMPRESSSIZE, compressSize);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE, PictureShared.ACTION_TYPE_SELECT_IMAGE);
+        intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES, select);
+        intent.putExtra(PictureShared.IntentExtraName.REQUSETCODE, PictureShared.SELECTIMAGE_REQUESTCODE);
+        this.startActivity(intent);
+    }
 
     public void startTakingPhoto(int maxNum) {
         Intent intent = new Intent(getActivity(), SelectImageActivity2.class);
         intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE, PictureShared.ACTION_TYPE_TAKING_PHOTO);
         intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM, maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.REQUSETCODE, PictureShared.TAKINGPHOTO_REQUESTCODE);
+        this.startActivity(intent);
+    }
+    public void startTakingPhoto(int maxNum,int compressSize) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity2.class);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE, PictureShared.ACTION_TYPE_TAKING_PHOTO);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM, maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.MINCOMPRESSSIZE, compressSize);
         intent.putExtra(PictureShared.IntentExtraName.REQUSETCODE, PictureShared.TAKINGPHOTO_REQUESTCODE);
         this.startActivity(intent);
     }
@@ -121,12 +148,24 @@ public class SelectImageFragment2 extends Fragment {
         intent.putExtra(PictureShared.IntentExtraName.REQUSETCODE, PictureShared.TAKINGPHOTO_REQUESTCODE);
         this.startActivity(intent);
     }
+    public void startTakingPhoto(String select, int maxNum,int compressSize) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity2.class);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE, PictureShared.ACTION_TYPE_TAKING_PHOTO);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM, maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.MINCOMPRESSSIZE, compressSize);
+        intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES, select);
+        intent.putExtra(PictureShared.IntentExtraName.REQUSETCODE, PictureShared.TAKINGPHOTO_REQUESTCODE);
+        this.startActivity(intent);
+    }
 
 
     public void setSelectImageCallBack(SelectImageCallBack selectImageCallBack) {
         this.selectImageCallBack = selectImageCallBack;
     }
 
+    public void setMinCompressSize(int minCompressSize) {
+        this.minCompressSize = minCompressSize;
+    }
 
     public void setTakingPhotoSeparateCallBack(TakingPhotoSeparateCallBack takingPhotoSeparateCallBack) {
         this.takingPhotoSeparateCallBack = takingPhotoSeparateCallBack;
@@ -137,6 +176,20 @@ public class SelectImageFragment2 extends Fragment {
                 .openCamera(PictureMimeType.ofImage())
                 .imageEngine(GlideEngine.createGlideEngine())
                 .isCompress(true)
+                .minimumCompressSize(minCompressSize)
+                .imageFormat(PictureMimeType.PNG)
+                .cameraFileName("camera" + System.currentTimeMillis() + ".jpg")
+                .renameCompressFile("compress" + System.currentTimeMillis() + ".jpg")
+                .compressSavePath(FileUtils.SDPATH + PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                .setOutputCameraPath(FileUtils.SDPATH + PictureShared.FolderNameConfig.CAMERA)
+                .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
+    }
+    public void startTakingPhotoSeparate(int minCompressSize) {
+        PictureSelector.create(this)
+                .openCamera(PictureMimeType.ofImage())
+                .imageEngine(GlideEngine.createGlideEngine())
+                .isCompress(true)
+                .minimumCompressSize(minCompressSize)
                 .imageFormat(PictureMimeType.PNG)
                 .cameraFileName("camera" + System.currentTimeMillis() + ".jpg")
                 .renameCompressFile("compress" + System.currentTimeMillis() + ".jpg")
@@ -169,6 +222,19 @@ public class SelectImageFragment2 extends Fragment {
                 .openGallery(PictureMimeType.ofImage())
                 .imageEngine(GlideEngine.createGlideEngine())
                 .isCompress(true)
+                .minimumCompressSize(minCompressSize)
+                .compressSavePath(FileUtils.SDPATH + PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
+                .setOutputCameraPath(FileUtils.SDPATH + PictureShared.FolderNameConfig.CAMERA)
+                .maxSelectNum(maxNum)// 最大图片选择数量 int
+                .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
+    }
+
+    public void startTakingPhotoAndImageSeparate(int maxNum,int minCompressSize) {
+        PictureSelector.create(this)
+                .openGallery(PictureMimeType.ofImage())
+                .imageEngine(GlideEngine.createGlideEngine())
+                .isCompress(true)
+                .minimumCompressSize(minCompressSize)
                 .compressSavePath(FileUtils.SDPATH + PictureShared.FolderNameConfig.COMPRESSION)//压缩图片保存地址
                 .setOutputCameraPath(FileUtils.SDPATH + PictureShared.FolderNameConfig.CAMERA)
                 .maxSelectNum(maxNum)// 最大图片选择数量 int
