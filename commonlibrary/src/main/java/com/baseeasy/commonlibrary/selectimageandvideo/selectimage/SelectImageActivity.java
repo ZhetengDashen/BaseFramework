@@ -148,7 +148,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 case 0:
                     PictureSelector.create(SelectImageActivity.this)
                             .openGallery(SelectMimeType.ofImage())
-                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
+//                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
                             .setImageEngine(GlideEngine.createGlideEngine())
                             .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
                             .setSelectedData(getCurrentSDCardSelectList(currentSelectList))
@@ -174,7 +174,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                             .openCamera(SelectMimeType.ofImage())
                             .setCompressEngine(new ImageFileCompressEngine())//压缩文件夹，压缩文件命名，压缩方式
                             .setOutputCameraImageFileName("camera" + System.currentTimeMillis() + ".jpg")
-                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
+//                            .setCameraInterceptListener(new MeOnCameraInterceptListener())
                             .forResultActivity(TAKING_PHOTO_REQUEST);
                     break;
                 default:
