@@ -19,7 +19,7 @@ import top.zibin.luban.OnRenameListener;
 public class ImageFileCompressEngine implements CompressFileEngine {
     @Override
     public void onStartCompress(Context context, ArrayList<Uri> source, OnKeyValueResultCallbackListener call) {
-        Luban.with(context).load(source).ignoreBy(100).setTargetDir(FileUtils.SDPATH+ PictureShared.FolderNameConfig.COMPRESSION).setRenameListener(new OnRenameListener() {
+        Luban.with(context).load(source).ignoreBy(200).setTargetDir(FileUtils.SDPATH+ PictureShared.FolderNameConfig.COMPRESSION).setRenameListener(new OnRenameListener() {
             @Override
             public String rename(String filePath) {
                 int indexOf = filePath.lastIndexOf(".");
