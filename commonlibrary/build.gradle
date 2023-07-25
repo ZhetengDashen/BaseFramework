@@ -51,7 +51,7 @@ uploadArchives {
         }
         pom.groupId = "com.baseeasyandroid"
         pom.artifactId = "baseframework"
-        pom.version = "2.8.8_3_OLDStable2"
+        pom.version = "2.8.8_3_OLDStable4"
 //      完整路径  com.baseeasyandroid:baseframework:2.5.8
     }
 }
@@ -94,7 +94,7 @@ dependencies {
     api 'io.github.lucksiege:pictureselector:v2.7.2'
     api 'top.zibin:Luban:1.1.8'
     api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
-    api 'com.github.magiclonw:floridftoast:v1.0.3'
+    api 'com.github.magiclonw:floridftoast:v1.0.4'
     api 'org.greenrobot:greendao:3.3.0'
     api 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v2.0.2'//greendao数据库升级
     api 'androidx.cardview:cardview:1.0.0'
