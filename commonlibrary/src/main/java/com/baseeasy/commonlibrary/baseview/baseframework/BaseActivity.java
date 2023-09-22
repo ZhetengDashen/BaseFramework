@@ -73,7 +73,9 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
     @Override
     public void showCodeError(String errorCode, String errorMsg) {
         if(!errorMsg.isEmpty()) {
-            ToastUtil.showerror(this, errorMsg);
+            String  newmessage=errorMsg.replace("<br>","\n").replace("<br/>","\n").replace("</br>","\n").replace("&nbsp","");
+
+            ToastUtil.showerror(this, newmessage);
         }
     }
 
@@ -108,7 +110,9 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
     public void showMessage(String message) {
 
         if(!message.isEmpty()){
-            ToastUtil.showinfo(this,message);
+            String  newmessage=message.replace("<br>","\n").replace("<br/>","\n").replace("</br>","\n").replace("&nbsp","");
+
+            ToastUtil.showinfo(this,newmessage);
         }
 
     }
