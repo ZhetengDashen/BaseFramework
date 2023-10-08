@@ -15,4 +15,5 @@
     <color name="white">#FFF</color>
     <color name="black">#000</color>
     <color name="line_color">#F0EFEF</color>
+    <color name="ksw_md_solid_checked">#2c97df</color>
 </resources>

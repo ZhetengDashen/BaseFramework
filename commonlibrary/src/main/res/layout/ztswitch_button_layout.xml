@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_gravity="center"
     android:id="@+id/ztll"
@@ -13,9 +14,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"></TextView>
   <com.kyleduo.switchbutton.SwitchButton
-      android:id="@+id/swbt"
+      android:id="@+id/swbtn"
       android:checked="true"
+      android:textColor="@color/white"
       android:layout_marginLeft="12dp"
+      app:kswThumbRangeRatio="2.2"
+      app:kswBackColor="@drawable/ksw_md_back_color_0"
+      app:kswThumbColor="@drawable/ksw_md_thumb_color_0"
+
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"></com.kyleduo.switchbutton.SwitchButton>
 </LinearLayout>

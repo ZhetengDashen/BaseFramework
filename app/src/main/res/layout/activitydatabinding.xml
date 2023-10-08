@@ -14,7 +14,8 @@
         <variable
             name="databindevent"
             type="com.baseeasy.baseframework.demoactivity.DataBindingActivity.DetailsDataBinDingEvent" />
-
+        <import type="com.baseeasy.commonlibrary.databinding.DataBinDingConvertDictionary"/>
+        <import type="com.baseeasy.baseframework.demoactivity.MyDictionary"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -33,15 +34,17 @@
 
 
             <com.baseeasy.commonlibrary.weight.ZTSwitchButton
-
+                android:id="@+id/swbt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/qianming"
                 app:ztswchecked="@{rventity.ischick}"
+                android:onClick="@{databindevent::select_sfdsrzbzc}"
+                app:ztswtexton="否"
+                app:ztswtextoff="是"
                 app:ztswcontent="2222"
                 app:ztswisdatabinding="true"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="5dp" />
+               />
 
             <ImageView
                 android:scaleType="centerCrop"

@@ -42,6 +42,8 @@ public class ZTSwitchButton extends FrameLayout {
     private TextView contentTextView;
     private SwitchButton switchButton;
     private String content = "";
+    private String contenton = "";
+    private String contentoff = "";
     private Boolean checked = false;
     private Boolean isDataBinDing=false;//是否支持DataBinDing
     public ZTSwitchButton(Context context) {
@@ -76,6 +78,8 @@ public class ZTSwitchButton extends FrameLayout {
 
     protected void initByAttributes(TypedArray attributes) {
         content = attributes.getString(R.styleable.ztswitchbutton_ztswcontent);
+        contenton = attributes.getString(R.styleable.ztswitchbutton_ztswtexton);
+        contentoff = attributes.getString(R.styleable.ztswitchbutton_ztswtextoff);
         checked = attributes.getBoolean(R.styleable.ztswitchbutton_ztswchecked, false);
         isDataBinDing=attributes.getBoolean(R.styleable.ztswitchbutton_ztswisdatabinding, false);
 
@@ -85,9 +89,10 @@ public class ZTSwitchButton extends FrameLayout {
     public void initView() {
         View view = View.inflate(getContext(), R.layout.ztswitch_button_layout, this);
         contentTextView = view.findViewById(R.id.tv_ztsw_content);
-        switchButton = view.findViewById(R.id.swbt);
+        switchButton = view.findViewById(R.id.swbtn);
         contentTextView.setText(content);
         switchButton.setChecked(checked);
+        switchButton.setText(contenton,contentoff);
         switchButton.setEnabled(!isDataBinDing);
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -141,7 +146,10 @@ public class ZTSwitchButton extends FrameLayout {
     public static void setSwitchButtDatabinding(ZTSwitchButton ztSwitchButton, boolean isEnabled) {
         ztSwitchButton.getSwitchButton().setEnabled(!isEnabled);
     }
-
+    @BindingAdapter(value = {"ztswtextoff","ztswtexton"}, requireAll = false)
+    public static void setSwitchButtonText(ZTSwitchButton ztSwitchButton, String onText,String offText) {
+        ztSwitchButton.getSwitchButton().setText(offText,onText);
+    }
 
 //    @InverseBindingAdapter(attribute = "ztswcontent", event="contentAttrChanged")
 //    public static String getSwitchButtonContent(ZTSwitchButton ztSwitchButton) {

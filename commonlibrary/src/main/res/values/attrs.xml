@@ -9,6 +9,8 @@
 
         <attr name="ztswcontent" format="string"></attr>
         <attr name="ztswchecked" format="boolean"></attr>
+        <attr name="ztswtexton" format="string"></attr>
+        <attr name="ztswtextoff" format="string"></attr>
         <attr name="ztswisdatabinding" format="boolean"></attr>
     </declare-styleable>
     <declare-styleable name="NumberEditText">

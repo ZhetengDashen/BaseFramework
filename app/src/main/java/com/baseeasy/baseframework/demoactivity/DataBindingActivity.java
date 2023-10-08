@@ -26,6 +26,7 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
 
    Button button;
    EditText editText;
+   ZTSwitchButton swbt;
     @Override
     protected int setContentViewId() {
         return R.layout.activitydatabinding;
@@ -37,6 +38,8 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
         button=findViewById(R.id.rv_item_bt);
         button.setOnClickListener(this);
         editText=findViewById(R.id.textView2);
+        swbt=findViewById(R.id.swbt);
+//        swbt.getSwitchButton().setText("是","无");
 
     }
 
@@ -51,6 +54,11 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
         return new DataBinDingPresenter<>(this,this);
     }
 
+    @Override
+    public void createPresenterComplete(Boolean isCreate) {
+        super.createPresenterComplete(isCreate);
+        dataBinding.setDatabindevent(new DetailsDataBinDingEvent());
+    }
 
     @Override
     public void onClick(View view) {
@@ -79,6 +87,13 @@ public class DataBindingActivity extends BaseDataBinDingActivity<IDataBinDingVie
         dataBinding.getRventity().setIschick(!aBoolean);
 
        }
+       public void  select_sfdsrzbzc(View view){
+       ZTSwitchButton ztSwitchButton= (ZTSwitchButton) view;
+        Boolean aBoolean=   ztSwitchButton.getChecked();
+        dataBinding.getRventity().setIschick(!aBoolean);
+
+       }
+
 
    }
 }
