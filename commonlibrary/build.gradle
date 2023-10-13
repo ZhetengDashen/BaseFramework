@@ -55,7 +55,7 @@ uploadArchives {
 
         pom.groupId = "com.baseeasyandroid"
         pom.artifactId = "baseframework"
-        pom.version = "2.8.8_6"
+        pom.version = "2.8.8_7"
 //      完整路径  com.baseeasyandroid:baseframework:2.5.8
     }
 }
