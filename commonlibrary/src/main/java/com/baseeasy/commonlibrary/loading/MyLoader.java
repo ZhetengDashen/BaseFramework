@@ -2,6 +2,8 @@ package com.baseeasy.commonlibrary.loading;
 
 import android.content.Context;
 import androidx.appcompat.app.AppCompatDialog;
+
+import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,14 +26,26 @@ public class MyLoader{
     private static final ArrayList<LoadingDialog> LOADERS=new ArrayList<>();
 
     private static final String DEFAULT_LOADER=LoaderStyle.BallPulseSyncIndicator.name();
-
+    private static dialogDisMissListener mListener0;
     public static void showLoading(Context context,Enum<LoaderStyle> styleEnum){
         showLoading(context,styleEnum.name());
     }
 
     public static void showLoading(Context context,String type){
+      showLoading(context,type,null);
+    }
+    public static void showLoading(Context context,String type,dialogDisMissListener mListener){
+       mListener0 =mListener;
         LoadingDialog dialog=new LoadingDialog(context,R.style.MyLoaderDialogStyle);
         LOADERS.add(dialog);
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                if (null!=mListener0){
+                    mListener0.onDisMiss();
+                }
+            }
+        });
         dialog.show();
     }
 
@@ -47,5 +61,9 @@ public class MyLoader{
               }
             }
         }
+    }
+    public  interface  dialogDisMissListener {
+       void onDisMiss();
+
     }
 }
