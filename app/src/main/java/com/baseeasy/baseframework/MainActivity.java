@@ -44,6 +44,7 @@ import com.baseeasy.commonlibrary.soloader.SoUtils;
 import com.baseeasy.commonlibrary.weight.dialog.CustomDialog;
 import com.baseeasy.commonlibrary.weight.dialog.OnCustomLeftClickLister;
 import com.baseeasy.commonlibrary.weight.dialog.OnCustomRightClickLister;
+import com.baseeasy.commonlibrary.weight.dialog.actiondialog.SelectActionListDialog;
 import com.getkeepsafe.relinker.ReLinker;
 import com.test.TestUser;
 
@@ -84,6 +85,7 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 
     private Button button_idcard_fm;
     private Button button_bank;
+    private  Button button3;
     @Override
     public void init_view() {
         super.init_view();
@@ -145,7 +147,8 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
         });
         customDialog=new CustomDialog(dialogBuilder,false);
 
-
+        button3=findViewById(R.id.button3);
+        button3.setOnClickListener(this);
     }
 
     @Override
@@ -505,6 +508,24 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
                     }
                 });
                 break;
+
+            case R.id.button3:
+                ArrayList<String> stringArrayList =new ArrayList<>();
+                stringArrayList.add("选择1");
+                stringArrayList.add("选择2");
+                stringArrayList.add("选择3");
+                stringArrayList.add("选择4");
+                stringArrayList.add("选择5");
+
+                SelectActionListDialog selectActionListDialog =SelectActionListDialog.createDialog(MainActivity.this, stringArrayList, new SelectActionListDialog.ActionCallback<String>() {
+                    @Override
+                    public void callback(String action) {
+
+                    }
+                });
+                selectActionListDialog.show();
+                break;
+
         }
     }
 

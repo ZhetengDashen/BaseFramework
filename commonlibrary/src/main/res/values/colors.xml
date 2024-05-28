@@ -8,11 +8,12 @@
     <color name="lightgreen">#e8fbf5</color>
     <color name="bty2">#F5F5F5</color>
     <color name="tv_content">#616161</color>
-
+    <color name="text333">#333333</color>
     <color name="loading_color">#FFFFFF</color>
     <color name="loading_bg_color">#AB555555</color>
     <color name="loading_message_color">#FFFFFF</color>
     <color name="white">#FFF</color>
     <color name="black">#000</color>
+    <color name="digtransparent">#30000000</color>
     <color name="line_color">#F0EFEF</color>
 </resources>

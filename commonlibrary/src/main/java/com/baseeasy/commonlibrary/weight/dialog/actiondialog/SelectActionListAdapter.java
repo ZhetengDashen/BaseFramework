@@ -23,6 +23,10 @@ public class SelectActionListAdapter<T> extends BaseQuickAdapter<T, BaseViewHold
     @Override
     protected void convert(@NonNull BaseViewHolder helper, T item) {
           helper.setText(R.id.tv_content,item.toString()).addOnClickListener(R.id.tv_content);
-
+           if(helper.getAbsoluteAdapterPosition()==0){
+               helper.setBackgroundRes(R.id.tv_content,R.drawable.select_action_topitembg);
+           }else {
+               helper.setBackgroundRes(R.id.tv_content,R.drawable.select_action_itembg);
+           }
     }
 }

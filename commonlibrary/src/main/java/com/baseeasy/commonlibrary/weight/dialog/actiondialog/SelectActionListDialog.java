@@ -41,7 +41,7 @@ public class SelectActionListDialog extends Dialog {
         SelectActionListDialog dialog;
         TextView tv_cancel;
         RecyclerView recyclerView;
-        dialog = new SelectActionListDialog(context, R.style.ScreeningDialog);
+        dialog = new SelectActionListDialog(context, R.style.customdialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // must be called before set content
         View dg_view = (View) LayoutInflater.from(context)
                 .inflate(R.layout.dialog_list_action, null);
