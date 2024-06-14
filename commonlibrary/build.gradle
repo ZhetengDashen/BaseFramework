@@ -55,7 +55,7 @@ uploadArchives {
 
         pom.groupId = "com.baseeasyandroid"
         pom.artifactId = "baseframework"
-        pom.version = "2.8.8_9"
+        pom.version = "2.8.9_2"
 //      完整路径  com.baseeasyandroid:baseframework:2.5.8
     }
 }
@@ -95,14 +95,14 @@ dependencies {
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
 //    api 'com.contrarywind:Android-PickerView:4.1.9'
 //    compileOnly('io.github.lucksiege:pictureselector:v2.7.2')
-    api 'io.github.lucksiege:pictureselector:v3.10.6'
+    api 'io.github.lucksiege:pictureselector:v3.11.2'
     // 图片压缩 (按需引入)
-    api 'io.github.lucksiege:compress:v3.10.6'
+    api 'io.github.lucksiege:compress:v3.11.2'
     // 图片裁剪 (按需引入)
 
-    api 'io.github.lucksiege:ucrop:v3.10.6'
+    api 'io.github.lucksiege:ucrop:v3.11.2'
 
-    api ('io.github.lucksiege:camerax:v3.0.4'){
+    api ('io.github.lucksiege:camerax:v3.11.2'){
         exclude group: 'androidx.camera', module:'camera-core'
         exclude group: 'androidx.camera', module:'camera-camera2'
         exclude group: 'androidx.camera', module:'camera-view'
