@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.FragmentActivity;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.fastjson.JSON;
 import com.apkfuns.logutils.LogUtils;
@@ -314,22 +316,45 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
 //                    }
 //                },100);
 
-                SelectImageUtils2.getInstance().startSelectImage(this, new SelectImageCallBack() {
-                    @Override
-                    public void onImageSelected(List<String> imagePaths) {
+//                SelectImageUtils2.getInstance().startSelectImage(this, new SelectImageCallBack() {
+//                    @Override
+//                    public void onImageSelected(List<String> imagePaths) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onAddImage(List<String> imagePaths) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onDeleteImage(List<String> imagePaths) {
+//
+//                    }
+//                },10);
 
+                SelectImageUtils2.getInstance().startTakingPhotoAndImageSeparate(this, new TakingPhotoSeparateCallBack() {
+                    @Override
+                    public void onTakingPhoto(String s) {
+//                if(mViewRef.get()!=null){
+//                    mViewRef.get().imagePathCallback(s);
+//                }
                     }
 
                     @Override
-                    public void onAddImage(List<String> imagePaths) {
-
+                    public void onTakingPhotoResult(List<String> imagePaths) {
+                        for (int i = 0; i <imagePaths.size() ; i++) {
+                            LogUtils.e(imagePaths.get(i));
+                        }
                     }
 
-                    @Override
-                    public void onDeleteImage(List<String> imagePaths) {
-
-                    }
-                },10);
+//            @Override
+//            public void onTakingPhoto(SelectImageBean imageBean) {
+//                if(mViewRef.get()!=null){
+//                    mViewRef.get().imagePathCallback(imageBean);
+//                }
+//            }
+                },9);
                 break;
             case R.id.button_ff:
 
