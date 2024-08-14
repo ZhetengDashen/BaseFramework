@@ -23,12 +23,13 @@ public class ImageLocalMediaConversion {
             if(localMediaList.get(i).isCompressed()){
               path=  localMediaList.get(i).getCompressPath();
             }else {
-               path=localMediaList.get(i).getAvailablePath();
-//                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
 //                    path=localMediaList.get(i).getAvailablePath();
-//                }else {
-//                    path=localMediaList.get(i).getPath();
-//                }
+                    path=localMediaList.get(i).getRealPath();
+
+                }else {
+                    path=localMediaList.get(i).getPath();
+                }
 
             }
             selectImageBeans.add(path);

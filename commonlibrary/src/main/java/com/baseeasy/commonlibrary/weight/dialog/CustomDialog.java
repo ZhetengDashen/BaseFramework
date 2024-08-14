@@ -29,6 +29,7 @@ public class CustomDialog {
     private boolean isSingle = false;
     private boolean isDouble = true;
     private boolean isDialogAutoDismiss = true;
+    private boolean isCancelable = true;
     private OnCustomLeftClickLister oncustomleftclicklister;
     private OnCustomRightClickLister oncustomrightclicklister;
     private OnCustomMidClickLister oncustommidclicklister;
@@ -57,6 +58,7 @@ public class CustomDialog {
         this.isSingle = builder.isSingle;
         this.isDouble = builder.isDouble;
         this.isDialogAutoDismiss=builder.isDialogAutoDismiss;
+        this.isCancelable=builder.isCancelable;
         this.oncustomleftclicklister = builder.onCustomLeftClickLister;
         this.oncustomrightclicklister = builder.onCustomRightClickLister;
         this.oncustommidclicklister = builder.onCustomMidClickLister;
@@ -148,6 +150,7 @@ public class CustomDialog {
                     }
                 }
             });
+            dialog.setCancelable(isCancelable);
         }
     }
     private void showDialog(Boolean isShow) {
@@ -217,6 +220,7 @@ public class CustomDialog {
         protected boolean isSingle = false;
         protected boolean isDouble = true;
         protected boolean isDialogAutoDismiss = true;
+        protected boolean isCancelable = true;
         protected OnCustomLeftClickLister onCustomLeftClickLister;
         protected OnCustomRightClickLister onCustomRightClickLister;
         protected OnCustomMidClickLister onCustomMidClickLister;
@@ -370,6 +374,17 @@ public class CustomDialog {
             this.isDialogAutoDismiss = isDialogAutoDismiss;
             return this;
         }
+
+        /**
+         * 返回键关闭dialog     false返回键不可关闭
+         * @param isCancelable
+         * @return
+         */
+        public DialogBuilder isCancelable(boolean isCancelable) {
+            this.isCancelable = isCancelable;
+            return this;
+        }
+
         /**
          * 创建dialog
          *
