@@ -144,7 +144,7 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
             public void onRightClicked() {
 
             }
-        });
+        }).isCancelable(false);
         customDialog=new CustomDialog(dialogBuilder,false);
 
         button3=findViewById(R.id.button3);
@@ -222,7 +222,7 @@ public class MainActivity extends BaseActivity<IEventBusView, MainPresenter<IEve
             case R.id.bt_select_image:
 
 //                LogUtils.d("KKKKKK------------------");
-//                customDialog.show();
+            customDialog.show();
 //              ARouterTools.startActivity(ARouterPath.CommonLibrary.COMMON_SELECTIMAGE_ACTIVITY);
 //                SelectImageUtils.getInstance().startSelectImage(this, new SelectImageCallBack() {
 //                    @Override

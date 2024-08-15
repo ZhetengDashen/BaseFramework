@@ -150,12 +150,13 @@ public class CustomDialog {
                     }
                 }
             });
-            dialog.setCancelable(isCancelable);
+
         }
     }
     private void showDialog(Boolean isShow) {
         initDialog();
         if(isShow){
+            dialog.setCancelable(isCancelable);
             dialog.show();
         }
 
@@ -167,6 +168,7 @@ public class CustomDialog {
      */
     public void show() {
         if (dialog != null&&!dialog.isShowing()) {
+            dialog.setCancelable(isCancelable);
             dialog.show();
         }
     }
