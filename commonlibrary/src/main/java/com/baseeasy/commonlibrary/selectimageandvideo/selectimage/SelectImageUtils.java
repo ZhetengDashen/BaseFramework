@@ -67,6 +67,19 @@ public class SelectImageUtils {
         selectImageFragment.setTakingPhotoSeparateCallBack(takingPhotoSeparateCallBack);
         return selectImageFragment;
     }
+
+
+    private SelectImageFragment getTakingPhotoIdCardImageHeadFragment(FragmentActivity activity, TakingPhotoIDCardCallBack takingPhotoIDCardCallBack) {
+        SelectImageFragment   selectImageFragment=   initFragment(activity);
+        selectImageFragment.setTakingPhotoIDCardCallBack(takingPhotoIDCardCallBack);
+        return selectImageFragment;
+    }
+
+    private SelectImageFragment getTakingPhotoBankImageFragment(FragmentActivity activity, TakingPhotoBankCallBack takingPhotoIDCardCallBack) {
+        SelectImageFragment   selectImageFragment=   initFragment(activity);
+        selectImageFragment.setTakingPhotoBankCallBack(takingPhotoIDCardCallBack);
+        return selectImageFragment;
+    }
 //    private SelectImageFragment getTakingPhotoSeparateFragment(FragmentActivity activity, String eventBusFlag) {
 //        SelectImageFragment selectImageFragment=   initFragment(activity);
 //        selectImageFragment.setTakingPhotoSeparateEventBusFlag(eventBusFlag);
@@ -82,6 +95,10 @@ public class SelectImageUtils {
         startSelectImage(activity,selectLocationCallBack,PictureShared.MAX_PHOTO_NUM);
     }
 
+    public void startSelectVideo(FragmentActivity activity, SelectImageCallBack selectLocationCallBack){
+        startSelectVideo(activity,selectLocationCallBack,PictureShared.MAX_PHOTO_NUM);
+    }
+
 
     /**
      * 选择照片
@@ -94,6 +111,15 @@ public class SelectImageUtils {
     }
 
     /**
+     * 选择视频
+     * @param  activity
+     * @param  selectLocationCallBack 回调接口
+     *
+     * */
+    public void startSelectVideo(FragmentActivity activity, SelectImageCallBack selectLocationCallBack,int maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startSelectVideo(maxNum);
+    }
+    /**
      * 选择照片
      *  @param  activity
      * @param  selectLocationCallBack 回调接口
@@ -103,6 +129,10 @@ public class SelectImageUtils {
     public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans){
           startSelectImage(activity,selectLocationCallBack,selectImageBeans,PictureShared.MAX_PHOTO_NUM);
 
+    }
+
+    public void startSelectVideo(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans){
+        startSelectVideo(activity,selectLocationCallBack,selectImageBeans,PictureShared.MAX_PHOTO_NUM);
     }
 
 
@@ -115,6 +145,10 @@ public class SelectImageUtils {
      * */
     public void startSelectImage(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans,int  maxNum){
         getSelectImageFragment(activity, selectLocationCallBack).startSelectImage( JSONObject.toJSONString(selectImageBeans),maxNum);
+    }
+
+    public void startSelectVideo(FragmentActivity activity, SelectImageCallBack selectLocationCallBack, List<String> selectImageBeans,int  maxNum){
+        getSelectImageFragment(activity, selectLocationCallBack).startSelectVideo( JSONObject.toJSONString(selectImageBeans),maxNum);
     }
 
 //    /**
@@ -312,5 +346,36 @@ public class SelectImageUtils {
 //
 //    }
 
+    /**
+     * 只有拍照 单张
+     * @param activity
+     * @param takingPhotoIDCardCallBack 回调
+     *
+     **/
+    public void startTakingPhotoIdCardImageHead(FragmentActivity activity, TakingPhotoIDCardCallBack takingPhotoIDCardCallBack ){
 
+      getTakingPhotoIdCardImageHeadFragment(activity,takingPhotoIDCardCallBack).startTakingPhotoIdCardImageHead();
+    }
+    /**
+     * 身份证国徽面
+     * @param activity
+     * @param takingPhotoIDCardCallBack
+     *
+     **/
+    public void startTakingPhotoIdCardImageEmblem(FragmentActivity activity, TakingPhotoIDCardCallBack takingPhotoIDCardCallBack ){
+
+        getTakingPhotoIdCardImageHeadFragment(activity,takingPhotoIDCardCallBack).startTakingPhotoIdCardImageHeadEmblem();
+    }
+    /**
+     * 银行卡
+     * @param activity
+     * @param takingPhotoBankCallBack
+     *
+     **/
+    public void startTakingPhotoBankImage(FragmentActivity activity, TakingPhotoBankCallBack takingPhotoBankCallBack ){
+
+
+        getTakingPhotoBankImageFragment(activity,takingPhotoBankCallBack).startTakingPhotoBank();
+
+       }
 }

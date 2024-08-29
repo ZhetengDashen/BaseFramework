@@ -37,7 +37,7 @@ public class CustomDialog {
     private Dialog dialog;
     private TextView tv_title, tv_content, tv_left, tv_right, tv_middle, tv_sure;
     private LinearLayout ll_dialog_two;
-   private  View dialogv;
+    private  View dialogv;
 
     public CustomDialog(DialogBuilder builder,Boolean isShow) {
         initBuilder(builder);
@@ -150,12 +150,13 @@ public class CustomDialog {
                     }
                 }
             });
-            dialog.setCancelable(isCancelable);
+
         }
     }
     private void showDialog(Boolean isShow) {
         initDialog();
         if(isShow){
+            dialog.setCancelable(isCancelable);
             dialog.show();
         }
 
@@ -167,6 +168,7 @@ public class CustomDialog {
      */
     public void show() {
         if (dialog != null&&!dialog.isShowing()) {
+            dialog.setCancelable(isCancelable);
             dialog.show();
         }
     }

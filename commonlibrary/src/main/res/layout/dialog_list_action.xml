@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+
     android:clickable="true">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,19 +22,18 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="取消"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/text333"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="6dp"
         android:background="@color/line_color"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

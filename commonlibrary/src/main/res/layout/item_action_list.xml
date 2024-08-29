@@ -6,21 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <Button
+    <TextView
+
         android:id="@+id/tv_content"
-        style="@style/bt_style1"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text=""
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="asasdasd"
+        android:textSize="16dp"
+        android:textColor="@color/text333"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"></Button>
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints"></TextView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_color"
+        app:layout_constraintTop_toBottomOf="@+id/tv_content"
+        tools:ignore="MissingConstraints"></View>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

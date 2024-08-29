@@ -11,17 +11,34 @@ import com.baseeasy.commonlibrary.config.BaseConfig;
 public class PictureShared {
     public final static int  MAX_PHOTO_NUM=100;
     public final static int  MAX_VIDEO_NUM=100;
+    public final static int  MINPHOTOCOMPRESSSIZE=100;
     public final static int SELECT_IMAGE_REQUEST = 0;
     public final static int TAKING_PHOTO_REQUEST = 1;
 
+
     public final static int ACTION_TYPE_SELECT_IMAGE=0;
     public final static int ACTION_TYPE_TAKING_PHOTO=1;
-
+    public final static int ACTION_TYPE_SELECT_VIDEO=2;
+    /**
+     * 拍身份证人像面
+     */
+    public final static int ACTION_TAKING_IDCARDHEAD_REQUEST = 3;
+    /**
+     * 拍身份证国徽面
+     */
+    public final static int ACTION_TAKING_IDCARDEMBLEM_REQUEST = 4;
+    /**
+     * 拍银行卡
+     */
+    public final static int ACTION_TAKING_BANK_REQUEST = 5;
 
     public static final int SELECTIMAGE_REQUESTCODE = 1001;
     public static final int TAKINGPHOTO_REQUESTCODE=1002;
     public static final int TAKINGPHOTO_SEPARATE_REQUESTCODE=1003;
     public  static final int SHOOTVIDEO=1004;
+    public  static final int TAKINGPHOTO_IDCRD_HEAD=1005;
+    public  static final int TAKINGPHOTO_IDCRD_EMBLEM=1006;
+    public  static final int TAKINGPHOTO_BANK=1007;
     //IntentExtra Name
     public static class IntentExtraName {
         public final static String EVENT_BUS_FLAG = "picture_eventBusFlag";
@@ -32,10 +49,12 @@ public class PictureShared {
         public final static String SELECTIMAGE_DELETE_DATA="picture_deleteImageBeansData";
         public final static String SELECTVIDEO_DATA="picture_selectVideoBeansData";
         public  final static String MAXPHOTONUM="maxphotonum";
+        public  final static String MINCOMPRESSSIZE="mincompresssize";
         public  final static String MAXVIDEONUM="maxvideonum";
         public  final static String SHOOTVIDEOCONFIG="shootVideoConfig";
         public  final static String ISPREVIEW="previewVideo";
         public  final static String REQUSETCODE="requestCode";
+        public  final static String IDCARD_RESULT_DATA="idCardResultData";
     }
       //文件夹相关配置
     public static class FolderNameConfig {

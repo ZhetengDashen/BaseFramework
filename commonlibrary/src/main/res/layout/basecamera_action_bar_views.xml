@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:cropToPadding="true"
+        android:id="@+id/rotate_picture_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/basecamera_rotate_picture_btn"
+        />
+    <ImageView
+        android:id="@+id/confirm_btn"
+        android:layout_width="@dimen/sides_btn_size"
+        android:layout_height="@dimen/sides_btn_size"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/sides_btn_margin"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/basecamera_confirm_btn"
+        />
+    <ImageView
+        android:cropToPadding="true"
+        android:id="@+id/cancel_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/sides_btn_margin"
+        android:src="@drawable/basecamera_cancel_btn"
+        />
+</merge>
