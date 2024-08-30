@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -183,5 +185,16 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         mActivityJumpTag = tag;
         mClickTime = SystemClock.uptimeMillis();
         return result;
+    }
+    private void setTranslucentStatus(boolean on) {
+        Window window = getWindow();
+        if (on) {
+            // 设置状态栏透明
+            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        } else {
+            // 取消设置状态栏透明
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
     }
 }
