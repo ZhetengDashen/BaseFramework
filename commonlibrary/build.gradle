@@ -55,9 +55,13 @@ uploadArchives {
 
         pom.groupId = "com.baseeasyandroid"
         pom.artifactId = "baseframework"
-        pom.version = "2.8.9_7"
+        pom.version = "2.8.9_7alpha_2"
 //      完整路径  com.baseeasyandroid:baseframework:2.5.8
-    }
+//        alpha 内部测试版
+//        beta  公开测试
+//        Release预览版
+//        stable稳定版
+         }
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

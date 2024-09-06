@@ -186,7 +186,7 @@ public   abstract class BaseActivity<V extends IBaseView,T extends BasePresenter
         mClickTime = SystemClock.uptimeMillis();
         return result;
     }
-    private void setTranslucentStatus(boolean on) {
+    public void setTranslucentStatus(boolean on) {
         Window window = getWindow();
         if (on) {
             // 设置状态栏透明

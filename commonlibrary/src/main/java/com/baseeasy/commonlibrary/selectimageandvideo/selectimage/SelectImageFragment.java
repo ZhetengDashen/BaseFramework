@@ -27,6 +27,9 @@ import com.baseeasy.commonlibrary.selectimageandvideo.GlideEngine;
 import com.baseeasy.commonlibrary.selectimageandvideo.ImageLocalMediaConversion;
 import com.baseeasy.commonlibrary.selectimageandvideo.PictureShared;
 
+import com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.IDCardCameraActivity;
+import com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.parameter.BankCardParameter;
+import com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.parameter.IDCardBaseParameter;
 import com.luck.picture.lib.basic.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.config.SelectMimeType;
@@ -42,8 +45,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.IntentExtraName.IDCARD_RESULT_DATA;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_BANK;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_IDCRD_EMBLEM;
+import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_IDCRD_HEAD;
 import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_REQUESTCODE;
 import static com.baseeasy.commonlibrary.selectimageandvideo.PictureShared.TAKINGPHOTO_SEPARATE_REQUESTCODE;
+import static com.baseeasy.commonlibrary.selectimageandvideo.idcardcamera.parameter.IDCardBaseParameter.KEY_MAIN;
 
 
 /**
@@ -57,15 +65,63 @@ public class SelectImageFragment extends Fragment {
     private SelectImageCallBack selectImageCallBack;
     private TakingPhotoCallBack takingPhotoCallBack;
     private TakingPhotoSeparateCallBack takingPhotoSeparateCallBack;
-
+    private TakingPhotoIDCardCallBack takingPhotoIDCardCallBack;
+    private TakingPhotoBankCallBack takingPhotoBankCallBack;
 //    private String  takingPhotoSeparateEventBusFlag="";
 
     public SelectImageFragment() {
         // Required empty public constructor
 
     }
+    public void setTakingPhotoIDCardCallBack(TakingPhotoIDCardCallBack takingPhotoIDCardCallBack) {
+        this.takingPhotoIDCardCallBack = takingPhotoIDCardCallBack;
+    }
+    public void setTakingPhotoBankCallBack(TakingPhotoBankCallBack takingPhotoBankCallBack) {
+        this.takingPhotoBankCallBack = takingPhotoBankCallBack;
+    }
 
-
+    /**
+     * 作者：WangZhiQiang
+     * 时间：2023/6/1
+     * 邮箱：sos181@163.com
+     * 描述：拍摄身份证国徽面
+     */
+    public  void  startTakingPhotoIdCardImageHeadEmblem(){
+        Intent intent = new Intent(getActivity(), IDCardCameraActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(IDCardBaseParameter.KEY_TAKE_PICTURE_TYPE, IDCardBaseParameter.TYPE_MANUAL);
+        bundle.putInt(IDCardBaseParameter.KEY_MASK_TYPE, IDCardBaseParameter.MASK_TYPE_IDCARD_BACK);
+        intent.putExtra(KEY_MAIN, bundle);
+        startActivityForResult(intent, TAKINGPHOTO_IDCRD_EMBLEM);
+    }
+    /**
+     * 作者：WangZhiQiang
+     * 时间：2023/6/1
+     * 邮箱：sos181@163.com
+     * 描述：拍摄身份证（头像页面）
+     */
+    public  void  startTakingPhotoIdCardImageHead(){
+        Intent intent = new Intent(getActivity(), IDCardCameraActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(IDCardBaseParameter.KEY_TAKE_PICTURE_TYPE, IDCardBaseParameter.TYPE_MANUAL);
+        bundle.putInt(IDCardBaseParameter.KEY_MASK_TYPE, IDCardBaseParameter.MASK_TYPE_IDCARD_FRONT);
+        intent.putExtra(KEY_MAIN, bundle);
+        startActivityForResult(intent, TAKINGPHOTO_IDCRD_HEAD);
+    }
+    /**
+     * 作者：WangZhiQiang
+     * 时间：2023/6/1
+     * 邮箱：sos181@163.com
+     * 描述：银行卡
+     */
+    public  void  startTakingPhotoBank(){
+        Intent intent = new Intent(getActivity(), IDCardCameraActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(IDCardBaseParameter.KEY_TAKE_PICTURE_TYPE, IDCardBaseParameter.TYPE_MANUAL);
+        bundle.putInt(IDCardBaseParameter.KEY_MASK_TYPE, BankCardParameter.MASK_TYPE_BANKCARD);
+        intent.putExtra(KEY_MAIN, bundle);
+        startActivityForResult(intent, TAKINGPHOTO_BANK);
+    }
 
     public void startSelectImage(int maxNum) {
 
@@ -175,7 +231,19 @@ public class SelectImageFragment extends Fragment {
                 .forResult(TAKINGPHOTO_SEPARATE_REQUESTCODE);
     }
 
-
+    public void startSelectVideo(int maxNum) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_VIDEO);
+        this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
+    }
+    public void startSelectVideo(String select,int maxNum) {
+        Intent intent = new Intent(getActivity(), SelectImageActivity.class);
+        intent.putExtra(PictureShared.IntentExtraName.MAXPHOTONUM,maxNum);
+        intent.putExtra(PictureShared.IntentExtraName.ACTION_TYPE,PictureShared.ACTION_TYPE_SELECT_VIDEO);
+        intent.putExtra(PictureShared.IntentExtraName.EXIST_IMAGES,select);
+        this.startActivityForResult(intent, PictureShared.SELECTIMAGE_REQUESTCODE);
+    }
 
 
     @Override
@@ -231,7 +299,30 @@ public class SelectImageFragment extends Fragment {
             }else if(requestCode== TAKINGPHOTO_SEPARATE_REQUESTCODE&&null!=takingPhotoSeparateCallBack){
                     List<LocalMedia> localMediaList=   PictureSelector.obtainSelectorList(data);
                     takingPhotoSeparateCallBack.onTakingPhoto(ImageLocalMediaConversion.localMediaToSelectImage(localMediaList).get(0));
+                }else  if(requestCode== TAKINGPHOTO_IDCRD_HEAD&&null!=takingPhotoIDCardCallBack){
+
+                try {
+                    String path= data.getExtras().getString(IDCARD_RESULT_DATA);
+                    takingPhotoIDCardCallBack.onTakingPhotoHead(path);
+                }catch (Exception e){
+                    takingPhotoIDCardCallBack.onTakingPhotoHead("");
+                } }else  if(requestCode== TAKINGPHOTO_IDCRD_EMBLEM&&null!=takingPhotoIDCardCallBack){
+
+                try {
+                    String path= data.getExtras().getString(IDCARD_RESULT_DATA);
+                    takingPhotoIDCardCallBack.onTakingPhotoEmblem(path);
+                }catch (Exception e){
+                    takingPhotoIDCardCallBack.onTakingPhotoEmblem("");
                 }
+            }if(requestCode== TAKINGPHOTO_BANK&&null!=takingPhotoBankCallBack){
+
+                try {
+                    String path= data.getExtras().getString(IDCARD_RESULT_DATA);
+                    takingPhotoBankCallBack.onTakingPhoto(path);
+                }catch (Exception e){
+                    takingPhotoBankCallBack.onTakingPhoto("");
+                }
+            }
 
 
         }

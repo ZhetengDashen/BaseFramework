@@ -251,10 +251,7 @@ public class SelectImageUtils2 {
 
         getTakingPhotoSeparateFragment(activity, takingPhotoSeparateCallBack).startTakingPhotoAndImageSeparate(maxNum);
     }
-    public void startTakingPhotoAndImageSeparate(FragmentActivity activity, TakingPhotoSeparateCallBack takingPhotoSeparateCallBack,int maxNum,int minComposeSize){
 
-        getTakingPhotoSeparateFragment(activity, takingPhotoSeparateCallBack).startTakingPhotoAndImageSeparate(maxNum,minComposeSize);
-    }
 
 
 }
